@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="database-manage.list">
+      <field name="name">database-manage list</field>
+      <field name="model">database-manage.database-manage</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="database-manage.action_window">
+      <field name="name">database-manage window</field>
+      <field name="res_model">database-manage.database-manage</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="database-manage.action_server">
+      <field name="name">database-manage server</field>
+      <field name="model_id" ref="model_database-manage_database-manage"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="database-manage" id="database-manage.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="database-manage.menu_1" parent="database-manage.menu_root"/>
+    <menuitem name="Menu 2" id="database-manage.menu_2" parent="database-manage.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="database-manage.menu_1_list" parent="database-manage.menu_1"
+              action="database-manage.action_window"/>
+    <menuitem name="Server to list" id="database-manage" parent="database-manage.menu_2"
+              action="database-manage.action_server"/>
+-->
+  </data>
+</odoo>
