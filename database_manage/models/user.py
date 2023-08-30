@@ -2,8 +2,8 @@ from odoo import models, fields, api
 
 
 class User(models.Model):
-    _name = 'database_manage.contact_info'
-    _description = 'Contact information of user from Tuyen duong Website'
+    _name = 'database_manage.user'
+    _description = ' User from Tuyen duong Website'
     _inherit= []
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.result'), required=True, copy=True, readonly=True)
