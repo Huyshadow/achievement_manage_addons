@@ -1,12 +1,11 @@
 from odoo import models, fields, api
 
-
 class User(models.Model):
     _name = 'database_manage.user'
     _description = ' User from Tuyen duong Website'
     _inherit= []
 
-    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.result'), required=True, copy=True, readonly=True)
+    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.user'), required=True, copy=True, readonly=True)
     email = fields.Char(default='', required=True)
     name = fields.Char()
     surName = fields.Char()
@@ -26,6 +25,6 @@ class User(models.Model):
     auditorId = fields.Integer() #Many2one with department
 
     sql_constraints = [
-        ('user_pk', 'PRIMARY KEY (id)', '''User's ID must be Primary Key'''),
-        ('user_unique_email', 'UNIQUE (email)','''User's email must be unique''')
+        ('user_pk', 'PRIMARY KEY (id)', 'ID must be Primary Key'),
+        ('user_unique_email', 'UNIQUE (email)','Email must be unique')
     ]

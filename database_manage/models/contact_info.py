@@ -1,13 +1,12 @@
 from odoo import models, fields, api
 
-
 class ContactInfo(models.Model):
     _name = 'database_manage.contact_info'
     _description = 'Contact information of user from Tuyen duong Website'
     _inherit= []
 
-    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.contact_infor'), required=True, copy=True, readonly=True)
-    gender = fields.Char(defautt = 'Male', required=True)
+    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.contact_info'), required=True, copy=True, readonly=True)
+    gender = fields.Char(default = 'Male', required=True)
     nation = fields.Char(default = '')
     emailPersonal = fields.Char(default='')
     religion = fields.Char(default='')

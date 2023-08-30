@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>    
+    <record model="ir.sequence" id="result_of_criteria_database">
+        <field name="name">Resut Of Criteria</field>
+        <field name="code">database.manage.result_of_criteria</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False"/>
+    </record>
+</odoo>

@@ -7,8 +7,8 @@ class Achievement(models.Model):
     _description = 'Achievement of Tuyen duong Website'
 
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.achievement'))
-    name = fields.Char(string="Name",required=True, tracking=True)
-    softCriteria = fields.Integer(string="Soft Criteria",required=True, tracking = True)
+    name = fields.Char(string="Name",required=True)
+    softCriteria = fields.Integer(string="Soft Criteria",required=True)
     description = fields.Text()
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)

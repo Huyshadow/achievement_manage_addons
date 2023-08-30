@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>    
-    <record model="ir.sequence" id="achievement_database">
+    <record model="ir.sequence" id="department_database">
         <field name="name">Department</field>
         <field name="code">database.manage.department</field>
         <field name="padding">5</field>

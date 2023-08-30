@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','database_manage'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
@@ -28,7 +28,15 @@
         'views/views.xml',
         'views/templates.xml',
         'data/achivement.xml',
+        'data/auditor.xml',
         'data/department.xml',
+        'data/contact_info.xml',
+        'data/result.xml',
+        'data/user.xml',
+        'data/criteria.xml',
+        'data/submission.xml',
+        'data/closure_criteria.xml',
+        'data/result_of_criteria.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
