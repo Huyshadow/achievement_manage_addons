@@ -7,8 +7,8 @@ class Department(models.Model):
     _description = 'Department of Tuyen duong Website'
 
     departmentId = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.department'), required=True, copy=True, readonly=True)
-    code = fields.Char(tracking=True)
-    name = fields.Char(string="Name", tracking=True)
+    code = fields.Char()
+    name = fields.Char(string="Name", )
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt = fields.Datetime()

@@ -14,7 +14,7 @@ class Submission(models.Model):
     name = fields.Char()
     studentComment= fields.Char(required=True, default='')
     studentSelect =fields.Char(required=True, default='')
-    isVerified = fields.Boolean(requird=True, default=False)
+    isVerified = fields.Boolean(required=True, default=False)
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     endAt = fields.Datetime(default=fields.Datetime.now, required=True)

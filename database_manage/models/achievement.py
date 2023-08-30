@@ -1,5 +1,7 @@
 
 from odoo import models, fields, api
+from datetime import datetime
+
 
 
 class Achievement(models.Model):
@@ -10,7 +12,7 @@ class Achievement(models.Model):
     name = fields.Char(string="Name",required=True)
     softCriteria = fields.Integer(string="Soft Criteria",required=True)
     description = fields.Text()
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True)
+    createAt = fields.Datetime(default=lambda self: self.fields.Datetime.today,required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     endAt = fields.Datetime(default=fields.Datetime.now, required=True)
     startAt = fields.Datetime(default=fields.Datetime.now, required=True)

@@ -7,7 +7,7 @@ class ResultOfCriteria(models.Model):
     _inherit= ['database_manage.achievement']
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.result_of_crieria'), required=True, copy=True, readonly=True)
-    result = fields.Integer(tracking=True)
+    result = fields.Integer()
     description = fields.Text()
     typeResult = fields.Selection([
         ('ACHIEVEMENT', 'Achivement'),
@@ -15,9 +15,9 @@ class ResultOfCriteria(models.Model):
     ], default='ACHIEVEMENT', required=True)
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    userId = fields.Integer(tracking=True) #manytoone user
-    resultAchievementId = fields.Integer(tracking=True) #manytoone result
-    submissionId = fields.Integer(tracking=True) #manytoone submission
+    userId = fields.Integer() #manytoone user
+    resultAchievementId = fields.Integer() #manytoone result
+    submissionId = fields.Integer() #manytoone submission
 
     _sql_constraints = [
         ('result_of_criteria_pk', 'PRIMARY KEY (id)', 'ID must be Primary Key')
