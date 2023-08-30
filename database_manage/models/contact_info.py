@@ -6,7 +6,7 @@ class ContactInfo(models.Model):
     _description = 'Contact information of user from Tuyen duong Website'
     _inherit= []
 
-    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.result'), required=True, copy=True, readonly=True)
+    id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.contact_infor'), required=True, copy=True, readonly=True)
     gender = fields.Char(defautt = 'Male', required=True)
     nation = fields.Char(default = '')
     emailPersonal = fields.Char(default='')
@@ -24,9 +24,9 @@ class ContactInfo(models.Model):
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt= fields.Datetime()
-    useID = fields.Integer() # Manytoone
+    userId = fields.Integer() # Manytoone
 
     sql_constraints = [
         ('contact_info_pk', 'PRIMARY KEY (id)', 'Contact ID must be Primary Key'),
-        ('contact_info_unique_pk', 'UNIQUE (useID)')
+        ('contact_info_unique_pk', 'UNIQUE (userId)')
     ]
