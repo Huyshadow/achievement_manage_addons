@@ -1,22 +1,18 @@
-
 from odoo import models, fields, api
 from datetime import datetime
-
-
-
 class Achievement(models.Model):
     _name = 'database_manage.achievement'
     _description = 'Achievement of Tuyen duong Website'
-
+    
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.achievement'))
     name = fields.Char(string="Name",required=True)
     softCriteria = fields.Integer(string="Soft Criteria",required=True)
     description = fields.Text()
-    createAt = fields.Datetime(default=lambda self: self.fields.Datetime.today,required=True)
+    createAt = fields.Datetime(default=fields.Datetime.now, required=True )
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     endAt = fields.Datetime(default=fields.Datetime.now, required=True)
     startAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    endSubmitAt = fields.Datetime(required=True,default=fields.Datetime.now)
+    end_submit_at = fields.Datetime(required=True,default=fields.Datetime.now)
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
         ('available', 'Available')
@@ -27,10 +23,10 @@ class Achievement(models.Model):
     ], default='achievement')
     manageUnit = fields.Text(default='{}')
     deleteAt=fields.Datetime(required=True)
-    #auditorFinalid = fields.Many2one('database-manage.user', string="Auditor Final")
+    auditorFinalid = fields.Many2one('database_manage.user', string="AuditorFinal")
+    #@api
     _sql_constraints = [
         ('achievement_pk', 'PRIMARY KEY (id)', 'Achievement ID must be unique.'),
-        # ('achievement_auditor_fk', 'FOREIGN KEY ("auditorFinalId") REFERENCES "database-manage_user" (id)', 'Auditor Final must reference an existing User.')
     ]
 
     @api.model

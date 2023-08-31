@@ -2,8 +2,7 @@ from odoo import models, fields, api
 
 class User(models.Model):
     _name = 'database_manage.user'
-    _description = ' User from Tuyen duong Website'
-    _inherit= []
+    _description = 'User from Tuyen duong Website'
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.user'), required=True, copy=True, readonly=True)
     email = fields.Char(default='', required=True)
