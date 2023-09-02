@@ -3,7 +3,6 @@ from odoo import models, fields, api
 class ContactInfo(models.Model):
     _name = 'database_manage.contact_info'
     _description = 'Contact information of user from Tuyen duong Website'
-    _inherit= []
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.contact_info'), required=True, copy=True, readonly=True)
     gender = fields.Char(default = 'Male', required=True)
@@ -23,7 +22,7 @@ class ContactInfo(models.Model):
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt= fields.Datetime()
-    userId = fields.Integer() # Manytoone
+    userId = fields.Many2one('database_manage.user', string='UserId')
 
     sql_constraints = [
         ('contact_info_pk', 'PRIMARY KEY (id)', 'Contact ID must be Primary Key'),

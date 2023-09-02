@@ -19,9 +19,9 @@ class Submission(models.Model):
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     endAt = fields.Datetime(default=fields.Datetime.now, required=True)
     startAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    userId = fields.Integer()#manytoone user
-    achievementId =fields.Integer() #manytoone achievement
-    criteriaId = fields.Integer() #mantoone criteria
+    userId = fields.Many2one('database_manage.user', string="User")#manytoone user
+    achievementId =fields.Many2one('database_manage.achievement', string="Achievement")
+    criteriaId = fields.Many2one('database_manage.criteria', string="Criteria")
 
     sql_constraints = [
         ('submission_pk', 'PRIMARY KEY (id)', '''ID must be Primary Key'''),

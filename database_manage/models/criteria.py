@@ -34,7 +34,7 @@ class Criteria(models.Model):
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt= fields.Datetime()
-    achievementId = fields.Integer() #Will be defined 
+    achievementId = fields.Many2one('database_manage.achievement', string='Achievement ID')
 
     sql_constraints = [
         ('criteria_pk', 'PRIMARY KEY (id)', '''Criteria's ID must be Primary Key'''),

@@ -4,7 +4,6 @@ from odoo import models, fields, api
 class Result(models.Model):
     _name = 'database_manage.result'
     _description = 'Result of Tuyen duong Website'
-    _inherit= ['database_manage.achievement']
 
     resultId = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.result'), required=True, copy=True, readonly=True)
     result = fields.Integer()
@@ -12,8 +11,8 @@ class Result(models.Model):
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     achievementId = fields.Many2one('database_manage.achievement', string="Achievement")
-    examerId = fields.Integer()
-    auditorId = fields.Integer()
+    examerId = fields.Many2one('database_manage.user', string="Examer")
+    auditorId = fields.Many2one('database_manage.user', string="Auditor")
 
     _sql_constraints = [
         ('result_pk', 'PRIMARY KEY (resultId)', 'Result ID must be Primary Key')

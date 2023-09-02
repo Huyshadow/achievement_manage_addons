@@ -20,8 +20,8 @@ class User(models.Model):
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt= fields.Datetime()
-    departmentId = fields.Integer() # Manytoone with depatment
-    auditorId = fields.Integer() #Many2one with department
+    departmentId = fields.Many2one('database_manage.department', string="Department")
+    achievementId = fields.Many2one('database_manage.achievement',string='Achievement') #Many2one with department
 
     sql_constraints = [
         ('user_pk', 'PRIMARY KEY (id)', 'ID must be Primary Key'),

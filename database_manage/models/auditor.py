@@ -7,14 +7,13 @@ class Auditor(models.Model):
     _inherit= []
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.auditor'), required=True, copy=True, readonly=True)
-    userID = fields.Integer() #manytoone voi user
-    departmentId = fields.Integer() #manytoone voi department
     achivementId = fields.Integer()
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     deleteAt= fields.Datetime()
-    departmentId = fields.Integer() # Manytoone with depatment
-    auditorId = fields.Integer() #Many2one with department
+    departmentId = fields.Many2one('database_manage.department',string='Department')
+    userId = fields.Many2one('database_manage.user',string='User') 
+    achievementId = fields.Many2one('database_manage.achievement', string='Achievement')
 
     sql_constraints = [
         ('auditor_pk', 'PRIMARY KEY (id)', '''auditor's ID must be Primary Key'''),
