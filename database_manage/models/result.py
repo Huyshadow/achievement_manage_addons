@@ -9,7 +9,7 @@ class Result(models.Model):
     result = fields.Integer()
     final = fields.Boolean(required=True, default=False)
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
+    updateAt = fields.Datetime()
     achievementId = fields.Many2one('database_manage.achievement', string="Achievement")
     examerId = fields.Many2one('database_manage.user', string="Examer")
     auditorId = fields.Many2one('database_manage.user', string="Auditor")

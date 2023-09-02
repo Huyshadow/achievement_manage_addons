@@ -9,10 +9,10 @@ class Achievement(models.Model):
     softCriteria = fields.Integer(string="Soft Criteria",required=True)
     description = fields.Text()
     createAt = fields.Datetime(default=fields.Datetime.now, required=True )
-    updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    endAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    startAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    end_submit_at = fields.Datetime(required=True,default=fields.Datetime.now)
+    updateAt = fields.Datetime()
+    endAt = fields.Datetime()
+    startAt = fields.Datetime()
+    end_submit_at = fields.Datetime()
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
         ('available', 'Available')
@@ -22,7 +22,7 @@ class Achievement(models.Model):
         ('other_type', 'Other_type')
     ], default='achievement')
     manageUnit = fields.Text(default='{}')
-    deleteAt=fields.Datetime(required=True)
+    deleteAt=fields.Datetime()
     auditorFinalid = fields.Many2one('database_manage.user', string="AuditorFinal")
     #@api
     _sql_constraints = [

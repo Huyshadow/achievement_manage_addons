@@ -32,7 +32,7 @@ class Criteria(models.Model):
     lowerPoint = fields.Float(default=0, required=True)
     upperPoint = fields.Float(default=0, required=True)
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
+    updateAt = fields.Datetime()
     deleteAt= fields.Datetime()
     achievementId = fields.Many2one('database_manage.achievement', string='Achievement ID')
 

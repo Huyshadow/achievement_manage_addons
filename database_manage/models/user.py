@@ -18,7 +18,7 @@ class User(models.Model):
     hasContactInfo = fields.Boolean(required=True, default=False)
     currentHashedRefreshToken = fields.Char()
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
+    updateAt = fields.Datetime()
     deleteAt= fields.Datetime()
     departmentId = fields.Many2one('database_manage.department', string="Department")
     achievementId = fields.Many2one('database_manage.achievement',string='Achievement') #Many2one with department

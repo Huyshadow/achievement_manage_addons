@@ -10,7 +10,7 @@ class Department(models.Model):
     code = fields.Char()
     name = fields.Char(string="Name", )
     createAt = fields.Datetime(default=fields.Datetime.now, required=True)
-    updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
+    updateAt = fields.Datetime()
     deleteAt = fields.Datetime()
 
     _sql_constraints = [
