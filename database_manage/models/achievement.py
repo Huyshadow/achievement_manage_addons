@@ -24,7 +24,6 @@ class Achievement(models.Model):
     manageUnit = fields.Text(default='{}')
     deleteAt=fields.Datetime()
     auditorFinalid = fields.Many2one('database_manage.user', string="AuditorFinal")
-    #@api
     _sql_constraints = [
         ('achievement_pk', 'PRIMARY KEY (id)', 'Achievement ID must be unique.'),
     ]
