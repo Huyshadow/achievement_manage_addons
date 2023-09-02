@@ -19,7 +19,6 @@ class ContactInfo(models.Model):
     dateAtUnion = fields.Datetime()
     dateAtCommunistParty = fields.Datetime()
     placeCommunistParty = fields.Char(default='')
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime()
     deleteAt= fields.Datetime()
     userId = fields.Many2one('database_manage.user', string='UserId')

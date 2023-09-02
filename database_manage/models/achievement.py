@@ -8,7 +8,6 @@ class Achievement(models.Model):
     name = fields.Char(string="Name",required=True)
     softCriteria = fields.Integer(string="Soft Criteria",required=True)
     description = fields.Text()
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True )
     updateAt = fields.Datetime()
     endAt = fields.Datetime()
     startAt = fields.Datetime()
@@ -32,13 +31,3 @@ class Achievement(models.Model):
     def create(self, vals):
         vals['id'] = self.env['ir.sequence'].next_by_code('database.manage.achievement')
         return super(Achievement, self).create(vals)
-
-
-    # value = fields.Integer()
-    # value2 = fields.Float(compute="_value_pc", store=True)
-    
-
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     for record in self:
-    #         record.value2 = float(record.value) / 100

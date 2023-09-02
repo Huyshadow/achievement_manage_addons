@@ -8,7 +8,6 @@ class Auditor(models.Model):
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.auditor'), required=True, copy=True, readonly=True)
     achivementId = fields.Integer()
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime()
     deleteAt= fields.Datetime()
     departmentId = fields.Many2one('database_manage.department',string='Department')

@@ -12,7 +12,6 @@ class ResultOfCriteria(models.Model):
         ('ACHIEVEMENT', 'Achivement'),
         ('other_type','Other_type')
     ], default='ACHIEVEMENT', required=True)
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime(default=fields.Datetime.now, required=True)
     userId = fields.Many2one('database_manage.user', string="User")
     resultAchievementId = fields.Many2one('database_manage.result', string="Result") #manytoone result

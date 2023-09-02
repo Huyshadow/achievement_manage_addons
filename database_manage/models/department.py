@@ -9,7 +9,6 @@ class Department(models.Model):
     departmentId = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code('database.manage.department'), required=True, copy=True, readonly=True)
     code = fields.Char()
     name = fields.Char(string="Name", )
-    createAt = fields.Datetime(default=fields.Datetime.now, required=True)
     updateAt = fields.Datetime()
     deleteAt = fields.Datetime()
 
