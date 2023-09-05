@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "create_achievement",
+    'name': "Create Achievement",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        Feature: Creating achievement of the Website
+    """,
 
     'description': """
-        Long description of module's purpose
+        No comment
     """,
 
     'author': "My Company",
-    'website': "https://www.yourcompany.com",
+    'website': "https://www.facebook.com/profile.php?id=100074736126982",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -24,9 +24,11 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/ir.model.access.csv',
+        'data/achievement.xml',
+        'views/achievement.xml',
+        'views/menu.xml'
+
     ],
     # only loaded in demonstration mode
     'demo': [
