@@ -8,14 +8,10 @@
             <sheet>
               <group>
                 <field name="name"/>
-                <field name="description"/>
                 <field name="start_at"/>
                 <field name="end_at"/>
                 <field name="end_submit_at"/>
-                <field name="lock"/>
-                <field name="type"/>
-                <field name="manage_unit"/>
-                <field name="delete_at" />
+                <field name="description"/>
               </group>
             </sheet>
            </form>
@@ -34,5 +30,5 @@
         parent="menu_cr_ach_root"
         action="action_cr_achievement"
         sequence="10"
-    />
+  />
 </odoo>

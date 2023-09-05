@@ -26,6 +26,4 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-    _sql_constraints = [
-        ('achievement_pk', 'PRIMARY KEY (id)', 'Achievement ID must be unique.'),
-    ]
+    
