@@ -9,6 +9,13 @@
               <group>
                 <field name="name"/>
                 <field name="description"/>
+                <field name="start_at"/>
+                <field name="end_at"/>
+                <field name="end_submit_at"/>
+                <field name="lock"/>
+                <field name="type"/>
+                <field name="manage_unit"/>
+                <field name="delete_at" />
               </group>
             </sheet>
            </form>
