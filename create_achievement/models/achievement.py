@@ -8,10 +8,11 @@ class Achievement(models.Model):
     parent_id = fields.Many2one(
         'create_achievement.achievement', string="Root Model")
 
+    criteria_ids = fields.One2many(
+        'create_achievement.criteria', 'parent_id', string="Achivement's Criteria")
+
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
-    criteria_ids = fields.One2many(
-        'create_achievement.criteria', 'id', string="Achivement's Criteria")
     name = fields.Char(default="Achievement", required=True)
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Description")
