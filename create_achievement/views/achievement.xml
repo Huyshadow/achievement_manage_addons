@@ -17,18 +17,32 @@
            </form>
         </field>
   </record>
+
+  <record id="view_cr_achievement_tree" model="ir.ui.view">
+        <field name="name">create.achievement.tree</field>
+        <field name="model">create_achievement.achievement</field>
+        <field name="arch" type="xml">
+           <tree>
+                <field name="name"/>
+                <field name="start_at"/>
+                <field name="end_at"/>
+                <field name="end_submit_at"/>
+                <field name="description"/>
+           </tree>
+        </field>
+  </record>
+  
   <record id="action_cr_achievement" model="ir.actions.act_window">
     <field name="name">Achievement</field>
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
-    <field name="view_mode">form</field>
+    <field name="view_mode">tree,form</field>
   </record>
-
   <menuitem 
-        id="menu_cr_ach_achievements" 
-        name="Achievement Record"
+        id="menu_cr_ach_achievement" 
+        name="Achivement Record"
         parent="menu_cr_ach_root"
         action="action_cr_achievement"
         sequence="10"
-  />
+    />
 </odoo>
