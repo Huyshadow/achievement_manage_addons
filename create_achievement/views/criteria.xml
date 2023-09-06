@@ -12,16 +12,30 @@
                 <field name="evidence"/>
                 <field name="note"/>
                 <field name="content"/>
+                <field name="parent_id"/>
               </group>
             </sheet>
            </form>
         </field>
      </record>
+     <record id="view_cr_criteria_tree" model="ir.ui.view">
+        <field name="name">create.criteria.tree</field>
+        <field name="model">create_achievement.criteria</field>
+        <field name="arch" type="xml">
+           <tree>
+                <field name="name"/>
+                <field name="method"/>
+                <field name="content"/>
+           </tree>
+        </field>
+     </record>
+     
+
     <record id="action_cr_criteria" model="ir.actions.act_window">
         <field name="name">Criterias</field>
         <field name='type'>ir.actions.act_window</field>
         <field name="res_model">create_achievement.criteria</field>
-        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
     </record>
     <menuitem 
         id="menu_cr_ach_criteria" 

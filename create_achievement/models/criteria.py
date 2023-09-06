@@ -6,7 +6,7 @@ class Criteria(models.Model):
     _description = ' Criteria for Tuyen duong Website'
 
     parent_id = fields.Many2one(
-        'create_achievement.achievement', string="Criterias for Achievement")
+        'create_achievement.achievement', string="Criterias for Achievement", required=True)
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.criteria'), required=True, copy=True, readonly=True)
@@ -38,5 +38,3 @@ class Criteria(models.Model):
     lowerPoint = fields.Float(default=0, required=True)
     upperPoint = fields.Float(default=0, required=True)
     deleteAt = fields.Datetime()
-    parent_id = fields.Many2one(
-        'create_achievement.achievement', string='''Achievement's Criteria''')

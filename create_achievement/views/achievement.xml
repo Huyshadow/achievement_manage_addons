@@ -12,6 +12,7 @@
                 <field name="end_at"/>
                 <field name="end_submit_at"/>
                 <field name="description"/>
+                <field name="criteria_ids"/>
               </group>
             </sheet>
            </form>
@@ -27,7 +28,7 @@
                 <field name="start_at"/>
                 <field name="end_at"/>
                 <field name="end_submit_at"/>
-                <field name="description"/>
+                <field name="__last_update"/>
            </tree>
         </field>
   </record>
