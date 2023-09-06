@@ -1,0 +1,12 @@
+<odoo>
+    <data>
+        <record id="department0" model="database_manage.department">
+            <field name="code"> KHKTMT </field>
+            <field name="name"> Khoa Khoa học và Kỹ thuật Máy tính </field>
+        </record>
+        <record id="department2" model="database_manage.department">
+            <field name="code"> QLCN </field>
+            <field name="name"> Khoa Quản lý công nghiệp </field>
+        </record>
+    </data>
+</odoo>
