@@ -9,13 +9,13 @@
               <group>
                 <field name="type"/>
                 <field name="name"/>
-                <field name="method"/>s
-                <field name="evidence"/>
+                <field name="method" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>s
+                <field name="evidence" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
                 <field name="sign" attrs="{'invisible': [('method', '!=', 'thang điểm')]}"/>
-                <field name="left_goal" attrs="{'invisible': ['|',('sign', '!=', 'a'), ('sign', '!=', 'b'), ('sign', '!=', '&lt;='), ('sign', '!=', '&gt;=')]}" />
+                <field name="lower_point" attrs="{'invisible': ['|',('sign', '!=', 'less'), ('sign', '!=', 'great'), ('sign', '!=', '&lt;='), ('sign', '!=', '&gt;=')]}" />
                 <field name="value_list_string" attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}"/>
                 <field name="note"/>
-                <field name="content"/>
+                <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
               </group>
             </sheet>
            </form>
