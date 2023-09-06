@@ -26,7 +26,7 @@
     <menuitem 
         id="menu_cr_ach_criteria" 
         name="Criteria"
-        parent="menu_cr_ach_root"
+        parent="menu_cr_ach_achievement"
         action="action_cr_criteria"
         sequence="10"
     />
