@@ -15,20 +15,25 @@ class Criteria(models.Model):
         ('tập tiêu chí', 'Tập tiêu chí')
     ], default='tiêu chí', required=True)
     name = fields.Char(required=True)
-    isCriteria = fields.Boolean(required=True, default=False)
+    is_criteria = fields.Boolean(required=True, default=False)
     method = fields.Selection(
-        [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], required=True, default='binary')
-    valueListString = fields.Char(required=True, default='')
+        [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], required=True, default='Thang đi')
+
+    value_list_string = fields.Char(required=True, default='')
     note = fields.Char(required=True, default='')
     content = fields.Char(required=True, default='')
     evidence = fields.Boolean(required=True, default=False)
-    lowerSign = fields.Selection([
-        ('<', '<'),
+    left_goal = fields.Integer(default=0)
+    right_goal = fields.Integer(default=0)
+    sign = fields.Selection([
+        ('a', '<'),
         ('<=', '<='),
-        ('>', '>'),
-        ('>=', '>=')
+        ('b', '>'),
+        ('>=', '>='),
+        ('''>= và <=''', '''>= và <='''),
+        ('''>= hoặc <=''', '''>= hoặc <='''),
     ], default=('>'), required=True)
-    upperSign = fields.Selection([
+    upper_sign = fields.Selection([
         ('<', '<'),
         ('<=', '<='),
         ('>', '>'),
