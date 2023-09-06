@@ -26,8 +26,10 @@
     'data': [
         'security/ir.model.access.csv',
         'data/achievement.xml',
+        'data/criteria.xml',
         'views/achievement.xml',
-        'views/menu.xml'
+        'views/menu.xml',
+        'views/criteria.xml'
 
     ],
     # only loaded in demonstration mode
