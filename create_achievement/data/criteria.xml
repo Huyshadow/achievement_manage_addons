@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.sequence" id="cr_ach_achievement">
+    <record model="ir.sequence" id="cr_ach_criteria">
         <field name="name">Criteria</field>
         <field name="code">create.achievement.crieria</field>
         <field name="padding">100</field>
