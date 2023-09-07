@@ -5,7 +5,7 @@
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
            <form>
-            <sheet>
+            <sheet classname="container">
               <group>
                 <field name="name"/>
                 <field name="start_at"/>
