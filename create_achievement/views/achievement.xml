@@ -9,15 +9,13 @@
               <group>
                 <group>
                   <field name="name"/>
+                  <field name="end_submit_at"/>
+                  <field name="description"/>
+                  <field name="criteria_ids"/>
                 </group>
                 <group>
                   <field name="start_at"/>
                   <field name="end_at"/>
-                </group>
-                <group>
-                  <field name="end_submit_at"/>
-                  <field name="description"/>
-                  <field name="criteria_ids"/>
                 </group>
               </group>
             </sheet>
