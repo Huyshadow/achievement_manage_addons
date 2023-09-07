@@ -48,8 +48,8 @@ F
 
     <!-- menu categories -->
 
-    <!-- <menuitem name="Menu 1" id="achievement_management.user_1" parent="achievement_management.user_root"/>
-    <menuitem name="Menu 2" id="achievement_management.user_2" parent="achievement_management.user_root"/> -->
+    <menuitem name="Menu 1" id="achievement_management.user_1" parent="achievement_management.user_root" action="achievement_management.action_window_user"/>
+    <menuitem name="Menu 2" id="achievement_management.user_2" parent="achievement_management.user_root" action="achievement_management.action_server_user"/>
 
     <!-- actions -->
 

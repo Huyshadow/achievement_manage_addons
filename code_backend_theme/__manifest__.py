@@ -21,7 +21,7 @@
 #############################################################################
 
 {
-    "name": "Code Backend Theme V16",
+    "name": "ĐHQG Theme",
     "description": """Minimalist and elegant backend theme for Odoo 16, Backend Theme, Theme""",
     "summary": "Code Backend Theme V16 is an attractive theme for backend",
     "category": "Themes/Backend",
@@ -30,7 +30,7 @@
     'company': 'Cybrosys Techno Solutions',
     'maintainer': 'Cybrosys Techno Solutions',
     'website': "https://www.cybrosys.com",
-    "depends": ['base', 'web', 'mail'],
+    "depends": ['base','web','mail'],
     "data": [
         'views/layout.xml',
         'views/icons.xml',
