@@ -12,7 +12,8 @@
                 <field name="method" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>s
                 <field name="evidence" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
                 <field name="sign" attrs="{'invisible': [('method', '!=', 'thang điểm')]}"/>
-                <field name="lower_point" attrs="{'invisible': ['|',('sign', '!=', 'less'), ('sign', '!=', 'great'), ('sign', '!=', '&lt;='), ('sign', '!=', '&gt;=')]}" />
+                <field name="lower_point" attrs="{'invisible': [('sign', '!=', '&lt;'), ('sign', '!=', '&gt;'), ('sign', '!=', '&lt;='), ('sign', '!=', '&gt;='),('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
+                <field name="upper_point" attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
                 <field name="value_list_string" attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}"/>
                 <field name="note"/>
                 <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
@@ -40,11 +41,4 @@
         <field name="res_model">create_achievement.criteria</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem 
-        id="menu_cr_ach_criteria" 
-        name="Criteria"
-        parent="menu_cr_ach_achievement"
-        action="action_cr_criteria"
-        sequence="10"
-    />
 </odoo>

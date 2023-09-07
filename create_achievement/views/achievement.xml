@@ -7,12 +7,18 @@
            <form>
             <sheet classname="container">
               <group>
-                <field name="name"/>
-                <field name="start_at"/>
-                <field name="end_at"/>
-                <field name="end_submit_at"/>
-                <field name="description"/>
-                <field name="criteria_ids"/>
+                <group>
+                  <field name="name"/>
+                </group>
+                <group>
+                  <field name="start_at"/>
+                  <field name="end_at"/>
+                </group>
+                <group>
+                  <field name="end_submit_at"/>
+                  <field name="description"/>
+                  <field name="criteria_ids"/>
+                </group>
               </group>
             </sheet>
            </form>
@@ -31,8 +37,7 @@
                 <field name="__last_update"/>
            </tree>
         </field>
-  </record>
-  
+  </record> 
   <record id="action_cr_achievement" model="ir.actions.act_window">
     <field name="name">Achievement</field>
     <field name='type'>ir.actions.act_window</field>
