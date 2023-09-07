@@ -27,9 +27,9 @@ class Criteria(models.Model):
         ('<=', '<='),
         ('>', '>'),
         ('>=', '>='),
-        ('''>= và <=''', '''>= và <='''),
-        ('''>= hoặc <=''', '''>= hoặc <='''),
-    ], default=('>'), required=True)
+        ('>= or <=', '>= or <='),
+        ('>= and <=', '>= and <='),
+    ], default='', required=True)
     point = fields.Float(default=0, required=True)
     lower_point = fields.Float(default=0, required=True)
     upper_point = fields.Float(default=0, required=True)
