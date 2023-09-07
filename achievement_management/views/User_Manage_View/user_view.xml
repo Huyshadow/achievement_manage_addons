@@ -16,7 +16,6 @@
       </field>
     </record>
 
-F
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="achievement_management.action_window_user">
