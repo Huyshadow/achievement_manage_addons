@@ -39,11 +39,5 @@
     <field name="res_model">create_achievement.achievement</field>
     <field name="view_mode">tree,form</field>
   </record>
-  <menuitem 
-        id="menu_cr_ach_achievement" 
-        name="Achivement Record"
-        parent="menu_cr_ach_root"
-        action="action_cr_achievement"
-        sequence="10"
-    />
+  
 </odoo>
