@@ -23,12 +23,44 @@
                     </div>    
 
                 <!-- Current App Sections -->
-                    <div class="d-none d-md-block">
-                        <t t-if="currentAppSections.length"
+                        <t t-if="currentAppSections.length gt 2">
+                            <t t-foreach="currentAppSections" t-as="section" t-key="section.id"  >
+                                <t t-set="hotkey" t-value="(section_index).toString()" />
+                                <t t-if="!section.childrenTree.length">
+                                    <DropdownItem
+                                        title="section.name"
+                                        class="'o_nav_entry'"
+                                        href="getMenuItemHref(section)"
+                                        hotkey="hotkey"
+                                        t-esc="section.name"
+                                        dataset="{ menuXmlid: section.xmlid, section: section.id }"
+                                        onSelected="() => this.onNavBarDropdownItemSelection(section)"
+                                    />
+                                </t>
+                                <t t-else="">
+                                    <MenuDropdown
+                                        hotkey="hotkey"
+                                        title="section.name"
+                                        xmlid="section.xmlid"
+                                    >
+                                        <t t-set-slot="toggler">
+                                        <span t-esc="section.name" t-att-data-section="section.id" />
+                                        </t>
+                                        <t t-call="web.NavBar.SectionsMenu.Dropdown.MenuSlot">
+                                        <t t-set="items" t-value="section.childrenTree" />
+                                        <t t-set="decalage" t-value="20" />
+                                        </t>
+                                    </MenuDropdown>
+                                </t>
+                            </t>
+                        </t>
+                    
+                    <!-- <div class="d-none d-md-block">
+                        <t t-if="currentAppSections.length gt 2"
                             t-call="web.NavBar.SectionsMenu">
                             <t t-set="sections" t-value="currentAppSections"/>
                         </t>
-                    </div>                
+                    </div>                 -->
 
                     <div class="d-xs-block d-sm-block  d-md-none">
                         <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
