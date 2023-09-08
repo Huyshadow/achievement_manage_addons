@@ -30,9 +30,13 @@ def test_pre_init_hook(cr):
     """pre init hook"""
 
     env = api.Environment(cr, SUPERUSER_ID, {})
-    menu_item = env['ir.ui.menu'].search([('parent_id', '=', False)])
+    menu_item = env['ir.ui.menu']#.search([('parent_id', '=', False)])
+
 
     for menu in menu_item:
+        img_path = get_module_resource(
+                'code_backend_theme', 'static', 'src', 'img', 'icons', 'Recruitment.png')
+        menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
         if menu.name == 'Contacts':
             img_path = get_module_resource(
                 'code_backend_theme', 'static', 'src', 'img', 'icons', 'Contacts.png')
@@ -157,15 +161,22 @@ def test_pre_init_hook(cr):
             img_path = get_module_resource(
                 'code_backend_theme', 'static', 'src', 'img', 'icons', 'Members.png')
             menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
+        if menu.name == 'Information':
+            img_path = get_module_resource(
+                'code_backend_theme', 'static', 'src', 'img', 'icons', 'Recruitment.png')
+            menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
 
 
 def test_post_init_hook(cr, registry):
     """post init hook"""
 
     env = api.Environment(cr, SUPERUSER_ID, {})
-    menu_item = env['ir.ui.menu'].search([('parent_id', '=', False)])
+    menu_item = env['ir.ui.menu'] #.search([('parent_id', '=', False)])
 
     for menu in menu_item:
+        img_path = get_module_resource(
+                'code_backend_theme', 'static', 'src', 'img', 'icons', 'Recruitment.png')
+        menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
         if menu.name == 'Contacts':
             img_path = get_module_resource(
                 'code_backend_theme', 'static', 'src', 'img', 'icons', 'Contacts.png')
@@ -289,4 +300,8 @@ def test_post_init_hook(cr, registry):
         if menu.name == 'Members':
             img_path = get_module_resource(
                 'code_backend_theme', 'static', 'src', 'img', 'icons', 'Members.png')
+            menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})
+        if menu.name == 'Information':
+            img_path = get_module_resource(
+                'code_backend_theme', 'static', 'src', 'img', 'icons', 'Recruitment.png')
             menu.write({'web_icon_data': base64.b64encode(open(img_path, "rb").read())})

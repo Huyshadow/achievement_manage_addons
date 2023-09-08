@@ -44,7 +44,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Department Manage" id="achievement_management.depart_root" action="achievement_management.action_window_depart"/>
+    <menuitem name="Department Manage" id="achievement_management.depart_root" action="achievement_management.action_window_depart" web_icon="code_backend_theme,static/src/img/icons/Employees.png"/>
 
     <!-- menu categories -->
 
