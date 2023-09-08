@@ -10,11 +10,15 @@
           <field name="mssv"/>
           <field name="email"/>
           <field name="role"/>
-
         </tree>
       </field>
     </record>
 
-    <menuitem name="Information" id="achievement_management.info" action="achievement_management.action_window_depart" web_icon="code_backend_theme,static/src/img/icons/Recruitment.png"/>
+    <menuitem 
+      name="Information" 
+      id="achievement_management.info" 
+      action="achievement_management.action_window_depart" 
+      web_icon="code_backend_theme,static/src/img/icons/Recruitment.png"
+    />
 </data>
 </odoo>
