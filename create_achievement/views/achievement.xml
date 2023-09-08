@@ -34,9 +34,18 @@
                 <field name="end_submit_at"/>
                 <field name="__last_update"/>
                 <field name="criteria_ids" invisible='1' />
+                <!-- <field name="last_updated_time" widget="datetime"/> -->
            </tree>
         </field>
   </record> 
+
+  <!-- <record id="refresh_time_action" model="ir.actions.server">
+    <field name="name">Refresh Last Updated Time</field>
+    <field name='type'>ir.actions.server</field>
+    <field name="res_model">create_achievement.achievement</field>
+    <field name="state">code</field>
+    <field name="code">model._refresh_last_updated_time()</field>
+</record> -->
   
   <record id="action_cr_achievement" model="ir.actions.act_window">
     <field name="name">Achievement</field>

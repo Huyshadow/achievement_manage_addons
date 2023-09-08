@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from datetime import datetime, timedelta
 
 
 class Achievement(models.Model):
@@ -13,11 +14,11 @@ class Achievement(models.Model):
 
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
-    name = fields.Char(default="", required=True)
+    name = fields.Char(default="", required=True, string="Achievement's Title")
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Description")
-    end_at = fields.Datetime()
-    start_at = fields.Datetime()
+    end_at = fields.Datetime(string="End time")
+    start_at = fields.Datetime(string="Start time")
     end_submit_at = fields.Datetime()
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
@@ -29,3 +30,29 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
+    # last_updated_time = fields.Datetime(
+    #     string='Last Updated Time', compute='_compute_last_updated_time')
+
+    # @api.depends_context('last_updated_time_refresh')
+    # def _compute_last_updated_time(self):
+    #     for record in self:
+    #         record.last_updated_time = fields.Datetime.now()
+
+    # @api.model
+    # def _refresh_last_updated_time(self):
+    #     self.env.context = dict(
+    #         self.env.context, last_updated_time_refresh=True)
+    #     self.search([])._compute_last_updated_time()
+
+    # @api.model
+    # def _schedule_refresh_last_updated_time(self):
+    #     self.env['ir.cron'].sudo().create({
+    #         'name': 'Refresh Last Updated Time',
+    #         'model_id': self.env.ref('model_my_class').id,
+    #         'state': 'code',
+    #         'code': 'model._refresh_last_updated_time()',
+    #         'interval_number': 1,
+    #         'interval_type': 'minutes',
+    #         'numbercall': -1,
+    #         'doall': True,
+    #     })
