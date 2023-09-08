@@ -13,7 +13,7 @@ class Achievement(models.Model):
 
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
-    name = fields.Char(default="Achievement", required=True)
+    name = fields.Char(default="", required=True)
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Description")
     end_at = fields.Datetime()
