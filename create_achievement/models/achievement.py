@@ -30,11 +30,23 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-
     last_updated = fields.Datetime()
+    status = fields.Char(
+        string="Status", compute='_compute_status', store=True)
 
     def update_last_updated_field(self):
         records = self.search([])
         current_datetime = fields.Datetime.now()
         records.write({'last_updated': current_datetime})
         print(records)
+
+    @api.depends('last_updated')
+    def _compute_status(self):
+        for record in self:
+            if record.end_at and record.start_at:
+                if (record.last_updated < record.start_at):
+                    record.status = "Incoming"
+                if (record.last_updated >= record.start_at and record.last_update <= record.end_at):
+                    record.status = "In Progress"
+                if (record.last_updated > record.end_at):
+                    record.status = "Done"
