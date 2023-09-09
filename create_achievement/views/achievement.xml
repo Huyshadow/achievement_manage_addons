@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <record id="view_cr_achievement_form" model="ir.ui.view">
+        <field name="name">create.achievement.form</field>
+        <field name="model">create_achievement.achievement</field>
+        <field name="arch" type="xml">
+           <form>
+            <sheet>
+              <group>
+                <field name="name"/>
+                <field name="description"/>
+              </group>
+            </sheet>
+           </form>
+        </field>
+  </record>
+  <record id="action_cr_achievement" model="ir.actions.act_window">
+    <field name="name">Achievement</field>
+    <field name='type'>ir.actions.act_window</field>
+    <field name="res_model">create_achievement.achievement</field>
+    <field name="view_mode">form</field>
+  </record>
+
+  <menuitem 
+        id="menu_cr_ach_achievements" 
+        name="Achievement Record"
+        parent="menu_cr_ach_root"
+        action="action_cr_achievement"
+        sequence="10"
+    />
+</odoo>

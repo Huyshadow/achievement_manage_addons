@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem 
+        id="menu_cr_ach_root" 
+        name="Achievement"
+        sequence="10"
+        web_icon="create_achievement,static/src/img/icons/achievement_icon.png"
+    />    
+</odoo>
