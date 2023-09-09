@@ -1,5 +1,5 @@
 from odoo import models, fields, api
-from datetime import datetime, timedelta
+from odoo.exceptions import ValidationError
 
 
 class Achievement(models.Model):
@@ -30,7 +30,8 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-    last_updated = fields.Datetime()
+    last_updated = fields.Datetime(default=fields.Datetime.now)
+
     status = fields.Char(
         string="Status", compute='_compute_status', store=True)
 
@@ -46,7 +47,18 @@ class Achievement(models.Model):
             if record.end_at and record.start_at:
                 if (record.last_updated < record.start_at):
                     record.status = "Incoming"
-                if (record.last_updated >= record.start_at and record.last_update <= record.end_at):
+                if (record.last_updated >= record.start_at and record.last_updated <= record.end_at):
                     record.status = "In Progress"
                 if (record.last_updated > record.end_at):
                     record.status = "Done"
+
+    @api.constrains('start_at', 'end_at', 'end_submit_at')
+    def _check_fields(self):
+        for record in self:
+            if record.start_at >= record.end_at:
+                raise ValidationError(
+                    "End Time must be bigger than Start Time")
+            if record.start_at >= record.end_submit_at or record.end_at <= record.end_submit_at:
+                raise ValidationError(
+                    "End Submit Time must be between Start and End Time"
+                )
