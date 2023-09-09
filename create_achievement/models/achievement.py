@@ -30,29 +30,11 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-    # last_updated_time = fields.Datetime(
-    #     string='Last Updated Time', compute='_compute_last_updated_time')
 
-    # @api.depends_context('last_updated_time_refresh')
-    # def _compute_last_updated_time(self):
-    #     for record in self:
-    #         record.last_updated_time = fields.Datetime.now()
+    last_updated = fields.Datetime()
 
-    # @api.model
-    # def _refresh_last_updated_time(self):
-    #     self.env.context = dict(
-    #         self.env.context, last_updated_time_refresh=True)
-    #     self.search([])._compute_last_updated_time()
-
-    # @api.model
-    # def _schedule_refresh_last_updated_time(self):
-    #     self.env['ir.cron'].sudo().create({
-    #         'name': 'Refresh Last Updated Time',
-    #         'model_id': self.env.ref('model_my_class').id,
-    #         'state': 'code',
-    #         'code': 'model._refresh_last_updated_time()',
-    #         'interval_number': 1,
-    #         'interval_type': 'minutes',
-    #         'numbercall': -1,
-    #         'doall': True,
-    #     })
+    def update_last_updated_field(self):
+        records = self.search([])
+        current_datetime = fields.Datetime.now()
+        records.write({'last_updated': current_datetime})
+        print(records)
