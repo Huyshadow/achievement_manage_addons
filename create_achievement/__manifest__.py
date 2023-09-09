@@ -25,6 +25,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/ir_cron.xml',
         'data/achievement.xml',
         'data/criteria.xml',
         'views/achievement.xml',
