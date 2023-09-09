@@ -2,47 +2,80 @@
 <templates id="template" xml:space="preserve">
     <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
         <xpath expr="//nav[hasclass('o_main_navbar')]" position="replace">
-      <nav class="o_main_navbar d-flex justify-content-between"
-           t-on-dropdown-item-selected="onNavBarDropdownItemSelection"
-           data-command-category="navbar">
-          <div class="d-flex">
-              <div class="top_heading">
-                <!-- Apps Menu -->
-                  <t t-call="web.NavBar.AppsMenu">
-                 <t t-set="apps" t-value="menuService.getApps()"/>
-                </t>
-                  <!-- App Brand -->
-                  <DropdownItem
-                          t-if="currentApp"
-                          href="getMenuItemHref(currentApp)"
-                          t-esc="currentApp.name"
-                          class="'o_menu_brand d-none d-md-block'"
-                          dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
-                          onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
-                  />
-              </div>
+            <nav class="o_main_navbar d-flex justify-content-between"
+                t-on-dropdown-item-selected="onNavBarDropdownItemSelection"
+                data-command-category="navbar">
+                <div class="d-flex">
+                    <div class="top_heading">
+                        <!-- Apps Menu -->
+                        <t t-call="web.NavBar.AppsMenu">
+                            <t t-set="apps" t-value="menuService.getApps()"/>
+                        </t>
+                        <!-- App Brand -->
+                        <DropdownItem
+                            t-if="currentApp"
+                            href="getMenuItemHref(currentApp)"
+                            t-esc="currentApp.name"
+                            class="'o_menu_brand d-none d-md-block'"
+                            dataset="{ menuXmlid: currentApp.xmlid, section: currentApp.id }"
+                            onSelected="() => this.onNavBarDropdownItemSelection(currentApp)"
+                        />
+                    </div>    
 
-              <!-- Current App Sections -->
-              <div class="d-none d-md-block">
-                  <t t-if="currentAppSections.length"
-                     t-call="web.NavBar.SectionsMenu">
-                    <t t-set="sections" t-value="currentAppSections"/>
-                  </t>
-              </div>
-              <div class="d-xs-block d-sm-block  d-md-none">
-                  <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
-                      <t t-set="sections" t-value="currentAppSections"/>
-                  </t>
-              </div>
-        </div>
-          <!-- Systray -->
-          <div class="o_menu_systray d-flex" role="menu">
-          <t t-foreach="systrayItems" t-as="item" t-key="item_index">
-            <ErrorHandler onError="error => handleItemError(error, item)">
-                <t t-component="item.Component" t-props="item.props"/>
-            </ErrorHandler>
-          </t>
-        </div>
+                <!-- Current App Sections -->
+                        <t t-if="currentAppSections.length gt 2">
+                            <t t-foreach="currentAppSections" t-as="section" t-key="section.id"  >
+                                <t t-set="hotkey" t-value="(section_index).toString()" />
+                                <t t-if="!section.childrenTree.length">
+                                    <DropdownItem
+                                        title="section.name"
+                                        class="'o_nav_entry'"
+                                        href="getMenuItemHref(section)"
+                                        hotkey="hotkey"
+                                        t-esc="section.name"
+                                        dataset="{ menuXmlid: section.xmlid, section: section.id }"
+                                        onSelected="() => this.onNavBarDropdownItemSelection(section)"
+                                    />
+                                </t>
+                                <t t-else="">
+                                    <MenuDropdown
+                                        hotkey="hotkey"
+                                        title="section.name"
+                                        xmlid="section.xmlid"
+                                    >
+                                        <t t-set-slot="toggler">
+                                        <span t-esc="section.name" t-att-data-section="section.id" />
+                                        </t>
+                                        <t t-call="web.NavBar.SectionsMenu.Dropdown.MenuSlot">
+                                        <t t-set="items" t-value="section.childrenTree" />
+                                        <t t-set="decalage" t-value="20" />
+                                        </t>
+                                    </MenuDropdown>
+                                </t>
+                            </t>
+                        </t>
+                    
+                    <!-- <div class="d-none d-md-block">
+                        <t t-if="currentAppSections.length gt 2"
+                            t-call="web.NavBar.SectionsMenu">
+                            <t t-set="sections" t-value="currentAppSections"/>
+                        </t>
+                    </div>                 -->
+
+                    <div class="d-xs-block d-sm-block  d-md-none">
+                        <t t-call="web.NavBar.SectionsMenu.MoreDropdown">
+                            <t t-set="sections" t-value="currentAppSections"/>
+                        </t>
+                    </div>
+                </div>
+            <!-- Systray -->
+            <div class="o_menu_systray d-flex" role="menu">
+                <t t-foreach="systrayItems" t-as="item" t-key="item_index">
+                    <ErrorHandler onError="error => handleItemError(error, item)">
+                        <t t-component="item.Component" t-props="item.props"/>
+                    </ErrorHandler>
+                </t>
+            </div>
       </nav>
             <div class="sidebar_panel" id="sidebar_panel">
                 <div class="sidebar">
@@ -54,10 +87,15 @@
                      <div class="sidebar_logo">
                         <img src="/code_backend_theme/static/src/img/code_logo.png" class="logo_img"/>
                     </div>
-                    <h6 class="sidebar_head">MENU</h6>
+
+
+
                     <ul class="sidebar_menu">
                         <t t-foreach="menuService.getApps()" t-as="app" t-key="app_index">
-                            <li data-toggle="tooltip" data-placement="right" t-att-title="app.name">
+                            <t t-if="app_index == 2">
+                                <h6 class="sidebar_head">MENU</h6>
+                            </t>
+                            <li t-if="app.name != 'Discuss'" data-toggle="tooltip" data-placement="right" t-att-title="app.name">
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">
@@ -71,7 +109,7 @@
                         </t>
                     </ul>
                 </div>
-    </div>
+        </div>
     </xpath>
   </t>
     <t t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension" owl="1">

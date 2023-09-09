@@ -66,11 +66,11 @@ odoo.define('code_backend_theme.SidebarMenu', function (require) {
         $this.addClass("active");
 
         //sidebar close on menu-item click
-        $("#sidebar_panel").css({'display':'none'});
-        $(".o_action_manager").css({'margin-left': '0px'});
-        $(".top_heading").css({'margin-left': '0px', 'width':'100%'});
-        $("#closeSidebar").hide();
-        $("#openSidebar").show();
+        // $("#sidebar_panel").css({'display':'none'});
+        // $(".o_action_manager").css({'margin-left': '0px'});
+        // $(".top_heading").css({'margin-left': '0px', 'width':'100%'});
+        // $("#closeSidebar").hide();
+        // $("#openSidebar").show();
 
         //remove class in navbar
         var navbar = $(".o_main_navbar");
