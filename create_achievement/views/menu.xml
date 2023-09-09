@@ -5,6 +5,6 @@
         name="Achievement"
         sequence="10"
         action="action_cr_achievement"
-        web_icon="create_achievement,static/src/img/icons/achievement_icon.png"
+        web_icon="code_backend_theme,static/src/img/icons/eLearning.png"
     />    
 </odoo>
