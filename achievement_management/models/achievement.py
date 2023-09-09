@@ -1,9 +1,6 @@
 from odoo import models, fields, api
 
-<<<<<<< HEAD:achievement_management/models/achievement.py
 
-=======
->>>>>>> 648524c218e3b11764b4579fc7aec95798bafd2b:database_manage/models/achievement.py
 class Achievement(models.Model):
     _name = 'database_manage.achievement'
     _description = 'Achievement of Tuyen duong Website'
