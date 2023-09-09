@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+<<<<<<< HEAD
 create_achievement.access_create_achievement_achievement,access_create_achievement_achievement,create_achievement.model_create_achievement_achievement,base.group_user,1,1,1,1
 create_achievement.access_create_achievement_criteria,access_create_achievement_criteria,create_achievement.model_create_achievement_criteria,base.group_user,1,1,1,1
+=======
+access_create_achievement_create_achievement,create_achievement.create_achievement,model_create_achievement_create_achievement,base.group_user,1,1,1,1
+>>>>>>> 62ccb99 (Skeleton of Create Achievement)
