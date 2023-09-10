@@ -1,0 +1,53 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!-- <record model="ir.ui.view" id="smart_login_page.list">
+      <field name="name">smart_login_page list</field>
+      <field name="model">login.page</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="photo"/>
+        </tree>
+      </field>
+    </record> -->
+
+    <!-- actions opening views on models -->
+    <!-- <record model="ir.actions.act_window" id="action_smart_login_page">
+      <field name="name">Smart Login Page</field>
+      <field name="res_model">login.page</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+ -->
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="smart_login_page.action_server">
+      <field name="name">smart_login_page server</field>
+      <field name="model_id" ref="model_smart_login_page_smart_login_page"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+    <!-- <menuitem name="Smart Login" id="menu_smart_login_page"/> -->
+    <!-- menu categories -->
+    <!-- <menuitem name="Smart Login" id="sub_menu_smart_login" action="action_smart_login_page" parent="menu_smart_login_page"/> -->
+    <!-- <menuitem name="Menu 2" id="smart_login_page.menu_2" parent="smart_login_page.menu_root"/> -->
+
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="smart_login_page.menu_1_list" parent="smart_login_page.menu_1"
+              action="smart_login_page.action_window"/>
+    <menuitem name="Server to list" id="smart_login_page" parent="smart_login_page.menu_2"
+              action="smart_login_page.action_server"/>
+-->
+  </data>
+</odoo>

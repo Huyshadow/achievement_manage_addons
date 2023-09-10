@@ -1,0 +1,83 @@
+.glassy-card {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        min-width: 100%;
+        max-height: 100vh;
+        margin-top: 15rem;
+        box-shadow:
+            0 0 5px rgba(255, 255, 255, 0.1),
+            0 0 10px rgba(255, 255, 255, 0.1),
+            0 0 15px rgba(255, 255, 255, 0.1),
+            0 0 20px rgba(255, 255, 255, 0.1),
+            0 0 25px rgba(255, 255, 255, 0.1),
+            0 0 35px rgba(255, 255, 255, 0.1),
+            0 0 40px rgba(255, 255, 255, 0.1),
+            0 0 50px rgba(255, 255, 255, 0.1),
+            0 0 75px rgba(255, 255, 255, 0.1);
+    }
+/* Medium screens */
+@media screen and (min-width: 768px) {
+    .glassy-card {
+        min-width: 300px;
+    }
+}
+
+/* Large screens */
+@media screen and (min-width: 992px) {
+    .glassy-card {
+        min-width: 400px;
+    }
+}
+
+.glassy-card h1,
+.glassy-card p {
+    margin: 0;
+    color: #FFF;
+}
+.icon-container {
+    position: relative;
+}
+.icon-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.icon-container input {
+    padding-left: 30px;
+}
+
+.full-width-button {
+    width: 100% !important;
+}
+
+/* Add these styles to your existing CSS or in a <style> tag in your HTML */
+
+/* Input Field Animation on Hover */
+.icon-container:hover input {
+    border-color: #07e2ff; /* Primary color of Bootstrap */
+    transition: border-color 0.3s ease-in-out;
+    border-width: 2px; /* Initial border width */
+}
+
+/* Button Border Continuous Animation */
+@keyframes borderAnimation {
+    0%, 100% {
+        border-color: #000000; /* Change to the desired continuous border color */
+    }
+    50% {
+        border-color: #07e2ff; /* Change to the secondary color for animation variation */
+    }
+}
+
+.btn-outline-light {
+    border: 2px solid transparent; /* Start with a transparent border */
+    animation: borderAnimation 2s infinite; /* Apply the animation with desired duration */
+}
