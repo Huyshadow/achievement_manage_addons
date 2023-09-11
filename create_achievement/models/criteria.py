@@ -14,13 +14,13 @@ class Criteria(models.Model):
         ('tiêu chí', 'Tiêu chí'),
         ('tập tiêu chí', 'Tập tiêu chí')
     ], default='tiêu chí')
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, string="Tên tiêu chí")
     is_criteria = fields.Boolean(default=False)
     method = fields.Selection(
         [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], required=True, default='Thang đi')
-    value_list_string = fields.Char(default='')
-    note = fields.Char(required=True, default='')
-    content = fields.Char(required=True, default='')
+    value_list_string = fields.Char(default='thang điểm')
+    note = fields.Char(required=True, default='', string="Chú thích")
+    content = fields.Char(required=True, default='', string="Nội dung")
     evidence = fields.Boolean(required=True, default=False)
     sign = fields.Selection([
         ('<', '<'),

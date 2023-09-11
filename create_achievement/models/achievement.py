@@ -17,9 +17,10 @@ class Achievement(models.Model):
     name = fields.Char(default="", required=True, string="Danh hiệu")
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Mô tả")
-    end_at = fields.Datetime(string="Ngày kết thúc nộp")
-    start_at = fields.Datetime(string="Ngày bắt đầu nộp")
-    end_submit_at = fields.Datetime(string="Ngày kết thúc duyệt")
+    end_at = fields.Datetime(string="Ngày kết thúc nộp", required=True)
+    start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
+    end_submit_at = fields.Datetime(
+        string="Ngày kết thúc duyệt", required=True)
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
         ('available', 'Available')
@@ -31,9 +32,21 @@ class Achievement(models.Model):
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
     last_updated = fields.Datetime(default=fields.Datetime.now)
-
     status = fields.Char(
         string="Tình Trạng", compute='_compute_status', store=True)
+
+    def link_to_criteria(self):
+        return {
+            'name': "Danh sách tiêu chí",
+            'res_model': 'create_achievement.criteria',
+            'type': 'ir.actions.act_window',
+            'view_type': 'tree',
+            'view_mode': 'tree,form',
+            'target': 'self',
+            'context': {
+                'create': True,
+            },
+        }
 
     def update_last_updated_field(self):
         records = self.search([])
