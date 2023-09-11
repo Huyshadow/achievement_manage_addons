@@ -42,6 +42,9 @@ class Criteria(models.Model):
     upper_point = fields.Float(default=0, required=True)
     deleteAt = fields.Datetime()
 
-    """ group_id = fields.Many2one(
-        'create_achievement.group_criteria', string="Criterias of Group Criteria"
-    ) """
+    @api.onchange('method')
+    def _onchange_method(self):
+        if self.method:
+            self.sign = ''
+            self.lower_point = ''
+            self.upper_point = ''
