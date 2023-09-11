@@ -10,16 +10,16 @@ class Achievement(models.Model):
         'create_achievement.achievement', string="Root Model")
 
     criteria_ids = fields.One2many(
-        'create_achievement.criteria', 'parent_id', string="Achivement's Criteria")
+        'create_achievement.criteria', 'parent_id', string="Tiêu chí danh hiệu")
 
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
-    name = fields.Char(default="", required=True, string="Achievement's Title")
+    name = fields.Char(default="", required=True, string="Danh hiệu")
     soft_criteria = fields.Integer(string="Soft Criteria")
-    description = fields.Text(string="Description")
-    end_at = fields.Datetime(string="End time")
-    start_at = fields.Datetime(string="Start time")
-    end_submit_at = fields.Datetime()
+    description = fields.Text(string="Mô tả")
+    end_at = fields.Datetime(string="Ngày kết thúc nộp")
+    start_at = fields.Datetime(string="Ngày bắt đầu nộp")
+    end_submit_at = fields.Datetime(string="Ngày kết thúc duyệt")
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
         ('available', 'Available')
@@ -33,7 +33,7 @@ class Achievement(models.Model):
     last_updated = fields.Datetime(default=fields.Datetime.now)
 
     status = fields.Char(
-        string="Status", compute='_compute_status', store=True)
+        string="Tình Trạng", compute='_compute_status', store=True)
 
     def update_last_updated_field(self):
         records = self.search([])
@@ -46,19 +46,19 @@ class Achievement(models.Model):
         for record in self:
             if record.end_at and record.start_at:
                 if (record.last_updated < record.start_at):
-                    record.status = "Incoming"
+                    record.status = "Trạng thái chờ"
                 if (record.last_updated >= record.start_at and record.last_updated <= record.end_at):
-                    record.status = "In Progress"
+                    record.status = "Đang tiến hành"
                 if (record.last_updated > record.end_at):
-                    record.status = "Done"
+                    record.status = "Đã kết thúc"
 
     @api.constrains('start_at', 'end_at', 'end_submit_at')
     def _check_fields(self):
         for record in self:
             if record.start_at >= record.end_at:
                 raise ValidationError(
-                    "End Time must be bigger than Start Time")
+                    "Thời gian kết thúc nộp phải sau thời gian bắt đầu nộp")
             if record.start_at >= record.end_submit_at or record.end_at <= record.end_submit_at:
                 raise ValidationError(
-                    "End Submit Time must be between Start and End Time"
+                    "Thời gian kết thúc duyệt phải nằm trong khoảng thời gian bắt đầu và kết thúc của danh hiệu"
                 )
