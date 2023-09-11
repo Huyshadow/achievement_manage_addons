@@ -17,6 +17,7 @@
                 <field name="value_list_string" attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}"/>
                 <field name="note"/>
                 <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
+                <field name="self_one2many_id"/>
               </group>
             </sheet>
            </form>
@@ -37,7 +38,7 @@
      
 
     <record id="action_cr_criteria" model="ir.actions.act_window">
-        <field name="name">Criterias</field>
+        <field name="name">Danh sách tiêu chí</field>
         <field name='type'>ir.actions.act_window</field>
         <field name="res_model">create_achievement.criteria</field>
         <field name="view_mode">tree,form</field>

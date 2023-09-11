@@ -7,6 +7,12 @@ class Criteria(models.Model):
 
     parent_id = fields.Many2one(
         'create_achievement.achievement', string="Criterias for Achievement")
+    self_many2one_id = fields.Many2one(
+        'create_achievement.criteria', string="Tập danh hiệu"
+    )
+    self_one2many_id = fields.One2many(
+        'create_achievement.criteria', 'self_many2one_id', string="Tập danh hiệu"
+    )
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.criteria'), copy=True, readonly=True)
@@ -14,11 +20,12 @@ class Criteria(models.Model):
         ('tiêu chí', 'Tiêu chí'),
         ('tập tiêu chí', 'Tập tiêu chí')
     ], default='tiêu chí')
+
     name = fields.Char(required=True, string="Tên tiêu chí")
     is_criteria = fields.Boolean(default=False)
     method = fields.Selection(
-        [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], required=True, default='Thang đi')
-    value_list_string = fields.Char(default='thang điểm')
+        [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], required=True, default='thang điểm', string="Phương thức")
+    value_list_string = fields.Char()
     note = fields.Char(required=True, default='', string="Chú thích")
     content = fields.Char(required=True, default='', string="Nội dung")
     evidence = fields.Boolean(required=True, default=False)

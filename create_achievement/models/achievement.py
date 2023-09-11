@@ -36,17 +36,19 @@ class Achievement(models.Model):
         string="Tình Trạng", compute='_compute_status', store=True)
 
     def link_to_criteria(self):
-        return {
+        action = self.env.ref(
+            "create_achievement.action_cr_criteria").sudo().read()[0]
+        action.update({
             'name': "Danh sách tiêu chí",
-            'res_model': 'create_achievement.criteria',
-            'type': 'ir.actions.act_window',
-            'view_type': 'tree',
             'view_mode': 'tree,form',
-            'target': 'self',
+            'target': 'current',
+            'domain': [('parent_id', '=', self.id)],
             'context': {
                 'create': True,
+                'default_parent_id': self.id,
             },
-        }
+        })
+        return action
 
     def update_last_updated_field(self):
         records = self.search([])
