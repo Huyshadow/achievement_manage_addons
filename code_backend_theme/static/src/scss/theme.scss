@@ -1,10 +1,10 @@
 //Top Bar
 @font-face {
-    font-family: 'Poppins' !important;
-    src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap');
+    font-family: 'OpenSan' !important;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 }
 body {
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'OpenSan', sans-serif !important;
     background-color: #f8f8fb;
 }
 a {
@@ -52,6 +52,7 @@ a.btn {
 .top_heading > a {
     margin-left: 10px;
     font-size: 20px;
+    font-weight: bold;
 }
 .top_heading li {
     list-style: none;

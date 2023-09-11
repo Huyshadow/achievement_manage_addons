@@ -40,7 +40,7 @@
   </record> 
   
   <record id="action_cr_achievement" model="ir.actions.act_window">
-    <field name="name">Achievement</field>
+    <field name="name">Quản lý Danh hiệu/Giải Thưởng</field>
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
     <field name="view_mode">tree,form</field>

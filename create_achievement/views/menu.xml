@@ -2,7 +2,7 @@
 <odoo>
     <menuitem 
         id="menu_cr_ach_root" 
-        name="Achievement"
+        name="Quản lý Danh hiệu/Giải thưởng"
         sequence="10"
         action="action_cr_achievement"
         web_icon="code_backend_theme,static/src/img/icons/eLearning.png"
