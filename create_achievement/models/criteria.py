@@ -28,7 +28,8 @@ class Criteria(models.Model):
     value_list_string = fields.Char()
     note = fields.Char(required=True, default='Không', string="Chú thích")
     content = fields.Char(required=True, default='Không', string="Nội dung")
-    evidence = fields.Boolean(required=True, default=False)
+    evidence = fields.Boolean(
+        required=True, default=False, string="Minh chứng")
     sign = fields.Selection([
         ('<', '<'),
         ('<=', '<='),
@@ -36,10 +37,12 @@ class Criteria(models.Model):
         ('>=', '>='),
         ('>= or <=', '>= or <='),
         ('>= and <=', '>= and <='),
-    ], default='')
-    point = fields.Float(default=0, required=True)
-    lower_point = fields.Float(default=0, required=True)
-    upper_point = fields.Float(default=0, required=True)
+    ], default='', string="Dấu")
+    point = fields.Float(default=0)
+    lower_point = fields.Float(
+        default=0, required=True, string="Khoảng cận dưới")
+    upper_point = fields.Float(
+        default=0, required=True, string="Khoảng cận trên")
     deleteAt = fields.Datetime()
 
     @api.onchange('method')
