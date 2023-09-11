@@ -16,7 +16,9 @@ a:hover {
 a.btn {
     height: auto !important;
 }
-
+.d-block, .min-w-0, .text-truncate, .flex-grow-1, span{
+    font-weight: bold !important;
+}
 .o_main_navbar, .o_searchview_facet_label {
     background-color: transparent !important;
     color: $f_color !important;
@@ -163,6 +165,9 @@ height:3.4rem !important;
 .o_form_view .o_form_statusbar > .o_statusbar_status > .o_arrow_button:not(:first-child):before {
     right: -11px;
     border-left-color: $primary_accent;
+}
+.o_form_view .o_form_label{
+    font-weight: bold !important; 
 }
 //Top Bar End
 

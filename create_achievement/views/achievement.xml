@@ -4,8 +4,11 @@
         <field name="name">create.achievement.form</field>
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
-           <form>
+           <form string="Tạo danh hiệu">
             <sheet classname="container">
+              <div style="width:100%; margin-bottom: 32px; border-bottom: black 1px solid;">
+                <h1>Tạo Danh hiệu</h1>
+              </div>
               <group>
                 <group>
                   <field name="name" placeholder="Achievement's Name"/>

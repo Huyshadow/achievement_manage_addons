@@ -17,8 +17,8 @@
                 <field name="value_list_string" attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}"/>
                 <field name="note"/>
                 <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
-                <field name="self_one2many_id"/>
               </group>
+            <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/>
             </sheet>
            </form>
         </field>
@@ -29,8 +29,7 @@
         <field name="arch" type="xml">
            <tree>
                 <field name="name"/>
-                <field name="method"/>
-                <field name="content"/>
+                <field name="type"/>
                 <field name="note"/>
            </tree>
         </field>
