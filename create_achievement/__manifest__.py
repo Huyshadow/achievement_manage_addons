@@ -10,7 +10,7 @@
         No comment
     """,
 
-    'author': "My Company",
+    'author': "HKT Team",
     'website': "https://www.facebook.com/profile.php?id=100074736126982",
 
     # Categories can be used to filter modules in modules listing
