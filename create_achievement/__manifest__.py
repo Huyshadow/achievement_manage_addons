@@ -31,8 +31,14 @@
         'views/achievement.xml',
         'views/menu.xml',
         'views/criteria.xml'
-
     ],
+    'assets': {
+        'web.assets_backend': [
+
+        ],
+        'web.assets_frontend': [
+        ],
+    },
     # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
