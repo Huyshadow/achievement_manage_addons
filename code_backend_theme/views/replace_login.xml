@@ -1,25 +1,34 @@
 <odoo>
 <data>
+    <!-- <template id="cus_providers" name="OAuth Providers" inherit_id="auth_oauth.providers">
+    <xpath expr="." position="replace"> 
+            <t t-if="len(providers) &gt; 0">
+                <em t-attf-class="d-block text-center text-muted small my-#{len(providers) if len(providers) &lt; 3 else 3}">bla bla</em>
+                <div class="o_auth_oauth_providers list-group mt-1 mb-1 text-start">
+                    <a t-foreach="providers" t-as="p" class="list-group-item list-group-item-action py-2" t-att-href="p['auth_link']">
+                        <i t-att-class="p['css_class']"/>
+                        <t t-esc="p['body']"/>
+                    </a>
+                </div>
+            </t>
+    </xpath> 
+    </template> -->
+
+
     <template id="custom_login" name="Custom Login" inherit_id="web.login">
     <xpath expr="//form[@class='oe_login_form']" position="replace">            
             <form class="oe_login_form" role="form" t-attf-action="/web/login" method="post" onsubmit="this.action = '/web/login' + location.hash">
                 <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-
-                <div class="mb-3" t-if="databases and len(databases) &gt; 1">
-                    <label for="db" class="col-form-label">Database</label>
-                    <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
-                        <input type="text" name="db" t-att-value="request.db" id="db" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" readonly="readonly"/>
-                        <a role="button" href="/web/database/selector" class="btn btn-secondary">Select <i class="fa fa-database" role="img" aria-label="Database" title="Database"/></a>
-                    </div>
+                <div style="display: flex; justify-content:center;">
+                    <em  >- Nếu bạn là quản lý - </em>
                 </div>
-
                 <div class="mb-3 field-login">
-                    <label for="login" class="form-label">Email</label>
+                    <label for="login" class="form-label">Tài Khoản</label>
                     <input type="text" placeholder="Email" name="login" t-att-value="login" id="login" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" autofocus="autofocus" autocapitalize="off"/>
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">Mật Khẩu</label>
                     <input type="password" placeholder="Password" name="password" id="password" t-attf-class="form-control #{'form-control-sm' if form_small else ''}" required="required" autocomplete="current-password" t-att-autofocus="'autofocus' if login else None" maxlength="4096"/>
                 </div>
 
@@ -32,13 +41,10 @@
 
                 <div t-attf-class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 {{'pt-2' if form_small else 'pt-3'}}">
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                    <!-- <t t-if="debug">
-                        <button type="submit" name="redirect" value="/web/become" class="btn btn-link btn-sm">Log in as superuser</button>
-                    </t> -->
+               
                     <div class="o_login_auth"/>
                 </div>
-                <input type="hidden" name="redirect" t-att-value="redirect"/>
-            </form>
+            </form>    
     </xpath>
   </template>
 
@@ -52,37 +58,52 @@
     <t t-set="no_footer" t-value="True"/>
 
     <style>
-        /* Create a two-column layout */
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh; /* Use the full viewport height */
-        }
+    /* Create a two-column layout */
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Use the full viewport height */
+    }
 
-        .card {
-            max-width: 300px;
-        }
+    .card {
+        max-width: 300px;
+    }
 
-        .column {
-            flex: 1;
-            
-            padding: 20px; /* Adjust the padding as needed */
-        }
-    </style>
+    .content {
+        background-color: #263988;
+        display: flex; /* Use flexbox for the card and image */
+        align-items: center; /* Vertically center the content */
+    }
 
-    <div class="container" >
+    .column {
+        flex: 1;
+        padding: 20px; /* Adjust the padding as needed */
+        background-color: #263988;
+    }
+
+    .column img {
+        max-height: 300px;
+        max-width: 100%;
+        width: auto;
+        align-items: center; /* Vertically center the content */
+        <!-- margin-right: 20px; -->
+    }
+</style>
+
+<div class="container">
+    <div class="content" style="border-radius: 5px;">
         <div t-attf-class="card border-0 mx-auto bg-100 {{login_card_classes}} o_database_list">
-            <div class="card-body" >
+            <div class="card-body">
                 <t t-out="0"/>
             </div>
         </div>
-        <div class="column" style="background-color: #263988;">
+        <div class="column">
             <!-- Content for the right column goes here -->
-                    <img t-attf-src="/code_backend_theme/static/src/img/BK_banner.png" alt="Logo" style="max-height:300px; max-width: 100%; width:auto; "/>
-                
+            <img t-attf-src="/code_backend_theme/static/src/img/BK_banner.png" alt="Logo" />
         </div>
     </div>
+</div>
 </t>
 
     </xpath>

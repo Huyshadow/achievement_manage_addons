@@ -33,8 +33,8 @@
     "depends": ['base','web','mail'],
     "data": [
         'views/layout.xml',
-        'views/replace_login.xml',
         'views/icons.xml',
+        'views/replace_login.xml',
     ],
     'assets': {
         'web.assets_backend': [

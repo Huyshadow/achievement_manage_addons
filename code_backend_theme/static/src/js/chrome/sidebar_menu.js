@@ -1,6 +1,6 @@
 odoo.define("code_backend_theme.SidebarMenu", function (require) {
   "use strict";
-
+  
   //sidebar toggle effect
   $(document).on("click", "#closeSidebar", function (event) {
     $("#closeSidebar").hide();
