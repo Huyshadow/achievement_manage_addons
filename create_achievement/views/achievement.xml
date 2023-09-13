@@ -4,20 +4,25 @@
         <field name="name">create.achievement.form</field>
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
-           <form>
+           <form string="Tạo danh hiệu">
             <sheet classname="container">
+              <div style="width:100%; margin-bottom: 32px; border-bottom: black 1px solid;">
+                <h1>Tạo Danh hiệu</h1>
+              </div>
               <group>
                 <group>
                   <field name="name" placeholder="Achievement's Name"/>
                   <field name="description"/>
-                  <field name="criteria_ids"/>
                 </group>
                 <group>
                   <field name="start_at"/>
                   <field name="end_at"/>
                   <field name="end_submit_at"/>
                 </group>
-              </group>
+              </group>  
+              <div style="width:100%; display: flex; justify-content:center;">
+              <button name="link_to_criteria" string="Thêm Tiêu chí" type="object" class="btn-primary"/>
+              </div>
             </sheet>
            </form>
         </field>
