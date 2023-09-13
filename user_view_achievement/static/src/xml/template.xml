@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates>
+    <t t-name="achievement_detail">
+        <div>Hello Tu!</div>
+        <div class="render_name"/>
+    </t>
+    
+    <t t-name="achievement_name">
+        <div class="demo_name">
+            <t t-esc="o.name + ' ' + o.status"/>
+        </div>
+    </t>
+
+</templates>

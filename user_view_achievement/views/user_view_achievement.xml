@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="user_view_achievement_kanban_inherit" model="ir.ui.view">
+        <field name="name">user.view.achievement.kanban.inherit</field>
+        <field name="model">create_achievement.achievement</field>
+        <field name="arch" type="xml">
+            <kanban class="oe_background_grey o_kanban_dashboard o_hr_recruitment_kanban" >
+                <field name = "name"/>
+                <field name = "start_at"/>
+                <field name = "end_at"/>
+                <field name = "status"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div style="box-shadow: rgba(23, 28, 255, 0.24) 0px 4px 4px 4px;">
+                            <div class="o_kanban_card_header" style = "background-color: #EBEDEF">
+                                <div class="o_kanban_card_header_title">
+                                    <!-- title -->
+                                    <div class="o_primary ps-3">
+                                        <span class="o_text_overflow"><t t-esc="record.name.value"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3">
+                                <div class = "status_container">
+                                    <p>Tình trạng: 
+                                        <t t-if="record.status.value === 'Trạng thái chờ'">
+                                            <span class = "status_context_grey"><t t-esc="record.status.value"/></span> 
+                                        </t>
+                                        <t t-if="record.status.value === 'Đang tiến hành'">
+                                            <span class = "status_context_blue"><t t-esc="record.status.value"/></span> 
+                                        </t>
+                                        <t t-if="record.status.value === 'Đã kết thúc'">
+                                            <span class = "status_context_red"><t t-esc="record.status.value"/></span> 
+                                        </t>
+                                    </p>
+                                    <p><span class = "status_time">Thời gian bắt đầu nhận hồ sơ:</span> <span><t t-esc="record.start_at.value"/></span></p>
+                                    <p><span class = "status_time">Thời gian kết thúc nhận hồ sơ:</span> <span><t t-esc="record.end_at.value"/></span></p>
+                                    <div class = "submit_button">
+                                        <button class="btn btn-primary status_context_blue" type="object" name="action_view_detail_achievement">
+                                            Nộp hồ sơ
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_view_achievement" model="ir.actions.act_window">
+            <field name="name">Danh sách danh hiệu/ giải thưởng</field>
+            <field name="res_model">create_achievement.achievement</field>
+            <field name="view_mode">kanban</field>
+    </record>
+
+    <record id="action_view_detail_achievement" model="ir.actions.client">
+        <field name="name">Achievement Details</field>
+        <field name="tag">achievement_detail</field>
+    </record>
+    
+</odoo>

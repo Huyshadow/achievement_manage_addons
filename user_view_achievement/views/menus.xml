@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem 
+        id="menu_user_ach_root" 
+        name="Đề cử danh hiệu/giải thưởng"
+        sequence="1"
+        action="action_view_achievement"
+    />    
+</odoo>
