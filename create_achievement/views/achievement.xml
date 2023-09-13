@@ -37,7 +37,11 @@
                 <field name="start_at"/>
                 <field name="end_at"/>
                 <field name="end_submit_at"/>
-                <field name="status"/>
+                <field name="status"
+                  decoration-success="status == 'Đang tiến hành'"
+                  decoration-warning="status == 'Trạng thái chờ'"
+                  decoration-danger="status == 'Đã kết thúc'"
+                  widget="badge"/>
                 <field name="criteria_ids" invisible='1' />
                 <!-- <field name="last_updated_time" widget="datetime"/> -->
            </tree>
