@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="module_access_right">
+        <field name="name">Tuyên dương khen thưởng</field>
+        <field name="description">Phân quyền cho các user</field>
+        <field name="sequence">7</field>
+    </record>
+    <record id="group_achievement_manager" model="res.groups">
+        <field name="name">Quản lý danh hiệu</field>
+        <field name="category_id" ref="module_access_right"/>
+    </record>
+    <record id="group_system_manager" model="res.groups">
+        <field name="name">Quản lý hệ thống</field>
+        <field name="category_id" ref="module_access_right"/>
+    </record>
+    <record id="group_unit_manager" model="res.groups">
+        <field name="name">Quản lý đơn vị</field>
+        <field name="category_id" ref="module_access_right"/>
+    </record>
+    <record id="group_mem_user" model="res.groups">
+        <field name="name">Thành viên</field>
+        <field name="category_id" ref="module_access_right"/>
+    </record>
+</odoo>
