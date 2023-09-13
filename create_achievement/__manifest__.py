@@ -30,7 +30,8 @@
         'data/criteria.xml',
         'views/achievement.xml',
         'views/menu.xml',
-        'views/criteria.xml'
+        'views/criteria.xml',
+        'views/template.xml'
     ],
     'assets': {
         'web.assets_backend': [
