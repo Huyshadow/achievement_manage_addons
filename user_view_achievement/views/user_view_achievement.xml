@@ -24,13 +24,13 @@
                             <div class="container o_recruitment_job_container o_kanban_card_content mt-0 mt-sm-3">
                                 <div class = "status_container">
                                     <p>Tình trạng: 
-                                        <t t-if="record.status.value === 'Incoming'">
+                                        <t t-if="record.status.value === 'Trạng thái chờ'">
                                             <span class = "status_context_grey"><t t-esc="record.status.value"/></span> 
                                         </t>
-                                        <t t-if="record.status.value === 'In Progress'">
+                                        <t t-if="record.status.value === 'Đang tiến hành'">
                                             <span class = "status_context_blue"><t t-esc="record.status.value"/></span> 
                                         </t>
-                                        <t t-if="record.status.value === 'Done'">
+                                        <t t-if="record.status.value === 'Đã kết thúc'">
                                             <span class = "status_context_red"><t t-esc="record.status.value"/></span> 
                                         </t>
                                     </p>
