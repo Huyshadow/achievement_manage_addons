@@ -6,11 +6,8 @@ class Achievement(models.Model):
     _name = 'create_achievement.achievement'
     _description = 'Achievement Model of Create-Achievement Module'
 
-    parent_id = fields.Many2one(
-        'create_achievement.achievement', string="Root Model")
-
     criteria_ids = fields.One2many(
-        'create_achievement.criteria', 'parent_id', string="Tiêu chí danh hiệu")
+        'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
 
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
@@ -37,7 +34,7 @@ class Achievement(models.Model):
 
     def link_to_criteria(self):
         action = self.env.ref(
-            "create_achievement.action_cr_criteria").sudo().read()[0]
+            "create_achievement.action_cr_group_criteria").sudo().read()[0]
         action.update({
             'name': "Danh sách tiêu chí",
             'view_mode': 'tree,form',

@@ -8,6 +8,7 @@
 Allow users to login through OAuth2 Provider.
 =============================================
 """,
+    'license': 'AGPL-3',
     'depends': ['base', 'web', 'base_setup', 'auth_signup'],
     'data': [
         'data/auth_oauth_data.xml',

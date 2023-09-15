@@ -8,6 +8,7 @@
 
     'author': "TusDT",
     'website': "https://www.facebook.com/clone.lol9/",
+    'license': 'LGPL-3',
     'category': 'HKT addons',
     'version': '0.1',
     'depends': ['base', 'create_achievement'],
@@ -15,7 +16,7 @@
     # always loaded
     'data': [
         'views/user_view_achievement.xml',
-        'views/menus.xml',  
+        'views/menus.xml',
     ],
     'assets': {
         'web.assets_backend': [
@@ -24,5 +25,5 @@
             'user_view_achievement/static/src/scss/**/*.scss',
         ],
     },
-    
+
 }

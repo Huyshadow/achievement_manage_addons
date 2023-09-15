@@ -5,14 +5,10 @@ class Criteria(models.Model):
     _name = 'create_achievement.criteria'
     _description = ' Criteria for Tuyen duong Website'
 
-    parent_id = fields.Many2one(
-        'create_achievement.achievement', string="Criterias for Achievement")
-    self_many2one_id = fields.Many2one(
-        'create_achievement.criteria', string="Tập danh hiệu"
-    )
-    self_one2many_id = fields.One2many(
-        'create_achievement.criteria', 'self_many2one_id', string="Danh sách tiêu chí"
-    )
+    parent_id_constraint = fields.Many2one(
+        'create_achievement.group_criterias', string="Danh sách tiêu chí Bắt buộc")
+    parent_id_option = fields.Many2one(
+        'create_achievement.group_criterias', string="Danh sách tiêu chí Tự do")
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.criteria'), copy=True, readonly=True)

@@ -9,6 +9,7 @@
     'description': """
         No comment
     """,
+    'license': 'LGPL-3',
 
     'author': "HKT Team",
     'website': "https://www.facebook.com/profile.php?id=100074736126982",
@@ -29,12 +30,14 @@
         'data/achievement.xml',
         'data/criteria.xml',
         'views/achievement.xml',
-        'views/menu.xml',
         'views/criteria.xml',
+        'views/menu.xml',
+        'views/group_criteria.xml'
+
     ],
     'assets': {
         'web.assets_backend': [
-
+            'create_achievement/static/src/**/*.scss',
         ],
         'web.assets_frontend': [
         ],

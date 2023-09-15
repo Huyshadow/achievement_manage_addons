@@ -18,7 +18,7 @@
                 <field name="note"/>
                 <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
               </group>
-            <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/>
+            <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/> -->
             </sheet>
            </form>
         </field>
