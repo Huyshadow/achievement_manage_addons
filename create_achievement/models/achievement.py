@@ -32,6 +32,13 @@ class Achievement(models.Model):
     status = fields.Char(
         string="Tình Trạng", compute='_compute_status', store=True)
 
+    name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
+
+    @api.depends('name')
+    def _change_title(self):
+        for record in self:
+            record.name_title = "Danh hiệu - " + record.name
+
     def link_to_criteria(self):
         action = self.env.ref(
             "create_achievement.action_cr_group_criteria").sudo().read()[0]

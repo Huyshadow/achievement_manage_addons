@@ -16,20 +16,10 @@ class GroupCriterias(models.Model):
     option_criterias = fields.One2many(
         "create_achievement.criteria", "parent_id_option", string="Danh sách tiêu chí tự chọn")
 
-    show_field_1 = fields.Boolean(string='Show Field1', default=False)
-    show_field_2 = fields.Boolean(string='Show Field2', default=False)
+    option_constraint = fields.Integer(
+        string="Điều kiện tiêu chí tự chọn bắt buộc")
+
     # just have 1 of this criteria
-
-    def disable_constrait(self):
-        self.show_field_1 = not self.show_field_1
-        if (self.show_field_2 == True):
-            self.show_field_2 = False
-
-    def disable_option(self):
-        self.show_field_2 = not self.show_field_2
-        if (self.show_field_1 == True):
-            self.show_field_1 = False
-
     # @api.model
     # def toggle_field_visibility_option(self, record_ids):
     #     records = self.browse(record_ids)

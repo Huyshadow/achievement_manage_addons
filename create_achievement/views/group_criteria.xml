@@ -9,16 +9,19 @@
                <group>
                   <field name="name"/>
                </group>
-               <div style="display: flex; justify-content: center; width: 100%; gap: 32px; margin-bottom: 16px;  ">
-                        <button name="disable_constrait" string="Tiêu chí bắt buộc" type="object" class="oe_highlight"/>
-                        <button name="disable_option" string="Tiêu chí Tự chọn" type="object" class="oe_highlight"/>
-               </div>
-                <field name="show_field_1" invisible='1'/>
-                <field name="show_field_2" invisible='1'/>
-                <group>
-                  <field name="constrait_criterias" limit="5" attrs="{'invisible': [('show_field_1', '=', False)]}"/>
-                  <field name="option_criterias" limit="5" attrs="{'invisible': [('show_field_2', '=', False)]}"/>
-                </group>
+               <notebook style="width:1024px, height: 512px"> 
+                  <page name="constraint" string="Tiêu chí bắt buộc" >
+                     <group>
+                        <field name="constrait_criterias" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí tự chọn">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+               </notebook>
             <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/> -->
             </sheet>
            </form>
