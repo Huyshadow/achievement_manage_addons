@@ -4,14 +4,12 @@
         <field name="name">create.achievement.form</field>
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
-           <form string="Tạo danh hiệu">
+           <form>
             <sheet classname="container">
-              <div style="width:100%; margin-bottom: 32px; border-bottom: black 1px solid;">
-                <h1>Tạo Danh hiệu</h1>
-              </div>
-              <group>
+              <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' />
+              <group> 
                 <group>
-                  <field name="name" placeholder="Achievement's Name"/>
+                  <field name="name" placeholder="Tên danh hiệu"/>
                   <field name="description"/>
                 </group>
                 <group>
@@ -19,11 +17,11 @@
                   <field name="end_at"/>
                   <field name="end_submit_at"/>
                 </group>
+              </group>
+              <group string="Danh sách tiêu chí" style="font-size: 25px">
               </group>  
-              <div style="width:100%; display: flex; justify-content:center;">
-              <button name="link_to_criteria" string="Thêm Tiêu chí" type="object" class="btn-primary"/>
-              </div>
-            </sheet>
+              <field name="criteria_ids"/>
+             </sheet>
            </form>
         </field>
   </record>
@@ -53,6 +51,13 @@
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
     <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+          <p>
+              <b>Hiện tại chưa có Danh hiệu nào</b>
+          </p><p>
+              Mời tạo danh hiệu
+          </p>
+    </field>
   </record>
   
 </odoo>
