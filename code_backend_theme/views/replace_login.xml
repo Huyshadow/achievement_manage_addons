@@ -100,7 +100,7 @@
         </div>
         <div class="column">
             <!-- Content for the right column goes here -->
-            <img t-attf-src="/code_backend_theme/static/src/img/BK_banner.png" alt="Logo" />
+            <img t-attf-src="/code_backend_theme/static/src/img/BK1_banner.png" alt="Logo" />
         </div>
     </div>
 </div>
