@@ -30,7 +30,7 @@
         <field name="arch" type="xml">
            <tree>
                 <field name="name"/>
-                <field name="constrait_criterias" widget="many2many_tags">
+                <field name="constrait_criterias" widget="many2many_tags"/>
                 <field name="option_criterias"  widget="many2many_tags"/>
            </tree>
         </field>
