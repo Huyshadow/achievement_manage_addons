@@ -1,0 +1,50 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="manage_user_depart.list_depart">
+      <field name="name">manage_user_depart list</field>
+      <field name="model">manage_user_depart.department</field>
+      <field name="arch" type="xml">
+        <tree>
+          <!-- <field name="id"/> -->
+          <field name="code"/>
+          <field name="name"/>
+          <!-- <field name="updateAt"/>
+          <field name="deleteAt"/> -->
+
+        </tree>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="manage_user_depart.action_window_depart">
+      <field name="name">Danh sách đơn vị</field>
+      <field name="res_model">manage_user_depart.department</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="manage_user_depart.action_server_depart">
+      <field name="name">manage_user_depart Department</field>
+      <field name="model_id" ref="model_manage_user_depart_department"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Quản lý đơn vị" id="manage_user_depart.depart_root" action="manage_user_depart.action_window_depart" web_icon="code_backend_theme,static/src/img/icons/Employees.png"/>
+
+  </data>
+</odoo>
