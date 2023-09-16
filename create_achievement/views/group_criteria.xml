@@ -8,8 +8,9 @@
             <sheet>
                <group>
                   <field name="name"/>
+                  <field name="description" />
                </group>
-               <notebook style="width:1024px, height: 512px"> 
+               <notebook> 
                   <page name="constraint" string="Tiêu chí bắt buộc" >
                      <group>
                         <field name="constrait_criterias" />
@@ -33,8 +34,7 @@
         <field name="arch" type="xml">
            <tree>
                 <field name="name"/>
-                <field name="constrait_criterias" widget="many2many_tags"/>
-                <field name="option_criterias"  widget="many2many_tags"/>
+                <field name="description" />
            </tree>
         </field>
      </record>

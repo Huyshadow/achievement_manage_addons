@@ -17,7 +17,10 @@ class GroupCriterias(models.Model):
         "create_achievement.criteria", "parent_id_option", string="Danh sách tiêu chí tự chọn")
 
     option_constraint = fields.Integer(
-        string="Điều kiện tiêu chí tự chọn bắt buộc")
+        string="Số tiêu chí tự chọn bắt buộc", default=1)
+    description = fields.Text(
+        string="Mô tả", default="Không"
+    )
 
     # just have 1 of this criteria
     # @api.model
