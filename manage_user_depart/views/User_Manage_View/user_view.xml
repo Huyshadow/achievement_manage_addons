@@ -46,7 +46,7 @@
                         </div>
                       
                         <label for="name" string="Họ và Tên" />
-                        <h1><field name="name" placeholder="Nguyễn Văn A" required="1"/></h1>
+                        <h1><field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1"/></h1>
                         <field name="email" invisible="1"/>
                         <label for="canhan_email" string="Email Cá nhân" />
                         <field  name="canhan_email"/>
@@ -64,20 +64,23 @@
                     </group>  
                     
                     <group string="Thông tin cá nhân" style="font-size: 25px;">
-                      <field name="nghenghiep" placeholder="Sinh viên ..."/>
+                      
+                      <!-- <field name="nghenghiep" placeholder="Sinh viên ..."/> -->
                     </group> 
 
                     <group>
                       
                       <group>
-                        <field name="gioi_tinh"/>
+                        <field name="gioi_tinh" string="Giới tính"/>
                       </group>
                      
                       <group>
                         <group>
+                        <!-- <label for="dantoc"/> -->
                           <field name="dantoc"/>
                         </group>
                         <group>
+                          <!-- <label for="tongiao"/> -->
                           <field name="tongiao"/>
                         </group>
                       </group>
@@ -86,9 +89,11 @@
                     
                     <group>
                         <group>
+                            <!-- <label for="cmnd_cccd"/> -->
                             <field name="cmnd_cccd"/>
                         </group>
                         <group>
+                            <!-- <label for="birthday"/> -->
                             <field name="birthday"/>
                         </group>
                     </group>
@@ -96,14 +101,18 @@
 
 
                     <group string="Liên lạc" style="font-size: 25px;">
+                        <!-- <label for="quequan"/> -->
                         <field name="quequan"/>
+                        <!-- <label for="thuongtru"/> -->
                         <field name="thuongtru"/>
+                        <!-- <label for="sdt"/> -->
                         <field name="sdt" widget="phone"/>
+                        <!-- <label for="donvi"/>   -->
                         <field name="donvi"/>    
                     </group>
               
                      <group string = "Quyền truy cập" style="font-size: 25px;">  
-                            <field name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
+                            <field nolabel="0" name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
                     </group>
                 </sheet>
             </form>
