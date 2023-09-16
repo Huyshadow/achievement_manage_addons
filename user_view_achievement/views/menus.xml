@@ -5,5 +5,6 @@
         name="Đề cử danh hiệu/giải thưởng"
         sequence="1"
         action="action_view_achievement"
+        web_icon="code_backend_theme,static/src/img/icons/Note.png"
     />    
 </odoo>

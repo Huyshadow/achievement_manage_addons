@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+manage_user_depart.access_department,access_department,manage_user_depart.model_manage_user_depart_department,access_right_user.group_unit_manager,1,1,1,1
+manage_user_depart.access_users,access_users,manage_user_depart.model_res_users,access_right_user.group_unit_manager,1,1,1,1
