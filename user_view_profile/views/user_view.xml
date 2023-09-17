@@ -1,0 +1,97 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="form_user">
+      <field name="name">manage_user_depart_form</field>
+      <field name="model">res.users</field>
+      <field name="priority">0</field>
+      <field name="arch" type="xml">
+        <form class="custom-form" string="Users" create="0">
+            <sheet>
+                <field name="id"  invisible="1"/>
+                <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}" role="alert">
+                    You are inviting a new user.
+                </div>
+                <field name="avatar_128" invisible="1"/>
+                <field name="image_1920" widget='image' class="oe_avatar" options='{"zoom": true, "preview_image": "avatar_128" , "size": [270, 270]}' style="padding-top: 10px; padding-right: 20px;"/>
+                <div class="oe_title">
+                    <div style="text-align: center; background-color: white; padding-top: 10px;padding-bottom: 10px;">
+                        <h2 style="text-align: center; color: white;">
+                          <div id="randomColorDiv" style=" background-color: #279EFF ;padding-top: 10px;padding-bottom: 10px;">
+                              <field name="login" placeholder="e.g. email@yourcompany.com" readonly="1">
+                                  <t t-esc="record.email.value" />
+                              </field>
+                          </div>
+                        </h2>
+                    </div>
+                  
+                    <label for="name" string="Họ và Tên" />
+                    <h1><field name="name" placeholder="Nguyễn Văn A" required="1"/></h1>
+                    <field name="email" invisible="1"/>
+                    <label for="canhan_email" string="Email Cá nhân" />
+                    <field  name="canhan_email"/>
+                    <label for="mssv_mscb"  />
+                    <field name="mssv_mscb"/>
+                    <label for="company_id" groups="base.group_multi_company"/>
+                    <field name="company_id" context="{'user_preference': 0}" groups="base.group_multi_company"/>
+                </div>
+                <group name="Info">
+                    <label for="groups_id" string="Access Rights"
+                            attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one"/>
+                    <div attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one">
+                        <field name="groups_id" readonly="1" widget="many2many_tags" options="{'color_field': 'color'}" style="display: inline;"/> You will be able to define additional access rights by editing the newly created user under the Settings / Users menu.
+                    </div>                       
+                </group>  
+                
+                <group string="Thông tin cá nhân" style="font-size: 25px;">
+                  <field name="nghenghiep" placeholder="Sinh viên ..."/>
+                </group> 
+
+                <group>
+                  <group>
+                    <field name="gioi_tinh"/>
+                  </group>
+                  <group>
+                    <group>
+                      <field name="dantoc"/>
+                    </group>
+                    <group>
+                      <field name="tongiao"/>
+                    </group>
+                  </group>
+                </group>
+                
+                <group>
+                    <group>
+                        <field name="cmnd_cccd"/>
+                    </group>
+                    <group>
+                        <field name="birthday"/>
+                    </group>
+                </group>
+
+                <group string="Liên lạc" style="font-size: 25px;">
+                    <field name="quequan"/>
+                    <field name="thuongtru"/>
+                    <field name="sdt" widget="phone"/>
+                    <field name="donvi"/>    
+                </group>
+          
+                  <group string = "Quyền truy cập" style="font-size: 25px;">  
+                        <field name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
+                </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.actions.server" id="server_action_open_user_profile">
+      <field name="name">Open User Profile</field>
+      <field name="model_id" ref="base.model_res_users"/>
+      <field name="binding_model_id" ref="base.model_res_users"/>
+      <field name="state">code</field>
+      <field name="code">
+user = env.user
+action = user.open_user_profile()</field>
+    </record>
+  </data>
+</odoo>

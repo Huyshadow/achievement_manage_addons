@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem 
+        id="user_root"
+        name="Thông tin người dùng" 
+        action="server_action_open_user_profile" 
+        web_icon="code_backend_theme,static/src/img/icons/Contacts.png"/>
+    
+</odoo>
