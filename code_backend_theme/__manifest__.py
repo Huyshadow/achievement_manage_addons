@@ -44,12 +44,17 @@
             'code_backend_theme/static/src/scss/navigation_bar.scss',
             'code_backend_theme/static/src/scss/datetimepicker.scss',
             'code_backend_theme/static/src/scss/theme.scss',
+            'code_backend_theme/static/src/scss/form.scss',
             'code_backend_theme/static/src/scss/sidebar.scss',
             'code_backend_theme/static/src/js/chrome/sidebar_menu.js',
             'code_backend_theme/static/src/js/fields/colors.js',
+            'code_backend_theme/static/src/js/fields/input.js',
+
         ],
         'web.assets_frontend': [
             'code_backend_theme/static/src/scss/login.scss',
+            'code_backend_theme/static/src/js/fields/input.js',
+
         ],
     },
     'images': [
