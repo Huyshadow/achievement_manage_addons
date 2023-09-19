@@ -26,19 +26,19 @@
         <field name="priority">0</field>
         <field name="arch" type="xml">
 
-            <form class="custom-form" string="Users">
-                <sheet>
+            <form class="custom-form oe_form_center" string="Users" style=" align-items: center;">
+                <sheet style="width: 1024px;">
                     <field name="id"  invisible="1"/>
                     <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}" role="alert">
                         You are inviting a new user.
                     </div>
                     <field name="avatar_128" invisible="1"/>
-                    <field name="image_1920" widget='image' class="oe_avatar" options='{"zoom": true, "preview_image": "avatar_128" , "size": [270, 270]}' style="padding-top: 10px; padding-right: 20px;"/>
+                    <field name="image_1920" widget='image' class="oe_avatar" options='{"zoom": true, "preview_image": "avatar_128" , "size": [200, 200]}' style="padding-top: 10px; padding-right: 20px;"/>
                     <div class="oe_title">
-                        <div style="text-align: center; background-color: white; padding-top: 10px;padding-bottom: 10px;">
+                        <div style="text-align: center; background-color: white; padding-top: 10px;padding-bottom: 10px;padding-left: 10px;">
                             <h2 style="text-align: center; color: white;">
-                              <div id="randomColorDiv" style=" background-color: #279EFF ;padding-top: 10px;padding-bottom: 10px;">
-                                  <field name="login" placeholder="e.g. email@yourcompany.com" readonly="1">
+                              <div id="randomColorDiv" style="border-radius: 1rem;  background-color: #279EFF ;padding-top: 10px;padding-bottom: 10px;">
+                                  <field name="login" placeholder="e.g. dhqg@hcmut.edu.vn" required="1">
                                       <t t-esc="record.email.value" />
                                   </field>
                               </div>
@@ -46,7 +46,7 @@
                         </div>
                       
                         <label for="name" string="Họ và Tên" />
-                        <h1><field name="name" placeholder="Nguyễn Văn A" required="1"/></h1>
+                        <field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1" default_focus="1"/>
                         <field name="email" invisible="1"/>
                         <label for="canhan_email" string="Email Cá nhân" />
                         <field  name="canhan_email"/>
@@ -55,55 +55,59 @@
                         <label for="company_id" groups="base.group_multi_company"/>
                         <field name="company_id" context="{'user_preference': 0}" groups="base.group_multi_company"/>
                     </div>
-                    <group name="Info">
+                    <!-- <group name="Info">
                         <label for="groups_id" string="Access Rights"
                                 attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one"/>
                         <div attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one">
                             <field name="groups_id" readonly="1" widget="many2many_tags" options="{'color_field': 'color'}" style="display: inline;"/> You will be able to define additional access rights by editing the newly created user under the Settings / Users menu.
                         </div>                       
-                    </group>  
+                    </group>   -->
                     
                     <group string="Thông tin cá nhân" style="font-size: 25px;">
-                      <field name="nghenghiep" placeholder="Sinh viên ..."/>
+                      
+                      <!-- <field name="nghenghiep" placeholder="Sinh viên ..."/> -->
                     </group> 
 
-                    <group>
-                      
+                    <!-- <group> -->
+                      <!-- <group> -->
+                        <group>
+                          <field name="gioi_tinh" string="Giới tính"/>
+                        </group>
+                        <group>
+                          <group>
+                            <field name="dantoc"/>
+                          </group>
+                          <group>
+                            <field name="tongiao"/>
+                          </group>
+                        </group>
+                      <!-- </group> -->
                       <group>
-                        <field name="gioi_tinh"/>
-                      </group>
-                     
-                      <group>
                         <group>
-                          <field name="dantoc"/>
+                          <field name="cmnd_cccd"/>
                         </group>
-                        <group>
-                          <field name="tongiao"/>
+                        <group> 
+                          <field name="birthday"/>
                         </group>
                       </group>
+                    <!-- </group> -->
                     
-                    </group>
-                    
-                    <group>
-                        <group>
-                            <field name="cmnd_cccd"/>
-                        </group>
-                        <group>
-                            <field name="birthday"/>
-                        </group>
-                    </group>
-
+                
 
 
                     <group string="Liên lạc" style="font-size: 25px;">
+                        <!-- <label for="quequan"/> -->
                         <field name="quequan"/>
+                        <!-- <label for="thuongtru"/> -->
                         <field name="thuongtru"/>
+                        <!-- <label for="sdt"/> -->
                         <field name="sdt" widget="phone"/>
+                        <!-- <label for="donvi"/>   -->
                         <field name="donvi"/>    
                     </group>
               
                      <group string = "Quyền truy cập" style="font-size: 25px;">  
-                            <field name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
+                            <field nolabel="0" name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
                     </group>
                 </sheet>
             </form>
