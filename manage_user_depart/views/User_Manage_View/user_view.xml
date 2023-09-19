@@ -38,7 +38,7 @@
                         <div style="text-align: center; background-color: white; padding-top: 10px;padding-bottom: 10px;padding-left: 10px;">
                             <h2 style="text-align: center; color: white;">
                               <div id="randomColorDiv" style="border-radius: 1rem;  background-color: #279EFF ;padding-top: 10px;padding-bottom: 10px;">
-                                  <field name="login" placeholder="e.g. dhqg@hcmut.edu.vn" required="1">
+                                  <field name="login" placeholder="e.g. dhqg@hcmut.edu.vn" readonly="1">
                                       <t t-esc="record.email.value" />
                                   </field>
                               </div>
@@ -52,8 +52,8 @@
                         <field  name="canhan_email"/>
                         <label for="mssv_mscb"  />
                         <field name="mssv_mscb"/>
-                        <label for="company_id" groups="base.group_multi_company"/>
-                        <field name="company_id" context="{'user_preference': 0}" groups="base.group_multi_company"/>
+                        <!-- <label for="company_id" groups="base.group_multi_company"/>
+                        <field name="company_id" context="{'user_preference': 0}" groups="base.group_multi_company"/> -->
                     </div>
                     <!-- <group name="Info">
                         <label for="groups_id" string="Access Rights"
@@ -122,7 +122,7 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-
+    
 
     <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root" action="manage_user_depart.action_window_user" web_icon="code_backend_theme,static/src/img/icons/Contacts.png"/>
 

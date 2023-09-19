@@ -18,20 +18,30 @@
         </tree>
       </field>
     </record>
+    
+    <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_tree">
+  <field name="name">Danh sách thành viên</field>
+  <field name="res_model">res.users</field>
+  <field name="view_mode">tree,form</field>
+  <!-- <field name="context">{"default_department_id": active_id}</field> -->
+  <field name="domain">[('donvi', '=', active_id)]</field>
+</record>
 
     <record model="ir.ui.view" id="manage_user_depart.form_depart"> 
-      <field name="name">manage_user_depart form0</field>
+      <field name="name">manage_user_depart form</field>
       <field name="model">manage_user_depart.department</field>
       <field name="arch" type="xml">
-        <form>
-          <sheet>
+        <form style=" align-items: center;">
+          <sheet style="width: 800px;">
             <group string="Chi tiết đơn vị" style="font-size:25px">
             <field name="code" string="Mã số đơn vị" required="1"/>
             <field name="name" string="Tên đơn vị" required="1"/>
             <field name="user_count" string="Số lượng thành viên" readonly="1"/>
-
             </group>
-
+            <div style="text-align: right;">
+              <button name="%(manage_user_depart.action_window_user_tree)d" string="Danh sách" type="action" class="oe_highlight"/>
+            </div>
+            
           </sheet>
 
         </form>
