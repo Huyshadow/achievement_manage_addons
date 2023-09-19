@@ -8,8 +8,10 @@
       <field name="arch" type="xml">
         <tree>
           <!-- <field name="id"/> -->
-          <field name="code"/>
-          <field name="name"/>
+          <field name="code" string="Mã số đơn vị"/>
+          <field name="name" string="Tên đơn vị"/>
+          <field name="user_count" string="Số lượng thành viên" readonly="1"/>
+          <!-- <field name= -->
           <!-- <field name="updateAt"/>
           <field name="deleteAt"/> -->
 
@@ -17,7 +19,24 @@
       </field>
     </record>
 
-    <!-- actions opening views on models -->
+    <record model="ir.ui.view" id="manage_user_depart.form_depart"> 
+      <field name="name">manage_user_depart form0</field>
+      <field name="model">manage_user_depart.department</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <group string="Chi tiết đơn vị" style="font-size:25px">
+            <field name="code" string="Mã số đơn vị" required="1"/>
+            <field name="name" string="Tên đơn vị" required="1"/>
+            <field name="user_count" string="Số lượng thành viên" readonly="1"/>
+
+            </group>
+
+          </sheet>
+
+        </form>
+      </field>
+    </record>
 
     <record model="ir.actions.act_window" id="manage_user_depart.action_window_depart">
       <field name="name">Danh sách đơn vị</field>
@@ -25,20 +44,6 @@
       <field name="view_mode">tree,form</field>
     </record>
 
-    <record model="ir.ui.view" id="manage_user_depart.list_depart">
-      <field name="name">manage_user_depart form0</field>
-      <field name="model">manage_user_depart.department</field>
-      <field name="arch" type="xml">
-        <form>
-          <!-- <field name="id"/> -->
-          <field name="code"/>
-          <field name="name"/>
-          <!-- <field name="updateAt"/>
-          <field name="deleteAt"/> -->
-
-        </form>
-      </field>
-    </record>
 
     <!-- server action to the one above -->
 
