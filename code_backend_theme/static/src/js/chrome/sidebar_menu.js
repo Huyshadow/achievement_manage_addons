@@ -1,6 +1,6 @@
 odoo.define("code_backend_theme.SidebarMenu", function (require) {
   "use strict";
-  
+
   //sidebar toggle effect
   $(document).on("click", "#closeSidebar", function (event) {
     $("#closeSidebar").hide();
@@ -21,7 +21,7 @@ odoo.define("code_backend_theme.SidebarMenu", function (require) {
       transition: "all .1s linear",
       width: "auto",
     });
-    
+
     //add class in navbar
     var navbar = $(".o_main_navbar");
     var navbar_id = navbar.data("id");

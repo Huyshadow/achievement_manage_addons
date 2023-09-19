@@ -1,0 +1,43 @@
+.o_form_view {
+  &:not(.o_field_highlight) .o_field_widget:not(.o_field_invalid):not(.o_field_highlight) .o_input:not(:hover):not(:focus) {
+      --o-input-border-color: transparent;
+      background-color: transparent ;
+      box-shadow: none;
+      border: 1px solid #ced4da ;
+
+  } 
+}
+
+body:not(.o_touch_device) .o_field_selection {
+  &:not(:hover):not(:focus-within) {
+      & select:not(:hover) {
+        box-shadow: none;
+      border: 1px solid #ced4da ;
+
+      }
+  }
+}
+.form-check-input:not(:disabled), .form-check-input:not(:disabled) + label {
+        cursor: pointer;
+      box-shadow: none;
+
+}
+.text-danger {
+  color: #f46a6a !important;
+}
+
+.o_field_invalid:not(:focus-within) {
+  &.o_input, .o_input, &.o_form_label {
+      @extend .text-danger;
+  }
+  &.o_input, .o_input{
+    box-shadow: 0 0 0 3px rgba(255, 66, 104, 0.4) ;
+  }
+}
+
+.o_group {
+  .o_td_label, .o_checkbox_optional_field > .o_form_label {
+      border-right: 1px solid #ddd;
+      width: 20px !important;
+  }
+}
