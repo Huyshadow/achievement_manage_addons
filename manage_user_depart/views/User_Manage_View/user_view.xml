@@ -52,24 +52,9 @@
                         <field  name="canhan_email"/>
                         <label for="mssv_mscb"  />
                         <field name="mssv_mscb"/>
-                        <!-- <label for="company_id" groups="base.group_multi_company"/>
-                        <field name="company_id" context="{'user_preference': 0}" groups="base.group_multi_company"/> -->
                     </div>
-                    <!-- <group name="Info">
-                        <label for="groups_id" string="Access Rights"
-                                attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one"/>
-                        <div attrs="{'invisible': [('id', '>', 0)]}" groups="base.group_no_one">
-                            <field name="groups_id" readonly="1" widget="many2many_tags" options="{'color_field': 'color'}" style="display: inline;"/> You will be able to define additional access rights by editing the newly created user under the Settings / Users menu.
-                        </div>                       
-                    </group>   -->
-                    
                     <group string="Thông tin cá nhân" style="font-size: 25px;">
-                      
-                      <!-- <field name="nghenghiep" placeholder="Sinh viên ..."/> -->
                     </group> 
-
-                    <!-- <group> -->
-                      <!-- <group> -->
                         <group>
                           <field name="gioi_tinh" string="Giới tính"/>
                         </group>
@@ -81,7 +66,6 @@
                             <field name="tongiao"/>
                           </group>
                         </group>
-                      <!-- </group> -->
                       <group>
                         <group>
                           <field name="cmnd_cccd"/>
@@ -90,19 +74,10 @@
                           <field name="birthday"/>
                         </group>
                       </group>
-                    <!-- </group> -->
-                    
-                
-
-
                     <group string="Liên lạc" style="font-size: 25px;">
-                        <!-- <label for="quequan"/> -->
                         <field name="quequan"/>
-                        <!-- <label for="thuongtru"/> -->
                         <field name="thuongtru"/>
-                        <!-- <label for="sdt"/> -->
                         <field name="sdt" widget="phone"/>
-                        <!-- <label for="donvi"/>   -->
                         <field name="donvi"/>    
                     </group>
               
@@ -110,16 +85,9 @@
                             <field nolabel="0" name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
                     </group>
                 </sheet>
-                <!-- <sheet  style="width: 824px;">
-                  <group>
-                        <field name="sdt" widget="phone"/>
-                  </group>
-                </sheet> -->
             </form>
         </field>
       </record>
-
-    <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="manage_user_depart.action_window_user">
       <field name="name">Danh sách người dùng</field>

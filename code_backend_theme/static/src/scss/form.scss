@@ -12,7 +12,7 @@ body:not(.o_touch_device) .o_field_selection {
   &:not(:hover):not(:focus-within) {
       & select:not(:hover) {
         box-shadow: none;
-      border: 1px solid #ced4da ;
+        border: 1px solid #ced4da ;
 
       }
   }
