@@ -1,6 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-user_view_profile.access_users_1,access_users_1,user_view_profile.model_res_users,access_right_user.group_mem_user,1,1,1,1
-user_view_profile.access_users_2,access_users_2,user_view_profile.model_res_users,access_right_user.group_unit_manager,1,1,1,1
-user_view_profile.access_users_3,access_users_3,user_view_profile.model_res_users,access_right_user.group_achievement_manager,1,1,1,1
-
-
+user_view_profile.access_users_1,access_users_1,user_view_profile.model_res_users,base.group_user,1,1,1,1
