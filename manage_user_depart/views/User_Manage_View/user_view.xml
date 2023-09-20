@@ -129,7 +129,7 @@
 
     
 
-    <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root" action="manage_user_depart.action_window_user" web_icon="code_backend_theme,static/src/img/icons/Contacts.png"/>
+    <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root" action="manage_user_depart.action_window_user" web_icon="code_backend_theme,static/src/img/icons/Contacts.png" groups="access_right_user.group_system_manager"/>
 
 
   </data>

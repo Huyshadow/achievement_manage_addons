@@ -6,5 +6,6 @@
         sequence="10"
         action="action_cr_achievement"
         web_icon="code_backend_theme,static/src/img/icons/eLearning.png"
+        groups="access_right_user.group_achievement_manager"
     />    
 </odoo>

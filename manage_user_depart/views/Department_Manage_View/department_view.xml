@@ -61,7 +61,7 @@
 
     <!-- Top menu item -->
 
-    <menuitem name="Quản lý đơn vị" id="manage_user_depart.depart_root" action="manage_user_depart.action_window_depart" web_icon="code_backend_theme,static/src/img/icons/Employees.png"/>
+    <menuitem name="Quản lý đơn vị" id="manage_user_depart.depart_root" action="manage_user_depart.action_window_depart" web_icon="code_backend_theme,static/src/img/icons/Employees.png" groups="access_right_user.group_system_manager"/>
 
   </data>
 </odoo>
