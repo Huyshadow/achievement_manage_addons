@@ -6,5 +6,6 @@
         sequence="1"
         action="action_view_achievement"
         web_icon="code_backend_theme,static/src/img/icons/Note.png"
+        sequence="2"
     />    
 </odoo>

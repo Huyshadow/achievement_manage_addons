@@ -41,3 +41,17 @@ body:not(.o_touch_device) .o_field_selection {
       width: 20px !important;
   }
 }
+
+.o_form_view.o_xxl_form_view {
+  .o_form_sheet_bg {
+
+      > .o_form_sheet {
+          width: 100%;
+          max-width: 824px; 
+      }
+  }
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}

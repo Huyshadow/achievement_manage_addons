@@ -603,9 +603,9 @@ th.o_list_record_selector {
 //sheet
 .o_form_view .o_form_sheet_bg {
   border-bottom: none;
-  background: #ffffff !important;
+  background: transparent !important;
   box-shadow: none !important;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
 }
 .o_form_view .o_form_sheet_bg > .o_form_sheet {
@@ -620,7 +620,7 @@ th.o_list_record_selector {
   padding: 24px;
   padding-right: 16px;
   padding-left: 16px;
-  border-radius: 5px;
+  border-radius: 15px;
 }
 .o_form_view .o_form_statusbar {
   position: relative;
@@ -1721,6 +1721,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   }
   .o_form_view .o_form_sheet_bg > .o_form_sheet {
     min-width: auto;
+    max-width: 824px !important;  
   }
   .nav-tabs .nav-link {
     padding: 8px;
