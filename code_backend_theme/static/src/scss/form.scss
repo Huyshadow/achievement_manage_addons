@@ -12,7 +12,7 @@ body:not(.o_touch_device) .o_field_selection {
   &:not(:hover):not(:focus-within) {
       & select:not(:hover) {
         box-shadow: none;
-      border: 1px solid #ced4da ;
+        border: 1px solid #ced4da ;
 
       }
   }
@@ -39,5 +39,41 @@ body:not(.o_touch_device) .o_field_selection {
   .o_td_label, .o_checkbox_optional_field > .o_form_label {
       border-right: 1px solid #ddd;
       width: 20px !important;
+  }
+}
+
+.o_form_view.o_xxl_form_view {
+  .o_form_sheet_bg {
+
+      > .o_form_sheet {
+          width: 100%;
+          max-width: 824px; 
+      }
+  }
+}
+
+.mt-4 {
+  margin-top: 1rem !important;
+}
+
+// Notebooks
+.o_notebook {
+  clear: both; // For the notebook not to have alongside floating elements
+  margin-top: $o-form-spacing-unit * 2;
+
+  .tab-content > .tab-pane {
+      padding: $o-horizontal-padding 0;
+      border-top: 1px solid black;
+      >.oe_form_field {
+          >.note-editable {
+              border-width: 0;
+              padding: 0;
+              min-height: 180px;
+          }
+          &.oe-bordered-editor>.note-editable {
+              border-width: 1px;
+              padding: 4px 40px 4px 4px;
+          }
+      }
   }
 }

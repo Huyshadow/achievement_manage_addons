@@ -92,10 +92,10 @@
 
                     <ul class="sidebar_menu">
                         <t t-foreach="menuService.getApps()" t-as="app" t-key="app_index">
-                            <t t-if="app_index == 2">
+                            <t t-if="app_index == 1">
                                 <h6 class="sidebar_head">MENU</h6>
                             </t>
-                            <li t-if="app.name != 'Thảo luận'" data-toggle="tooltip" data-placement="right" t-att-title="app.name">
+                            <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and  app.name != 'Ứng dụng' and  app.name != 'Apps'" data-toggle="tooltip" data-placement="right" t-att-title="app.name">
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">

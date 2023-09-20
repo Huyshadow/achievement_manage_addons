@@ -39,6 +39,7 @@
         </field>
      </record>
      
+     
 
     <record id="action_cr_group_criteria" model="ir.actions.act_window">
         <field name="name">Danh sách tập tiêu chí</field>

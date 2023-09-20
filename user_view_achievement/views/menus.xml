@@ -3,8 +3,9 @@
     <menuitem 
         id="menu_user_ach_root" 
         name="Đề cử danh hiệu/giải thưởng"
-        sequence="1"
+        sequence="2"
         action="action_view_achievement"
         web_icon="code_backend_theme,static/src/img/icons/Note.png"
+        groups="access_right_user.group_mem_user"
     />    
 </odoo>
