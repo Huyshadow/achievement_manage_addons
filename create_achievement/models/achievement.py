@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+import pytz
 
 
 class Achievement(models.Model):
@@ -14,9 +15,11 @@ class Achievement(models.Model):
     name = fields.Char(default="", required=True, string="Danh hiệu")
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Mô tả")
-    end_at = fields.Datetime(string="Ngày kết thúc nộp", required=True)
-    start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
     end_submit_at = fields.Datetime(
+        string="Ngày kết thúc nộp", required=True)
+    start_at = fields.Datetime(default=lambda self: fields.Datetime.now().replace(
+        hour=0, minute=0, second=0), string="Ngày bắt đầu nộp", required=True)
+    end_at = fields.Datetime(
         string="Ngày kết thúc duyệt", required=True)
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
@@ -60,6 +63,10 @@ class Achievement(models.Model):
         records.write({'last_updated': current_datetime})
         print(records)
 
+    # @api.constains('start_at')
+    # def add_start_at(self):
+    #     for record in self:
+
     @api.depends('last_updated')
     def _compute_status(self):
         for record in self:
@@ -77,7 +84,7 @@ class Achievement(models.Model):
             if record.start_at >= record.end_at:
                 raise ValidationError(
                     "Thời gian kết thúc nộp phải sau thời gian bắt đầu nộp")
-            if record.start_at >= record.end_submit_at or record.end_at <= record.end_submit_at:
+            if record.start_at >= record.end_at or record.end_submit_at <= record.end_at:
                 raise ValidationError(
-                    "Thời gian kết thúc duyệt phải nằm trong khoảng thời gian bắt đầu và kết thúc của danh hiệu"
+                    "Thời gian kết thúc nộp phải nằm trong khoảng thời gian bắt đầu và kết thúc duyệt của danh hiệu"
                 )
