@@ -5,6 +5,7 @@
         <div class="render_name"/>
     </t>
     
+    
     <t t-name="achievement_name">
         <div class="demo_name">
             <t t-esc="o.name + ' ' + o.status"/>

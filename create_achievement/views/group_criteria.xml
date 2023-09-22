@@ -12,15 +12,12 @@
                </group>
                <notebook>
                   <page name="constraint" string="Tiêu chí bắt buộc">
-                     <group>
-                        <field name="constrait_criterias" />
-                     </group>
+                     <field name="constrait_criterias" />
                   </page>
                   <page name="option" string="Tiêu chí tự chọn">
-                     <group>
-                        <field name="option_criterias" />
-                        <field name="option_constraint" />
-                     </group>
+                     <field name="option_criterias" />
+                     <label for="option_constraint" />
+                     <field name="option_constraint" />
                   </page>
                </notebook>
             </sheet>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_cr_group_criteria_form" model="ir.ui.view">
+        <field name="name">result.criteria.form</field>
+        <field name="model">create_achievement.group_criterias</field>
+        <!-- <field name="mode">primary</field>
+        <field name="priority">1</field> -->
+        <field name="arch" type="xml">
+           <form>
+            <sheet>
+               <group>
+                  <field name="name"/>
+                  <field name="description" />
+               </group>
+               <notebook> 
+                  <page name="constraint" string="Tiêu chí bắt buộc" >
+                     <field name="constrait_criterias">
+                        <tree>
+                           <field name="name"/>
+                           <field name="content"/>
+                           <field name="note"/>
+                           <field name="is_submitted"/>
+                           <button name="action_submit_criteria" type="object" class="btn btn-primary" string="Submit"/>
+                        </tree>
+                     </field>
+                  </page>
+                  <page name="option" string="Tiêu chí tự chọn">
+                     <field name="option_criterias">
+                        <tree>
+                           <field name="name"/>
+                           <field name="content"/>
+                           <field name="note"/>
+                           <field name="is_submitted"/>
+                           <button name="action_submit_criteria" type="object" class="btn btn-primary" string="Submit"/>
+                        </tree>
+                     </field>
+                     <label for="option_constraint"/>
+                     <field name="option_constraint" />
+                  </page>
+               </notebook>
+            </sheet>
+           </form>
+        </field>
+     </record>
+</odoo>

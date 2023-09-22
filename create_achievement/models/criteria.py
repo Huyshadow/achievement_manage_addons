@@ -19,10 +19,12 @@ class Criteria(models.Model):
     name = fields.Char(required=True, string="Tên tiêu chí")
     is_criteria = fields.Boolean(default=False)
     method = fields.Selection(
-        [('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], default='', string="Phương thức")
+        [('thangdiem', 'Thang điểm'), ('nhiphan', 'Nhị Phân'), ('nhanxet', 'Người nộp tự nhận xét'), ('danhsach', 'Dạng danh sách')], default='', string="Phương thức")
     value_list_string = fields.Char()
     note = fields.Char(required=True, default='Không', string="Chú thích")
-    content = fields.Char(required=True, default='Không', string="Mô tả")
+
+    content = fields.Char(required=True, string="Mô tả", compute='_compute_content')
+
     evidence = fields.Boolean(
         required=True, default=False, string="Minh chứng")
     sign = fields.Selection([
@@ -39,6 +41,20 @@ class Criteria(models.Model):
     upper_point = fields.Float(
         default=0, required=True, string="Khoảng cận trên")
     deleteAt = fields.Datetime()
+
+    @api.depends('sign', 'method', 'lower_point', 'upper_point')
+    def _compute_content(self):
+        for record in self:
+            if record.method == 'thangdiem':
+                record.content = f'Nguoi dung {record.sign} {record.lower_point or record.upper_point}'
+            elif record.method == 'nhiphan':
+                record.content = 'nhiphan'
+            elif record.method == 'nhanxet':
+                record.content = 'nhanxet'
+            elif record.method == 'danhsach':
+                record.content = ' danhsach'
+            else:
+                record.content = 'Khong'
 
     @api.onchange('method')
     def _onchange_method(self):
