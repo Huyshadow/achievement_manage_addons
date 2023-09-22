@@ -27,7 +27,7 @@
         <field name="name">create.criteria.tree</field>
         <field name="model">create_achievement.criteria</field>
         <field name="arch" type="xml">
-           <tree>
+           <tree limit='6'>
                 <field name="name" />
                 <field name="content" />
                 <field name="note" />

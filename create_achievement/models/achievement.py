@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-import pytz
+from datetime import datetime, time, timedelta
+from pytz import timezone
 
 
 class Achievement(models.Model):
@@ -15,10 +16,9 @@ class Achievement(models.Model):
     name = fields.Char(default="", required=True, string="Danh hiệu")
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Mô tả")
+    start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
     end_submit_at = fields.Datetime(
         string="Ngày kết thúc nộp", required=True)
-    start_at = fields.Datetime(default=lambda self: fields.Datetime.now().replace(
-        hour=0, minute=0, second=0), string="Ngày bắt đầu nộp", required=True)
     end_at = fields.Datetime(
         string="Ngày kết thúc duyệt", required=True)
     lock = fields.Selection([
@@ -57,12 +57,6 @@ class Achievement(models.Model):
         })
         return action
 
-    def update_last_updated_field(self):
-        records = self.search([])
-        current_datetime = fields.Datetime.now()
-        records.write({'last_updated': current_datetime})
-        print(records)
-
     # @api.constains('start_at')
     # def add_start_at(self):
     #     for record in self:
@@ -78,13 +72,67 @@ class Achievement(models.Model):
                 if (record.last_updated > record.end_at):
                     record.status = "Đã kết thúc"
 
+    @api.constrains('start_at')
+    def _check_start_time(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')
+            future_date = record.create_date + timedelta(days=1)
+            default_time = time(hour=0, minute=0, second=0)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            check_time = utc_datetime.replace(tzinfo=None)
+            print(check_time)
+            if record.start_at < check_time:
+                raise ValidationError(
+                    "Thời gian bắt đầu phải hơn 1 ngày kể từ khi được tạo")
+
     @api.constrains('start_at', 'end_at', 'end_submit_at')
     def _check_fields(self):
         for record in self:
             if record.start_at >= record.end_at:
                 raise ValidationError(
-                    "Thời gian kết thúc nộp phải sau thời gian bắt đầu nộp")
-            if record.start_at >= record.end_at or record.end_submit_at <= record.end_at:
+                    "Thời gian kết thúc duyệt phải sau thời gian bắt đầu nộp")
+            if record.start_at >= record.end_submit_at or record.end_submit_at >= record.end_at:
                 raise ValidationError(
                     "Thời gian kết thúc nộp phải nằm trong khoảng thời gian bắt đầu và kết thúc duyệt của danh hiệu"
                 )
+
+    @api.model
+    def default_get(self, fields):
+        defaults = super(Achievement, self).default_get(fields)
+        if 'start_at' in fields and 'start_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=1)
+            default_time = time(hour=0, minute=0, second=0)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['start_at'] = utc_datetime.replace(tzinfo=None)
+        if 'end_submit_at' in fields and 'end_submit_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=2)
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['end_submit_at'] = utc_datetime.replace(tzinfo=None)
+        if 'end_at' in fields and 'end_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=3)
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['end_at'] = utc_datetime.replace(tzinfo=None)
+        return defaults
+
+    @api.model
+    def get_user_last_login(self, user_id):
+        user = self.env['res.users'].browse(user_id)
+        last_login = user.last_login
+        records = self.search([])
+        records.write({'last_updated': last_login})

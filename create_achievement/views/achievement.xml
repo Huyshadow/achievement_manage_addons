@@ -7,20 +7,21 @@
            <form>
             <sheet classname="container">
               <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' />
+              <field name="status" invisible='1'/>
               <group> 
                 <group>
-                  <field name="name" placeholder="Tên danh hiệu"/>
-                  <field name="description"/>
+                  <field name="name" placeholder="Tên danh hiệu" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}"/>
+                  <field name="description" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}"/>
                 </group>
                 <group>
-                  <field name="start_at"/>
-                  <field name="end_at"/>
-                  <field name="end_submit_at"/>
+                  <field name="start_at" widget="date" options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}"/>
+                  <field name="end_submit_at" widget="date" options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}"/>
+                  <field name="end_at" widget="date" options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}"/>
                 </group>
               </group>
               <group string="Danh sách tiêu chí" style="font-size: 25px">
               </group>  
-              <field name="criteria_ids"/>
+              <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids"/>
              </sheet>
            </form>
         </field>
@@ -30,11 +31,11 @@
         <field name="name">create.achievement.tree</field>
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
-           <tree>
+           <tree limit="20">
                 <field name="name"/>
                 <field name="start_at"/>
-                <field name="end_at"/>
                 <field name="end_submit_at"/>
+                <field name="end_at"/>
                 <field name="status"
                   decoration-success="status == 'Đang tiến hành'"
                   decoration-warning="status == 'Trạng thái chờ'"
