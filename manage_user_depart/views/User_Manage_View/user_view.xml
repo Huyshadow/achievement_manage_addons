@@ -81,7 +81,7 @@
                         <field name="donvi"/>    
                     </group>
               
-                     <group string = "Quyền truy cập" style="font-size: 25px;">  
+                     <group string = "Quyền truy cập" style="font-size: 25px;" groups="access_right_user.group_system_manager" >  
                             <field nolabel="0" name= "groups_id" string="Vai trò" class="nocustom-form" widget="many2many_checkboxes" domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;"/>                  
                     </group>
                 </sheet>
