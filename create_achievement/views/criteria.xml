@@ -1,47 +1,57 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_cr_criteria_form" model="ir.ui.view">
-        <field name="name">create.criteria.form</field>
-        <field name="model">create_achievement.criteria</field>
-        <field name="arch" type="xml">
-           <form>
+   <record id="view_cr_criteria_form" model="ir.ui.view">
+      <field name="name">create.criteria.form</field>
+      <field name="model">create_achievement.criteria</field>
+      <field name="arch" type="xml">
+         <form>
             <sheet>
                <group string="Tiêu chí" style="font-size: 20px">
-                </group>  
-              <group>
-                <field name="type" invisible="1"/>
-                <field name="name"/>
-                <field name="method" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>s
-                <field name="evidence" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
-                <field name="sign" attrs="{'invisible': [('method', '!=', 'thang điểm')]}"/>
-                <field name="lower_point" attrs="{'invisible': [('method', '!=', 'thang điểm')]}"/>
-                <field name="upper_point" attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
-                <field name="value_list_string" attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}"/>
-                <field name="note"/>
-                <field name="content" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>
-              </group>
-            <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/> -->
-            </sheet>
-           </form>
-        </field>
-     </record>
-     <record id="view_cr_criteria_tree" model="ir.ui.view">
-        <field name="name">create.criteria.tree</field>
-        <field name="model">create_achievement.criteria</field>
-        <field name="arch" type="xml">
-           <tree limit='6'>
+               </group>
+               <group>
+                  <field name="type" invisible="1" />
                 <field name="name" />
-                <field name="content" />
-                <field name="note" />
-           </tree>
-        </field>
-     </record>
-     
+                <field name="method"
+                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />s <field name="evidence"
+                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
+                <field name="sign"
+                     attrs="{'invisible': [('method', '!=', 'thang điểm')]}" />
+                <field
+                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thang điểm')]}" />
+                <field
+                     name="upper_point"
+                     attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
+                <field
+                     name="value_list_string"
+                     attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}" />
+                <field
+                     name="note" />
+                <field name="content"
+                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
+               </group>
+               <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu
+               chí')]}"/> -->
+            </sheet>
+         </form>
+      </field>
+   </record>
+   <record id="view_cr_criteria_tree" model="ir.ui.view">
+      <field name="name">create.criteria.tree</field>
+      <field name="model">create_achievement.criteria</field>
+      <field name="arch" type="xml">
+         <tree limit='6'>
+            <field name="name" />
+            <field name="content" />
+            <field name="note" />
+         </tree>
+      </field>
+   </record>
 
-    <record id="action_cr_criteria" model="ir.actions.act_window">
-        <field name="name">Danh sách tiêu chí</field>
-        <field name='type'>ir.actions.act_window</field>
-        <field name="res_model">create_achievement.criteria</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+
+   <record id="action_cr_criteria" model="ir.actions.act_window">
+      <field name="name">Danh sách tiêu chí</field>
+      <field name='type'>ir.actions.act_window</field>
+      <field name="res_model">create_achievement.criteria</field>
+      <field name="view_mode">tree,form</field>
+   </record>
 </odoo>

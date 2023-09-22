@@ -11,6 +11,8 @@ class Achievement(models.Model):
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
 
+    user_id = fields.Many2one('res.users', string='User')
+
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
     name = fields.Char(default="", required=True, string="Danh hiệu")
@@ -31,9 +33,10 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-    last_updated = fields.Datetime(default=fields.Datetime.now)
+    last_updated = fields.Datetime(
+        default=fields.Datetime.now(), compute="_compute_last_login")
     status = fields.Char(
-        string="Tình Trạng", compute='_compute_status', store=True)
+        string="Tình Trạng", compute='_compute_status')
 
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
 
@@ -57,11 +60,7 @@ class Achievement(models.Model):
         })
         return action
 
-    # @api.constains('start_at')
-    # def add_start_at(self):
-    #     for record in self:
-
-    @api.depends('last_updated')
+    @api.depends('last_updated', 'status')
     def _compute_status(self):
         for record in self:
             if record.end_at and record.start_at:
@@ -130,9 +129,8 @@ class Achievement(models.Model):
             defaults['end_at'] = utc_datetime.replace(tzinfo=None)
         return defaults
 
-    # @api.model
-    # def get_user_last_login(self, user_id):
-    #     user = self.env['res.users'].browse(user_id)
-    #     last_login = user.last_login
-    #     records = self.search([])
-    #     records.write({'last_updated': last_login})
+    @api.depends('last_updated')
+    def _compute_last_login(self):
+        current_user = self.env.user
+        for record in self:
+            record.last_updated = current_user.login_date
