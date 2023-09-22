@@ -130,9 +130,9 @@ class Achievement(models.Model):
             defaults['end_at'] = utc_datetime.replace(tzinfo=None)
         return defaults
 
-    @api.model
-    def get_user_last_login(self, user_id):
-        user = self.env['res.users'].browse(user_id)
-        last_login = user.last_login
-        records = self.search([])
-        records.write({'last_updated': last_login})
+    # @api.model
+    # def get_user_last_login(self, user_id):
+    #     user = self.env['res.users'].browse(user_id)
+    #     last_login = user.last_login
+    #     records = self.search([])
+    #     records.write({'last_updated': last_login})

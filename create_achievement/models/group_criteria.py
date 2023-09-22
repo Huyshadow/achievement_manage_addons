@@ -8,7 +8,7 @@ class GroupCriterias(models.Model):
     parent_id = fields.Many2one(
         "create_achievement.achievement", string="Danh hiệu")
 
-    name = fields.Char(string="Tên tập tiêu chí")
+    name = fields.Char(string="Tên tập tiêu chí", required=True)
 
     constrait_criterias = fields.One2many(
         "create_achievement.criteria", "parent_id_constraint", string="Danh sách tiêu chí bắt buộc")

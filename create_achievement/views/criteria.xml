@@ -6,8 +6,10 @@
         <field name="arch" type="xml">
            <form>
             <sheet>
+               <group string="Tiêu chí" style="font-size: 20px">
+                </group>  
               <group>
-                <field name="type"/>
+                <field name="type" invisible="1"/>
                 <field name="name"/>
                 <field name="method" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>s
                 <field name="evidence" attrs="{'invisible': [('type', '!=', 'tiêu chí')]}"/>

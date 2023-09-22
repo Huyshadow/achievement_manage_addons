@@ -35,7 +35,7 @@
                 <field name="name"/>
                 <field name="start_at"/>
                 <field name="end_submit_at"/>
-                <field name="end_at"/>
+                <field name="end_at" />
                 <field name="status"
                   decoration-success="status == 'Đang tiến hành'"
                   decoration-warning="status == 'Trạng thái chờ'"
