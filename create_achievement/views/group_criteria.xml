@@ -23,8 +23,6 @@
                      </group>
                   </page>
                </notebook>
-               <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu
-               chí')]}"/> -->
             </sheet>
          </form>
       </field>

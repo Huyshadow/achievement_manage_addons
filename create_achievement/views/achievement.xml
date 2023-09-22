@@ -27,8 +27,7 @@
               <field name="end_at"
                 widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
-            </group>
+                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />s </group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
