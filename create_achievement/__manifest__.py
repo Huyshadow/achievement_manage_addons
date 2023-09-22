@@ -26,14 +26,12 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'data/ir_cron.xml',
         'data/achievement.xml',
         'data/criteria.xml',
         'views/achievement.xml',
         'views/criteria.xml',
         'views/menu.xml',
         'views/group_criteria.xml'
-
     ],
     'assets': {
         'web.assets_backend': [

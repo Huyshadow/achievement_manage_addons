@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_cr_group_criteria_form" model="ir.ui.view">
-        <field name="name">create.group.groups_criterias.form</field>
-        <field name="model">create_achievement.group_criterias</field>
-        <field name="arch" type="xml">
-           <form>
+   <record id="view_cr_group_criteria_form" model="ir.ui.view">
+      <field name="name">create.group.groups_criterias.form</field>
+      <field name="model">create_achievement.group_criterias</field>
+      <field name="arch" type="xml">
+         <form>
             <sheet>
                <group>
-                  <field name="name"/>
+                  <field name="name" />
                   <field name="description" />
                </group>
-               <notebook> 
-                  <page name="constraint" string="Tiêu chí bắt buộc" >
+               <notebook>
+                  <page name="constraint" string="Tiêu chí bắt buộc">
                      <group>
                         <field name="constrait_criterias" />
                      </group>
@@ -23,28 +23,26 @@
                      </group>
                   </page>
                </notebook>
-            <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu chí')]}"/> -->
             </sheet>
-           </form>
-        </field>
-     </record>
-     <record id="view_cr_group_criteria_tree" model="ir.ui.view">
-        <field name="name">create.group.groups_criterias.tree</field>
-        <field name="model">create_achievement.group_criterias</field>
-        <field name="arch" type="xml">
-           <tree>
-                <field name="name"/>
-                <field name="description" />
-           </tree>
-        </field>
-     </record>
-     
-     
+         </form>
+      </field>
+   </record>
+   <record id="view_cr_group_criteria_tree" model="ir.ui.view">
+      <field name="name">create.group.groups_criterias.tree</field>
+      <field name="model">create_achievement.group_criterias</field>
+      <field name="arch" type="xml">
+         <tree limit='6'>
+            <field name="name" />
+            <field name="description" />
+         </tree>
+      </field>
+   </record>
 
-    <record id="action_cr_group_criteria" model="ir.actions.act_window">
-        <field name="name">Danh sách tập tiêu chí</field>
-        <field name='type'>ir.actions.act_window</field>
-        <field name="res_model">create_achievement.group_criterias</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+
+   <record id="action_cr_group_criteria" model="ir.actions.act_window">
+      <field name="name">Danh sách tập tiêu chí</field>
+      <field name='type'>ir.actions.act_window</field>
+      <field name="res_model">create_achievement.group_criterias</field>
+      <field name="view_mode">tree,form</field>
+   </record>
 </odoo>

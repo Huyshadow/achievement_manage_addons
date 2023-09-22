@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from datetime import datetime, time, timedelta
+from pytz import timezone
 
 
 class Achievement(models.Model):
@@ -9,14 +11,17 @@ class Achievement(models.Model):
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
 
+    user_id = fields.Many2one('res.users', string='User')
+
     id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.achievement'))
     name = fields.Char(default="", required=True, string="Danh hiệu")
     soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Mô tả")
-    end_at = fields.Datetime(string="Ngày kết thúc nộp", required=True)
     start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
     end_submit_at = fields.Datetime(
+        string="Ngày kết thúc nộp", required=True)
+    end_at = fields.Datetime(
         string="Ngày kết thúc duyệt", required=True)
     lock = fields.Selection([
         ('unavailable', 'Unavailable'),
@@ -28,9 +33,10 @@ class Achievement(models.Model):
     ], default='achievement', required=True)
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
-    last_updated = fields.Datetime(default=fields.Datetime.now)
+    last_updated = fields.Datetime(
+        default=fields.Datetime.now(), compute="_compute_last_login")
     status = fields.Char(
-        string="Tình Trạng", compute='_compute_status', store=True)
+        string="Tình Trạng", compute='_compute_status')
 
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
 
@@ -54,13 +60,7 @@ class Achievement(models.Model):
         })
         return action
 
-    def update_last_updated_field(self):
-        records = self.search([])
-        current_datetime = fields.Datetime.now()
-        records.write({'last_updated': current_datetime})
-        print(records)
-
-    @api.depends('last_updated')
+    @api.depends('last_updated', 'status')
     def _compute_status(self):
         for record in self:
             if record.end_at and record.start_at:
@@ -71,13 +71,66 @@ class Achievement(models.Model):
                 if (record.last_updated > record.end_at):
                     record.status = "Đã kết thúc"
 
+    @api.constrains('start_at')
+    def _check_start_time(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')
+            future_date = record.create_date + timedelta(days=1)
+            default_time = time(hour=0, minute=0, second=0)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            check_time = utc_datetime.replace(tzinfo=None)
+            print(check_time)
+            if record.start_at < check_time:
+                raise ValidationError(
+                    "Thời gian bắt đầu phải hơn 1 ngày kể từ khi được tạo")
+
     @api.constrains('start_at', 'end_at', 'end_submit_at')
     def _check_fields(self):
         for record in self:
             if record.start_at >= record.end_at:
                 raise ValidationError(
-                    "Thời gian kết thúc nộp phải sau thời gian bắt đầu nộp")
-            if record.start_at >= record.end_submit_at or record.end_at <= record.end_submit_at:
+                    "Thời gian kết thúc duyệt phải sau thời gian bắt đầu nộp")
+            if record.start_at >= record.end_submit_at or record.end_submit_at >= record.end_at:
                 raise ValidationError(
-                    "Thời gian kết thúc duyệt phải nằm trong khoảng thời gian bắt đầu và kết thúc của danh hiệu"
+                    "Thời gian kết thúc nộp phải nằm trong khoảng thời gian bắt đầu và kết thúc duyệt của danh hiệu"
                 )
+
+    @api.model
+    def default_get(self, fields):
+        defaults = super(Achievement, self).default_get(fields)
+        if 'start_at' in fields and 'start_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=1)
+            default_time = time(hour=0, minute=0, second=0)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['start_at'] = utc_datetime.replace(tzinfo=None)
+        if 'end_submit_at' in fields and 'end_submit_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=2)
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['end_submit_at'] = utc_datetime.replace(tzinfo=None)
+        if 'end_at' in fields and 'end_at' not in defaults:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = datetime.now(tz).date()
+            future_date = current_date + timedelta(days=3)
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            defaults['end_at'] = utc_datetime.replace(tzinfo=None)
+        return defaults
+
+    @api.depends('last_updated')
+    def _compute_last_login(self):
+        current_user = self.env.user
+        for record in self:
+            record.last_updated = current_user.login_date
