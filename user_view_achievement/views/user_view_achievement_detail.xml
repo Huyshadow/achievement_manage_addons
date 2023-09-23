@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+	<record id="view_achievement_detail_search" model="ir.ui.view">
+		<field name="name">achievement.detail.view</field>
+		<field name="model">create_achievement.criteria</field>
+		<field name="arch" type="xml">
+		  	<search>
+			<!-- <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' /> -->
+				<group string="Group Criteria, then Type">
+					<filter string="Group Criteria" name="group_criteria" context="{'group_by': 'group_criteria'}"/>
+					<filter string="Type" name="category" context="{'group_by': 'category'}"/>
+				</group>
+				<filter string="Search by Name" name="name_filter" domain="[('name', 'ilike', self)]"/>
+			</search>
+		</field>
+	</record>
+	<record id="view_achievement_detail" model="ir.ui.view">
+		<field name="name">achievement.detail.view</field>
+		<field name="model">create_achievement.criteria</field>
+		<field name="arch" type="xml">
+		  	<tree>
+			<!-- <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' /> -->
+				<field name="name"/>
+				<field name="content"/>
+				<field name="note"/>
+				<field name="is_submitted"/>
+				<button name="action_submit_criteria" type="object" class="btn btn-primary" string="Submit"/>
+			</tree>
+		</field>
+	</record>
+
+</odoo>
