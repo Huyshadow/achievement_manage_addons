@@ -31,7 +31,7 @@
         'views/achievement.xml',
         'views/criteria.xml',
         'views/menu.xml',
-        'views/group_criteria.xml'
+        'views/group_criteria.xml',
     ],
     'assets': {
         'web.assets_backend': [
