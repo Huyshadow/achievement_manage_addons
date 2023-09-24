@@ -34,7 +34,7 @@ class Achievement(models.Model):
     manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
     last_updated = fields.Datetime(
-        default=fields.Datetime.now(), compute="_compute_last_login")
+        default=fields.Datetime.now())
     status = fields.Char(
         string="Tình Trạng", compute='_compute_status')
 
@@ -129,8 +129,11 @@ class Achievement(models.Model):
             defaults['end_at'] = utc_datetime.replace(tzinfo=None)
         return defaults
 
-    @api.depends('last_updated')
-    def _compute_last_login(self):
-        current_user = self.env.user
-        for record in self:
-            record.last_updated = current_user.login_date
+    @api.model
+    def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None):
+        records = super(Achievement, self).search_read(
+            domain=domain, fields=fields, offset=offset, limit=limit, order=order)
+        access_time = datetime.now()
+        for record in records:
+            self.browse(record['id']).write({'last_updated': access_time})
+        return records
