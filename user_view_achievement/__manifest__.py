@@ -16,7 +16,9 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/user_view_achievement_detail.xml',
         'views/user_view_achievement.xml',
+        'views/achievement_submit_view.xml',
         'views/menus.xml',
     ],
     'assets': {

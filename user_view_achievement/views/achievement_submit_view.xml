@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="achievement_submit_view_form" model="ir.ui.view">
+        <field name="name">achievement.submit.view.form</field>
+        <field name="model">achievement.submit</field>
+        <field name="arch" type="xml">
+           <form>
+            <sheet>
+              <group>
+                <field name="criteria_name"/>
+                <field name="criteria_method"/>
+                <field name="criteria_content"/>
+                <field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}"/>
+                <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}"/>
+                <field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}"/>
+                <field name="evidence"/>                
+              </group>
+            </sheet>
+           </form>
+        </field>
+     </record>
+</odoo>

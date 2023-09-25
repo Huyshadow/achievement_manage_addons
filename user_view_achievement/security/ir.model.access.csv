@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-user_view_achievement.access_achievement,access_achievement,user_view_achievement.model_create_achievement_achievement,access_right_user.group_mem_user,1,1,1,1
+user_view_achievement.access_achievement_submit,access_achievement_submit,user_view_achievement.model_achievement_submit,access_right_user.group_mem_user,1,1,1,1
