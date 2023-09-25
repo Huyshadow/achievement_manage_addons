@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "User Achievement",
+    'name': "User Profile",
 
     'summary': """
         Feature: User view list Achievement

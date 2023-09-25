@@ -19,10 +19,10 @@ class Criteria(models.Model):
 	name = fields.Char(required=True, string="Tên tiêu chí")
 	is_criteria = fields.Boolean(default=False)
 	method = fields.Selection(
-		[('thang điểm', 'Thang điểm'), ('nhi phân', 'Nhị Phân'), ('người nộp tự nhận xét', 'Người nộp tự nhận xét'), ('dạng danh sách', 'Dạng danh sách')], default='', string="Phương thức")
+		[('thangdiem', 'Thang điểm'), ('nhiphan', 'Nhị Phân'), ('nhanxet', 'Người nộp tự nhận xét'), ('danhsach', 'Dạng danh sách')], default='', string="Phương thức", required=True)
 	value_list_string = fields.Char()
-	note = fields.Char(required=True, default='Không', string="Chú thích")
-	content = fields.Char(required=True, default='Không', string="Mô tả")
+	content = fields.Char(required=True, default='Không', string="Nội dung")
+	note = fields.Char(required=True, default='Không', string="Ghi chú")
 	evidence = fields.Boolean(
 		required=True, default=False, string="Minh chứng")
 	sign = fields.Selection([
@@ -32,7 +32,7 @@ class Criteria(models.Model):
 		('>=', '>='),
 		('>= or <=', '>= or <='),
 		('>= and <=', '>= and <='),
-	], default='', string="Dấu")
+	], default='', string="Dấu", required=True)
 	point = fields.Float(default=0)
 	lower_point = fields.Float(
 		default=0, required=True, string="Khoảng cận dưới")
@@ -42,6 +42,17 @@ class Criteria(models.Model):
 
 	category = fields.Char(string="Phân loại tiêu chí", compute="_compute_category", store=True)    
 	group_criteria = fields.Char(string="Thuộc tập tiêu chí", compute="_compute_group_criteria", store=True)
+	achievement_id = fields.Char(string="Thuộc danh hiệu", compute="_compute_achievement_id", store=True)
+
+	@api.depends('parent_id_constraint', 'parent_id_option')
+	def _compute_achievement_id(self):
+		for record in self:
+			if record.parent_id_constraint:
+				record.achievement_id = record.parent_id_constraint.parent_id.id
+			elif record.parent_id_option:
+				record.achievement_id = record.parent_id_option.parent_id.id
+			else:
+				record.achievement_id = 'None'
 
 	@api.depends('parent_id_constraint', 'parent_id_option')
 	def _compute_group_criteria(self):

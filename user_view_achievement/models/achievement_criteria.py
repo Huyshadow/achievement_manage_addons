@@ -10,7 +10,7 @@ class AchivementCriteria(models.Model):
     @api.depends('submit_ids')
     def _compute_is_submitted(self):
         for record in self:
-            self.is_submitted = self.submit_ids.filtered(lambda s: s.user_id == self.env.user)[:1] or False
+            self.is_submitted = self.submit_ids.filtered(lambda s: s.user_id == self.env.user and s.submit == True)[:1] or False
 
     def action_submit_criteria(self):
         """

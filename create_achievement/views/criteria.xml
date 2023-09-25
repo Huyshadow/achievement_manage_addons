@@ -15,19 +15,19 @@
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />s <field name="evidence"
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
                 <field name="sign"
-                     attrs="{'invisible': [('method', '!=', 'thang điểm')]}" />
+                     attrs="{'invisible': [('method', '!=', 'thangdiem')]}" />
                 <field
-                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thang điểm')]}" />
+                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thangdiem')]}" />
                 <field
                      name="upper_point"
                      attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
                 <field
                      name="value_list_string"
-                     attrs="{'invisible': [('method', '!=', 'dạng danh sách')]}" />
-                <field
-                     name="note" />
+                     attrs="{'invisible': [('method', '!=', 'danhsach')]}" />
                 <field name="content"
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
+                <field
+                     name="note" />
                </group>
                <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu
                chí')]}"/> -->
@@ -38,6 +38,7 @@
    <record id="view_cr_criteria_tree" model="ir.ui.view">
       <field name="name">create.criteria.tree</field>
       <field name="model">create_achievement.criteria</field>
+      <field name="priority">1</field>
       <field name="arch" type="xml">
          <tree limit='6'>
             <field name="name" />

@@ -14,7 +14,7 @@
 			</search>
 		</field>
 	</record>
-	<record id="view_achievement_detail" model="ir.ui.view">
+	<record id="view_achievement_detail_user" model="ir.ui.view">
 		<field name="name">achievement.detail.view</field>
 		<field name="model">create_achievement.criteria</field>
 		<field name="arch" type="xml">
