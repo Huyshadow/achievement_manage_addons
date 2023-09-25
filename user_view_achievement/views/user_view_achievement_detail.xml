@@ -5,7 +5,6 @@
 		<field name="model">create_achievement.criteria</field>
 		<field name="arch" type="xml">
 		  	<search>
-			<!-- <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' /> -->
 				<group string="Group Criteria, then Type">
 					<filter string="Group Criteria" name="group_criteria" context="{'group_by': 'group_criteria'}"/>
 					<filter string="Type" name="category" context="{'group_by': 'category'}"/>
@@ -19,7 +18,6 @@
 		<field name="model">create_achievement.criteria</field>
 		<field name="arch" type="xml">
 		  	<tree>
-			<!-- <field name="name_title" style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;" readonly='1' /> -->
 				<field name="name"/>
 				<field name="content"/>
 				<field name="note"/>
