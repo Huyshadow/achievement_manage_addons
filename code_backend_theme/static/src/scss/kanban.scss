@@ -1,0 +1,6 @@
+.o_kanban_card_header {
+    border-radius: 10px 10px 0 0;
+}
+.o_kanban_dashboard:not(.o_legacy_kanban_view) .o_kanban_record > div {
+    border-radius: 10px;
+}

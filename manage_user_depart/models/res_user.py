@@ -10,17 +10,16 @@ class User(models.Model):
         ('nam', 'Nam'),
         ('nu', 'Nữ'),
         ('khac', 'Khác')
-    ], default="nam", string="Giới tính")
-    sdt = fields.Char(string="Điện thoại", required=True)
-    birthday = fields.Datetime(string="Ngày sinh")
-    cmnd_cccd = fields.Char(string="CMND/CCCD")
-    dantoc = fields.Char(string="Dân tộc")
-    tongiao = fields.Char(string="Tôn Giáo")
-    quequan = fields.Char(string="Quê quán")
-    thuongtru = fields.Char(string="Thường trú")
-    donvi = fields.Many2one('manage_user_depart.department',
-                            string="Đơn vị", required=True)
-    nghenghiep = fields.Char(string="Nghề nghiệp")
+    ], default="nam"  ,string = "Giới tính" , nonull= "1")
+    sdt =  fields.Char(string = "Điện thoại",required=True)
+    birthday = fields.Datetime(string = "Ngày sinh")
+    cmnd_cccd = fields.Char(string = "CMND/CCCD")
+    dantoc = fields.Char(string = "Dân tộc")
+    tongiao = fields.Char(string = "Tôn Giáo")
+    quequan = fields.Char(string = "Quê quán")
+    thuongtru = fields.Char(string = "Thường trú")
+    donvi = fields.Many2one('manage_user_depart.department',string = "Đơn vị",required=True)
+    nghenghiep = fields.Char(string = "Nghề nghiệp")
 
     @api.model
     def create(self, vals):

@@ -1,3 +1,5 @@
+$o-navbar-height: 80px;
+
 .o_form_statusbar{
   .o_statusbar_buttons{
   .btn{
@@ -363,4 +365,12 @@ background-color: #3d9bbb;
 .o-form-buttonbox{
     margin-left:-15px;
     margin-right:-15px;
+}
+.o_main_navbar {
+  --o-navbar-height: 87px;
+}
+.fa-lg {
+  font-size: 2.0em;
+  vertical-align: -6%;
+  margin-left: 20px;
 }

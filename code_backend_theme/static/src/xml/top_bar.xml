@@ -89,15 +89,25 @@
                     </div>
 
 
-
                     <ul class="sidebar_menu">
                         <t t-foreach="menuService.getApps()" t-as="app" t-key="app_index">
-                            <t t-if="app_index == 1">
-                                <h6 class="sidebar_head">MENU</h6>
+                            <t t-if="app.name == 'Đề cử danh hiệu/giải thưởng'">
+                                <h6 class="sidebar_head">
+                                      Dịch vụ cung cấp
+                                </h6>
                             </t>
-                            <li
-                                t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and app.name != 'Apps' and  app.name != 'Ứng dụng' "
-                                data-toggle="tooltip" data-placement="right" t-att-title="app.name">
+                            <t t-if="app.name == 'Quản lý đơn vị'">
+                                <h6 class="sidebar_head">
+                                      Quản lý Hệ thống
+                                </h6>
+                            </t>
+                            <t t-if="app.name == 'Quản lý Danh hiệu/Giải thưởng'">
+                                <h6 class="sidebar_head">
+                                      Quản lý Danh hiệu
+                                </h6>
+                            </t>
+                            
+                            <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and  app.name != 'Ứng dụng' and  app.name != 'Apps'" data-toggle="tooltip" data-placement="right" t-att-title="app.name">
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">
@@ -109,6 +119,10 @@
                                  </a>
                             </li>
                         </t>
+                        
+                        <record id="groups_menu" model="res.groups">
+                            <field name="name"/>    
+                        </record>
                     </ul>
                 </div>
         </div>

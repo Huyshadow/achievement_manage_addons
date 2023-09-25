@@ -4,7 +4,8 @@
   src: url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 }
 body {
-  font-family: "OpenSan", sans-serif !important;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+  
   background-color: #f8f8fb;
 }
 a {
@@ -58,8 +59,9 @@ a.btn {
   margin-bottom: 0 !important;
 }
 .top_heading > a {
-  margin-left: 10px;
-  font-size: 20px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  font-size: 2.0rem !important;
   font-weight: bold;
 }
 .top_heading li {
@@ -1664,6 +1666,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   }
   .sidebar_panel .sidebar .sidebar_logo {
     padding-top: 20px;
+    // background-color: ;
     text-align: center;
     padding-bottom: 5px;
   }

@@ -1,8 +1,21 @@
+// add new
+.bar_menu {
+    height: 10px !important;
+    color:#ffffff;
+}
+.sidebar_app_name{
+    font-size:1.1rem;
+    font-weight: 400;
+}
+
+
+// inherit
+
 #sidebar_panel {
     height: calc(100% - 0%);
 	position: fixed;
     top: 0px;
-    background-color: #2a3042;
+    background-color: #3c4b64;
     display: none ;
     width: 256px;
     overflow-y: scroll;
@@ -17,7 +30,7 @@
     padding: 0;
     white-space: nowrap;
     padding-bottom: 20px;
-    padding-top: 5px;
+    padding-top: 0px;
 }
 .sidebar_panel .sidebar_close {
     text-align: end;
@@ -41,6 +54,7 @@
 .sidebar_panel .sidebar .sidebar_logo {
     padding-top: 20px;
     text-align: center;
+    background-color: rgba(0,0,21,.2);
     padding-bottom: 20px;
 }
 .sidebar_panel .sidebar .sidebar_logo img {
@@ -51,7 +65,9 @@
     padding-top: 20px;
     padding-left: 15px;
     color: #6a7187;
-    font-size: 14px;
+    font-size: 1.25 rem;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .sidebar_panel .sidebar .sidebar_menu {
@@ -73,7 +89,7 @@
     display: block;
     cursor: pointer;
     overflow: hidden;
-    padding: 8px 10px 8px 25px;
+    padding: 18px 10px 18px 25px;
     color: #ffffff;
     font-size: 13px;
     transition:.3s all;
@@ -83,12 +99,13 @@
     color: #fff;
 }
 .sidebar_panel .nav-link {
-	opacity: .5;
+	opacity: .8;
     transition:.3s all;
 }
 .sidebar_panel .sidebar a.nav-link.active {
     color: #fff !important;
-	opacity: 1;
+	opacity: 0.5;
+    background-color: rgba(200,200,201,.2);
 }
 
 .sidebar_panel .sidebar .sidebar_menu li a .sidebar_img {
