@@ -26,7 +26,7 @@
         <field name="priority">0</field>
         <field name="arch" type="xml" >
 
-            <form class="custom-form oe_form_center" string="Users" style=" align-items: center;">
+            <form class="custom-form oe_form_center" string="Users">
                 <sheet style="width: 824px;">
                     <field name="id"  invisible="1"/>
                     <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}" role="alert">
