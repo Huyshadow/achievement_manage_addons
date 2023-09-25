@@ -32,12 +32,12 @@ class Criteria(models.Model):
 		('>=', '>='),
 		('>= or <=', '>= or <='),
 		('>= and <=', '>= and <='),
-	], default='', string="Dấu", required=True)
+	], default='', string="Dấu")
 	point = fields.Float(default=0)
 	lower_point = fields.Float(
-		default=0, required=True, string="Khoảng cận dưới")
+		default=0, string="Khoảng cận dưới")
 	upper_point = fields.Float(
-		default=0, required=True, string="Khoảng cận trên")
+		default=0, string="Khoảng cận trên")
 	deleteAt = fields.Datetime()
 
 	category = fields.Char(string="Phân loại tiêu chí", compute="_compute_category", store=True)    

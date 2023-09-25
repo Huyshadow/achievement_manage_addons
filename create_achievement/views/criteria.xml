@@ -15,15 +15,15 @@
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />s <field name="evidence"
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
                 <field name="sign"
-                     attrs="{'invisible': [('method', '!=', 'thangdiem')]}" />
+                     attrs="{'invisible': [('method', '!=', 'thangdiem')], 'required':[('method', '==', 'thangdiem')]}" />
                 <field
-                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thangdiem')]}" />
+                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thangdiem')], 'required':[('method', '==', 'thangdiem')]}" />
                 <field
                      name="upper_point"
-                     attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')]}" />
+                     attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')], 'required':[('method', '==', 'thangdiem')]}" />
                 <field
                      name="value_list_string"
-                     attrs="{'invisible': [('method', '!=', 'danhsach')]}" />
+                     attrs="{'invisible': [('method', '!=', 'danhsach')], 'required':[('method', '==', 'danhsach')]}" />
                 <field name="content"
                      attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
                 <field
