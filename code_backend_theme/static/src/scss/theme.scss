@@ -4,8 +4,10 @@
   src: url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 }
 body {
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
-  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+
   background-color: #f8f8fb;
 }
 a {
@@ -61,7 +63,7 @@ a.btn {
 .top_heading > a {
   margin-left: 20px;
   margin-bottom: 5px;
-  font-size: 2.0rem !important;
+  font-size: 2rem !important;
   font-weight: bold;
 }
 .top_heading li {
@@ -188,6 +190,9 @@ button[aria-pressed="true"] {
 }
 .o_form_view .o_form_label {
   font-weight: bold !important;
+}
+.o_input {
+  font-size: 1.08333333rem !important;
 }
 //Top Bar End
 
@@ -859,20 +864,20 @@ input {
   -moz-appearance: none;
   appearance: none;
   -webkit-transition: border-color 0.15s ease-in-out,
-  -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out,
-  -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
-  -webkit-box-shadow 0.15s ease-in-out;
-  
-  // 
+    -webkit-box-shadow 0.15s ease-in-out;
+
+  //
 }
 // .input-focused {
-  //     background-color: #00ff00;
-  // }
-  textarea {
-    display: block;
+//     background-color: #00ff00;
+// }
+textarea {
+  display: block;
   width: 100%;
   //height: 40px !important;
   // padding: 10px 20px;
@@ -888,44 +893,45 @@ input {
   appearance: none;
   border-radius: 0.5rem;
   -webkit-transition: border-color 0.15s ease-in-out,
-  -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out,
-  -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
-    
-  }
-  select {
-    width: 100%;
-    // height: 40px !important;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    // border: 1px solid #ced4da !important;
-    border-radius: 0.5rem;
-    -webkit-transition: border-color 0.15s ease-in-out,
+}
+select {
+  width: 100%;
+  // height: 40px !important;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  // border: 1px solid #ced4da !important;
+  border-radius: 0.5rem;
+  -webkit-transition: border-color 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out,
+  transition: border-color 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
-    // margin-bottom: 10px !important;
-  }
-  input , textarea , select {
-    border-radius: 0.5rem;
-    border: 1px solid rgba(35, 178, 255, 1);
-    box-shadow: 0 0 0 3px rgba(168, 178, 255, 0.4) ;
-    transition: box-shadow 0.8s;
-  }   
-  .o_field_widget .o_input_dropdown .o_dropdown_button {
-    position: absolute;
-    top: 6px;
+  // margin-bottom: 10px !important;
+}
+input,
+textarea,
+select {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(35, 178, 255, 1);
+  box-shadow: 0 0 0 3px rgba(168, 178, 255, 0.4);
+  transition: box-shadow 0.8s;
+}
+.o_field_widget .o_input_dropdown .o_dropdown_button {
+  position: absolute;
+  top: 6px;
   left: auto;
   bottom: auto;
   right: 9px;
@@ -1724,7 +1730,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   }
   .o_form_view .o_form_sheet_bg > .o_form_sheet {
     min-width: auto;
-    max-width: 824px !important;  
+    max-width: 824px !important;
   }
   .nav-tabs .nav-link {
     padding: 8px;
@@ -1789,4 +1795,10 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 }
 .o_facet_values {
   border: none !important;
+}
+.o_MessagingMenu_toggler .dropdown-toggle .o-no-caret .o-dropdown--narrow {
+  visibility: hidden !important;
+}
+.fa .fa-lg .fa-clock-o {
+  visibility: hidden !important;
 }
