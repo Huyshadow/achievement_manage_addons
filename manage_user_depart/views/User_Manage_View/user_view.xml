@@ -38,6 +38,8 @@
               <field name="canhan_email" />
               <label for="mssv_mscb" />
               <field name="mssv_mscb" />
+              <label for="donvi" string="Đơn vị" />
+              <field name="donvi" />
             </div>
             <group string="Thông tin cá nhân" style="font-size: 25px;">
             </group>
@@ -61,10 +63,11 @@
               </group>
             </group>
             <group string="Liên lạc" style="font-size: 25px;">
-              <field name="quequan" />
-              <field name="thuongtru" />
+              <field name="province" placeholder="Tỉnh/thành" />
+              <field name="district" placeholder="Quận/huyện" />
+              <field name="ward" placeholder="Phường/ấp" />
+              <field name="thuongtru" placeholder="Địa chỉ thường trú" />
               <field name="sdt" widget="phone" />
-              <field name="donvi" />
             </group>
 
             <group string="Quyền truy cập" style="font-size: 25px;"
@@ -73,6 +76,11 @@
                 widget="many2many_checkboxes"
                 domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
             </group>
+            <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
+              <button style="width:64px" name="save_success" type="object" string="Lưu"
+                class="oe_highlight" />
+              <button style="width:64px" string="Hủy" special="cancel" />
+            </div>
           </sheet>
         </form>
       </field>

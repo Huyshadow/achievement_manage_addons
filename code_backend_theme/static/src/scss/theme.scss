@@ -618,7 +618,7 @@ th.o_list_record_selector {
 .o_form_view .o_form_sheet_bg > .o_form_sheet {
   min-width: 650px;
   max-width: 100%;
-  min-height: 330px;
+  min-height: 256px;
   border: 1px solid #c8c8d3;
   box-shadow: none !important;
   background: white;
@@ -1800,5 +1800,8 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   visibility: hidden !important;
 }
 .o_ActivityMenuView {
+  visibility: hidden !important;
+}
+.o_cp_top_left {
   visibility: hidden !important;
 }
