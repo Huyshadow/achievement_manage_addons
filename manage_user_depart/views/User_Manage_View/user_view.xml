@@ -64,8 +64,8 @@
             </group>
             <group string="Liên lạc" style="font-size: 25px;">
               <field name="province" placeholder="Tỉnh/thành" />
-              <field name="district" placeholder="Quận/huyện" />
-              <field name="ward" placeholder="Phường/ấp" />
+              <field name="district" placeholder="Quận/huyện" domain="[('province_id','=',province)]"/>
+              <field name="ward" placeholder="Phường/ấp" domain="[('district_id','=',district)]"/>
               <field name="thuongtru" placeholder="Địa chỉ thường trú" />
               <field name="sdt" widget="phone" />
             </group>
