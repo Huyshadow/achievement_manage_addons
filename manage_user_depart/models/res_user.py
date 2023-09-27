@@ -32,25 +32,26 @@ class User(models.Model):
         return options
     # ------------------------------------------------
     district = fields.Char(
-        string='Quận/huyện'
+        string='Quận/huyện', selection='_get_district'
     )
     ward = fields.Char(
         string='Phường/ấp'
     )
     thuongtru = fields.Char(string="Địa chỉ thường trú")
-    # @api.onchange('province')
-    # def _get_district(self):
-    #     if self.province != "":
-    #         file_path = "/opt/odoo/achievement_manage_addons/manage_user_depart/data/district.json"
-    #         with open(file_path, 'r') as file:
-    #             data = json.load(file)
-    #             options = []
-    #             for item in data:
-    #                 if item['province_code'] == self.province:
-    #                     options.append((item['code'], item['name']))
-    #         return options
-    #     else:
-    #         return []
+
+    @api.depends('province')
+    def _get_district(self):
+        if self.province != "":
+            file_path = "/opt/odoo/achievement_manage_addons/manage_user_depart/data/district.json"
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+                options = []
+                for item in data:
+                    if item['province_code'] == self.province:
+                        options.append((item['code'], item['name']))
+            return options
+        else:
+            return []
 
     # -----------------------------------------------
     # @api.model

@@ -122,3 +122,16 @@ class Achievement(models.Model):
         for record in records:
             self.browse(record['id']).write({'last_updated': access_time})
         return records
+
+    def save_and_redirect(self):
+        return {
+            'name': 'Danh sách danh hiệu/giải thưởng',
+            'res_model': 'create_achievement.achievement',
+            'view_mode': 'tree,form',
+            'view_type': 'tree',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'context': {
+                'create': True,
+            }
+        }

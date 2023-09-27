@@ -20,21 +20,16 @@
     </record>
 
     <record model="ir.ui.view" id="manage_user_depart.form_depart">
-      <field name="name">manage_user_depart form</field>
+      <field name="name">manage_user_depart.form</field>
       <field name="model">manage_user_depart.department</field>
       <field name="arch" type="xml">
         <form>
-          <script>
-            $(document).ready(function(){
-            $(".o_form_status_indicator .d-md-flex .ms-md-1").hide();
-            });
-          </script>
           <sheet style="width: 800px; " align="top">
             <group string="Chi tiết đơn vị" style="font-size:25px">
               <field name="name" string="Tên đơn vị" required="1" />
             </group>
             <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
-              <button name="nothing" type="object" string="Lưu" class="oe_highlight" />
+              <button name="save_and_redirect" type="object" string="Lưu" class="oe_highlight" />
               <button string="Hủy" special="cancel" />
             </div>
           </sheet>
