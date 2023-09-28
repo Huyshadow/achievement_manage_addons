@@ -16,4 +16,5 @@ class Achievement(models.Model):
             'flags': {'hasSelectors': False},
             'domain': [('achievement_id', '=', self.id)],
             'context': {'search_default_group_criteria': True, 'search_default_category': True},
+
         }

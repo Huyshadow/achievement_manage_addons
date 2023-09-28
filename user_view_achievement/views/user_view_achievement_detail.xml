@@ -19,7 +19,8 @@
 		<field name="name">achievement.detail.view</field>
 		<field name="model">create_achievement.criteria</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" edit="false">
+			<tree create="false" export_xlsx="false" delete='false' edit="false"
+				js_class="disappear_check_box">
 				<field name="name" />
 				<field name="content" />
 				<field name="note" />

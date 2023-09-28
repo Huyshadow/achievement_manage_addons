@@ -30,7 +30,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'manage_user_depart/static/src/scss/heightbox.scss'
+            'manage_user_depart/static/src/scss/heightbox.scss',
         ],
         # 'web.assets_frontend': [
         #     'manage_user_depart/static/src/scss/heightbox.scss'

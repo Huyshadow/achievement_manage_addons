@@ -1815,3 +1815,12 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .fa-bug:before {
   visibility: hidden !important;
 }
+.o_legacy_list_view .o_list_table tbody > tr.o_group_header .o_group_name {
+  font-size: 18px !important;
+}
+.o_legacy_list_view tbody > tr.o_group_header {
+  background-image: linear-gradient(to bottom, #f8f9fa, #ededed) !important;
+}
+.o_searchview .o_searchview_facet {
+  display: none;
+}
