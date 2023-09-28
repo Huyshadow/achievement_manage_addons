@@ -26,6 +26,7 @@ class User(models.Model):
     donvi = fields.Many2one('manage_user_depart.department',
                             string="Đơn vị", required=True)
     nghenghiep = fields.Char(string="Nghề nghiệp")
+    tenduong_sonha = fields.Char(string="Tên đường/Số nhà")
 
     @api.model
     def create(self, vals):
