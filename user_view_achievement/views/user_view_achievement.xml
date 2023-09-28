@@ -4,7 +4,8 @@
         <field name="name">user.view.achievement.kanban.inherit</field>
         <field name="model">create_achievement.achievement</field>
         <field name="arch" type="xml">
-            <kanban class="oe_background_grey o_kanban_dashboard o_hr_recruitment_kanban">
+            <kanban create="false"
+                class="oe_background_grey o_kanban_dashboard o_hr_recruitment_kanban">
                 <field name="name" />
                 <field name="start_at" />
                 <field name="end_at" />
