@@ -19,7 +19,7 @@
 		<field name="name">achievement.detail.view</field>
 		<field name="model">create_achievement.criteria</field>
 		<field name="arch" type="xml">
-			<tree>
+			<tree create="false" edit="false" delete="false" editable="bottom">
 				<field name="name" />
 				<field name="content" />
 				<field name="note" />

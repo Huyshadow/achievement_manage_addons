@@ -19,45 +19,9 @@ class User(models.Model):
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
     tongiao = fields.Char(string="Tôn Giáo")
-    # ------------------------------------------------
-    province = fields.Selection(
-        string='Tỉnh/thành', selection='_get_selection_options', default="")
-
-    @api.model
-    def _get_selection_options(self):
-        file_path = "/opt/odoo/achievement_manage_addons/manage_user_depart/data/province.json"
-        with open(file_path, 'r') as file:
-            data = json.load(file)
-            options = [(item['code'], item['name']) for item in data]
-        return options
-    # ------------------------------------------------
-    district = fields.Char(
-        string='Quận/huyện', selection='_get_district'
-    )
-    ward = fields.Char(
-        string='Phường/ấp'
-    )
-    thuongtru = fields.Char(string="Địa chỉ thường trú")
-
-    @api.depends('province')
-    def _get_district(self):
-        if self.province != "":
-            file_path = "/opt/odoo/achievement_manage_addons/manage_user_depart/data/district.json"
-            with open(file_path, 'r') as file:
-                data = json.load(file)
-                options = []
-                for item in data:
-                    if item['province_code'] == self.province:
-                        options.append((item['code'], item['name']))
-            return options
-        else:
-            return []
-
-    # -----------------------------------------------
-    # @api.model
-    # def _get_ward(self):
-    #     return
-
+    province = fields.Many2one('user.province.info',  string='Tinh/Thanh')
+    district = fields.Many2one('user.district.info', string='Quận/Huyện')
+    ward = fields.Many2one('user.ward.info', string='Phường')
     thuongtru = fields.Char(string="Địa chỉ thường trú")
     donvi = fields.Many2one('manage_user_depart.department',
                             string="Đơn vị", required=True)

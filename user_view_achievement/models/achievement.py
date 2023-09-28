@@ -9,7 +9,7 @@ class Achievement(models.Model):
             'name': self.name,
             'type': 'ir.actions.act_window',
             'view_mode': 'tree',
-            'view_id': self.env.ref('user_view_achievement.view_achievement_detail_user_order').id,
+            'view_id': self.env.ref('user_view_achievement.view_achievement_detail_user').id,
             'res_model': 'create_achievement.criteria',
             'res_id': self.id,
             'target': 'current',
