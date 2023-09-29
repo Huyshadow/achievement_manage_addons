@@ -19,7 +19,7 @@ class User(models.Model):
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
     tongiao = fields.Char(string="Tôn Giáo")
-    province = fields.Many2one('user.province.info',  string='Tinh/Thanh')
+    province = fields.Many2one('user.province.info',  string='Tinh/Thành')
     district = fields.Many2one('user.district.info', string='Quận/Huyện')
     ward = fields.Many2one('user.ward.info', string='Phường')
     thuongtru = fields.Char(string="Địa chỉ thường trú")
