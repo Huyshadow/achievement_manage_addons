@@ -4,8 +4,8 @@ from odoo import models, fields, api
 class AchivementCriteria(models.Model):
     _inherit = 'create_achievement.criteria'
 
-    submit_ids = fields.One2many('achievement.submit', 'criteria_id', 'Submissions')
-    is_submitted = fields.Boolean('Is Submitted?', compute='_compute_is_submitted')
+    submit_ids = fields.One2many('achievement.submit', 'criteria_id', 'Bản nộp')
+    is_submitted = fields.Boolean('Xác nhận nộp', compute='_compute_is_submitted')
 
     @api.depends('submit_ids')
     def _compute_is_submitted(self):
@@ -19,7 +19,7 @@ class AchivementCriteria(models.Model):
         self.ensure_one()
         form_id = self.env.ref('user_view_achievement.achievement_submit_view_form').id
         action = {
-            'name': 'My Submission',
+            'name': 'Nộp chỉ tiêu',
             'type': 'ir.actions.act_window',
             'view_mode': 'form',
             'view_id': form_id,

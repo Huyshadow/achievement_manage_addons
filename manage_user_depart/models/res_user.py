@@ -30,7 +30,6 @@ class User(models.Model):
 
     @api.model
     def create(self, vals):
-        print('check')
         vals['lang'] = 'vi_VN'
         return super(User, self).create(vals)
 

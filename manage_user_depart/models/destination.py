@@ -41,7 +41,6 @@ class UserWardInfo(models.Model):
 
     @api.model
     def import_location_data(self):
-        print("Starting import_location_data function haha")
         response = requests.get("https://provinces.open-api.vn/api/p/")
         response.raise_for_status()
         province_datas = response.json()
