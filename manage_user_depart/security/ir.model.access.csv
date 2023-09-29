@@ -4,3 +4,4 @@ manage_user_depart.access_users,access_users,manage_user_depart.model_res_users,
 manage_user_depart.access_user_province_info,access_user_province_info,manage_user_depart.model_user_province_info,base.group_user,1,1,1,1
 manage_user_depart.access_user_district_info,access_user_district_info,manage_user_depart.model_user_district_info,base.group_user,1,1,1,1
 manage_user_depart.access_user_ward_info,access_user_ward_info,manage_user_depart.model_user_ward_info,base.group_user,1,1,1,1
+manage_user_depart.access_display_dialog_box,access_display_dialog_box,manage_user_depart.model_display_dialog_box,base.group_user,1,0,0,0

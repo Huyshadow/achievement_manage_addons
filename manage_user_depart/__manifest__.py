@@ -27,6 +27,7 @@
         'data/department_sequence.xml',
         'views/Department_Manage_View/department_view.xml',
         'views/User_Manage_View/user_view.xml',
+        'views/message_dialog.xml'
     ],
     'assets': {
         'web.assets_backend': [

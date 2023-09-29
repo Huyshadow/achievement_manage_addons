@@ -1,0 +1,25 @@
+<odoo>
+    <record id="wizard_message_form" model="ir.ui.view">
+        <field name="name">message_box</field>
+        <field name="model">display.dialog.box</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Thông báo" style="font-size: 32px">
+                <field style="font-weight: 400; font-size: 20px" name="text" nolabel="1"
+                    readonly="1"
+                    widget="html" />
+                <newline />
+                <footer style="justify-content:flex-end;">
+                    <button special="cancel" string="OK" style="font-weight:bold;" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_message_action" model="ir.actions.act_window">
+        <field name="name">You Dialog Box Action Name</field>
+        <field name="res_model">display.dialog.box</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
