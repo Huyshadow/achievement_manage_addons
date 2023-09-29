@@ -5,7 +5,7 @@ import os
 
 
 class User(models.Model):
-    _inherit = 'res.users'
+	_inherit = 'res.users'
 
     mssv_mscb = fields.Char(string="MSSV/MSCB", required=True)
     canhan_email = fields.Char(string="Email cá nhân", required=True)

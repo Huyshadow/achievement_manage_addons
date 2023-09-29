@@ -76,6 +76,7 @@
         <field name="name">Danh sách danh hiệu/ giải thưởng</field>
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">kanban</field>
+        <field name="domain">[('status', '=', 'Đang tiến hành')]</field>
     </record>
 
 </odoo>
