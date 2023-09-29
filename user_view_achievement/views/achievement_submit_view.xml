@@ -13,7 +13,8 @@
                 <field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}"/>
                 <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}"/>
                 <field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}"/>
-                <field name="evidence"/>                
+                <field name="evidence" filename="pdf_name" widget="binary" options ="{'accepted_file_extensions':'.pdf'}"/>       
+                <field name="pdf_name" invisible="1"/>         
               </group>
             </sheet>
            </form>

@@ -7,6 +7,7 @@
         <tree>
           <field name="name" />
           <field name="mssv_mscb" />
+          <field name="is_fill_info" />
         </tree>
       </field>
     </record>
