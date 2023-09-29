@@ -6,7 +6,7 @@
                     onsubmit="this.action = '/web/login' + location.hash">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
                     <div style="display: flex; justify-content:center;">
-                        <em>- Nếu bạn là quản lý - </em>
+                        - Nếu bạn là quản lý - 
                     </div>
                     <div class="mb-3 field-login">
                         <label for="login" class="form-label">Tài Khoản</label>
