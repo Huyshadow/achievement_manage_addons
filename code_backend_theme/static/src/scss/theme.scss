@@ -1041,7 +1041,7 @@ select {
   border-radius: 5px;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
-  background-color: #f8f8fb;
+  background-color: transparent; 
 }
 .o_action {
   background: #f8f8fb;
@@ -1051,7 +1051,7 @@ select {
 //kanban_view starts
 .o_kanban_view {
   border-radius: 5px;
-  background: #fff;
+  // background: #fff;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
 }
