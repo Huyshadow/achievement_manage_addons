@@ -39,7 +39,7 @@
               <label for="mssv_mscb" />
               <field name="mssv_mscb" />
               <label for="donvi" string="Đơn vị" />
-              <field name="donvi" />
+              <field name="donvi" widget = "selection"/>
             </div>
             <group string="Thông tin cá nhân" style="font-size: 25px;">
             </group>

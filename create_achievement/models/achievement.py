@@ -36,7 +36,7 @@ class Achievement(models.Model):
     last_updated = fields.Datetime(
         default=fields.Datetime.now())
     status = fields.Char(
-        string="Tình Trạng", compute='_compute_status')
+        string="Tình Trạng", compute='_compute_status', store=True)
 
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
 
