@@ -79,7 +79,7 @@ body:not(.o_touch_device) .o_field_selection {
 }
 
 .o_horizontal_separator {
-  color: #556ee6 !important;
+  color: #0E21A0!important;
 }
 
 .text-900 {
@@ -98,4 +98,9 @@ body:not(.o_touch_device) .o_field_selection {
 }
 .o_form_view .image_80 .o_form_label{
   margin-left: 80%;
+
+}
+
+.o_form_view .cusform .o_horizontal_separator:not(:empty){
+  box-shadow: 0 10px 0 #e6e6e6; 
 }
