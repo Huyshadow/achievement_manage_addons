@@ -27,6 +27,15 @@ class User(models.Model):
                             string="Đơn vị", required=True)
     nghenghiep = fields.Char(string="Nghề nghiệp")
     tenduong_sonha = fields.Char(string="Tên đường/Số nhà")
+    is_fill_info = fields.Boolean(string = "Đã cập nhập thông tin?", compute='_check_fill_info', store = True)
+
+	@api.depends('mssv_mscb','canhan_email','sdt','donvi')
+	def _check_fill_info(self):
+		for record in self:
+			if record.mssv_mscb and record.canhan_email and record.sdt and record.donvi:
+				is_fill_info = True
+			else:
+				is_fill_info = False
 
     @api.model
     def create(self, vals):

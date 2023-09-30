@@ -56,20 +56,20 @@ class Achievement(models.Model):
                 if (record.last_updated > record.end_at):
                     record.status = "Đã kết thúc"
 
-    # @api.constrains('start_at')
-    # def _check_start_time(self):
-    #     for record in self:
-    #         tz = timezone('Asia/Bangkok')
-    #         future_date = record.create_date + timedelta(days=1)
-    #         default_time = time(hour=0, minute=0, second=0)
-    #         naive_datetime = datetime.combine(future_date, default_time)
-    #         local_datetime = tz.localize(naive_datetime)
-    #         utc_datetime = local_datetime.astimezone(timezone('UTC'))
-    #         check_time = utc_datetime.replace(tzinfo=None)
-    #         print(check_time)
-    #         if record.start_at < check_time:
-    #             raise ValidationError(
-    #                 "Thời gian bắt đầu phải hơn 1 ngày kể từ khi được tạo")
+    @api.constrains('start_at')
+    def _check_start_time(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')
+            future_date = record.create_date + timedelta(days=1)
+            default_time = time(hour=0, minute=0, second=0)
+            naive_datetime = datetime.combine(future_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            check_time = utc_datetime.replace(tzinfo=None)
+            print(check_time)
+            if record.start_at < check_time:
+                raise ValidationError(
+                    "Thời gian bắt đầu phải hơn 1 ngày kể từ khi được tạo")
 
     @api.constrains('start_at', 'end_at', 'end_submit_at')
     def _check_fields(self):
