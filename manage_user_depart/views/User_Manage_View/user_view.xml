@@ -35,7 +35,7 @@
               </div>
               <field name="image_1920" string="Ảnh 3x4" widget='image' class="oe_avatar"
                 options='{"zoom": false, "preview_image": "avatar_128" ,"placeholder" :"manage_user_depart,/static/src/img/3_4.png", "size": [300, 400]}'
-                style="padding-top: 3%; padding-right: 4%; border: 1px black; width: 300px; height: auto; " />
+                style="padding-top: 2%; padding-right: 22%; border: 1px black; width: 300px; height: auto; " />
               <div class="oe_title">
                 <group>
                   <group>
