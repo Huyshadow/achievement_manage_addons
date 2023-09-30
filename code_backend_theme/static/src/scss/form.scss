@@ -77,3 +77,25 @@ body:not(.o_touch_device) .o_field_selection {
       }
   }
 }
+
+.o_horizontal_separator {
+  color: #556ee6 !important;
+}
+
+.text-900 {
+  min-width: 120px !important;
+}
+
+.o_form_view .cusform .o_group .o_wrap_label .o_form_label {
+  margin-left: 20%;
+}
+.cusform .row {
+  --gutter-x:   0px;
+}
+
+.o_form_view .cusform .o_form_label{
+  margin-left: 20%;
+}
+.o_form_view .image_80 .o_form_label{
+  margin-left: 80%;
+}

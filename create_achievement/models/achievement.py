@@ -45,21 +45,6 @@ class Achievement(models.Model):
         for record in self:
             record.name_title = "Danh hiệu - " + record.name
 
-    def link_to_criteria(self):
-        action = self.env.ref(
-            "create_achievement.action_cr_group_criteria").sudo().read()[0]
-        action.update({
-            'name': "Danh sách tiêu chí",
-            'view_mode': 'tree,form',
-            'target': 'current',
-            'domain': [('parent_id', '=', self.id)],
-            'context': {
-                'create': True,
-                'default_parent_id': self.id,
-            },
-        })
-        return action
-
     @api.depends('last_updated', 'status')
     def _compute_status(self):
         for record in self:
@@ -137,3 +122,16 @@ class Achievement(models.Model):
         for record in records:
             self.browse(record['id']).write({'last_updated': access_time})
         return records
+
+    def save_and_redirect(self):
+        return {
+            'name': 'Danh sách danh hiệu/giải thưởng',
+            'res_model': 'create_achievement.achievement',
+            'view_mode': 'tree,form',
+            'view_type': 'tree',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'context': {
+                'create': True,
+            }
+        }

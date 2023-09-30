@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <record model="ir.ui.view" id="manage_user_depart.tree_user">
-      <field name="name">manage_user_depart tree</field>
+      <field name="name">manage_user_depart.tree</field>
       <field name="model">res.users</field>
       <field name="arch" type="xml">
         <tree>
@@ -13,95 +13,134 @@
 
 
     <record model="ir.ui.view" id="manage_user_depart.form_user">
-      <field name="name">manage_user_depart form</field>
+      <field name="name">manage_user_depart.form</field>
       <field name="model">res.users</field>
       <field name="priority">0</field>
       <field name="arch" type="xml">
 
-        <form class="custom-form oe_form_center" string="Users">
-          <sheet style="width: 824px;">
-            <field name="id" invisible="1" />
-            <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}"
-              role="alert">
-              You are inviting a new user.
-            </div>
-            <field name="avatar_128" invisible="1" />
-            <field name="image_1920" widget='image' class="oe_avatar"
-              options='{"zoom": true, "preview_image": "avatar_128" , "size": [150, 200]}'
-              style="padding-top: 10px; padding-right: 20px;" />
-            <div class="oe_title">
-              <div
-                style="text-align: center; background-color: white; padding-top: 10px;padding-bottom: 10px;padding-left: 10px;">
-                <h2 style="text-align: center; color: white;">
-                  <div id="randomColorDiv"
-                    style="border-radius: 1rem;  background-color: #279EFF ;padding-top: 10px;padding-bottom: 10px;">
-                    <field name="login" placeholder="e.g. dhqg@hcmut.edu.vn" readonly="1">
-                      <t t-esc="record.email.value" />
-                    </field>
-                  </div>
-                </h2>
+        <form class="custom-form oe_form_center" string="Users" style="align: center !important;">
+          <div class="cusform">
+            <sheet style="">
+              <group string="Thông tin tài khoản" style="font-size: 25px;">
+              </group>
+              <field name="id" invisible="1" />
+              <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}"
+                role="alert">
+                You are inviting a new user.
               </div>
+              <field name="avatar_128" invisible="1" />
+              <div class="image_80">
+                <label for="image_1920" string="Ảnh thẻ 3x4" />
+              </div>
+              <field name="image_1920" string="Ảnh 3x4" widget='image' class="oe_avatar"
+                options='{"zoom": true, "preview_image": "avatar_128" ,"placeholder" :"manage_user_depart,/static/src/img/3_4.png", "size": [180, 240]}'
+                style="padding-top: 1%; padding-right: 7%; border: 1px black;" />
+              <div class="oe_title">
+                <group>
+                  <group>
+                    <field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1"
+                      default_focus="1" />
+                  </group>
+                  <group>
+                    <field name="email" readonly="1" invisible="0" string="Tài khoản" />
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="mssv_mscb" />
+                  </group>
+                  <group>
+                    <field name="donvi" />
+                  </group>
+                </group>
+                <group string="Thông tin cá nhân" style="font-size: 25px;">
+                </group>
+                <group>
+                  <field name="gioi_tinh" string="Giới tính" />
+                </group>
+                <group>
+                  <group>
+                    <field name="dantoc" />
+                  </group>
+                  <group>
+                    <field name="tongiao" />
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="cmnd_cccd" />
+                  </group>
+                  <group>
+                    <field name="birthday" />
+                  </group>
+                </group>
+              </div>
+              <group string="Quê quán" style="font-size: 25px;">
+              </group>
+              <group>
 
-              <label for="name" string="Họ và Tên" />
-              <field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1"
-                default_focus="1" />
-              <field name="email" invisible="1" />
-              <label for="canhan_email" string="Email Cá nhân" />
-              <field name="canhan_email" />
-              <label for="mssv_mscb" />
-              <field name="mssv_mscb" />
-            </div>
-            <group string="Thông tin cá nhân" style="font-size: 25px;">
-            </group>
-            <group>
-              <field name="gioi_tinh" string="Giới tính" />
-            </group>
-            <group>
-              <group>
-                <field name="dantoc" />
-              </group>
-              <group>
-                <field name="tongiao" />
-              </group>
-            </group>
-            <group>
-              <group>
-                <field name="cmnd_cccd" />
-              </group>
-              <group>
-                <field name="birthday" />
-              </group>
-            </group>
-            <group string="Liên lạc" style="font-size: 25px;">
-              <field name="quequan" />
-              <field name="thuongtru" />
-              <field name="sdt" widget="phone" />
-              <field name="donvi" />
-            </group>
+                <group>
+                  <group>
+                    <field name="province" placeholder="Tỉnh/thành" widget="selection" />
+                  </group>
+                  <group>
+                    <field name="district" placeholder="Quận/huyện"
+                      domain="[('province_id','=',province)]" widget="selection" />
+                  </group>
+                </group>
+                <group>
+                  <group>
+                    <field name="ward" placeholder="Phường/ấp"
+                      domain="[('district_id','=',district)]"
+                      widget="selection" />
 
-            <group string="Quyền truy cập" style="font-size: 25px;"
-              groups="access_right_user.group_system_manager">
-              <field nolabel="0" name="groups_id" string="Vai trò" class="nocustom-form"
-                widget="many2many_checkboxes"
-                domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
-            </group>
-          </sheet>
+                  </group>
+                  <group>
+                    <field name="tenduong_sonha" />
+                  </group>
+                </group>
+              </group>
+
+
+              <group string="Liên lạc" style="font-size: 25px; --gutter-x: 0px;">
+              </group>
+              <group>
+                <group>
+                  <field name="thuongtru" placeholder="Địa chỉ thường trú" string="Thường trú" />
+                </group>
+                <group>
+                  <field name="sdt" widget="phone" />
+                </group>
+              </group>
+
+              <group>
+                <field name="canhan_email" />
+              </group>
+
+              <group string="Quyền truy cập" style="font-size: 25px;"
+                groups="access_right_user.group_system_manager">
+                <field nolabel="0" name="groups_id" string="Vai trò" class="nocustom-form"
+                  widget="many2many_checkboxes"
+                  domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
+              </group>
+              <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
+                <button style="width:64px" name="save_success" type="object" string="Lưu"
+                  class="oe_highlight" />
+                <button style="width:64px" string="Hủy" special="cancel" />
+              </div>
+            </sheet>
+          </div>
         </form>
       </field>
     </record>
-
     <record model="ir.actions.act_window" id="manage_user_depart.action_window_user">
       <field name="name">Danh sách người dùng</field>
       <field name="res_model">res.users</field>
       <field name="view_mode">tree,form</field>
     </record>
-
-
     <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root"
       action="manage_user_depart.action_window_user"
       web_icon="code_backend_theme,static/src/img/icons/Contacts.png"
       groups="access_right_user.group_system_manager" />
-
-
   </data>
 </odoo>

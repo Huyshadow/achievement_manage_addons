@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 
+
 class Achievement(models.Model):
     _inherit = 'create_achievement.achievement'
 
@@ -12,6 +13,8 @@ class Achievement(models.Model):
             'res_model': 'create_achievement.criteria',
             'res_id': self.id,
             'target': 'current',
-            'domain': [('achievement_id','=',self.id)],
+            'flags': {'hasSelectors': False},
+            'domain': [('achievement_id', '=', self.id)],
             'context': {'search_default_group_criteria': True, 'search_default_category': True},
+
         }
