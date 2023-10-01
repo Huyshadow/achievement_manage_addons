@@ -53,7 +53,7 @@
                     <field name="donvi" />
                   </group>
                 </group>
-                <group string="Thông tin cá nhân" style="font-size: 25px;">
+                <group string="Thông tin cá nhân - quê quán" style="font-size: 25px;">
                 </group>
                 <group>
                   <field name="gioi_tinh" string="Giới tính" />
@@ -77,7 +77,7 @@
                 </group>
 
 
-                <group string="Liên lạc" style="font-size: 25px; --gutter-x: 0px;">
+                <group string="Liên lạc - tạm trú" style="font-size: 25px;">
                 </group>
                 <group>
                   <group>
