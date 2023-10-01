@@ -114,6 +114,28 @@ class Achievement(models.Model):
             defaults['end_at'] = utc_datetime.replace(tzinfo=None)
         return defaults
 
+    @api.onchange('end_submit_at')
+    def set_time_end_submit_at(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = record.end_submit_at
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(current_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            record.end_submit_at = utc_datetime.replace(tzinfo=None)
+
+    @api.onchange('end_at')
+    def set_time_end_at(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = record.end_at
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(current_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            record.end_at = utc_datetime.replace(tzinfo=None)
+
     @api.model
     def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None):
         records = super(Achievement, self).search_read(

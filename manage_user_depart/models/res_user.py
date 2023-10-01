@@ -24,11 +24,12 @@ class User(models.Model):
     district = fields.Many2one('user.district.info', string='Huyện')
     ward = fields.Many2one('user.ward.info', string='Xã')
     tenduong_sonha = fields.Char(string="Tên đường/Số nhà")
-    # ------Contact-------
+    # ------Contact-----------
     province_contact = fields.Many2one('user.province.info',  string='Tỉnh')
     district_contact = fields.Many2one('user.district.info', string='Huyện')
     ward_contact = fields.Many2one('user.ward.info', string='Xã')
     tenduong_sonha_contact = fields.Char(string="Tên đường/Số nhà")
+    # -------------------------
     donvi = fields.Many2one('manage_user_depart.department',
                             string="Đơn vị", required=True)
     nghenghiep = fields.Char(string="Nghề nghiệp")

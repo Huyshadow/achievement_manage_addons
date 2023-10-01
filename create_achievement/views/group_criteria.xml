@@ -16,7 +16,7 @@
                         <field name="constrait_criterias" />
                      </group>
                   </page>
-                  <page name="option" string="Tiêu chí tự chọn">
+                  <page name="option" string="Tiêu chí khác">
                      <group>
                         <field name="option_criterias" />
                         <field name="option_constraint" />

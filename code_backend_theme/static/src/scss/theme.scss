@@ -928,7 +928,7 @@ select {
   border: 1px solid rgba(35, 178, 255, 1);
   box-shadow: 0 0 0 3px rgba(168, 178, 255, 0.4);
   transition: box-shadow 0.8s;
-  text-indent: .5em;
+  text-indent: 0.5em;
 }
 .o_field_widget .o_input_dropdown .o_dropdown_button {
   position: absolute;
@@ -1042,7 +1042,7 @@ select {
   border-radius: 5px;
   -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
   box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03) !important;
-  background-color: transparent; 
+  background-color: transparent;
 }
 .o_action {
   background: #f8f8fb;
@@ -1827,4 +1827,13 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 }
 .o_dialog .o_debug_manager .dropdown-toggle {
   display: none !important;
+}
+.o_legacy_list_view
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
+    .o_state_selection_cell
+  ) {
+  vertical-align: middle !important;
 }
