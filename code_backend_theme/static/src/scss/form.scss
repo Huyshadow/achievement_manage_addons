@@ -11,7 +11,7 @@
 body:not(.o_touch_device) .o_field_selection {
   &:not(:hover):not(:focus-within) {
       & select:not(:hover) {
-        box-shadow: none;
+        // box-shadow: none;
         border: 1px solid #ced4da ;
 
       }
@@ -33,7 +33,11 @@ body:not(.o_touch_device) .o_field_selection {
   &.o_input, .o_input{
     box-shadow: 0 0 0 3px rgba(255, 66, 104, 0.4) ;
   }
+  &.o_input , .o_input{
+    box-shadow: 0 0 0 3px rgba(255, 66, 104, 0.4) ;
+  }
 }
+
 
 .o_group {
   .o_td_label, .o_checkbox_optional_field > .o_form_label {

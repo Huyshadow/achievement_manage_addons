@@ -21,7 +21,8 @@ class AchievementSubmit(models.Model):
     comment = fields.Text(string='Tự nhận xét')
     evidence = fields.Binary(string='Minh Chứng(file .pdf)')
     pdf_name = fields.Char(string='Tên file pdf')
-
+    submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
+    
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:

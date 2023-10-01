@@ -40,9 +40,9 @@ class User(models.Model):
     def _check_fill_info(self):
         for record in self:
             if record.mssv_mscb and record.canhan_email and record.sdt and record.donvi:
-                is_fill_info = True
+                record.is_fill_info = True
             else:
-                is_fill_info = False
+                record.is_fill_info = False
 
     @api.model
     def create(self, vals):
