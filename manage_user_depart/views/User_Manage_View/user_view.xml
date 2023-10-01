@@ -19,7 +19,8 @@
       <field name="priority">0</field>
       <field name="arch" type="xml">
 
-        <form class="custom-form oe_form_center" string="Users" style="align: center !important;">
+        <form class="custom-form oe_form_center" string="Users" style="align: center !important;"
+          create="false" duplicate="false">
           <sheet style="">
             <div class="cusform" style="align: center !important;">
               <group string="Thông tin tài khoản" style="font-size: 25px;">
@@ -51,7 +52,7 @@
                     <field name="mssv_mscb" />
                   </group>
                   <group>
-                    <field name="donvi" />
+                    <field name="donvi" widget="selection" />
                   </group>
                 </group>
                 <group string="Thông tin cá nhân" style="font-size: 25px;">
@@ -61,10 +62,12 @@
                 </group>
                 <group>
                   <group>
-                    <field name="province" placeholder="Tỉnh/thành" widget="selection" />
-                    <field name="district" placeholder="Quận/huyện"
+                    <field name="province" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                      widget="selection" />
+                    <field name="district"
+                      placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
                       domain="[('province_id','=',province)]" widget="selection" />
-                    <field name="ward" placeholder="Phường/ấp"
+                    <field name="ward" placeholder="Xã/ Phường/ Thị trấn"
                       domain="[('district_id','=',district)]"
                       widget="selection" />
                     <field name="tenduong_sonha" />
@@ -90,7 +93,15 @@
                 </group>
 
                 <group>
-                  <field name="thuongtru" placeholder="Địa chỉ thường trú" string="Thường trú" />
+                  <field name="province_contact" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    widget="selection" />
+                  <field name="district_contact"
+                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                    domain="[('province_id','=',province_contact)]" widget="selection" />
+                  <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
+                    domain="[('district_id','=',district_contact)]"
+                    widget="selection" />
+                  <field name="tenduong_sonha_contact" />
                 </group>
               </div>
 
