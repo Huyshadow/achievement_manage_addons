@@ -7,6 +7,7 @@
         <tree>
           <field name="name" />
           <field name="mssv_mscb" />
+          <field name="donvi" />
           <field name="is_fill_info" />
         </tree>
       </field>
@@ -55,7 +56,8 @@
                     <field name="donvi" widget="selection" />
                   </group>
                 </group>
-                <group string="Thông tin cá nhân - quê quán" style="font-size: 25px; padding-bottom: 20px;">
+                <group string="Thông tin cá nhân - quê quán"
+                  style="font-size: 25px; padding-bottom: 20px;">
                 </group>
                 <group>
                   <field name="gioi_tinh" string="Giới tính" />
@@ -85,7 +87,8 @@
                 </group>
                 <group>
                   <group>
-                    <field name="province_contact" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    <field name="province_contact"
+                      placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
                       widget="selection" />
                     <field name="district_contact"
                       placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
@@ -93,11 +96,11 @@
                     <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
                       domain="[('district_id','=',district_contact)]"
                       widget="selection" />
-                      <field name="tenduong_sonha_contact" />
-                    </group>
-                    <group>
-                      <field name="canhan_email" string="Email" />
-                      <field name="sdt" widget="phone" />
+                    <field name="tenduong_sonha_contact" />
+                  </group>
+                  <group>
+                    <field name="canhan_email" string="Email" />
+                    <field name="sdt" widget="phone" />
                   </group>
                 </group>
 
@@ -111,7 +114,8 @@
                   widget="many2many_checkboxes"
                   domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
               </group>
-              <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px; margin-right: 8px;">
+              <div
+                style="display:flex; justify-content: end; gap:16px; margin-top: 8px; margin-right: 8px;">
                 <button style="width:64px" name="save_success" type="object" string="Lưu"
                   class="oe_highlight" />
                 <button style="width:64px" string="Hủy" special="cancel" />
