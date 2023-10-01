@@ -85,23 +85,23 @@
                 </group>
                 <group>
                   <group>
-                    <field name="canhan_email" string="Email" />
-                  </group>
-                  <group>
-                    <field name="sdt" widget="phone" />
+                    <field name="province_contact" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                      widget="selection" />
+                    <field name="district_contact"
+                      placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                      domain="[('province_id','=',province_contact)]" widget="selection" />
+                    <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
+                      domain="[('district_id','=',district_contact)]"
+                      widget="selection" />
+                      <field name="tenduong_sonha_contact" />
+                    </group>
+                    <group>
+                      <field name="canhan_email" string="Email" />
+                      <field name="sdt" widget="phone" />
                   </group>
                 </group>
 
                 <group>
-                  <field name="province_contact" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
-                    widget="selection" />
-                  <field name="district_contact"
-                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
-                    domain="[('province_id','=',province_contact)]" widget="selection" />
-                  <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
-                    domain="[('district_id','=',district_contact)]"
-                    widget="selection" />
-                  <field name="tenduong_sonha_contact" />
                 </group>
               </div>
 
@@ -111,7 +111,7 @@
                   widget="many2many_checkboxes"
                   domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
               </group>
-              <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;" groups="access_right_user.group_system_manager">
+              <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
                 <button style="width:64px" name="save_success" type="object" string="Lưu"
                   class="oe_highlight" />
                 <button style="width:64px" string="Hủy" special="cancel" />
