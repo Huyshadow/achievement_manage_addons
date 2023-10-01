@@ -928,6 +928,7 @@ select {
   border: 1px solid rgba(35, 178, 255, 1);
   box-shadow: 0 0 0 3px rgba(168, 178, 255, 0.4);
   transition: box-shadow 0.8s;
+  text-indent: .5em;
 }
 .o_field_widget .o_input_dropdown .o_dropdown_button {
   position: absolute;
