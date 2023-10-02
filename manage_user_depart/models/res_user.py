@@ -8,7 +8,8 @@ class User(models.Model):
     _inherit = 'res.users'
 
     mssv_mscb = fields.Char(string="MSSV/MSCB", required=True)
-    canhan_email = fields.Char(string="Email cá nhân", required=True)
+    canhan_email = fields.Char(
+        string="Email cá nhân", required=True)  # Field should delete
     gioi_tinh = fields.Selection([
         ('nam', 'Nam'),
         ('nu', 'Nữ'),

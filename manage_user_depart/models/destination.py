@@ -44,16 +44,17 @@ class UserWardInfo(models.Model):
         response = requests.get("https://provinces.open-api.vn/api/p/")
         response.raise_for_status()
         province_datas = response.json()
+        province_datas.sort(key=lambda x: x['name'])
 
         for province_data in province_datas:
             response = requests.get(
                 f"https://provinces.open-api.vn/api/p/{province_data['code']}?depth=3")
             response.raise_for_status()
             data = response.json()
+            data['districts'].sort(key=lambda x: x['name'])
             province_code = province_data['code']
             existing_province = self.env['user.province.info'].search(
                 [('code', '=', province_code)], limit=1)
-
             if not existing_province:
                 province = self.env['user.province.info'].create({
                     'name': province_data['name'],
@@ -70,6 +71,7 @@ class UserWardInfo(models.Model):
                         'codename': district_data['codename'],
                         'province_id': province.id,
                     })
+                    district_data['wards'].sort(key=lambda x: x['name'])
                     for ward_data in district_data['wards']:
                         self.env['user.ward.info'].create({
                             'name': ward_data['name'],

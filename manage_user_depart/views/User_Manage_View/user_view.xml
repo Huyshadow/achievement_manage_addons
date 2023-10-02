@@ -39,15 +39,35 @@
                 options='{"zoom": false, "preview_image": "avatar_128" ,"placeholder" :"manage_user_depart,/static/src/img/3_4.png", "size": [270, 360]}'
                 style="padding-top: 4%; padding-right: 18%; padding-left: 2%;  border: 1px black; width: 300px; height: auto; " />
               <div class="oe_title">
-                <group>
-                  <group>
+                <div
+                  style="
+                  display: grid; 
+                  grid-template-columns: 30% 30% 30%;
+                  gap: 5%; margin-bottom:16px;">
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="name" string="Họ và tên" />
                     <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
                       default_focus="1" />
-                  </group>
-                  <group>
-                    <field name="email" readonly="1" invisible="0" string="Tài khoản" />
-                  </group>
-                </group>
+                  </div>
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="email" string="Email" />
+                    <field name="email" readonly="1" invisible="0" string="Email" />
+                  </div>
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="sdt" string="Điện thoại" />
+                    <field name="sdt"
+                      widget="phone" />
+                  </div>
+                </div>
                 <group>
                   <group>
                     <field name="mssv_mscb" />
@@ -73,8 +93,7 @@
                   <div
                     style="
     display: grid;
-    grid-template-columns: 30% 62%;
-">
+    grid-template-columns: 30% 62%;">
 
                     <label for="gioi_tinh" string="Giới tính" />
                     <field name="gioi_tinh" string="Giới tính" />
@@ -119,20 +138,6 @@
                 </div>
                 <group string="Liên lạc - tạm trú" style="font-size: 25px;padding-bottom: 20px;">
                 </group>
-                <div
-                  style="display: grid; grid-template-columns: 45% 45%;
-    gap: 10%; margin-bottom:16px;">
-                  <div style="display: grid; grid-template-columns: 20% auto;">
-                    <label for="canhan_email" string="Email" />
-                    <field name="canhan_email"
-                      string="Email" />
-                  </div>
-                  <div style="display: grid; grid-template-columns: 20% auto;">
-                    <label for="sdt" string="Điện thoại" />
-                    <field name="sdt"
-                      widget="phone" />
-                  </div>
-                </div>
                 <div style="display: grid; grid-template-columns: 9% auto; margin-bottom: 8px">
                   <label for="tenduong_sonha_contact" string="Địa chỉ liên hệ" />
                   <field name="tenduong_sonha_contact"
