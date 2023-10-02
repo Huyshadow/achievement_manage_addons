@@ -68,14 +68,18 @@
                       widget="phone" />
                   </div>
                 </div>
-                <group>
-                  <group>
+                <div
+                  style="display: grid; grid-template-columns: 45% 45%;
+    gap: 10%; margin-bottom:16px;">
+                  <div style="display: grid; grid-template-columns: 20% auto; gap:2%;">
+                    <label for="mssv_mscb" string="MSSV/MSCB" />
                     <field name="mssv_mscb" />
-                  </group>
-                  <group>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="donvi" string="Đơn vị" />
                     <field name="donvi" widget="selection" />
-                  </group>
-                </group>
+                  </div>
+                </div>
                 <group string="Thông tin cá nhân"
                   style="font-size: 25px; padding-bottom: 20px;">
                 </group>
