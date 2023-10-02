@@ -41,7 +41,7 @@
               <div class="oe_title">
                 <group>
                   <group>
-                    <field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1"
+                    <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
                       default_focus="1" />
                   </group>
                   <group>
@@ -56,53 +56,100 @@
                     <field name="donvi" widget="selection" />
                   </group>
                 </group>
-                <group string="Thông tin cá nhân - quê quán"
+                <group string="Thông tin cá nhân"
                   style="font-size: 25px; padding-bottom: 20px;">
                 </group>
-                <group>
-                  <field name="gioi_tinh" string="Giới tính" />
-                </group>
-                <group>
-                  <group>
-                    <field name="province" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
-                      widget="selection" />
-                    <field name="district"
-                      placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
-                      domain="[('province_id','=',province)]" widget="selection" />
-                    <field name="ward" placeholder="Xã/ Phường/ Thị trấn"
-                      domain="[('district_id','=',district)]"
-                      widget="selection" />
-                    <field name="tenduong_sonha" />
-                  </group>
-                  <group>
-                    <field name="dantoc" />
-                    <field name="tongiao" />
-                    <field name="cmnd_cccd" />
+
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%;
+    gap: 5%; margin-bottom:16px;">
+                  <div
+                    style="
+                  display: grid;
+    grid-template-columns: 30% 62%; ">
+                    <label for="birthday" string="Ngày sinh" />
                     <field name="birthday" />
-                  </group>
-                </group>
+                  </div>
+                  <div
+                    style="
+    display: grid;
+    grid-template-columns: 30% 62%;
+">
 
-
+                    <label for="gioi_tinh" string="Giới tính" />
+                    <field name="gioi_tinh" string="Giới tính" />
+                  </div>
+                  <div
+                    style="
+    display: grid;
+    grid-template-columns: 20% 62%;
+    gap: 18%;
+">
+                    <label for="cmnd_cccd" string="CMND/CCCD" />
+                    <field name="cmnd_cccd" />
+                  </div>
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 45% 45%;
+    gap: 10%; margin-bottom:16px;">
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="dantoc" string="Dân tộc" />
+                    <field name="dantoc" />
+                  </div>
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="tongiao" string="Tôn Giáo" />
+                    <field name="tongiao" />
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 9% auto; margin-bottom:16px;">
+                  <label for="tenduong_sonha" string="Thường trú" />
+                  <field name="tenduong_sonha"
+                    placeholder="Số nhà, tên đường" />
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%; gap: 5%; padding-left: 9%">
+                  <field name="province" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    widget="selection" />
+                  <field name="district"
+                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                    domain="[('province_id','=',province)]" widget="selection" />
+                  <field name="ward" placeholder="Xã/ Phường/ Thị trấn"
+                    domain="[('district_id','=',district)]"
+                    widget="selection" />
+                </div>
                 <group string="Liên lạc - tạm trú" style="font-size: 25px;padding-bottom: 20px;">
                 </group>
-                <group>
-                  <group>
-                    <field name="province_contact"
-                      placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
-                      widget="selection" />
-                    <field name="district_contact"
-                      placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
-                      domain="[('province_id','=',province_contact)]" widget="selection" />
-                    <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
-                      domain="[('district_id','=',district_contact)]"
-                      widget="selection" />
-                    <field name="tenduong_sonha_contact" />
-                  </group>
-                  <group>
-                    <field name="canhan_email" string="Email" />
-                    <field name="sdt" widget="phone" />
-                  </group>
-                </group>
+                <div
+                  style="display: grid; grid-template-columns: 45% 45%;
+    gap: 10%; margin-bottom:16px;">
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="canhan_email" string="Email" />
+                    <field name="canhan_email"
+                      string="Email" />
+                  </div>
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="sdt" string="Điện thoại" />
+                    <field name="sdt"
+                      widget="phone" />
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 9% auto; margin-bottom: 8px">
+                  <label for="tenduong_sonha_contact" string="Địa chỉ liên hệ" />
+                  <field name="tenduong_sonha_contact"
+                    placeholder="Số nhà, tên đường" />
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%; gap: 5%; padding-left: 9%">
+                  <field name="province_contact"
+                    placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    widget="selection" />
+                  <field name="district_contact"
+                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                    domain="[('province_id','=',province_contact)]" widget="selection" />
+                  <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
+                    domain="[('district_id','=',district_contact)]"
+                    widget="selection" />
+                </div>
 
                 <group>
                 </group>
