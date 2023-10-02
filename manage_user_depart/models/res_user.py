@@ -8,8 +8,6 @@ class User(models.Model):
     _inherit = 'res.users'
 
     mssv_mscb = fields.Char(string="MSSV/MSCB", required=True)
-    canhan_email = fields.Char(
-        string="Email cá nhân", required=True)  # Field should delete
     gioi_tinh = fields.Selection([
         ('nam', 'Nam'),
         ('nu', 'Nữ'),
@@ -38,10 +36,10 @@ class User(models.Model):
     is_fill_info = fields.Boolean(
         string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
 
-    @api.depends('mssv_mscb', 'canhan_email', 'sdt', 'donvi')
+    @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):
         for record in self:
-            if record.mssv_mscb and record.canhan_email and record.sdt and record.donvi:
+            if record.mssv_mscb and record.sdt and record.donvi:
                 record.is_fill_info = True
             else:
                 record.is_fill_info = False

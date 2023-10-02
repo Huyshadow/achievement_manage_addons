@@ -9,24 +9,22 @@
                <group string="Tiêu chí" style="font-size: 20px">
                </group>
                <group>
-                  <field name="type" invisible="1" />
-                <field name="name" />
-                <field name="method"
-                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />s <field name="evidence"
-                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
-                <field name="sign"
+                  <field name="name" />
+                  <field name="method" />
+                  <field name="evidence" />
+                  <field name="sign"
                      attrs="{'invisible': [('method', '!=', 'thangdiem')], 'required':[('method', '==', 'thangdiem')]}" />
-                <field
-                     name="lower_point" attrs="{'invisible': [('method', '!=', 'thangdiem')], 'required':[('method', '==', 'thangdiem')]}" />
-                <field
+                  <field
+                     name="lower_point"
+                     attrs="{'invisible': [('method', '!=', 'thangdiem')], 'required':[('method', '==', 'thangdiem')]}" />
+                  <field
                      name="upper_point"
                      attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')], 'required':[('method', '==', 'thangdiem')]}" />
-                <field
+                  <field
                      name="value_list_string"
                      attrs="{'invisible': [('method', '!=', 'danhsach')], 'required':[('method', '==', 'danhsach')]}" />
-                <field name="content"
-                     attrs="{'invisible': [('type', '!=', 'tiêu chí')]}" />
-                <field
+                  <field name="content" />
+                  <field
                      name="note" />
                </group>
                <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu

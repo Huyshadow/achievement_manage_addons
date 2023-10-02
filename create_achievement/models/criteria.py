@@ -12,10 +12,6 @@ class Criteria(models.Model):
 
     id = fields.Integer(default=lambda self: self.env['ir.sequence'].next_by_code(
         'create.achievement.criteria'), copy=True, readonly=True)
-    type = fields.Selection([
-        ('tiêu chí', 'Tiêu chí'),
-    ], default='tiêu chí', string="Loại tiêu chí")
-
     name = fields.Char(required=True, string="Tên tiêu chí")
     is_criteria = fields.Boolean(default=False)
     method = fields.Selection(
