@@ -21,7 +21,7 @@
       <field name="arch" type="xml">
 
         <form class="custom-form oe_form_center" string="Users"
-          create="false" duplicate="false">
+          create="false" duplicate="false" delete="false">
           <sheet>
             <div class="cusform">
               <group string="Thông tin tài khoản" class="group_title">
