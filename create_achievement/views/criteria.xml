@@ -27,8 +27,6 @@
                   <field
                      name="note" />
                </group>
-               <!-- <field name="self_one2many_id" attrs="{'invisible': [('type', '!=', 'tập tiêu
-               chí')]}"/> -->
             </sheet>
          </form>
       </field>
@@ -38,10 +36,11 @@
       <field name="model">create_achievement.criteria</field>
       <field name="priority">1</field>
       <field name="arch" type="xml">
-         <tree limit='6'>
+         <tree>
             <field name="name" />
             <field name="content" />
             <field name="note" />
+            <field name="group_criteria" />
          </tree>
       </field>
    </record>

@@ -111,7 +111,7 @@
                       placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
                       domain="[('province_id' ,'=' ,province)]" widget="selection" />
                     <field name="ward" placeholder="Xã/ Phường/ Thị trấn"
-                      domain="[('district_id' ,'=' ,district)]"
+                      domain="[('district_id' ,'=' ,district),('province_id','=',province)]"
                       widget="selection" />
                   </div>
                   <group string="Liên lạc - tạm trú" class="group_title">
@@ -130,7 +130,7 @@
                       placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
                       domain="[('province_id' ,'=' ,province_contact)]" widget="selection" />
                     <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
-                      domain="[('district_id' ,'=' ,district_contact)]"
+                      domain="[('district_id' ,'=' ,district_contact),('province_id','=',province_contact)]"
                       widget="selection" />
                   </div>
 
