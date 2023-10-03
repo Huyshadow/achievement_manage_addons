@@ -24,7 +24,7 @@
       <field name="model">manage_user_depart.department</field>
       <field name="arch" type="xml">
         <form create="false" duplicate="false">
-          <sheet style="width: 800px; " align="top">
+          <sheet style="width: 100%; " align="top">
             <group string="Chi tiết đơn vị" style="font-size:25px">
               <field name="name" string="Tên đơn vị" required="1" />
             </group>
