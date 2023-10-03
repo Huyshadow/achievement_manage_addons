@@ -32,8 +32,8 @@
       <field name="model">create_achievement.group_criterias</field>
       <field name="arch" type="xml">
          <tree limit='6'>
-            <field name="name" />
-            <field name="description" />
+            <field name="name"/>
+            <field name="description"/>
          </tree>
       </field>
    </record>

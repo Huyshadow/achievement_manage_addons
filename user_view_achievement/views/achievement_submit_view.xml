@@ -1,24 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-  <record id="achievement_submit_view_form" model="ir.ui.view">
-    <field name="name">achievement.submit.view.form</field>
-    <field name="model">achievement.submit</field>
-    <field name="arch" type="xml">
-      <form>
-        <sheet>
-          <group>
-            <field name="criteria_name" />
-            <field name="criteria_method" />
-            <field name="criteria_content" />
-            <field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}" />
-            <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}" />
-            <field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}" />
-            <field name="evidence" filename="pdf_name" widget="binary"
-              options="{'accepted_file_extensions':'.pdf'}" string="Nộp minh chứng" />
-            <field name="pdf_name" invisible="1" />
-          </group>
-        </sheet>
-      </form>
-    </field>
-  </record>
+	<record id="achievement_submit_view_form" model="ir.ui.view">
+		<field name="name">achievement.submit.view.form</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="criteria_name" />
+						<field name="criteria_method" />
+						<field name="criteria_content" />
+						<field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}" />
+						<field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}" />
+						<field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}" />
+						<field name="evidence" filename="pdf_name" widget="binary"
+							options="{'accepted_file_extensions':'.pdf'}" string="Nộp minh chứng" />
+						<field name="pdf_name" invisible="1" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="achievement_submit_view_tree" model="ir.ui.view">
+		<field name="name">achievement.submit.view.tree</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="user_id"/>
+				<field name="criteria_name"/>
+				<field name="submit"/>
+			</tree>
+		</field>
+	</record>
+	<!-- cai nay de test -->
+	<record id="user_list_view_tree" model="ir.ui.view">
+		<field name="name">achievement.user.list.tree</field>
+		<field name="model">achievement.user.list</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="user_name"/>
+				<field name="achievement_id"/>
+				<field name="donvi_name"/>
+				<field name="achievement_name"/>
+			</tree>
+		</field>
+	</record>
+
+
 </odoo>

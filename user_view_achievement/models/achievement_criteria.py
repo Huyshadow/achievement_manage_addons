@@ -12,8 +12,8 @@ class AchivementCriteria(models.Model):
     @api.depends('submit_ids')
     def _compute_is_submitted(self):
         for record in self:
-            self.is_submitted = self.submit_ids.filtered(
-                lambda s: s.user_id == self.env.user and s.submit == True)[:1] or False
+            record.is_submitted = record.submit_ids.filtered(lambda s: s.user_id == record.env.user and s.submit == True)[:1] or False
+            print(record.is_submitted)
 
     def action_submit_criteria(self):
         self.ensure_one()
@@ -27,8 +27,7 @@ class AchivementCriteria(models.Model):
             'res_model': 'achievement.submit',
             'target': 'new',
         }
-        current_submission = self.submit_ids.filtered(
-            lambda s: s.user_id == self.env.user)[:1]
+        current_submission = self.submit_ids.filtered(lambda s: s.user_id == self.env.user)[:1]
         if current_submission:
             action.update({
                 'res_id': current_submission.id,
@@ -41,3 +40,4 @@ class AchivementCriteria(models.Model):
                 'res_id': new_submission.id,
             })
         return action
+

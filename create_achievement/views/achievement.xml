@@ -56,7 +56,6 @@
           decoration-danger="status == 'Đã kết thúc'"
           widget="badge" />
         <field name="criteria_ids" invisible='1' />
-        <!-- <field name="last_updated_time" widget="datetime"/> -->
       </tree>
     </field>
   </record>

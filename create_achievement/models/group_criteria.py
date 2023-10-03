@@ -21,3 +21,4 @@ class GroupCriterias(models.Model):
     description = fields.Text(
         string="Mô tả", default="Không"
     )
+    display_name = fields.Char(string="Tên hiển thị", store=True)

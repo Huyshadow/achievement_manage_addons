@@ -38,6 +38,7 @@ class UserWardInfo(models.Model):
     division_type = fields.Char('Division Type')
     codename = fields.Char('Codename')
     district_id = fields.Many2one('user.district.info', 'District')
+    province_id = fields.Many2one('user.province.info', 'Province')
 
     @api.model
     def import_location_data(self):
@@ -77,4 +78,5 @@ class UserWardInfo(models.Model):
                             'division_type': ward_data['division_type'],
                             'codename': ward_data['codename'],
                             'district_id': district.id,
+                            'province_id': province.id,
                         })
