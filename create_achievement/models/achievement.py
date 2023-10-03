@@ -39,6 +39,17 @@ class Achievement(models.Model):
         string="Tình Trạng", compute='_compute_status', store=True)
 
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
+    computed_numbers = fields.Integer(
+        'Function for sort', compute='_compute_numbers', store=True)
+
+    @api.depends('criteria_ids')
+    def _compute_numbers(self):
+        for record in self:
+            number = 1  # Initialize the number to start from 1
+            for group_criteria in record.criteria_ids:
+                group_criteria.display_name = str(
+                    number) + '. ' + group_criteria.name
+                number += 1
 
     @api.depends('name')
     def _change_title(self):
@@ -154,6 +165,6 @@ class Achievement(models.Model):
             'type': 'ir.actions.act_window',
             'target': 'current',
             'context': {
-                'create': True,
+                    'create': True,
             }
         }
