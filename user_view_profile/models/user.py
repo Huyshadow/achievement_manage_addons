@@ -1,8 +1,9 @@
 from odoo import models, fields, api
 
+
 class User(models.Model):
     _inherit = 'res.users'
-    
+
     @api.model
     def open_user_profile(self):
         return {

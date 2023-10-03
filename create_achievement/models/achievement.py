@@ -36,7 +36,7 @@ class Achievement(models.Model):
     last_updated = fields.Datetime(
         default=fields.Datetime.now())
     status = fields.Char(
-        string="Tình Trạng", compute='_compute_status')
+        string="Tình Trạng", compute='_compute_status', store=True)
 
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
 
@@ -60,7 +60,7 @@ class Achievement(models.Model):
     def _check_start_time(self):
         for record in self:
             tz = timezone('Asia/Bangkok')
-            future_date = record.create_date + timedelta(days=1)
+            future_date = record.create_date + timedelta(days=0)
             default_time = time(hour=0, minute=0, second=0)
             naive_datetime = datetime.combine(future_date, default_time)
             local_datetime = tz.localize(naive_datetime)
@@ -69,7 +69,7 @@ class Achievement(models.Model):
             print(check_time)
             if record.start_at < check_time:
                 raise ValidationError(
-                    "Thời gian bắt đầu phải hơn 1 ngày kể từ khi được tạo")
+                    "Thời gian bắt đầu phải kể từ ngày khi được tạo")
 
     @api.constrains('start_at', 'end_at', 'end_submit_at')
     def _check_fields(self):
@@ -113,6 +113,28 @@ class Achievement(models.Model):
             utc_datetime = local_datetime.astimezone(timezone('UTC'))
             defaults['end_at'] = utc_datetime.replace(tzinfo=None)
         return defaults
+
+    @api.onchange('end_submit_at')
+    def set_time_end_submit_at(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = record.end_submit_at
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(current_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            record.end_submit_at = utc_datetime.replace(tzinfo=None)
+
+    @api.onchange('end_at')
+    def set_time_end_at(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')  # Set the desired timezone
+            current_date = record.end_at
+            default_time = time(hour=23, minute=59, second=59)
+            naive_datetime = datetime.combine(current_date, default_time)
+            local_datetime = tz.localize(naive_datetime)
+            utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            record.end_at = utc_datetime.replace(tzinfo=None)
 
     @api.model
     def search_read(self, domain=None, fields=None, offset=0, limit=None, order=None):

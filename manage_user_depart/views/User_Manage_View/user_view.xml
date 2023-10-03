@@ -7,6 +7,8 @@
         <tree>
           <field name="name" />
           <field name="mssv_mscb" />
+          <field name="donvi" />
+          <field name="is_fill_info" />
         </tree>
       </field>
     </record>
@@ -18,7 +20,8 @@
       <field name="priority">0</field>
       <field name="arch" type="xml">
 
-        <form class="custom-form oe_form_center" string="Users" style="align: center !important;">
+        <form class="custom-form oe_form_center" string="Users" style="align: center !important;"
+          create="false" duplicate="false">
           <sheet style="">
             <div class="cusform" style="align: center !important;">
               <group string="Thông tin tài khoản" style="font-size: 25px;">
@@ -34,72 +37,141 @@
               </div>
               <field name="image_1920" string="Ảnh 3x4" widget='image' class="oe_avatar"
                 options='{"zoom": false, "preview_image": "avatar_128" ,"placeholder" :"manage_user_depart,/static/src/img/3_4.png", "size": [270, 360]}'
-                style="padding-top: 2%; padding-right: 18%; padding-left: 2%;  border: 1px black; width: 300px; height: auto; " />
+                style="padding-top: 4%; padding-right: 18%; padding-left: 2%;  border: 1px black; width: 300px; height: auto; " />
               <div class="oe_title">
-                <group>
-                  <group>
-                    <field name="name" string="Họ và Tên" placeholder="Nguyễn Văn A" required="1"
+                <div
+                  style="
+                  display: grid; 
+                  grid-template-columns: 30% 30% 30%;
+                  gap: 5%; margin-bottom:16px;">
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="name" string="Họ và tên" />
+                    <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
                       default_focus="1" />
-                  </group>
-                  <group>
-                    <field name="email" readonly="1" invisible="0" string="Tài khoản" />
-                  </group>
-                </group>
-                <group>
-                  <group>
+                  </div>
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="email" string="Email" />
+                    <field name="email" readonly="1" invisible="0" string="Email" />
+                  </div>
+                  <div
+                    style="
+                  display: grid;
+                  grid-template-columns: 30% auto; ">
+                    <label for="sdt" string="Điện thoại" />
+                    <field name="sdt"
+                      widget="phone" />
+                  </div>
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 45% 45%;
+    gap: 10%; margin-bottom:16px;">
+                  <div style="display: grid; grid-template-columns: 20% auto; gap:2%;">
+                    <label for="mssv_mscb" string="MSSV/MSCB" />
                     <field name="mssv_mscb" />
-                  </group>
-                  <group>
-                    <field name="donvi" />
-                  </group>
+                  </div>
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="donvi" string="Đơn vị" />
+                    <field name="donvi" widget="selection" />
+                  </div>
+                </div>
+                <group string="Thông tin cá nhân"
+                  style="font-size: 25px; padding-bottom: 20px;">
                 </group>
-                <group string="Thông tin cá nhân - quê quán" style="font-size: 25px;">
-                </group>
-                <group>
-                  <field name="gioi_tinh" string="Giới tính" />
-                </group>
-                <group>
-                  <group>
-                    <field name="province" placeholder="Tỉnh/thành" widget="selection" />
-                    <field name="district" placeholder="Quận/huyện"
-                      domain="[('province_id','=',province)]" widget="selection" />
-                    <field name="ward" placeholder="Phường/ấp"
-                      domain="[('district_id','=',district)]"
-                      widget="selection" />
-                    <field name="tenduong_sonha" />
-                  </group>
-                  <group>
-                    <field name="dantoc" />
-                    <field name="tongiao" />
-                    <field name="cmnd_cccd" />
+
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%;
+    gap: 5%; margin-bottom:16px;">
+                  <div
+                    style="
+                  display: grid;
+    grid-template-columns: 30% 62%; ">
+                    <label for="birthday" string="Ngày sinh" />
                     <field name="birthday" />
-                  </group>
-                </group>
+                  </div>
+                  <div
+                    style="
+    display: grid;
+    grid-template-columns: 30% 62%;">
 
-
-                <group string="Liên lạc - tạm trú" style="font-size: 25px;">
+                    <label for="gioi_tinh" string="Giới tính" />
+                    <field name="gioi_tinh" string="Giới tính" />
+                  </div>
+                  <div
+                    style="
+    display: grid;
+    grid-template-columns: 20% 62%;
+    gap: 18%;
+">
+                    <label for="cmnd_cccd" string="CMND/CCCD" />
+                    <field name="cmnd_cccd" />
+                  </div>
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 45% 45%;
+    gap: 10%; margin-bottom:16px;">
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="dantoc" string="Dân tộc" />
+                    <field name="dantoc" />
+                  </div>
+                  <div style="display: grid; grid-template-columns: 20% auto;">
+                    <label for="tongiao" string="Tôn Giáo" />
+                    <field name="tongiao" />
+                  </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 9% auto; margin-bottom:16px;">
+                  <label for="tenduong_sonha" string="Thường trú" />
+                  <field name="tenduong_sonha"
+                    placeholder="Số nhà, tên đường" />
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%; gap: 5%; padding-left: 9%">
+                  <field name="province" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    widget="selection" />
+                  <field name="district"
+                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                    domain="[('province_id','=',province)]" widget="selection" />
+                  <field name="ward" placeholder="Xã/ Phường/ Thị trấn"
+                    domain="[('district_id','=',district)]"
+                    widget="selection" />
+                </div>
+                <group string="Liên lạc - tạm trú" style="font-size: 25px;padding-bottom: 20px;">
                 </group>
+                <div style="display: grid; grid-template-columns: 9% auto; margin-bottom: 8px">
+                  <label for="tenduong_sonha_contact" string="Địa chỉ liên hệ" />
+                  <field name="tenduong_sonha_contact"
+                    placeholder="Số nhà, tên đường" />
+                </div>
+                <div
+                  style="display: grid; grid-template-columns: 30% 30% 30%; gap: 5%; padding-left: 9%">
+                  <field name="province_contact"
+                    placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
+                    widget="selection" />
+                  <field name="district_contact"
+                    placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
+                    domain="[('province_id','=',province_contact)]" widget="selection" />
+                  <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
+                    domain="[('district_id','=',district_contact)]"
+                    widget="selection" />
+                </div>
+
                 <group>
-                  <group>
-                    <field name="canhan_email" string="Email" />
-                  </group>
-                  <group>
-                    <field name="sdt" widget="phone" />
-                  </group>
-                </group>
-
-                <group>
-                  <field name="thuongtru" placeholder="Địa chỉ thường trú" string="Thường trú" />
                 </group>
               </div>
 
-              <group string="Quyền truy cập" style="font-size: 25px;"
+              <group string="Quyền truy cập" style="font-size: 25px; padding-bottom: 20px;"
                 groups="access_right_user.group_system_manager">
                 <field nolabel="0" name="groups_id" string="Vai trò" class="nocustom-form"
                   widget="many2many_checkboxes"
                   domain="[('category_id','=','Tuyên dương khen thưởng')]" style="font-size: 15px;" />
               </group>
-              <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
+              <div
+                style="display:flex; justify-content: end; gap:16px; margin-top: 8px; margin-right: 8px;">
                 <button style="width:64px" name="save_success" type="object" string="Lưu"
                   class="oe_highlight" />
                 <button style="width:64px" string="Hủy" special="cancel" />

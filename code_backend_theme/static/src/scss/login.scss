@@ -143,3 +143,14 @@ form label {
 .oe_login_form a.btn.btn-secondary i.fa.fa-database {
     margin-left: 5px;
 }
+
+.text-start {
+    text-align: center !important;
+}
+
+.list-group-item:last-child {
+    background-color: #CD5A46;
+    color: white;
+    border-bottom-right-radius: inherit;
+    border-bottom-left-radius: inherit;
+}

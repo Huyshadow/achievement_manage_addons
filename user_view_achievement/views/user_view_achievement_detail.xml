@@ -26,7 +26,7 @@
 				<field name="note" />
 				<field name="is_submitted" />
 				<button name="action_submit_criteria" type="object" class="btn btn-primary"
-					string="Submit" />
+					string="Nộp" />
 			</tree>
 		</field>
 	</record>

@@ -8,25 +8,41 @@ class User(models.Model):
     _inherit = 'res.users'
 
     mssv_mscb = fields.Char(string="MSSV/MSCB", required=True)
-    canhan_email = fields.Char(string="Email cá nhân", required=True)
     gioi_tinh = fields.Selection([
         ('nam', 'Nam'),
         ('nu', 'Nữ'),
         ('khac', 'Khác')
     ], default="nam", string="Giới tính")
     sdt = fields.Char(string="Điện thoại", required=True)
-    birthday = fields.Datetime(string="Ngày sinh")
+    birthday = fields.Date(string="Ngày sinh")
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
     tongiao = fields.Char(string="Tôn Giáo")
-    province = fields.Many2one('user.province.info',  string='Tinh/Thành')
-    district = fields.Many2one('user.district.info', string='Quận/Huyện')
-    ward = fields.Many2one('user.ward.info', string='Phường')
-    thuongtru = fields.Char(string="Địa chỉ thường trú")
+    # ------Information-------
+    province = fields.Many2one('user.province.info',  string='Tỉnh')
+    district = fields.Many2one('user.district.info', string='Huyện')
+    ward = fields.Many2one('user.ward.info', string='Xã')
+    tenduong_sonha = fields.Char(string="Tên đường/Số nhà")
+    # ------Contact-----------
+    province_contact = fields.Many2one('user.province.info',  string='Tỉnh')
+    district_contact = fields.Many2one('user.district.info', string='Huyện')
+    ward_contact = fields.Many2one('user.ward.info', string='Xã')
+    tenduong_sonha_contact = fields.Char(string="Tên đường/Số nhà")
+    # -------------------------
     donvi = fields.Many2one('manage_user_depart.department',
                             string="Đơn vị", required=True)
     nghenghiep = fields.Char(string="Nghề nghiệp")
-    tenduong_sonha = fields.Char(string="Tên đường/Số nhà")
+
+    is_fill_info = fields.Boolean(
+        string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
+
+    @api.depends('mssv_mscb', 'sdt', 'donvi')
+    def _check_fill_info(self):
+        for record in self:
+            if record.mssv_mscb and record.sdt and record.donvi:
+                record.is_fill_info = True
+            else:
+                record.is_fill_info = False
 
     @api.model
     def create(self, vals):

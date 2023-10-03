@@ -46,13 +46,13 @@
                                         </t>
                                     </p>
                                     <p>
-                                        <span class="status_time">Thời gian bắt đầu nhận hồ sơ:</span>
+                                        <span class="status_time">Thời gian bắt đầu nhận hồ sơ: </span>
                                         <span>
                                             <t t-esc="record.start_at.value" />
                                         </span>
                                     </p>
                                     <p>
-                                        <span class="status_time">Thời gian kết thúc nhận hồ sơ:</span>
+                                        <span class="status_time">Thời gian kết thúc nhận hồ sơ: </span>
                                         <span>
                                             <t t-esc="record.end_at.value" />
                                         </span>
@@ -76,6 +76,7 @@
         <field name="name">Danh sách danh hiệu/ giải thưởng</field>
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">kanban</field>
+        <field name="domain">[('status', '=', 'Đang tiến hành')]</field>
     </record>
 
 </odoo>
