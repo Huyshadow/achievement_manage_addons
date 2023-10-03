@@ -89,42 +89,30 @@
     justify-content: start !important;
     flex-direction: column !important;
     gap: 8px !important;
-    span {
-      word-wrap: break-word;
-    }
-    label {
-      margin-left: 0% !important;
-    }
   }
   .auto_field_second_column {
     display: flex !important;
     justify-content: start !important;
     flex-direction: column !important;
     gap: 8px !important;
-    span {
-      word-wrap: break-word;
-    }
-    label {
-      margin-left: 0% !important;
-    }
   }
   .field_for_location {
     display: flex !important;
     justify-content: start !important;
     flex-direction: column !important;
     gap: 8px !important;
-    span {
-      word-wrap: break-word;
-    }
-    label {
-      margin-left: 0% !important;
-    }
   }
   .dropdown-toggle {
     display: none !important;
   }
   .three_column_for_des {
     padding-left: 0% !important;
+  }
+  span {
+    word-wrap: break-word;
+  }
+  label {
+    margin-left: 0% !important;
   }
 }
 @media only screen and (max-width: 480px) {
