@@ -45,7 +45,7 @@
     <field name="name">create.achievement.tree</field>
     <field name="model">create_achievement.achievement</field>
     <field name="arch" type="xml">
-      <tree limit="20">
+      <tree>
         <field name="name" />
         <field name="start_at" />
         <field name="end_submit_at" />
@@ -56,7 +56,6 @@
           decoration-danger="status == 'Đã kết thúc'"
           widget="badge" />
         <field name="criteria_ids" invisible='1' />
-        <!-- <field name="last_updated_time" widget="datetime"/> -->
       </tree>
     </field>
   </record>

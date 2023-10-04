@@ -1,9 +1,131 @@
 .custom-form input {
-    // height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  // height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nocustom-form input {
-    height: 15px;
+  height: 15px;
+}
+.group_title {
+  font-size: 25px !important;
+  padding-bottom: 20px !important;
+}
+.containner_user_form {
+  display: grid !important;
+  grid-template-columns: 75% 23% !important;
+  gap: 2% !important;
+}
+.label_string {
+  margin-left: 0% !important;
+  margin-bottom: 16px;
+}
+
+.three_column_for_info {
+  display: grid !important;
+  grid-template-columns: 30% 30% 30% !important;
+  gap: 5% !important;
+  margin-bottom: 16px !important;
+}
+.three_column_for_des {
+  display: grid !important;
+  grid-template-columns: 30% 30% 30% !important;
+  gap: 5% !important;
+  padding-left: 9% !important;
+}
+.auto_field_three_columns {
+  display: grid !important;
+  grid-template-columns: 30% auto !important;
+}
+.two_column_for_info {
+  display: grid;
+  grid-template-columns: 45% 45% !important;
+  gap: 10% !important;
+  margin-bottom: 16px !important;
+}
+.auto_field_second_column {
+  display: grid !important;
+  grid-template-columns: 20% auto !important;
+}
+.field_for_location {
+  display: grid !important;
+  grid-template-columns: 9% auto !important;
+  margin-bottom: 16px !important;
+}
+.container_image {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+.image_style {
+  border: 1px black !important;
+  width: 270px !important;
+  height: auto !important;
+}
+.container_button_info_user {
+  display: flex !important;
+  justify-content: end !important;
+  gap: 16px !important;
+  margin-top: 8px !important;
+  margin-right: 8px !important;
+}
+
+@media only screen and (max-width: 1320px) {
+  .containner_user_form {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column-reverse !important;
+    gap: 32px !important;
+  }
+  .container_info {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .auto_field_three_columns {
+    display: flex !important;
+    justify-content: start !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .auto_field_second_column {
+    display: flex !important;
+    justify-content: start !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .field_for_location {
+    display: flex !important;
+    justify-content: start !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .dropdown-toggle {
+    display: none !important;
+  }
+  .three_column_for_des {
+    padding-left: 0% !important;
+  }
+  span {
+    word-wrap: break-word;
+  }
+  label {
+    margin-left: 0% !important;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .o_form_view .o_form_label {
+    font-size: 13px !important;
+  }
+  .o_form_view.o_xxs_form_view .o_inner_group {
+    margin-bottom: 0px !important;
+  }
+}
+@media (max-width: 480px) {
+  .o_web_client > .o_action_manager {
+    min-width: 400px !important;
+    overflow: scroll !important;
+  }
 }

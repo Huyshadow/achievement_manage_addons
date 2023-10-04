@@ -79,3 +79,13 @@ class Criteria(models.Model):
             self.sign = ''
             self.lower_point = ''
             self.upper_point = ''
+
+    @api.depends('parent_id_constraint', 'parent_id_option')
+    def _compute_group_criteria(self):
+        for record in self:
+            if record.parent_id_constraint:
+                record.group_criteria = record.parent_id_constraint.display_name
+            elif record.parent_id_option:
+                record.group_criteria = record.parent_id_option.display_name
+            else:
+                record.group_criteria = 'None'

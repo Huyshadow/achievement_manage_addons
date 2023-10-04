@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from pytz import timezone
+from datetime import datetime, time, timedelta
 
 
 class AchievementSubmit(models.Model):
@@ -13,8 +15,6 @@ class AchievementSubmit(models.Model):
     criteria_content = fields.Char('Mô tả', related='criteria_id.content')
     criteria_method = fields.Selection(
         'Phương thức', related='criteria_id.method', related_sudo=False)
-    criteria_method_display = fields.Selection(
-        'Phương thức hiển thị', related='criteria_id.method')
 
     grade = fields.Integer('Điểm')
     is_passed = fields.Boolean('Đã đạt')
@@ -22,7 +22,7 @@ class AchievementSubmit(models.Model):
     evidence = fields.Binary(string='Minh Chứng(file .pdf)')
     pdf_name = fields.Char(string='Tên file pdf')
     submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
-    
+
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:
