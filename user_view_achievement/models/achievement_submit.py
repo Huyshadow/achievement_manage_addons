@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from pytz import timezone
+from datetime import datetime, time, timedelta
 
 
 class AchievementSubmit(models.Model):
@@ -27,15 +29,12 @@ class AchievementSubmit(models.Model):
             if record.criteria_method == "thangdiem":
                 if record.grade:
                     record.submit = True
-                    record.add_user_list()
             elif record.criteria_method == "nhiphan":
                 if record.is_passed == True:
                     record.submit = True
-                    record.add_user_list()
             elif record.criteria_method == "nhanxet":
                 if record.comment:
                     record.submit = True
-                    record.add_user_list()
             else:
                 record.submit = False
 
@@ -43,36 +42,3 @@ class AchievementSubmit(models.Model):
     def _check_file(self):
         if str(self.pdf_name.split(".")[1]) != 'pdf':
             raise ValidationError("Chỉ nhận file PDF")
-
-    def add_user_list(self):
-        for record in self:
-            user_id = record.user_id.name
-            donvi = record.user_id.donvi
-            achievement_id = record.criteria_id.achievement_id
-
-            tz = timezone('Asia/Bangkok')
-            future_date = record.create_date + timedelta(days=0)
-            default_time = time(hour=0, minute=0, second=0)
-            naive_datetime = datetime.combine(future_date, default_time)
-            local_datetime = tz.localize(naive_datetime)
-            utc_datetime = local_datetime.astimezone(timezone('UTC'))
-            check_time = utc_datetime.replace(tzinfo=None)
-
-            submit_at = check_time
-
-            # Check if a corresponding record already exists, and if not, create it
-            existing_achievement_user = self.env['achievement.user.list'].search([
-                ('user_name', '=', user_id),
-                ('achievement_id', '=', achievement_id),
-                ('donvi_name', '=', donvi.name),
-            ])
-
-            if not existing_achievement_user:
-                self.env['achievement.user.list'].create({
-                    'user_name': user_id,
-                    'achievement_id': achievement_id,
-                    'donvi_name': donvi.name,
-                    'submit_at': submit_at
-                })
-            else:
-                existing_achievement_user.write({'submit_at': submit_at})
