@@ -40,12 +40,10 @@ class Criteria(models.Model):
 		default=0, string="Khoảng cận trên")
 	deleteAt = fields.Datetime()
 
-	category = fields.Char(string="Phân loại tiêu chí",
-						   compute="_compute_category", store=True)
-	group_criteria = fields.Char(
-		string="Thuộc tập tiêu chí", compute="_compute_group_criteria", store=True)
+	category = fields.Char(string="Phân loại tiêu chí",compute="_compute_category", store=True)
+	group_criteria = fields.Char(string="Thuộc tập tiêu chí", compute="_compute_group_criteria", store=True)
 		
-	achievement_id = fields.Char(string="Thuộc danh hiệu", compute="_compute_achievement_id", store=True)
+	achievement_id = fields.Integer(string="Thuộc danh hiệu", compute="_compute_achievement_id", store=True)
 	achievement_name = fields.Char(string="Tên danh hiệu", compute="_compute_achievement_id", store=True)
 
 	@api.depends('parent_id_constraint', 'parent_id_option')
@@ -53,7 +51,6 @@ class Criteria(models.Model):
 		for record in self:
 			if record.parent_id_constraint:
 				record.achievement_id = record.parent_id_constraint.parent_id.id
-				# record.achievement_name = record.parent_id_constraint.parent_
 			elif record.parent_id_option:
 				record.achievement_id = record.parent_id_option.parent_id.id
 			else:
@@ -85,9 +82,3 @@ class Criteria(models.Model):
 			self.sign = ''
 			self.lower_point = ''
 			self.upper_point = ''
-
-	@api.model
-	def read_group(self, domain, fields, groupby, offset=0, limit=None, orderby=False, lazy=True): 
-		if 'group_criteria_id' in groupby:
-			orderby = 'group_criteria_id' + (orderby and (',' + orderby) or '')
-		return super(Criteria, self).read_group( domain, fields, groupby, offset=0, limit=limit, orderby=orderby, lazy=lazy)

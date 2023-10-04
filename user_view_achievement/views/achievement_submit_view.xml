@@ -33,19 +33,4 @@
 			</tree>
 		</field>
 	</record>
-	<!-- cai nay de test -->
-	<record id="user_list_view_tree" model="ir.ui.view">
-		<field name="name">achievement.user.list.tree</field>
-		<field name="model">achievement.user.list</field>
-		<field name="arch" type="xml">
-			<tree>
-				<field name="user_name"/>
-				<field name="achievement_id"/>
-				<field name="donvi_name"/>
-				<field name="achievement_name"/>
-			</tree>
-		</field>
-	</record>
-
-
 </odoo>

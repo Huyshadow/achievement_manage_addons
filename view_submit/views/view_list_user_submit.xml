@@ -4,13 +4,15 @@
 		<field name="name">achievement.user.list.view</field>
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20" js_class="disappear_check_box">
+			<tree create="false" export_xlsx="false" delete='true' edit="false" limit="20" js_class="disappear_check_box">
+				<field name="user_id"/>
+				<field name="achievement_id"/>
 				<field name="user_name"/>
                 <field name="donvi_name"/>
-				<!-- <field name="achievement_name"/> -->
                 <field name="submit_at"/>
-				<!-- <button name="action_view_user_list" type="object" class="btn btn-primary"
-					string="Xem danh sách nộp" /> -->
+				<button name="action_view_user_submit" type="object" class="btn btn-primary" string="Xem chi tiết"/>
+				<button name="action_accept_submit" type="object" class="btn btn-primary" string="Duyệt" 
+					groups="access_right_user.group_system_manager"/>
 			</tree>
 		</field>
 	</record>

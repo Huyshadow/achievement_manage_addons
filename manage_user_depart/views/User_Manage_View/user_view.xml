@@ -94,7 +94,7 @@
                       placeholder="Quận/ Huyện/ Thị xã/ Thành phố trực thuộc Tỉnh"
                       domain="[('province_id','=',province_contact)]" widget="selection" />
                     <field name="ward_contact" placeholder="Xã/ Phường/ Thị trấn"
-                      domain="[('district_id','=',district_contact),('province_id','=',province)]"
+                      domain="[('district_id','=',district_contact),('province_id','=',province_contact)]"
                       widget="selection" />
                     <field name="tenduong_sonha_contact" />
                   </group>

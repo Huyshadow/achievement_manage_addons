@@ -22,6 +22,55 @@
                         <field name="option_constraint" />
                      </group>
                   </page>
+                  <!-- <page name="option" string="Tiêu chí 1">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 2">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 3">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 4">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 5">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 6">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chí 7">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page>
+                  <page name="option" string="Tiêu chíaaaaaaaaaaaaaaaaaa 8">
+                     <group>
+                        <field name="option_criterias" />
+                        <field name="option_constraint" />
+                     </group>
+                  </page> -->
+
                </notebook>
             </sheet>
          </form>

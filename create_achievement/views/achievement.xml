@@ -3,6 +3,7 @@
   <record id="view_cr_achievement_form" model="ir.ui.view">
     <field name="name">create.achievement.form</field>
     <field name="model">create_achievement.achievement</field>
+    <field name="priority">0</field>
     <field name="arch" type="xml">
       <form>
         <sheet classname="container">
@@ -64,6 +65,7 @@
     <field name="name">Quản lý Danh hiệu/Giải Thưởng</field>
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
+    <field name="view_id" ref="view_cr_achievement_tree"/>
     <field name="view_mode">tree,form</field>
     <field name="help" type="html">
       <p>
