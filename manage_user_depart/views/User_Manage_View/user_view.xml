@@ -83,7 +83,7 @@
                     </div>
                     <div
                       class="auto_field_three_columns" style="gap: 5%">
-                      <label for="cmnd_cccd" string="CMND/ CCCD" />
+                      <label for="cmnd_cccd" string="CMND/CCCD" />
                       <field name="cmnd_cccd" />
                     </div>
                   </div>
