@@ -16,6 +16,19 @@
 		</field>
 	</record>
 
+	<record id="comment_on_user_submit" model="ir.ui.view">
+		<field name="name">submit.detail.comment.view</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<field name="expertise" widget="selection"/>
+					<field name="depart_manage_comment"/>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
 	<record id="view_user_submit_detail" model="ir.ui.view">
 		<field name="name">submit.detail.view</field>
 		<field name="model">achievement.submit</field>

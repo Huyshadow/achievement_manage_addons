@@ -19,12 +19,12 @@ class AchievementSubmit(models.Model):
 	category = fields.Char('Loại tiêu chí', related='criteria_id.category')
 	achievement_id = fields.Integer('ID danh hiệu', related = 'criteria_id.achievement_id')
 	achievement_name = fields.Char('Tên danh hiệu', compute = '_get_achievement_name',store = True)
-	expertise = fields.Boolean(string="Thẩm định", default = False)
-	# expertise = fields.Selection([
-	#     ('passed', 'Đã đạt'),
-	#     ('not_passed', 'Chưa đạt'),
-	# 	('need_evidence', 'Thiếu minh chứng')
-	# ], default='hard', required=True)
+	expertise = fields.Selection([
+	    ('passed', 'Đã đạt'),
+	    ('not_passed', 'Chưa đạt'),
+		('need_evidence', 'Thiếu minh chứng')
+	], default='')
+	depart_manage_comment = fields.Char('Nhận xét của quản lý đơn vị')
 	
 	@api.depends('achievement_id')
 	def _get_achievement_name(self):

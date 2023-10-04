@@ -16,4 +16,4 @@ class AchievementUser(models.Model):
 	submit_at = fields.Datetime()
 	
 	expertise = fields.Boolean(string="Thẩm định",default =False)
-	result = fields.Boolean(string="Duyệt",default =False)
+	approve = fields.Boolean(string="Duyệt",default =False)

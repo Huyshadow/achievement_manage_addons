@@ -3,7 +3,8 @@
   <record id="view_cr_achievement_form" model="ir.ui.view">
     <field name="name">create.achievement.form</field>
     <field name="model">create_achievement.achievement</field>
-    <field name="priority">0</field>
+    <field name="mode">primary</field>
+    <field name="priority">1</field>
     <field name="arch" type="xml">
       <form>
         <sheet classname="container">
@@ -28,7 +29,7 @@
               <field name="end_at"
                 widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />s </group>
+                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" /></group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
