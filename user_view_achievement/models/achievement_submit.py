@@ -2,6 +2,7 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from pytz import timezone
 from datetime import datetime, time, timedelta
+import os
 
 
 class AchievementSubmit(models.Model):
@@ -40,5 +41,5 @@ class AchievementSubmit(models.Model):
 
     @api.constrains('evidence')
     def _check_file(self):
-        if str(self.pdf_name.split(".")[1]) != 'pdf':
+        if os.path.splitext(str(self.pdf_name))[1] != '.pdf':
             raise ValidationError("Chỉ nhận file PDF")

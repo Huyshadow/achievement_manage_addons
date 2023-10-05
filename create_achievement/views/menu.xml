@@ -3,7 +3,7 @@
     <menuitem
         id="menu_cr_ach_root"
         name="Quản lý Danh hiệu/Giải thưởng"
-        sequence="10"
+        sequence="7"
         action="action_cr_achievement"
         web_icon="code_backend_theme,static/src/img/icons/eLearning.png"
         groups="access_right_user.group_achievement_manager"
