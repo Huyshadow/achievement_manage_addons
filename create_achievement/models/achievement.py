@@ -12,26 +12,13 @@ class Achievement(models.Model):
         'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
 
     user_id = fields.Many2one('res.users', string='User')
-
-    id = fields.Integer(string="ID", default=lambda self: self.env['ir.sequence'].next_by_code(
-        'create.achievement.achievement'))
     name = fields.Char(default="", required=True, string="Danh hiệu")
-    soft_criteria = fields.Integer(string="Soft Criteria")
     description = fields.Text(string="Mô tả")
     start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
     end_submit_at = fields.Datetime(
         string="Ngày kết thúc nộp", required=True)
     end_at = fields.Datetime(
         string="Ngày kết thúc duyệt", required=True)
-    lock = fields.Selection([
-        ('unavailable', 'Unavailable'),
-        ('available', 'Available')
-    ], default='unavailable', required=True)
-    type = fields.Selection([
-        ('achievement', 'Achievement'),
-        ('other_type', 'Other_type')
-    ], default='achievement', required=True)
-    manage_unit = fields.Text(default='{}')
     delete_at = fields.Datetime()
     last_updated = fields.Datetime(
         default=fields.Datetime.now())

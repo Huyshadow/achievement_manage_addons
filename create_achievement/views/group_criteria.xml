@@ -1,101 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-   <record id="view_cr_group_criteria_form" model="ir.ui.view">
-      <field name="name">create.group.groups_criterias.form</field>
-      <field name="model">create_achievement.group_criterias</field>
-      <field name="arch" type="xml">
-         <form>
-            <sheet>
-               <group>
-                  <field name="name" />
-                  <field name="description" />
-                  <field name="num_of_group" />
-                  <field name="option_1_label" required="1"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 1)]}" />
-               </group>
-               <notebook>
-                  <page name="option_1" string='Test'
-                     attrs="{'invisible': [('num_of_group', '&lt;', 1)]}">
-                     <group>
-                        <field name="option_1_criterias" />
-                     </group>
-                  </page>
-                  <page name="option_2" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 2)]}">
-                     <group>
-                        <field name="option_2_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 3)]}">
-                     <group>
-                        <field name="option_3_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 4)]}">
-                     <group>
-                        <field name="option_4_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 5)]}">
-                     <group>
-                        <field name="option_5_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 6)]}">
-                     <group>
-                        <field name="option_6_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 7)]}">
-                     <group>
-                        <field name="option_7_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 8)]}">
-                     <group>
-                        <field name="option_8_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 9)]}">
-                     <group>
-                        <field name="option_9_criterias" />
-                     </group>
-                  </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
-                     attrs="{'invisible': [('num_of_group', '&lt;', 10)]}">
-                     <group>
-                        <field name="option_10_criterias" />
-                     </group>
-                  </page>
-
-               </notebook>
-            </sheet>
-         </form>
-      </field>
-   </record>
-   <record id="view_cr_group_criteria_tree" model="ir.ui.view">
-      <field name="name">create.group.groups_criterias.tree</field>
-      <field name="model">create_achievement.group_criterias</field>
-      <field name="arch" type="xml">
-         <tree limit='6'>
-            <field name="name" />
-            <field name="description" />
-         </tree>
-      </field>
-   </record>
+    <record id="view_cr_group_criteria_form" model="ir.ui.view">
+        <field name="name">create.group.groups_criterias.form</field>
+        <field name="model">create_achievement.group_criterias</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="description" />
+                        <field name="criteria_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_cr_group_criteria_tree" model="ir.ui.view">
+        <field name="name">create.group.groups_criterias.tree</field>
+        <field name="model">create_achievement.group_criterias</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
 
 
-   <record id="action_cr_group_criteria" model="ir.actions.act_window">
-      <field name="name">Danh sách tập tiêu chí</field>
-      <field name='type'>ir.actions.act_window</field>
-      <field name="res_model">create_achievement.group_criterias</field>
-      <field name="view_mode">tree,form</field>
-   </record>
+    <record id="action_cr_group_criteria" model="ir.actions.act_window">
+        <field name="name">Danh sách tập tiêu chí</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name="res_model">create_achievement.group_criterias</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 </odoo>
