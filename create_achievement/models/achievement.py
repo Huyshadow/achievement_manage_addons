@@ -77,7 +77,6 @@ class Achievement(models.Model):
             local_datetime = tz.localize(naive_datetime)
             utc_datetime = local_datetime.astimezone(timezone('UTC'))
             check_time = utc_datetime.replace(tzinfo=None)
-            print(check_time)
             if record.start_at < check_time:
                 raise ValidationError(
                     "Thời gian bắt đầu phải kể từ ngày khi được tạo")
