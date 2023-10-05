@@ -9,19 +9,72 @@
                <group>
                   <field name="name" />
                   <field name="description" />
+                  <field name="num_of_group" />
+                  <field name="option_1_label" required="1"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 1)]}" />
                </group>
                <notebook>
-                  <page name="constraint" string="Tiêu chí bắt buộc">
+                  <page name="option_1" string='Test'
+                     attrs="{'invisible': [('num_of_group', '&lt;', 1)]}">
                      <group>
-                        <field name="constrait_criterias" />
+                        <field name="option_1_criterias" />
                      </group>
                   </page>
-                  <page name="option" string="Tiêu chí khác">
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 2)]}">
                      <group>
-                        <field name="option_criterias" />
-                        <field name="option_constraint" />
+                        <field name="option_2_criterias" />
                      </group>
                   </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 3)]}">
+                     <group>
+                        <field name="option_3_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 4)]}">
+                     <group>
+                        <field name="option_4_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 5)]}">
+                     <group>
+                        <field name="option_5_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 6)]}">
+                     <group>
+                        <field name="option_6_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 7)]}">
+                     <group>
+                        <field name="option_7_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 8)]}">
+                     <group>
+                        <field name="option_8_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 9)]}">
+                     <group>
+                        <field name="option_9_criterias" />
+                     </group>
+                  </page>
+                  <page name="constraint" string="Tiêu chí bắt buộc"
+                     attrs="{'invisible': [('num_of_group', '&lt;', 10)]}">
+                     <group>
+                        <field name="option_10_criterias" />
+                     </group>
+                  </page>
+
                </notebook>
             </sheet>
          </form>

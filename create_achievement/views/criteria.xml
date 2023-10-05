@@ -40,7 +40,7 @@
             <field name="name" />
             <field name="content" />
             <field name="note" />
-            <field name="group_criteria" />
+            <!-- <field name="group_criteria" /> -->
          </tree>
       </field>
    </record>
