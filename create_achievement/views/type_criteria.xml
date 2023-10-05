@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_cr_type_criteria_form" model="ir.ui.view">
+        <field name="name">create.group.type_criterias.form</field>
+        <field name="model">create_achievement.type_criterias</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="constraint" />
+                        <field name="nums_of_option"
+                            attrs="{'invisible': [('constraint', '!=', False)]}" />
+                        <field name="criteria_ids" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_cr_type_criteria_tree" model="ir.ui.view">
+        <field name="name">create.group.type_criterias.tree</field>
+        <field name="model">create_achievement.type_criterias</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="constraint" />
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="action_cr_type_criteria" model="ir.actions.act_window">
+        <field name="name">Danh sách dạng tiêu chí</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name="res_model">create_achievement.type_criterias</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

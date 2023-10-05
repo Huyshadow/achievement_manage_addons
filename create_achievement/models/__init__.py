@@ -3,3 +3,4 @@
 from . import achievement
 from . import criteria
 from . import group_criteria
+from . import type_criteria
