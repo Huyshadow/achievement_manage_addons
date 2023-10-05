@@ -20,7 +20,7 @@
                         <field name="option_1_criterias" />
                      </group>
                   </page>
-                  <page name="constraint" string="Tiêu chí bắt buộc"
+                  <page name="option_2" string="Tiêu chí bắt buộc"
                      attrs="{'invisible': [('num_of_group', '&lt;', 2)]}">
                      <group>
                         <field name="option_2_criterias" />

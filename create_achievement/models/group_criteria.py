@@ -1,5 +1,6 @@
 from odoo import models, fields, api
-from lxml import etree
+# from lxml import etree
+from odoo.exceptions import ValidationError
 
 
 class GroupCriterias(models.Model):
@@ -10,31 +11,34 @@ class GroupCriterias(models.Model):
         "create_achievement.achievement", string="Danh hiệu")
 
     name = fields.Char(string="Tên tập tiêu chí", required=True)
+
     num_of_group = fields.Integer(
         string="Số tập tiêu chí", required=True, default=0)
 
     # --------------------------------------------------------
     option_1_criterias = fields.One2many(
         "create_achievement.criteria", "parent_id_option_1")
-    option_1_label = fields.Char(default="", translate=True)
+    option_1_label = fields.Char(default="Tiêu chí", translate=True)
 
-    @api.depends('option_1_label')
-    def fields_view_get(self, view_id=None, view_type='form', toolbar=False, submenu=False):
+    @api.model
+    def _get_view(self, view_id=None, view_type='form', **options):
+        print(self.env.context)
+        # view_id = self.env.ref(
+        #     'create_achievement.view_cr_group_criteria_form')
         # for record in self:
-        result = super(GroupCriterias, self).fields_view_get(
-            view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
-        print(result)
+        #     print(record.option_1_label)
+        arch, view = super()._get_view(view_id, view_type, **options)
         if view_type == 'form':
-            doc = etree.XML(result['arch'])
-            option_name = doc.xpath(
-                "//page[@name='option_1']")
-            if option_name:
-                option_name[0].set("string", 'Huy')
-                option_name[0].addnext(etree.Element(
-                    'label', {'string': 'Huy'}))
-                result['arch'] = etree.tostring(doc, encoding='unicode')
-        print(result)
-        return result
+            option_name = arch.xpath("//page[@name='option_1']")[0]
+            option_name.set("string", 'Huy')
+            option_name1 = arch.xpath("//page[@name='option_2']")[0]
+            option_name1.set("string", 'Huy1')
+            # option_name.addnext(
+            #     etree.Element('label', {'string': 'Huy'}))
+            # result['arch'] = etree.tostring(doc, encoding='unicode')
+            # print(arch)
+
+        return arch, view
     # -------------------------------------------------------
     option_2_criterias = fields.One2many(
         "create_achievement.criteria", "parent_id_option_2")
