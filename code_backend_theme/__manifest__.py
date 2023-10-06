@@ -39,6 +39,7 @@
     'assets': {
         'web.assets_backend': [
             'code_backend_theme/static/src/xml/styles.xml',
+            'code_backend_theme/static/src/xml/custom_error_dialog.xml', #### Comment dòng code này nếu muốn đọc roll back error #######
             'code_backend_theme/static/src/xml/top_bar.xml',
             'code_backend_theme/static/src/scss/theme_accent.scss',
             'code_backend_theme/static/src/scss/navigation_bar.scss',
@@ -48,6 +49,7 @@
             'code_backend_theme/static/src/scss/kanban.scss',
             'code_backend_theme/static/src/scss/sidebar.scss',
             'code_backend_theme/static/src/js/chrome/sidebar_menu.js',
+            # 'code_backend_theme/static/src/js/error/error_dialog.js',
             'code_backend_theme/static/src/js/fields/colors.js',
             'code_backend_theme/static/src/js/fields/input.js',
 

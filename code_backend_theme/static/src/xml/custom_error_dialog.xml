@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="custom_error" t-inherit="web.ErrorDialog" t-inherit-mode="extension">
+       
+        <xpath expr="//Dialog" position="replace">
+            <Dialog title="'Ứng dụng xảy ra lỗi'">
+                <div class="alert alert-warning clearfix" id="web_dialog" role="alert">
+                    <p><b>Một lỗi đã xảy ra</b></p>
+                    <p>Vui lòng liên lạc với <a href="mailto:nguyenphucbinhkhang@gmail.com">nguyenphucbinhkhang@gmail.com</a> để nhận giúp đỡ</p>
+                </div>
+            </Dialog>
+        </xpath>
+    </t>
+</templates>
