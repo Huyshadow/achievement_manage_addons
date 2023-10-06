@@ -10,14 +10,15 @@ class AchievementSubmit(models.Model):
 	_description = 'Achievement Submit'
 
 	user_id = fields.Many2one('res.users', 'Created By', default=lambda self: self.env.user)
-	criteria_id = fields.Many2one('create_achievement.criteria', 'Tieu chi')
-	criteria_name = fields.Char('Tên tiêu chí', related='criteria_id.name')
-	criteria_content = fields.Char('Mô tả', related='criteria_id.content')
-	criteria_method = fields.Selection('Phương thức', related='criteria_id.method', related_sudo=False)
+	criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
+	criteria_id = fields.Integer('ID tiêu chí', related='criteria.id')
+	criteria_name = fields.Char('Tên tiêu chí', related='criteria.name')
+	criteria_content = fields.Char('Mô tả', related='criteria.content')
+	criteria_method = fields.Selection('Phương thức', related='criteria.method', related_sudo=False)
 	
-	group_criteria_name = fields.Char('Tên tập tiêu chí', related='criteria_id.group_criteria')
-	category = fields.Char('Loại tiêu chí', related='criteria_id.category')
-	achievement_id = fields.Integer('ID danh hiệu', related = 'criteria_id.achievement_id')
+	group_criteria_name = fields.Char('Tên tập tiêu chí', related='criteria.group_criteria')
+	category = fields.Char('Loại tiêu chí', related='criteria.category')
+	achievement_id = fields.Integer('ID danh hiệu', related = 'criteria.achievement_id')
 	achievement_name = fields.Char('Tên danh hiệu', compute = '_get_achievement_name',store = True)
 	expertise = fields.Selection([
 	    ('passed', 'Đã đạt'),
@@ -25,11 +26,6 @@ class AchievementSubmit(models.Model):
 		('need_evidence', 'Thiếu minh chứng')
 	], default='')
 	depart_manage_comment = fields.Char('Nhận xét của quản lý đơn vị')
-	
-	@api.depends('achievement_id')
-	def _get_achievement_name(self):
-		for record in self:
-			record.achievement_name = record.env['manage_user_depart.department'].browse(record.achievement_id).name
 
 	grade = fields.Integer('Điểm')
 	is_passed = fields.Boolean('Đã đạt')
@@ -64,7 +60,7 @@ class AchievementSubmit(models.Model):
 	def add_user_list(self):
 		for record in self:
 			user_id = record.user_id.id
-			achievement_id = record.criteria_id.achievement_id
+			achievement_id = record.criteria.achievement_id
 
 			tz = timezone('Asia/Bangkok')
 			future_date = record.create_date + timedelta(days=0)
@@ -86,7 +82,7 @@ class AchievementSubmit(models.Model):
 				self.env['achievement.user.list'].create({
 					'user_id': user_id,
 					'user_name': record.user_id.name,
-					'achievement_name': record.criteria_id.achievement_name,
+					'achievement_name': record.criteria.achievement_name,
 					'achievement_id': achievement_id,
 					'donvi_name': record.user_id.donvi.name,
 					'submit_at': submit_at
@@ -94,19 +90,19 @@ class AchievementSubmit(models.Model):
 			else:
 				existing_achievement_user.write({'submit_at': submit_at})
 
-	submit_content = fields.Char(string="Nội dung khai", compute="_compute_submit_content", store=True)
-	@api.depends('grade', 'is_passed','comment')
-	def _compute_submit_content(self):
-		for record in self:
-			if record.criteria_method == "thangdiem":
-				if record.grade:
-					record.submit_content = str(record.grade)
-			if record.criteria_method == "nhiphan":
-				if record.is_passed:
-					record.submit_content = "Đã đạt"
-			if record.criteria_method == "nhanxet":
-				if record.comment:
-					record.submit_content = record.comment
-			else:
-				record.submit_content = "Chưa điền"
+		submit_content = fields.Char(string="Nội dung khai", compute="_compute_submit_content", store=True)
+		@api.depends('grade', 'is_passed','comment')
+		def _compute_submit_content(self):
+			for record in self:
+				if record.criteria_method == "thangdiem":
+					if record.grade:
+						record.submit_content = str(record.grade)
+				if record.criteria_method == "nhiphan":
+					if record.is_passed:
+						record.submit_content = "Đã đạt"
+				if record.criteria_method == "nhanxet":
+					if record.comment:
+						record.submit_content = record.comment
+				else:
+					record.submit_content = "Chưa điền"
 

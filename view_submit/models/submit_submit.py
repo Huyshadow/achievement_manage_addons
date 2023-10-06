@@ -6,10 +6,6 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.submit'
     
 
-    def action_expertise_submit(self):
-        self.env['achievement.submit'].write({
-            'approve': True
-        })
 
     def action_expertise_submit(self):
         self.ensure_one()

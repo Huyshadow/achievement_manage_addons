@@ -22,8 +22,8 @@
 		<field name="arch" type="xml">
 			<form>
 				<sheet>
-					<field name="expertise" widget="selection"/>
-					<field name="depart_manage_comment"/>
+					<field name="expertise" widget="selection" string ="Thẩm định"/>
+					<field name="depart_manage_comment" string="Ghi chú"/>
 				</sheet>
 			</form>
 		</field>
@@ -40,6 +40,7 @@
 				<field name="evidence" filename="pdf_name" widget="binary"
 					options="{'accepted_file_extensions':'.pdf'}" string="Xem minh chứng" readonly="1"/>
 				<field name="pdf_name" invisible="1" />
+				<field name="expertise" string="Tình trạng"/>
 				<button name="action_expertise_submit" type="object" class="btn btn-primary"
 					string="Thẩm định"/>
 			</tree>

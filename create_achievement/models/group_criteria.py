@@ -10,7 +10,7 @@ class GroupCriterias(models.Model):
 
     name = fields.Char(string="Tên tập tiêu chí", required=True)
 
-    constrait_criterias = fields.One2many(
+    constraint_criterias = fields.One2many(
         "create_achievement.criteria", "parent_id_constraint", string="Danh sách tiêu chí bắt buộc")
 
     option_criterias = fields.One2many(
@@ -22,3 +22,12 @@ class GroupCriterias(models.Model):
         string="Mô tả", default="Không"
     )
     display_name = fields.Char(string="Tên hiển thị", store=True)
+    
+
+    constraint_criteria_count = fields.Integer(
+        string="Số tiêu chí bắt buộc", compute="_compute_constraint_criteria_count")
+
+    @api.depends('constraint_criterias')  # Specify the dependency
+    def _compute_constraint_criteria_count(self):
+        for record in self:
+            record.constraint_criteria_count = len(record.constraint_criterias)

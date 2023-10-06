@@ -13,7 +13,7 @@
                <notebook>
                   <page name="constraint" string="Tiêu chí bắt buộc">
                      <group>
-                        <field name="constrait_criterias" />
+                        <field name="constraint_criterias" />
                      </group>
                   </page>
                   <page name="option" string="Tiêu chí khác">
