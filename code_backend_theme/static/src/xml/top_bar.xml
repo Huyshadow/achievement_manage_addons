@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <templates id="template" xml:space="preserve">
     <t t-inherit="web.NavBar" t-inherit-mode="extension" owl="1">
-        <xpath expr="//nav[hasclass('o_main_navbar')]" position="replace">
+        <xpath expr="//nav[hasclass('o_main_navbar')]" position="replace" >
             <nav class="o_main_navbar d-flex justify-content-between"
                 t-on-dropdown-item-selected="onNavBarDropdownItemSelection"
                 data-command-category="navbar">
@@ -107,7 +107,7 @@
                                 </h6>
                             </t>
                             
-                            <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and app.name != 'Ứng dụng' " data-toggle="tooltip" data-placement="right" t-att-title="app.name"> 
+                            <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss'" data-toggle="tooltip" data-placement="right" t-att-title="app.name"> 
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">
