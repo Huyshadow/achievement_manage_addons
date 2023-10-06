@@ -2,7 +2,7 @@
   <data>
     <record model="ir.ui.view" id="manage_user_depart.list_depart">
       <field name="name">manage_user_depart.list</field>
-      <field name="model">manage_user_depart.departmens</field>
+      <field name="model">manage_user_depart.department</field>
       <field name="arch" type="xml">
         <tree>
           <field name="code" string="Mã số đơn vị" />
