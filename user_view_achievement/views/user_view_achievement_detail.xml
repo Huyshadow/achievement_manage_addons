@@ -28,8 +28,7 @@
 				<field name="status"
 					decoration-success="status == 'Đã nộp'"
 					decoration-warning="status == 'Chưa nộp'"
-					widget="badge"
-					style="margin-top:2px;" />
+					widget="badge" />
 				<button name="action_submit_criteria" type="object" class="btn btn-primary"
 					string="Nộp" />
 			</tree>
