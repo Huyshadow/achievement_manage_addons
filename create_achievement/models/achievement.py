@@ -11,7 +11,6 @@ class Achievement(models.Model):
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
 
-    user_id = fields.Many2one('res.users', string='User')
     name = fields.Char(default="", required=True, string="Danh hiệu")
     description = fields.Text(string="Mô tả")
     start_at = fields.Datetime(string="Ngày bắt đầu nộp", required=True)
