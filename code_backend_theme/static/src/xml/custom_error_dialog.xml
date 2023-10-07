@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+    <t t-name="custom_error" t-inherit="web.ErrorDialog" t-inherit-mode="extension">
+       
+        <xpath expr="//Dialog" position="replace">
+            <Dialog title="'Ứng dụng xảy ra lỗi'">
+                <div class="alert alert-warning clearfix" id="web_dialog" role="alert">
+                    <p><b>Một lỗi đã xảy ra</b></p>
+                    <p>Vui lòng liên lạc với <a href="mailto:nguyenphucbinhkhang@gmail.com">nguyenphucbinhkhang@gmail.com</a> để nhận giúp đỡ</p>
+                </div>
+
+                <div group="group_system">
+                    <div class="float-end ml8 btn-group-vertical" >
+                        <button class="btn btn-primary" t-on-click="onClickClipboard">
+                            <i class="fa fa-clipboard mr8"/><t>Copy the full error to clipboard</t>
+                        </button>
+                    </div>
+                    <button class="btn btn-link" t-on-click="() => { state.showTraceback = !state.showTraceback }" group="group_system">See details</button>
+                    <div t-if="state.showTraceback and (props.name or props.message)" class="alert alert-info bg-100 clearfix" role="alert" >
+                      <code t-if="props.name" t-esc="props.name"></code>
+                      <p t-if="props.message" t-esc="props.message"></p>
+                    </div>
+                    <div t-if="state.showTraceback" class="alert alert-danger o_error_detail" role="alert">
+                        <pre t-esc="traceback or props.traceback"/>
+                    </div>
+                </div>
+            </Dialog>
+        </xpath>
+    </t>
+</templates>
