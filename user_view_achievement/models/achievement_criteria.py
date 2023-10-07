@@ -8,6 +8,16 @@ class AchivementCriteria(models.Model):
         'achievement.submit', 'criteria_id', 'Bản nộp')
     is_submitted = fields.Boolean(
         'Xác nhận nộp', compute='_compute_is_submitted')
+    status = fields.Char(
+        string="Tình Trạng", compute='_compute_status')
+
+    @api.onchange('is_submitted')
+    def _compute_status(self):
+        for record in self:
+            if record.is_submitted == True:
+                record.status = "Đã nộp"
+            else:
+                record.status = "Chưa nộp"
 
     @api.depends('submit_ids')
     def _compute_is_submitted(self):

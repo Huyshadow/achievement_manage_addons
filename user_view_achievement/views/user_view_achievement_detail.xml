@@ -7,8 +7,9 @@
 			<search>
 				<group string="Group Criteria, then Type">
 					<filter string="Group Criteria" name="group_criteria"
-						context="{'group_by': 'group_criteria'}" />
-					<filter string="Type" name="category" context="{'group_by': 'category'}" />
+						context="{'group_by': 'group_criteria_name'}" />
+					<filter string="Type" name="category"
+						context="{'group_by': 'type_group_criteria_name'}" />
 				</group>
 				<filter string="Search by Name" name="name_filter"
 					domain="[('name', 'ilike', self)]" />
@@ -24,7 +25,10 @@
 				<field name="name" />
 				<field name="content" />
 				<field name="note" />
-				<field name="is_submitted" />
+				<field name="status"
+					decoration-success="status == 'Đã nộp'"
+					decoration-warning="status == 'Chưa nộp'"
+					widget="badge" />
 				<button name="action_submit_criteria" type="object" class="btn btn-primary"
 					string="Nộp" />
 			</tree>

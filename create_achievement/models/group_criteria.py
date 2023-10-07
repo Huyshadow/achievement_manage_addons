@@ -7,18 +7,8 @@ class GroupCriterias(models.Model):
 
     parent_id = fields.Many2one(
         "create_achievement.achievement", string="Danh hiệu")
-
+    type_criteria_ids = fields.One2many('create_achievement.type_criterias', 'parent_id', string="Danh sách dạng tiêu chí")
     name = fields.Char(string="Tên tập tiêu chí", required=True)
-
-    constrait_criterias = fields.One2many(
-        "create_achievement.criteria", "parent_id_constraint", string="Danh sách tiêu chí bắt buộc")
-
-    option_criterias = fields.One2many(
-        "create_achievement.criteria", "parent_id_option", string="Danh sách tiêu chí khác")
-
-    option_constraint = fields.Integer(
-        string="Số tiêu chí khác bắt buộc", default=1)
     description = fields.Text(
         string="Mô tả", default="Không"
     )
-    display_name = fields.Char(string="Tên hiển thị", store=True)

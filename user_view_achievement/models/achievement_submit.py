@@ -16,6 +16,7 @@ class AchievementSubmit(models.Model):
     criteria_content = fields.Char('Mô tả', related='criteria_id.content')
     criteria_method = fields.Selection(
         'Phương thức', related='criteria_id.method', related_sudo=False)
+    required_evidence = fields.Boolean('Cần minh chứng', related='criteria_id.evidence')
 
     grade = fields.Integer('Điểm')
     is_passed = fields.Boolean('Đã đạt')
