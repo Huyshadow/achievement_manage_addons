@@ -6,7 +6,7 @@ class Criteria(models.Model):
     _description = ' Criteria for Tuyen duong Website'
 
     parent_id = fields.Many2one('create_achievement.type_criterias')
-    achievement_id = fields.Integer(string="Thuộc danh hiệu", related='parent_id.parent_id.id', store=True)
+    achievement_id = fields.Integer(string="Thuộc danh hiệu", related='parent_id.parent_id.parent_id.id', store=True)
     group_criteria_name = fields.Char(string="Thuộc tập tiêu chí", related='parent_id.parent_id.name', store=True)
     type_group_criteria_name = fields.Char(string="Thuộc loại tiêu chí", related='parent_id.name', store=True)
     name = fields.Char(required=True, string="Tên tiêu chí")

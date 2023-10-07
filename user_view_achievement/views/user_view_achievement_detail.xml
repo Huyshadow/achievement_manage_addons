@@ -24,13 +24,13 @@
 				js_class="disappear_check_box">
 				<field name="name" />
 				<field name="content" />
-				<field name="note" />
+				<!-- <field name="note" /> -->
 				<field name="status"
 					decoration-success="status == 'Đã nộp'"
 					decoration-warning="status == 'Chưa nộp'"
-					widget="badge" />
+					widget="badge" width="90px"/>
 				<button name="action_submit_criteria" type="object" class="btn btn-primary"
-					string="Nộp" />
+					string="Nộp"/>
 			</tree>
 		</field>
 	</record>

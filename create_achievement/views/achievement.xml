@@ -19,15 +19,15 @@
             <group>
               <field name="start_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+                 />
               <field
                 name="end_submit_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+                 />
               <field name="end_at"
                 widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />s </group>
+                />s </group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
