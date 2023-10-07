@@ -7,8 +7,8 @@
 			<search>
 				<group string="Group Criteria, then Type">
 					<filter string="Group Criteria" name="group_criteria"
-						context="{'group_by': 'group_criteria'}" />
-					<filter string="Type" name="category" context="{'group_by': 'category'}" />
+						context="{'group_by': 'group_criteria_name'}" />
+					<filter string="Type" name="category" context="{'group_by': 'type_group_criteria_name'}" />
 				</group>
 				<filter string="Search by Name" name="name_filter"
 					domain="[('name', 'ilike', self)]" />

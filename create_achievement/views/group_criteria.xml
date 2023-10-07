@@ -9,7 +9,7 @@
                     <group>
                         <field name="name" />
                         <field name="description" />
-                        <field name="criteria_ids" />
+                        <field name="type_criteria_ids" />
                     </group>
                 </sheet>
             </form>
