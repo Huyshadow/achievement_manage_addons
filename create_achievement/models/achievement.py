@@ -9,7 +9,7 @@ class Achievement(models.Model):
     _description = 'Achievement Model of Create-Achievement Module'
 
     criteria_ids = fields.One2many(
-        'create_achievement.group_criterias', 'parent_id', string="Tiêu chí danh hiệu")
+        'create_achievement.group_criterias', 'parent_id', string="Tập tiêu chí danh hiệu")
 
     name = fields.Char(default="", required=True, string="Danh hiệu")
     description = fields.Text(string="Mô tả")
