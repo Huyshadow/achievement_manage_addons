@@ -153,3 +153,5 @@ class Achievement(models.Model):
                     'create': True,
             }
         }
+
+    
