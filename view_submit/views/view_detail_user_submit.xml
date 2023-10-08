@@ -22,8 +22,10 @@
 		<field name="arch" type="xml">
 			<form>
 				<sheet>
-					<field name="expertise" widget="selection" string ="Thẩm định"/>
-					<field name="depart_manage_comment" string="Ghi chú"/>
+					<group>
+						<field name="expertise" widget="selection" string ="Thẩm định"/>
+						<field name="depart_manage_comment" string="Ghi chú"/>
+					</group>
 				</sheet>
 			</form>
 		</field>
