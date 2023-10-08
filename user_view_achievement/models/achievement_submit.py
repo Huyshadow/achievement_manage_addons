@@ -12,14 +12,17 @@ class AchievementSubmit(models.Model):
     user_id = fields.Many2one(
         'res.users', 'Created By', default=lambda self: self.env.user)
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
-    criteria_id = fields.Integer('ID tiêu chí',related='criteria.id')
+    criteria_id = fields.Integer('ID tiêu chí', related='criteria.id')
     criteria_name = fields.Char('Tên tiêu chí', related='criteria.name')
     criteria_content = fields.Char('Mô tả', related='criteria.content')
     criteria_method = fields.Selection(
         'Phương thức', related='criteria.method', related_sudo=False)
-    required_evidence = fields.Boolean('Cần minh chứng', related='criteria.evidence')
-    group_criteria_name = fields.Char('Tên tập tiêu chí', related='criteria.parent_id.parent_id.name')
-    type_criteria_name = fields.Char('Tên loại tiêu chí', related='criteria.parent_id.name')
+    required_evidence = fields.Boolean(
+        'Cần minh chứng', related='criteria.evidence')
+    group_criteria_name = fields.Char(
+        'Tên tập tiêu chí', related='criteria.parent_id.parent_id.name')
+    type_criteria_name = fields.Char(
+        'Tên loại tiêu chí', related='criteria.parent_id.name')
     expertise = fields.Selection([
         ('passed', 'Đã đạt'),
         ('not_passed', 'Chưa đạt'),
@@ -34,7 +37,19 @@ class AchievementSubmit(models.Model):
     pdf_name = fields.Char(string='Tên file pdf')
     submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
     submit_content = fields.Char(string='Nội dung nộp')
-    
+
+    related_list_string = fields.Char(
+        related='criteria_id.value_list_string')
+    list_selection = fields.Selection(selection='_compute_field_selection')
+
+    def _compute_field_selection(self):
+        selection_options = []
+        if self.related_list_string != "":
+            arr = self.related_list_string.split(',')
+            for x in arr:
+                selection_options.append((x, x))
+        return selection_options
+
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:
