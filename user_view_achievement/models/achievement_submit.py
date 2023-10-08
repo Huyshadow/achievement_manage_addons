@@ -44,10 +44,6 @@ class AchievementSubmit(models.Model):
         '_compute_field_selection', string="Danh sách")
 
     def _get_selection(self):
-        print('Huy')
-        print(self.criteria_name)
-        for record in self:
-            print(self)
         return []
 
     list_selection = fields.Selection(_get_selection, string="Danh sách")
