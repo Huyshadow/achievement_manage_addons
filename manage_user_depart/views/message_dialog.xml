@@ -5,12 +5,13 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <form string="Thông báo" style="font-size: 32px">
-                <field style="font-weight: 400; font-size: 20px" name="text" nolabel="1"
+                <field class="content_form" name="text"
+                    nolabel="1"
                     readonly="1"
                     widget="html" />
                 <newline />
                 <footer style="justify-content:flex-end;">
-                    <button special="cancel" string="OK" style="font-weight:bold;" />
+                    <button name="cancel" type="object" string="OK" class="button_dialog " />
                 </footer>
             </form>
         </field>

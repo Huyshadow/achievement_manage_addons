@@ -7,7 +7,7 @@
       <form>
         <sheet classname="container">
           <field name="name_title"
-            style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #495057 ;"
+            style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
             readonly='1' />
           <field name="status" invisible='1' />
           <group>
@@ -19,15 +19,15 @@
             <group>
               <field name="start_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+                 />
               <field
                 name="end_submit_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+                 />
               <field name="end_at"
                 widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />s </group>
+                />s </group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
@@ -47,9 +47,9 @@
     <field name="arch" type="xml">
       <tree>
         <field name="name" />
-        <field name="start_at" />
-        <field name="end_submit_at" />
-        <field name="end_at" />
+        <field widget="date" name="start_at" />
+        <field widget="date" name="end_submit_at" />
+        <field widget="date" name="end_at" />
         <field name="status"
           decoration-success="status == 'Đang tiến hành'"
           decoration-warning="status == 'Trạng thái chờ'"

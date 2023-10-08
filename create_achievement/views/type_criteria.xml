@@ -10,7 +10,7 @@
                         <field name="name" />
                         <field name="constraint" />
                         <field name="nums_of_option"
-                            attrs="{'invisible': [('constraint', '!=', False)]}" />
+                            attrs="{'invisible': [('constraint', '!=', 'some')]}" />
                         <field name="criteria_ids" />
                     </group>
                 </sheet>

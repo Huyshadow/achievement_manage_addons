@@ -1837,6 +1837,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   ) {
   vertical-align: middle !important;
   white-space: normal !important;
+  border-left: 1px solid #dfdfdf !important;
 }
 // .o_cp_action_menus {
 //   display: none !important;
@@ -1846,4 +1847,15 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 }
 .o_kanban_renderer.o_kanban_ungrouped {
   gap: 16px !important;
+}
+
+.o_legacy_list_view
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector).o_list_button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-left: 1px solid #dfdfdf !important;
 }

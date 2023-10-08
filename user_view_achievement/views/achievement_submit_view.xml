@@ -8,7 +8,7 @@
         <sheet>
           <group>
             <field name="criteria_name" />
-            <field name="criteria_method" />
+            <field name="criteria_method" invisible="1"/>
             <field name="criteria_content" />
             <field name="required_evidence" invisible="1"/>
             <field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}" />
