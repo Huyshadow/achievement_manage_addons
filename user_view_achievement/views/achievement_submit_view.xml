@@ -15,7 +15,6 @@
             <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}"
               height="500px" />
             <field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}" />
-            <field name="related_list_string" />
             <field name="list_selection"
               attrs="{'invisible': [('criteria_method', '!=', 'danhsach')]}" />
             <field name="evidence" filename="pdf_name" widget="binary"
