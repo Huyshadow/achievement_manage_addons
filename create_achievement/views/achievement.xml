@@ -65,6 +65,7 @@
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
     <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="view_cr_achievement_tree"/>
     <field name="help" type="html">
       <p>
         <b>Hiện tại chưa có Danh hiệu nào</b>

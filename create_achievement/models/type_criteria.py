@@ -13,3 +13,10 @@ class TypeCriterias(models.Model):
     constraint = fields.Selection(
         [("all", "Tất cả"), ("some", 'Tự chọn')], string="Số tiêu chí thõa mãn", required=True)
     nums_of_option = fields.Integer(string="Số tiêu chí phải thỏa", default=0)
+
+    nums_current_option = fields.Integer(string="Số tiêu chí đang có", compute = "_compute_nums_current_option", store=True)
+
+    @api.depends('criteria_ids')
+    def _compute_nums_current_option(self):
+        for record in self:
+            nums_current_option = len(record.criteria_ids)

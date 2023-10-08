@@ -5,7 +5,7 @@ class AchivementCriteria(models.Model):
     _inherit = 'create_achievement.criteria'
 
     submit_ids = fields.One2many(
-        'achievement.submit', 'criteria_id', 'Bản nộp')
+        'achievement.submit', 'criteria', 'Bản nộp')
     is_submitted = fields.Boolean(
         'Xác nhận nộp', compute='_compute_is_submitted')
     status = fields.Char(
@@ -45,7 +45,7 @@ class AchivementCriteria(models.Model):
             })
         else:
             new_submission = self.env['achievement.submit'].create({
-                'criteria_id': self.id,
+                'criteria': self.id,
             })
             action.update({
                 'res_id': new_submission.id,
