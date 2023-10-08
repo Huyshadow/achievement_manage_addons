@@ -43,13 +43,14 @@ class AchievementSubmit(models.Model):
     list_selection = fields.Selection(
         '_compute_field_selection', string="Danh sách")
 
-    def _compute_field_selection(self):
-        selection_options = [('default', 'Default')]
+    def _get_selection(self):
+        print('Huy')
+        print(self.criteria_name)
         for record in self:
-            arr = record.related_list_string.split(',')
-            for x in arr:
-                selection_options.append((x, x))
-        return selection_options
+            print(self)
+        return []
+
+    list_selection = fields.Selection(_get_selection, string="Danh sách")
 
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
