@@ -12,8 +12,7 @@
             <field name="criteria_content" />
             <field name="required_evidence" invisible="1" />
             <field name="grade" attrs="{'invisible': [('criteria_method', '!=', 'thangdiem')]}" />
-            <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}"
-              height="500px" />
+            <field name="comment" attrs="{'invisible': [('criteria_method', '!=', 'nhanxet')]}"/>
             <field name="is_passed" attrs="{'invisible': [('criteria_method', '!=', 'nhiphan')]}" />
             <field name="list_selection"
               attrs="{'invisible': [('criteria_method', '!=', 'danhsach')]}" />
