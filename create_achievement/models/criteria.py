@@ -6,13 +6,16 @@ class Criteria(models.Model):
     _description = ' Criteria for Tuyen duong Website'
 
     parent_id = fields.Many2one('create_achievement.type_criterias')
-    achievement_id = fields.Integer(string="Thuộc danh hiệu", related='parent_id.parent_id.parent_id.id', store=True)
-    group_criteria_name = fields.Char(string="Thuộc tập tiêu chí", related='parent_id.parent_id.display_name', store=True)
-    type_group_criteria_name = fields.Char(string="Thuộc loại tiêu chí", related='parent_id.name', store=True)
+    achievement_id = fields.Integer(
+        string="Thuộc danh hiệu", related='parent_id.parent_id.parent_id.id', store=True)
+    group_criteria_name = fields.Char(
+        string="Thuộc tập tiêu chí", related='parent_id.parent_id.display_name', store=True)
+    type_group_criteria_name = fields.Char(
+        string="Thuộc loại tiêu chí", related='parent_id.name', store=True)
     name = fields.Char(required=True, string="Tên tiêu chí")
     method = fields.Selection(
         [('thangdiem', 'Thang điểm'), ('nhiphan', 'Nhị Phân'), ('nhanxet', 'Người nộp tự nhận xét'), ('danhsach', 'Dạng danh sách')], default='', string="Phương thức", required=True)
-    value_list_string = fields.Char()
+    value_list_string = fields.Char(default="", string="Danh sách")
     content = fields.Char(required=True, default='Không', string="Nội dung")
     note = fields.Char(required=True, default='Không', string="Ghi chú")
     evidence = fields.Boolean(

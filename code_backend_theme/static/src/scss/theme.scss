@@ -1817,7 +1817,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   visibility: hidden !important;
 }
 .o_legacy_list_view .o_list_table tbody > tr.o_group_header .o_group_name {
-  font-size: 18px !important;
+  font-size: 14px !important;
 }
 .o_legacy_list_view tbody > tr.o_group_header {
   background-image: linear-gradient(to bottom, #f8f9fa, #ededed) !important;
@@ -1854,8 +1854,14 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   tbody
   > tr
   > td:not(.o_list_record_selector).o_list_button {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+  display: table-cell !important;
   border-left: 1px solid #dfdfdf !important;
+  vertical-align: middle !important;
+}
+.o_legacy_list_view .o_list_table thead {
+  z-index: 1000 !important;
+}
+
+.o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
+  font-size: 14px !important;
 }

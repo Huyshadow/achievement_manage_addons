@@ -108,3 +108,7 @@ body:not(.o_touch_device) .o_field_selection {
 .o_form_view .cusform .o_horizontal_separator:not(:empty){
   box-shadow: 0 10px 0 #e6e6e6; 
 }
+
+textarea#comment {
+  height: 300px;
+}
