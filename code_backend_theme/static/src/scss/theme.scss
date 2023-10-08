@@ -1856,6 +1856,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   > td:not(.o_list_record_selector).o_list_button {
   display: table-cell !important;
   border-left: 1px solid #dfdfdf !important;
+  vertical-align: middle !important;
 }
 .o_legacy_list_view .o_list_table thead {
   z-index: 1000 !important;
@@ -1863,9 +1864,4 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 
 .o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
   font-size: 14px !important;
-}
-.o_data_cell .o_list_button {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
 }
