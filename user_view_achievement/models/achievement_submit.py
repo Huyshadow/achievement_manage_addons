@@ -38,16 +38,7 @@ class AchievementSubmit(models.Model):
     submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
     submit_content = fields.Char(string='Nội dung nộp')
 
-    related_list_string = fields.Char(
-        related='criteria_id.value_list_string', related_sudo=False)
-    list_selection = fields.Selection(
-        '_compute_field_selection', string="Danh sách")
-
-    def _get_selection(self):
-        return []
-
-    list_selection = fields.Selection(_get_selection, string="Danh sách")
-
+   
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:
