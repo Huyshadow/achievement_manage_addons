@@ -15,7 +15,7 @@ class Criteria(models.Model):
     name = fields.Char(required=True, string="Tên tiêu chí")
     method = fields.Selection(
         [('thangdiem', 'Thang điểm'), ('nhiphan', 'Nhị Phân'), ('nhanxet', 'Người nộp tự nhận xét'), ('danhsach', 'Dạng danh sách')], default='', string="Phương thức", required=True)
-    value_list_string = fields.Char(default="")
+    value_list_string = fields.Char(default="", string="Danh sách")
     content = fields.Char(required=True, default='Không', string="Nội dung")
     note = fields.Char(required=True, default='Không', string="Ghi chú")
     evidence = fields.Boolean(

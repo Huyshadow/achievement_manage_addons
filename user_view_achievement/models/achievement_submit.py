@@ -39,13 +39,14 @@ class AchievementSubmit(models.Model):
     submit_content = fields.Char(string='Nội dung nộp')
 
     related_list_string = fields.Char(
-        related='criteria_id.value_list_string')
-    list_selection = fields.Selection(selection='_compute_field_selection')
+        related='criteria_id.value_list_string', related_sudo=False)
+    list_selection = fields.Selection(
+        '_compute_field_selection', string="Danh sách")
 
     def _compute_field_selection(self):
-        selection_options = []
-        if self.related_list_string != "":
-            arr = self.related_list_string.split(',')
+        selection_options = [('default', 'Default')]
+        for record in self:
+            arr = record.related_list_string.split(',')
             for x in arr:
                 selection_options.append((x, x))
         return selection_options
