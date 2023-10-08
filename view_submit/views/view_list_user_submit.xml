@@ -12,9 +12,9 @@
 				<field name="submit_at"/>
 				<field name="approve"/>
 				<button name="action_view_user_submit" type="object" class="btn btn-primary" string="Xem chi tiết"/>
-				<field name="user_approve" string="Duyệt thành viên" widget="toggle_button" groups = "access_right_user.group_system_manager"/>
-				<button name="action_accept_submit" type="object" class="btn btn-primary" string="Duyệt" 
-					groups="access_right_user.group_comittee"/>
+				<field name="user_approve" string="Duyệt thành viên" widget="boolean_toggle" groups = "access_right_user.group_unit_manager"/>
+				<!-- <button name="action_accept_submit" type="object" class="btn btn-primary" string="Duyệt" 
+					groups="access_right_user.group_comittee"/> -->
 			</tree>
 		</field>
 	</record>
