@@ -106,6 +106,12 @@
                                       Quản lý Danh hiệu
                                 </h6>
                             </t>
+                            <t t-if="app.name == 'Duyệt hồ sơ'">
+                                <h6 class="sidebar_head">
+                                      Quản lý hồ sơ Đơn vị
+                                </h6>
+                            </t>
+                            
                             
                             <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and app.name != 'Ứng dụng' " data-toggle="tooltip" data-placement="right" t-att-title="app.name"> 
                                 <a role="menuitem"

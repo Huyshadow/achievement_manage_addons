@@ -6,9 +6,9 @@
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20" js_class="disappear_check_box">
 				<field name="name" />
-                <field name="start_at" />
-                <field name="end_submit_at" />
-                <field name="end_at" />
+                <field widget="date" name="start_at" />
+                <field widget="date" name="end_submit_at" />
+                <field widget="date" name="end_at" />
                 <field name="status"
                     decoration-success="status == 'Đang tiến hành'"
                     decoration-warning="status == 'Trạng thái chờ'"
