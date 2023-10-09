@@ -1865,3 +1865,17 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
   font-size: 14px !important;
 }
+
+.form-switch .form-check-input {
+  width: 4em;
+  margin-left: -2.5em;
+  background-position: left center;
+  border-radius: 2em;
+  transition: background-position 0.15s ease-in-out;
+  height: 2em;
+}
+
+.form-check-input:checked {
+  background-color: #0569f5;
+  border-color: #3d05f5;
+}
