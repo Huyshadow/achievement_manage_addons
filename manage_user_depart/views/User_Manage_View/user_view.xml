@@ -138,7 +138,7 @@
                   </group>
                 </div>
                 <div class="container_image">
-                  <label for="image_1920" string="Ảnh thẻ 3x4" class="label_string" />
+                  <label for="image_1920" string="Ảnh chân dung ( dùng để tuyên dương khen thưởng)" class="label_string" />
                   <field name="image_1920" string="Ảnh 3x4" widget='image'
                     class="oe_avatar image_style"
                     options='{"zoom": false, "preview_image": "avatar_128", "size": [270, 360]}'
