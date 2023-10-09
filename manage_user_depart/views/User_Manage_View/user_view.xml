@@ -4,7 +4,7 @@
       <field name="name">manage_user_depart.tree</field>
       <field name="model">res.users</field>
       <field name="arch" type="xml">
-        <tree>
+        <tree  limit="20">
           <field name="name" />
           <field name="mssv_mscb" />
           <field name="donvi" />
@@ -168,7 +168,7 @@
     <record model="ir.actions.act_window" id="manage_user_depart.action_window_user">
       <field name="name">Danh sách người dùng</field>
       <field name="res_model">res.users</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,kanban</field>
     </record>
     <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root"
       action="manage_user_depart.action_window_user"

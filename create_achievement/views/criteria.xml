@@ -20,9 +20,9 @@
                   <field
                      name="upper_point"
                      attrs="{'invisible': [('sign', '!=', '&gt;= or &lt;='), ('sign', '!=', '&gt;= and &lt;=')], 'required':[('method', '==', 'thangdiem')]}" />
-                  <field
+                  <!-- <field
                      name="value_list_string"
-                     attrs="{'invisible': [('method', '!=', 'danhsach')], 'required':[('method', '==', 'danhsach')]}" />
+                     attrs="{'invisible': [('method', '!=', 'danhsach')], 'required':[('method', '==', 'danhsach')]}" /> -->
                   <field name="content" />
                   <field
                      name="note" />

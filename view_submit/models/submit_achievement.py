@@ -14,5 +14,5 @@ class Achievement(models.Model):
         'res_id': self.id,
         'target': 'current',
         'flags': {'hasSelectors': False},
-        'domain': [('achievement_id', '=', self.id)],
+        'domain': [('achievement_id', '=', self.id),('donvi_name','=',self.env.user.donvi.name)],
     }

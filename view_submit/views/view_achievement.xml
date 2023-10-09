@@ -3,6 +3,7 @@
 	<record id="view_achievement_list_tree" model="ir.ui.view">
 		<field name="name">achievement.list.view</field>
 		<field name="model">create_achievement.achievement</field>
+		<field name="priority">10</field>
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20" js_class="disappear_check_box">
 				<field name="name" />

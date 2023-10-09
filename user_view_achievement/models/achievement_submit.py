@@ -47,16 +47,25 @@ class AchievementSubmit(models.Model):
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = str(record.grade)
+                else:
+                    record.submit = False
+                    record.submit_content = "Chưa điền"
             elif record.criteria_method == "nhiphan":
                 if record.is_passed == True:
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = "Đã đạt"
+                else:
+                    record.submit = False
+                    record.submit_content = "Chưa điền"
             elif record.criteria_method == "nhanxet":
                 if record.comment:
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = record.comment
+                else:
+                    record.submit = False
+                    record.submit_content = "Chưa điền"
             else:
                 record.submit = False
                 record.submit_content = "Chưa điền"

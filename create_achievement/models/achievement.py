@@ -142,19 +142,17 @@ class Achievement(models.Model):
         return records
 
     def save_and_redirect(self):
-        tree_id = self.env.ref(
-            'create_achievement.view_cr_achievement_tree').id
         return {
             'name': 'Danh sách danh hiệu/giải thưởng',
             'res_model': 'create_achievement.achievement',
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'view_type': 'tree',
-            'view_id': tree_id,
             'type': 'ir.actions.act_window',
             'target': 'current',
             'context': {
-                    'create': True,
+                    'create': True, 
             }
         }
+
 
     

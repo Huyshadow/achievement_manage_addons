@@ -1842,8 +1842,10 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 // .o_cp_action_menus {
 //   display: none !important;
 // }
-.o_cp_pager {
-  display: none !important;
+.o_form_view_container {
+  .o_cp_pager {
+    display: none !important;
+  }
 }
 .o_kanban_renderer.o_kanban_ungrouped {
   gap: 16px !important;
