@@ -5,14 +5,12 @@
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='true' edit="false" limit="20" js_class="disappear_check_box">
-				<field name="user_id"/>
-				<field name="achievement_id"/>
 				<field name="user_name"/>
 				<field name="donvi_name"/>
-				<field name="submit_at"/>
-				<field name="approve"/>
+				<field name="submit_at" widget="date" string="Ngày nộp"/>
+				<!-- <field name="approve"/> -->
 				<button name="action_view_user_submit" type="object" class="btn btn-primary" string="Xem chi tiết"/>
-				<field name="user_approve" string="Duyệt thành viên" widget="boolean_toggle" groups = "access_right_user.group_unit_manager"/>
+				<field name="user_approve" string="Duyệt hồ sơ" widget="boolean_toggle" groups = "access_right_user.group_unit_manager"/>
 				<!-- <button name="action_accept_submit" type="object" class="btn btn-primary" string="Duyệt" 
 					groups="access_right_user.group_comittee"/> -->
 			</tree>
