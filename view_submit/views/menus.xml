@@ -6,5 +6,6 @@
         sequence="1"
         action="action_view_achievement_list"
         web_icon="code_backend_theme,static/src/img/icons/Attendances.png"
+        groups="access_right_user.group_unit_manager"
     />    
 </odoo>
