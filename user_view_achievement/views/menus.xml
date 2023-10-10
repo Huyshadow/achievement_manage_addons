@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem 
-        id="menu_user_ach_root" 
-        name="Đề cử danh hiệu/giải thưởng"
+    <menuitem
+        id="menu_user_ach_root"
+        name="Đề cử Danh hiệu/Giải thưởng"
         sequence="2"
         action="action_view_achievement"
         web_icon="code_backend_theme,static/src/img/icons/Note.png"
         groups="access_right_user.group_mem_user"
-    />    
+    />
 </odoo>

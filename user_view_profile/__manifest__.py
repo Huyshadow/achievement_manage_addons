@@ -5,6 +5,7 @@
     'summary': """
         Feature: User view list Achievement
     """,
+    'license': 'LGPL-3',
 
     'author': "TusDT",
     'website': "https://www.facebook.com/clone.lol9/",

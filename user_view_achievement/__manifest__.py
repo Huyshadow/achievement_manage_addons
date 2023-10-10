@@ -7,8 +7,8 @@
     """,
 
     'author': "TusDT",
-    'website': "https://www.facebook.com/clone.lol9/",
     'license': 'LGPL-3',
+    'website': "https://www.facebook.com/clone.lol9/",
     'category': 'HKT addons',
     'version': '0.1',
     'depends': ['base', 'create_achievement'],
