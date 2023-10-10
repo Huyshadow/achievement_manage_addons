@@ -1881,3 +1881,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   background-color: #0569f5;
   border-color: #3d05f5;
 }
+
+.dropdown-menu, .o-dropdown-menu {
+    z-index: 1001;
+}
