@@ -4,8 +4,6 @@ odoo.define("create_achievement.BackClientAction", function (require) {
   var core = require("web.core");
   var AbstractAction = require("web.AbstractAction");
 
-  var _t = core._t;
-
   var BackClientAction = AbstractAction.extend({
     start: function () {
       this._super.apply(this, arguments);

@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'access_right_user'],
+    'depends': ['base', 'access_right_user', 'manage_user_depart'],
 
     # always loaded
     'data': [
