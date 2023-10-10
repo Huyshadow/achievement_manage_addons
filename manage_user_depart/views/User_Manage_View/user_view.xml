@@ -4,7 +4,7 @@
       <field name="name">manage_user_depart.tree</field>
       <field name="model">res.users</field>
       <field name="arch" type="xml">
-        <tree  limit="20">
+        <tree limit="20">
           <field name="name" />
           <field name="mssv_mscb" />
           <field name="donvi" />
@@ -138,7 +138,10 @@
                   </group>
                 </div>
                 <div class="container_image">
-                  <label for="image_1920" string="Ảnh chân dung ( dùng để tuyên dương khen thưởng)" class="label_string" />
+                  <label for="image_1920" string="Ảnh chân dung" class="label_string" />
+                  <div>
+                    <p>(Dùng để tuyên dương khen thưởng)</p>
+                  </div>
                   <field name="image_1920" string="Ảnh 3x4" widget='image'
                     class="oe_avatar image_style"
                     options='{"zoom": false, "preview_image": "avatar_1920", "size": [270, 360]}'

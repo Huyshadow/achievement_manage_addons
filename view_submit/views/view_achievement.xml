@@ -5,26 +5,27 @@
 		<field name="model">create_achievement.achievement</field>
 		<field name="priority">10</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20" js_class="disappear_check_box">
+			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
+				js_class="disappear_check_box">
 				<field name="name" />
-                <field widget="date" name="start_at" />
-                <field widget="date" name="end_submit_at" />
-                <field widget="date" name="end_at" />
-                <field name="status"
-                    decoration-success="status == 'Đang tiến hành'"
-                    decoration-warning="status == 'Trạng thái chờ'"
-                    decoration-danger="status == 'Đã kết thúc'"
-                    widget="badge"/>
+				<field widget="date" name="start_at" />
+				<field widget="date" name="end_submit_at" />
+				<field widget="date" name="end_at" />
+				<field name="status"
+					decoration-success="status == 'Đang tiến hành'"
+					decoration-warning="status == 'Trạng thái chờ'"
+					decoration-danger="status == 'Đã kết thúc'"
+					widget="badge" />
 				<button name="action_view_user_list" type="object" class="btn btn-primary"
 					string="Xem danh sách nộp" />
 			</tree>
 		</field>
 	</record>
 	<record id="action_view_achievement_list" model="ir.actions.act_window">
-		<field name="name">Danh sách danh hiệu/Giải Thưởng</field>
+		<field name="name">Danh sách Danh hiệu - Giải thưởng</field>
 		<field name='type'>ir.actions.act_window</field>
 		<field name="res_model">create_achievement.achievement</field>
 		<field name="view_mode">tree</field>
-		<field name="view_id" ref="view_achievement_list_tree"/>
+		<field name="view_id" ref="view_achievement_list_tree" />
 	</record>
 </odoo>

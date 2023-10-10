@@ -143,16 +143,31 @@ class Achievement(models.Model):
 
     def save_and_redirect(self):
         return {
-            'name': 'Danh sách danh hiệu/giải thưởng',
-            'res_model': 'create_achievement.achievement',
-            'view_mode': 'tree,form',
-            'view_type': 'tree',
-            'type': 'ir.actions.act_window',
-            'target': 'current',
-            'context': {
-                    'create': True, 
-            }
+            'type': 'ir.actions.client',
+            'tag': 'create_achievement.BackClientAction',
         }
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'name': 'Danh sách danh hiệu',
+        #     'res_model': 'create_achievement.achievement',
+        #     'view_type': 'form,tree',
+        #     'view_mode': 'tree',
+        #     'target': 'current',
+        #     'context': {
+        #         'create': True
+        #     }
+        # }
 
-
-    
+        # text = """Lưu danh hiệu thành công"""
+        # query = 'delete from display_dialog_box'
+        # self.env.cr.execute(query)
+        # value = self.env['display.dialog.box'].sudo().create({'text': text})
+        # return {
+        # 'type': 'ir.actions.act_window',
+        # 'name': 'Thông báo',
+        # 'res_model': 'display.dialog.box',
+        # 'view_type': 'form',
+        # 'view_mode': 'form',
+        # 'target': 'new',
+        # 'res_id': value.id
+        # }

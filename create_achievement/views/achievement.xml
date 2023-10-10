@@ -20,15 +20,15 @@
             <group>
               <field name="start_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                 />
+              />
               <field
                 name="end_submit_at" widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                 />
+              />
               <field name="end_at"
                 widget="date"
                 options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-                />s </group>
+              />s </group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
@@ -62,11 +62,11 @@
   </record>
 
   <record id="action_cr_achievement" model="ir.actions.act_window">
-    <field name="name">Quản lý Danh hiệu/Giải Thưởng</field>
+    <field name="name">Quản lý Danh hiệu - Giải thưởng</field>
     <field name='type'>ir.actions.act_window</field>
     <field name="res_model">create_achievement.achievement</field>
     <field name="view_mode">tree,form</field>
-    <field name="view_id" ref="view_cr_achievement_tree"/>
+    <field name="view_id" ref="view_cr_achievement_tree" />
     <field name="help" type="html">
       <p>
         <b>Hiện tại chưa có Danh hiệu nào</b>

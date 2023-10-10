@@ -7,6 +7,7 @@
     """,
 
     'author': "TusDT",
+    'license': 'LGPL-3',
     'website': "https://www.facebook.com/clone.lol9/",
     'category': 'HKT addons',
     'version': '0.1',

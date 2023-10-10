@@ -21,7 +21,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'access_right_user'],
+    'depends': ['base', 'access_right_user', 'manage_user_depart'],
 
     # always loaded
     'data': [
@@ -35,6 +35,7 @@
     'assets': {
         'web.assets_backend': [
             'create_achievement/static/src/**/*.scss',
+            'create_achievement/static/src/js/trace_back.js'
         ],
         'web.assets_frontend': [
         ],
