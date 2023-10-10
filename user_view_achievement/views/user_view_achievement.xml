@@ -73,7 +73,7 @@
     </record>
 
     <record id="action_view_achievement" model="ir.actions.act_window">
-        <field name="name">Danh sách Danh hiệu/Giải thưởng</field>
+        <field name="name">Danh sách Danh hiệu - Giải thưởng</field>
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">kanban</field>
         <field name="domain">[('status', '=', 'Đang tiến hành')]</field>
