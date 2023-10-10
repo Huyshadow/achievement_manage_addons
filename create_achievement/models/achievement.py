@@ -143,16 +143,6 @@ class Achievement(models.Model):
 
     def save_and_redirect(self):
         return {
-            'name': 'Danh sách danh hiệu/giải thưởng',
-            'res_model': 'create_achievement.achievement',
-            'view_mode': 'tree,form',
-            'view_type': 'tree',
-            'type': 'ir.actions.act_window',
-            'target': 'current',
-            'context': {
-                    'create': True, 
-            }
+            'type': 'ir.actions.client',
+            'tag': 'create_achievement.BackClientAction',
         }
-
-
-    

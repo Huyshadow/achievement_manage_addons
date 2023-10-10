@@ -43,7 +43,11 @@
          </tree>
       </field>
    </record>
-
+   <record model="ir.actions.client" id="action_client_back">
+      <field name="name">Back</field>
+      <field name="tag">reload</field>
+      <field name="params">{'reload': true}</field>
+   </record>
 
    <record id="action_cr_criteria" model="ir.actions.act_window">
       <field name="name">Danh sách tiêu chí</field>

@@ -35,6 +35,7 @@
     'assets': {
         'web.assets_backend': [
             'create_achievement/static/src/**/*.scss',
+            'create_achievement/static/src/js/trace_back.js'
         ],
         'web.assets_frontend': [
         ],

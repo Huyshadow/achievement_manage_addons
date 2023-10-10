@@ -18,14 +18,16 @@ class Department(models.Model):
                 [('donvi', '=', department.id)])
 
     def save_and_redirect(self):
+        text = """Tạo đơn vị thành công"""
+        query = 'delete from display_dialog_box'
+        self.env.cr.execute(query)
+        value = self.env['display.dialog.box'].sudo().create({'text': text})
         return {
-            'name': 'Danh sách đơn vị',
-            'res_model': 'manage_user_depart.department',
-            'view_mode': 'tree,form',
-            'view_type': 'tree',
             'type': 'ir.actions.act_window',
-            'target': 'current',
-            'context': {
-                'create': True,
-            }
+            'name': 'Thông báo',
+            'res_model': 'display.dialog.box',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': value.id
         }

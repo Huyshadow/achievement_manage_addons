@@ -1803,9 +1803,21 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .o_ActivityMenuView {
   visibility: hidden !important;
 }
+// .o_cp_top_left {
+//   visibility: hidden !important;
+// }
 .o_cp_top_left {
-  visibility: hidden !important;
+  button {
+    display: none !important;
+  }
+  .text-truncate {
+    display: none !important;
+  }
+  .text-900 {
+    display: none !important;
+  }
 }
+
 .o_form_view.o_xxl_form_view .o_form_sheet_bg > .o_form_sheet {
   max-width: none !important;
 }
@@ -1839,9 +1851,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   white-space: normal !important;
   border-left: 1px solid #dfdfdf !important;
 }
-// .o_cp_action_menus {
-//   display: none !important;
-// }
+
 .o_form_view_container {
   .o_cp_pager {
     display: none !important;
@@ -1881,7 +1891,10 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   background-color: #0569f5;
   border-color: #3d05f5;
 }
+<<<<<<< HEAD
 
 .dropdown-menu, .o-dropdown-menu {
     z-index: 1001;
 }
+=======
+>>>>>>> e5e32aa (Done)
