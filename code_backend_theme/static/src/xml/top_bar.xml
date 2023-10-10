@@ -91,7 +91,7 @@
 
                     <ul class="sidebar_menu">
                         <t t-foreach="menuService.getApps()" t-as="app" t-key="app_index">
-                            <t t-if="app.name == 'Đề cử danh hiệu/giải thưởng'">
+                            <t t-if="app.name == 'Đề cử Danh hiệu/Giải thưởng'">
                                 <h6 class="sidebar_head">
                                       Dịch vụ cung cấp
                                 </h6>

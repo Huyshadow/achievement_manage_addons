@@ -1900,3 +1900,6 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .breadcrumb-item > a {
   font-weight: 700 !important;
 }
+.breadcrumb-item + .breadcrumb-item::before {
+  font-weight: 900 !important;
+}
