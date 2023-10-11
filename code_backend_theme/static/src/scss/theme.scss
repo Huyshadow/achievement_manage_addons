@@ -1903,3 +1903,32 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .breadcrumb-item + .breadcrumb-item::before {
   font-weight: 900 !important;
 }
+.o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
+  text-align: center !important;
+}
+.o_data_cell .o_list_button {
+  display: flex !important;
+  justify-content: center !important;
+}
+.text-truncate {
+  text-align: center !important;
+}
+.o_list_view .table-responsive .table thead tr:nth-child(1) th {
+  .fa-lg {
+    display: none !important;
+  }
+}
+
+.o_list_renderer
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
+    .o_list_record_remove
+  ) {
+  text-align: center;
+}
+
+.o_list_view tbody tr td[data-field="name"] {
+  text-align: left !important;
+}
