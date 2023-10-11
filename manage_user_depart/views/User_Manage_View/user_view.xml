@@ -62,8 +62,10 @@
                       <field name="mssv_mscb" />
                     </div>
                     <div class="auto_field_second_column">
+                      <field name="is_unit_manager" invisible="1"/>
                       <label for="donvi" string="Đơn vị" />
-                      <field name="donvi" widget="selection" />
+                      <field name="donvi" widget="selection"
+                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                     </div>
                   </div>
                   <group string="Thông tin cá nhân"
