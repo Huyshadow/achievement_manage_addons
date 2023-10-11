@@ -93,7 +93,7 @@ class Achievement(models.Model):
         if 'end_submit_at' in fields and 'end_submit_at' not in defaults:
             tz = timezone('Asia/Bangkok')  # Set the desired timezone
             current_date = datetime.now(tz).date()
-            future_date = current_date + timedelta(days=2)
+            future_date = current_date + timedelta(days=1)
             default_time = time(hour=23, minute=59, second=59)
             naive_datetime = datetime.combine(future_date, default_time)
             local_datetime = tz.localize(naive_datetime)
@@ -102,7 +102,7 @@ class Achievement(models.Model):
         if 'end_at' in fields and 'end_at' not in defaults:
             tz = timezone('Asia/Bangkok')  # Set the desired timezone
             current_date = datetime.now(tz).date()
-            future_date = current_date + timedelta(days=3)
+            future_date = current_date + timedelta(days=2)
             default_time = time(hour=23, minute=59, second=59)
             naive_datetime = datetime.combine(future_date, default_time)
             local_datetime = tz.localize(naive_datetime)
@@ -114,18 +114,20 @@ class Achievement(models.Model):
     def set_time_end_submit_at(self):
         for record in self:
             tz = timezone('Asia/Bangkok')  # Set the desired timezone
-            current_date = record.end_submit_at
+            current_date = record.end_submit_at + timedelta(days=1)
             default_time = time(hour=23, minute=59, second=59)
             naive_datetime = datetime.combine(current_date, default_time)
             local_datetime = tz.localize(naive_datetime)
             utc_datetime = local_datetime.astimezone(timezone('UTC'))
+            print(utc_datetime)
+            print(utc_datetime.replace(tzinfo=None))
             record.end_submit_at = utc_datetime.replace(tzinfo=None)
 
     @api.onchange('end_at')
     def set_time_end_at(self):
         for record in self:
             tz = timezone('Asia/Bangkok')  # Set the desired timezone
-            current_date = record.end_at
+            current_date = record.end_at + timedelta(days=1)
             default_time = time(hour=23, minute=59, second=59)
             naive_datetime = datetime.combine(current_date, default_time)
             local_datetime = tz.localize(naive_datetime)
@@ -163,11 +165,11 @@ class Achievement(models.Model):
         # self.env.cr.execute(query)
         # value = self.env['display.dialog.box'].sudo().create({'text': text})
         # return {
-        # 'type': 'ir.actions.act_window',
-        # 'name': 'Thông báo',
-        # 'res_model': 'display.dialog.box',
-        # 'view_type': 'form',
-        # 'view_mode': 'form',
-        # 'target': 'new',
-        # 'res_id': value.id
+        #     'type': 'ir.actions.act_window',
+        #     'name': 'Thông báo',
+        #     'res_model': 'display.dialog.box',
+        #     'view_type': 'form',
+        #     'view_mode': 'form',
+        #     'target': 'new',
+        #     'res_id': value.id
         # }
