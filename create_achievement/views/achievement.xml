@@ -18,17 +18,10 @@
               <field name="description" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
             </group>
             <group>
-              <field name="start_at" widget="date"
-                options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-              />
-              <field
-                name="end_submit_at" widget="date"
-                options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-              />
-              <field name="end_at"
-                widget="date"
-                options="{'datepicker-options': {'dateFormat': 'dd/mm/y'}}"
-              />s </group>
+              <field name="start_at" widget="date" />
+              <field name="end_submit_at" widget="date" />
+              <field name="end_at" widget="date" />
+            </group>
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
