@@ -4,7 +4,7 @@
 		<field name="name">achievement.user.list.view</field>
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20" js_class="disappear_check_box">
+			<tree create="false" export_xlsx="false" delete='true' edit="true" limit="20" js_class="disappear_check_box">
 				<field name="user_name"/>
 				<field name="donvi_name"/>
 				<field name="submit_at" widget="date" string="Ngày nộp"/>

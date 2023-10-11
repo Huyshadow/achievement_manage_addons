@@ -15,7 +15,8 @@ class AchievementSubmit(models.Model):
         'res_id': self.user_id,
         'target': 'current',
         'flags': {'hasSelectors': False},
-        'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id),('user_id','=',self.user_id)],
+        'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id),('user_id','=',self.user_id.id)],
+        'context': {'search_default_group_criteria': True, 'search_default_category': True},
     }
     def action_accept_submit(self):
         for record in self:

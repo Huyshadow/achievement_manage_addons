@@ -87,22 +87,18 @@ class AchievementSubmit(models.Model):
             local_datetime = tz.localize(naive_datetime)
             utc_datetime = local_datetime.astimezone(timezone('UTC'))
             check_time = utc_datetime.replace(tzinfo=None)
-
             submit_at = check_time
 
             # Check if a corresponding record already exists, and if not, create it
             existing_achievement_user = self.env['achievement.user.list'].search([
-                ('user_id', '=', user_id),
-                ('achievement_id', '=', achievement_id),
+                ('user_id.id', '=', user_id),
+                ('achievement_id.id', '=', achievement_id),
             ])
 
             if not existing_achievement_user:
                 self.env['achievement.user.list'].create({
-                    'user_id': user_id,
-                    'user_name': record.user_id.name,
-                    'achievement_name': record.criteria.parent_id.parent_id.parent_id.name,
                     'achievement_id': achievement_id,
-                    'donvi_name': record.user_id.donvi.name,
+                    'user_name': record.user_id.name,
                     'submit_at': submit_at
                 })
             else:
