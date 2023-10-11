@@ -1932,3 +1932,33 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .o_list_view tbody tr td[data-field="name"] {
   text-align: left !important;
 }
+
+.o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
+  .o_legacy_list_view
+    .o_list_table
+    .o_column_sortable:not(.o_handle_cell):not(:empty)::after {
+    display: none;
+  }
+}
+.o_legacy_list_view
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector).o_list_button {
+  text-align: center;
+}
+
+.o_legacy_list_view
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
+    .o_state_selection_cell
+  ) {
+  text-align: center;
+}
+.o_legacy_list_view
+  .o_list_table
+  .o_column_sortable:not(.o_handle_cell):not(:empty)::after {
+  display: none !important;
+}

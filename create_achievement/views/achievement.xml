@@ -39,7 +39,7 @@
     <field name="name">create.achievement.tree</field>
     <field name="model">create_achievement.achievement</field>
     <field name="arch" type="xml">
-      <tree>
+      <tree class="tree_view_achievement">
         <field name="name" class="texting" />
         <field widget="date" name="start_at" />
         <field widget="date" name="end_submit_at" />
