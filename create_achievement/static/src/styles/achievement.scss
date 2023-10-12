@@ -147,14 +147,11 @@ div.o_field_x2many.o_field_x2many_list > .o_list_renderer {
   margin-left: 0px !important;
 }
 
-.tree_view_achievement [data-name="name"] {
-  .o_list_renderer
-    .o_list_table
-    tbody
-    > tr
-    > td:not(.o_list_record_selector):not(.o_handle_cell):not(
-      .o_list_button
-    ):not(.o_list_record_remove) {
+.tree_view_achievement {
+  .custom_column[data-name="name"] {
     text-align: left !important;
+  }
+  .time_display[data-name="start_at"] {
+    text-align: right !important;
   }
 }

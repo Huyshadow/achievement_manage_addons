@@ -1919,19 +1919,19 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   }
 }
 
-.o_list_renderer
-  .o_list_table
-  tbody
-  > tr
-  > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
-    .o_list_record_remove
-  ) {
-  text-align: center;
-}
+// .o_list_renderer
+//   .o_list_table
+//   tbody
+//   > tr
+//   > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
+//     .o_list_record_remove
+//   ) {
+//   text-align: center;
+// }
 
-.o_list_view tbody tr td[data-field="name"] {
-  text-align: left !important;
-}
+// .o_list_view tbody tr td[data-field="name"] {
+//   text-align: left !important;
+// }
 
 .o_legacy_list_view .o_list_table .o_column_sortable:not(.o_handle_cell) {
   .o_legacy_list_view
@@ -1961,4 +1961,36 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   .o_list_table
   .o_column_sortable:not(.o_handle_cell):not(:empty)::after {
   display: none !important;
+}
+td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char.o_required_modifier {
+  text-align: left !important;
+}
+// td.o_data_cell.cursor-pointer.o_field_cell.o_date_cell.o_required_modifier:has(
+//     div.o_field_widget.o_required_modifier.o_field_date.time_display
+//   ) {
+//   text-align: right !important;
+// }
+// td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
+//     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-success
+//   ) {
+//   text-align: center !important;
+// }
+// td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
+//     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-warning
+//   ) {
+//   text-align: center !important;
+// }
+// td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
+//     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-danger
+//   ) {
+//   text-align: center !important;
+// }
+.o_list_renderer
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector):not(.o_handle_cell):not(.o_list_button):not(
+    .o_list_record_remove
+  ) {
+  text-align: center;
 }
