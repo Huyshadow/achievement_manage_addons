@@ -23,8 +23,9 @@
 
 .three_column_for_info {
   display: grid !important;
-  grid-template-columns: 30% 30% 30% !important;
-  gap: 5% !important;
+  grid-template-columns: 32% 32% 32% !important;
+  row-gap: 2% !important;
+  column-gap: 2% !important;
   margin-bottom: 16px !important;
 }
 .three_column_for_des {
@@ -39,8 +40,8 @@
 }
 .two_column_for_info {
   display: grid;
-  grid-template-columns: 45% 45% !important;
-  gap: 10% !important;
+  grid-template-columns: 48% 48% !important;
+  gap: 4% !important;
   margin-bottom: 16px !important;
 }
 .auto_field_second_column {
@@ -59,7 +60,7 @@
 }
 .image_style {
   border: 1px black !important;
-  width: 270px !important;
+  margin-left: 20px;
   height: auto !important;
 }
 .container_button_info_user {
@@ -70,8 +71,8 @@
   margin-right: 8px !important;
 }
 
-@media only screen and (max-width: 1320px) {
-  .containner_user_form {
+@media only screen and (max-width: 1024px) {
+  .containner_user_form { 
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
