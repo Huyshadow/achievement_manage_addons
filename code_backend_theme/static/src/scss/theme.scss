@@ -2057,3 +2057,18 @@ th.o_list_record_selector > div.form-check {
 th.o_list_record_selector {
   background-color: var(--bs-table-bg) !important;
 }
+th.o_list_button {
+  font-size: 14px;
+}
+td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char {
+  text-align: left !important;
+}
+td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_many2one.o_required_modifier {
+  text-align: left !important;
+}
+td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char.o_required_modifier {
+  text-align: left !important;
+}
+td.o_data_cell.cursor-pointer.o_field_cell.right_align.o_list_number.o_readonly_modifier {
+  text-align: right !important;
+}

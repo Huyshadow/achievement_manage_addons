@@ -19,12 +19,12 @@
         'views/view_achievement.xml',
         'views/view_list_user_submit.xml',
         'views/view_detail_user_submit.xml',
-        'views/menus.xml',  
+        'views/menus.xml',
     ],
     'assets': {
         'web.assets_backend': [
-            'view_submit/static/src/js/**/*',
+            'view_submit/static/src/js/title_button.js',
         ],
     },
-    
+
 }

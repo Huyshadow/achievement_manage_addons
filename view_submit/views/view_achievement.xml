@@ -17,7 +17,7 @@
 					decoration-danger="status == 'Đã kết thúc'"
 					widget="badge" />
 				<button name="action_view_user_list" type="object"
-					class="btn btn-primary custom_identifier"
+					class="btn-primary custom_identifier"
 					string="Xem danh sách nộp" />
 			</tree>
 		</field>
