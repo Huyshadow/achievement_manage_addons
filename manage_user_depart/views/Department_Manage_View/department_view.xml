@@ -7,7 +7,7 @@
         <tree>
           <field name="code" string="Mã số đơn vị" />
           <field name="name" string="Tên đơn vị" />
-          <field name="user_count" string="Số lượng thành viên" readonly="1" />
+          <field name="user_count" width="200px" string="Số lượng thành viên" readonly="1" />
         </tree>
       </field>
     </record>
