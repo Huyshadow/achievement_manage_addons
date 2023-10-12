@@ -7,8 +7,8 @@
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
 				js_class="disappear_check_box">
-				<field name="name" />
-				<field widget="date" name="start_at" />
+				<field name="name"/>
+				<field name="num_of_user"/>
 				<field widget="date" name="end_submit_at" />
 				<field widget="date" name="end_at" />
 				<field name="status"

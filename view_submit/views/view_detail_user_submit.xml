@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-	<record id="view_user_submit_detail" model="ir.ui.view">
-		<field name="name">submit.detail.view</field>
+	<record id="view_user_submit_search" model="ir.ui.view">
+		<field name="name">submit.detail.view.search</field>
 		<field name="model">achievement.submit</field>
 		<field name="arch" type="xml">
 			<search>
 				<group string="Group Criteria, then Type">
-					<filter string="Group Criteria" name="group_criteria_name"
-						context="{'group_by': 'group_criteria_name'}"/>
-					<filter string="Type" name="category" context="{'group_by': 'type_criteria_name'}" />
+					<filter string="Group Criteria" name="display_group_name"
+						context="{'group_by': 'display_group_name'}"/>
 				</group>
 				<filter string="Search by Name" name="name_filter"
 					domain="[('criteria_name', 'ilike', self)]" />
@@ -35,16 +34,13 @@
 		<field name="name">submit.detail.view</field>
 		<field name="model">achievement.submit</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" delete='false' edit="false"
-				js_class="disappear_check_box">
-				<field name="criteria_name"/>
+			<tree create="false" export_xlsx="false" delete='false' edit="false" expand ="1"
+				js_class="disappear_check_box" default_order="type_criteria_name asc">
+				<field name="type_criteria_name"/>
+				<field name="criteria_content"/>
 				<field name="submit_content"/>
-				<field name="evidence" filename="pdf_name" widget="binary"
-					options="{'accepted_file_extensions':'.pdf'}" string="Xem minh chứng" readonly="1"/>
-				<field name="pdf_name" invisible="1" />
-				<field name="expertise" string="Tình trạng"/>
-				<button name="action_expertise_submit" type="object" class="btn btn-primary"
-					string="Thẩm định"/>
+				<field name="evidence" invisible="1"/>
+				<button name="action_view_evidence" type="object" class="btn btn-primary" string="Xem minh chứng" attrs="{'invisible': [('evidence','=',False)]}"/>
 			</tree>
 		</field>
 	</record>

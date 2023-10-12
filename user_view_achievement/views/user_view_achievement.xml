@@ -8,7 +8,7 @@
                 class="oe_background_grey o_kanban_dashboard o_hr_recruitment_kanban">
                 <field name="name" />
                 <field name="start_at" />
-                <field name="end_at" />
+                <field name="end_submit_at" />
                 <field name="status" />
                 <templates>
                     <t t-name="kanban-box">
@@ -54,7 +54,7 @@
                                     <p>
                                         <span class="status_time">Thời gian kết thúc nhận hồ sơ: </span>
                                         <span>
-                                            <t t-esc="record.end_at.value" />
+                                            <t t-esc="record.end_submit_at.value" />
                                         </span>
                                     </p>
                                     <div class="submit_button">

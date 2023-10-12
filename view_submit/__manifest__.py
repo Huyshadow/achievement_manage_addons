@@ -23,7 +23,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-
+            'view_submit/static/src/js/**/*',
         ],
     },
     
