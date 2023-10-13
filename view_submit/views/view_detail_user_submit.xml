@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <odoo>
 	<record id="view_user_submit_search" model="ir.ui.view">
 		<field name="name">submit.detail.view.search</field>
@@ -36,6 +37,7 @@
 		<field name="name">submit.detail.view</field>
 		<field name="model">achievement.submit</field>
 		<field name="arch" type="xml">
+
 			<tree create="false" export_xlsx="false" delete='false' edit="false" expand ="1"
 				js_class="disappear_check_box" default_order="type_criteria_name asc">
 				<field name="criteria_content"/>
