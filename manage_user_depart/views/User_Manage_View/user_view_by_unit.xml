@@ -1,0 +1,32 @@
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="manage_user_depart.tree_user_unit">
+      <field name="name">manage_user_depart.tree</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <tree limit="20">
+          <field name="name" />
+          <field name="mssv_mscb" />
+          <field name="is_fill_info" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.actions.server" id="server_action_list_user_by_unit">
+      <field name="name">Danh sách người dùng</field>
+      <field name="model_id" ref="base.model_res_users" />
+      <field name="binding_model_id" ref="base.model_res_users" />
+      <field name="state">code</field>
+      <field name="code">
+user = env.user
+action = user.action_user_by_donvi()</field>
+    </record>
+
+    <menuitem name="Danh sách người dùng" id="manage_user_depart.user_unit_root"
+      action="server_action_list_user_by_unit"
+      web_icon="code_backend_theme,static/src/img/icons/Contacts.png"
+      groups="access_right_user.group_unit_manager"
+      sequence="2" />
+
+  </data>
+</odoo>

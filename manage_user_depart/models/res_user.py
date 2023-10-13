@@ -37,6 +37,7 @@ class User(models.Model):
         string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
     is_unit_manager = fields.Boolean(string='Is Unit Manager', compute='_compute_is_unit_manager')
 
+
     @api.depends('groups_id')
     def _compute_is_unit_manager(self):
         system_manager_group = self.env.ref('access_right_user.group_system_manager')
@@ -72,3 +73,16 @@ class User(models.Model):
             'target': 'new',
             'res_id': value.id
         }
+
+    @api.model
+    def action_user_by_donvi(self):
+        user_dv_id = self.env.user.donvi.id
+        domain = [('donvi', '=', user_dv_id)]
+        action = {
+            'name': 'Danh sách người dùng',
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'view_mode': 'tree,form,kanban',
+            'domain': domain,
+        }
+        return action
