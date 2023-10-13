@@ -7,8 +7,11 @@
         <tree limit="20">
           <field class="custom_column" name="name" string="Họ và tên" />
           <field class="custom_column" name="mssv_mscb" />
-          <field class="custom_column" name="donvi" />
-          <field name="is_fill_info" />
+          <field name="email" groups="access_right_user.group_unit_manager"/>
+          <field name="sdt" string="Số điện thoại" groups="access_right_user.group_unit_manager"/>
+          <field class="custom_column" name="donvi" groups="access_right_user.group_system_manager"/>
+          <field name="is_fill_info" groups="access_right_user.group_system_manager"/>
+          <field name="login_date" string="Lần cuối đăng nhập" groups="access_right_user.group_unit_manager"/>
         </tree>
       </field>
     </record>

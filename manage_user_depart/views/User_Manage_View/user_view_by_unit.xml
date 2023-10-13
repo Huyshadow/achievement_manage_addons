@@ -1,17 +1,5 @@
 <odoo>
   <data>
-    <record model="ir.ui.view" id="manage_user_depart.tree_user_unit">
-      <field name="name">manage_user_depart.tree</field>
-      <field name="model">res.users</field>
-      <field name="arch" type="xml">
-        <tree limit="20">
-          <field name="name" />
-          <field name="mssv_mscb" />
-          <field name="is_fill_info" />
-        </tree>
-      </field>
-    </record>
-
     <record model="ir.actions.server" id="server_action_list_user_by_unit">
       <field name="name">Danh sách người dùng</field>
       <field name="model_id" ref="base.model_res_users" />
