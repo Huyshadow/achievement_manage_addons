@@ -2072,3 +2072,18 @@ td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char.o_required_
 td.o_data_cell.cursor-pointer.o_field_cell.right_align.o_list_number.o_readonly_modifier {
   text-align: right !important;
 }
+td.o_data_cell.o_field_cell.o_list_char.o_readonly_modifier.custom_column {
+  text-align: left !important;
+}
+td.o_data_cell.o_field_cell.o_date_cell:has(
+    span.o_field_date.o_field_widget.o_legacy_field_widget.o_quick_editable.right_align
+  ) {
+  text-align: right !important;
+}
+.o_list_renderer
+  .o_list_table
+  tbody
+  > tr
+  > td:not(.o_list_record_selector).o_list_button {
+  text-align: center;
+}

@@ -6,8 +6,6 @@ odoo.define("view_submit.EditableListRenderer", function (require) {
   ListRenderer.include({
     _renderHeaderCell: function (node) {
       var $th = this._super.apply(this, arguments);
-      console.log($th);
-      console.log(node);
       if (node.tag === "button_group" && node.attrs.name === "button_group_0") {
         $th.text("Thao tác");
       }
