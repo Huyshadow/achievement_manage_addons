@@ -6,6 +6,7 @@
         action="server_action_open_user_profile"
         web_icon="code_backend_theme,static/src/img/icons/Contacts.png"
         sequence="0"
+        groups="access_right_user.group_mem_user"
     />
 
 </odoo>

@@ -43,7 +43,7 @@
 					<button name="duyet" type="object" class="btn btn-primary"
 						string="Duyệt" />
 				</header>
-				<field class="custom_column" name="type_criteria_name" />
+				<field class="custom_column" name="criteria_name" />
 				<field class="custom_column" name="criteria_content" />
 				<field class="custom_column" name="submit_content" />
 				<field name="evidence" invisible="1" />
