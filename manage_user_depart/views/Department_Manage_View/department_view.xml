@@ -5,9 +5,10 @@
       <field name="model">manage_user_depart.department</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="code" string="Mã số đơn vị" />
-          <field name="name" string="Tên đơn vị" />
-          <field name="user_count" string="Số lượng thành viên" readonly="1" />
+          <field class="custom_column" name="code" string="Mã số đơn vị" />
+          <field class="custom_column" name="name" string="Tên đơn vị" />
+          <field class="right_align" name="user_count" width="200px" string="Số lượng thành viên"
+            readonly="1" />
         </tree>
       </field>
     </record>

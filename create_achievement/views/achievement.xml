@@ -39,16 +39,16 @@
     <field name="name">create.achievement.tree</field>
     <field name="model">create_achievement.achievement</field>
     <field name="arch" type="xml">
-      <tree>
-        <field name="name" />
-        <field widget="date" name="start_at" />
-        <field widget="date" name="end_submit_at" />
-        <field widget="date" name="end_at" />
+      <tree class="tree_view_achievement">
+        <field name="name" class="custom_column" />
+        <field class="time_display" widget="date" name="start_at" />
+        <field widget="date" name="end_submit_at" class="time_display" />
+        <field widget="date" name="end_at" class="time_display" />
         <field name="status"
           decoration-success="status == 'Đang tiến hành'"
           decoration-warning="status == 'Trạng thái chờ'"
           decoration-danger="status == 'Đã kết thúc'"
-          widget="badge" />
+          widget="badge" class="status_display" />
         <field name="criteria_ids" invisible='1' />
       </tree>
     </field>

@@ -5,9 +5,9 @@
       <field name="model">res.users</field>
       <field name="arch" type="xml">
         <tree limit="20">
-          <field name="name" />
-          <field name="mssv_mscb" />
-          <field name="donvi" />
+          <field class="custom_column" name="name" string="Họ và tên" />
+          <field class="custom_column" name="mssv_mscb" />
+          <field class="custom_column" name="donvi" />
           <field name="is_fill_info" />
         </tree>
       </field>

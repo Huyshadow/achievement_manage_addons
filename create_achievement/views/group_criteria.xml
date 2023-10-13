@@ -20,8 +20,8 @@
         <field name="model">create_achievement.group_criterias</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" />
-                <field name="description" />
+                <field class="custom_column" name="name" />
+                <field class="custom_column" name="description" />
             </tree>
         </field>
     </record>
