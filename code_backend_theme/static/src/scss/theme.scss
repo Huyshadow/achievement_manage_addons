@@ -2087,3 +2087,6 @@ td.o_data_cell.o_field_cell.o_date_cell:has(
   > td:not(.o_list_record_selector).o_list_button {
   text-align: center;
 }
+td.o_data_cell.o_field_cell.o_list_char.custom_column {
+  text-align: left !important;
+}
