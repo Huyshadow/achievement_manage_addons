@@ -39,3 +39,7 @@ class AchievementSubmit(models.Model):
                   'target'   : 'new',
                   'url'      : url
                }
+    
+    def duyet(self):
+        return {}
+    
