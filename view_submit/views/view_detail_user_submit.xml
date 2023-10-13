@@ -8,6 +8,8 @@
 				<group string="Group Criteria, then Type">
 					<filter string="Group Criteria" name="display_group_name"
 						context="{'group_by': 'display_group_name'}"/>
+					<filter string="Type" name="type_criteria_name" 
+						context="{'group_by': 'type_criteria_name'}" />
 				</group>
 				<filter string="Search by Name" name="name_filter"
 					domain="[('criteria_name', 'ilike', self)]" />
@@ -36,7 +38,6 @@
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" expand ="1"
 				js_class="disappear_check_box" default_order="type_criteria_name asc">
-				<field name="type_criteria_name"/>
 				<field name="criteria_content"/>
 				<field name="submit_content"/>
 				<field name="evidence" invisible="1"/>

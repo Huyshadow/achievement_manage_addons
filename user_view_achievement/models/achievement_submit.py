@@ -30,7 +30,7 @@ class AchievementSubmit(models.Model):
     ], default='')
     depart_manage_comment = fields.Char('Nhận xét của quản lý đơn vị')
 
-    grade = fields.Integer('Điểm')
+    grade = fields.Float('Điểm')
     is_passed = fields.Boolean('Đã đạt')
     comment = fields.Text(string='Tự nhận xét')
     evidence = fields.Binary(string='Minh Chứng(file .pdf)')
