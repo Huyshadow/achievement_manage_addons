@@ -9,7 +9,8 @@
           <field class="custom_column" name="mssv_mscb" />
           <field class="custom_column" name="donvi" groups="access_right_user.group_system_manager"/>
           <field name="is_fill_info" groups="access_right_user.group_system_manager"/>
-          <field name="login_date" string="Lần cuối đăng nhập" groups="access_right_user.group_unit_manager"/>
+          <!-- <field name="login_date" string="Lần cuối đăng nhập" groups="access_right_user.group_unit_manager"/> -->
+          <field name="lock_info" widget="boolean_toggle" string="Khóa thông tin người dùng" groups="access_right_user.group_unit_manager"/>
         </tree>
       </field>
     </record>
@@ -24,6 +25,10 @@
         <form class="custom-form oe_form_center" string="Users"
           create="false" duplicate="false" delete="false">
           <sheet>
+            <field name ="lock_info" invisible="1"/>
+            <div attrs="{'invisible': [('lock_info', '=', False)]}" style="background-color: rgb(255,0,0,0.1); padding: 1.2em;">
+              <span style="color: red;" >"Thông tin tài khoản" của bạn đang được cố định, liên hệ với đơn vị của bạn để được quyền sửa đổi</span>
+            </div>
             <div class="cusform">
               <group string="Thông tin tài khoản" class="group_title">
               </group>
@@ -41,7 +46,7 @@
                       class="auto_field_three_columns">
                       <label for="name" string="Họ và tên" />
                       <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
-                        default_focus="1" />
+                        default_focus="1" attrs="{'readonly': [('lock_info', '=', True)]}"/>
                     </div>
                     <div
                       class="auto_field_three_columns">
@@ -52,7 +57,7 @@
                       class="auto_field_three_columns">
                       <label for="sdt" string="Điện thoại" />
                       <field name="sdt"
-                        widget="phone" />
+                        widget="phone" attrs="{'readonly': [('lock_info', '=', True)]}"/>
                     </div>
                   </div>
                   <div class="two_column_for_info">
@@ -60,7 +65,7 @@
                       style=" grid-template-columns: 30% auto;
                       gap:5%;">
                       <label for="mssv_mscb" string="MSSV/MSCB" />
-                      <field name="mssv_mscb" />
+                      <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}"/>
                     </div>
                     <div class="auto_field_second_column">
                       <field name="is_unit_manager" invisible="1" />
