@@ -12,7 +12,7 @@ class AchievementSubmit(models.Model):
             'view_mode': 'tree',
             'view_id': self.env.ref('view_submit.view_user_submit_detail').id,
             'res_model': 'achievement.submit',
-            'res_id': self.user_id.id,
+            # 'res_id': self.user_id.id,
             'target': 'current',
             'flags': {'hasSelectors': False},
             'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id)],

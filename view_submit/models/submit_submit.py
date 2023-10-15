@@ -18,7 +18,7 @@ class AchievementSubmit(models.Model):
             'view_id': form_id,
             'res_model': 'achievement.submit',
             'target': 'new',
-            'res_id': self.id,
+            # 'res_id': self.id,
         }
         return action
     def create_url(self, target_id):

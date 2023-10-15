@@ -32,7 +32,7 @@ class Achievement(models.Model):
         'view_mode': 'tree',
         'view_id': self.env.ref('view_submit.view_achievement_user_list').id,
         'res_model': 'achievement.user.list',
-        'res_id': self.id,
+        # 'res_id': self.id,
         'target': 'current',
         'flags': {'hasSelectors': False},
         'domain': [('achievement_id', '=', self.id),('donvi_name','=',self.env.user.donvi.name)],
