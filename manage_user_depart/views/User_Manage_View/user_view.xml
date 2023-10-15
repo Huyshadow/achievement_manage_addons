@@ -13,7 +13,7 @@
           <field name="lock_info" widget="boolean_toggle" string="Khóa thông tin người dùng" groups="access_right_user.group_unit_manager"/>
         </tree>
       </field>
-    </record>
+    </record> 
 
 
     <record model="ir.ui.view" id="manage_user_depart.form_user">
@@ -26,7 +26,7 @@
           create="false" duplicate="false" delete="false">
           <sheet>
             <field name ="lock_info" invisible="1"/>
-            <div attrs="{'invisible': [('lock_info', '=', False)]}" style="background-color: rgb(255,0,0,0.1); padding: 1.2em;">
+            <div attrs="{'invisible': [('lock_info', '=', False)]}" style="background-color: rgb(255,0,0,0.1); padding: 1.2em;border-radius: 7px;">
               <span style="color: red;" >"Thông tin tài khoản" của bạn đang được cố định, liên hệ với đơn vị của bạn để được quyền sửa đổi</span>
             </div>
             <div class="cusform">
