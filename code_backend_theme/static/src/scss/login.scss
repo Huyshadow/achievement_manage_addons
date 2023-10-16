@@ -169,3 +169,38 @@ form label {
   border-bottom-right-radius: inherit;
   border-bottom-left-radius: inherit;
 }
+.o_login_auth {
+  text-align: center;
+}
+.o_title_login {
+  text-align: center;
+}
+em.d-block.text-center.text-muted.small.my-1 {
+  display: none;
+}
+.content {
+  border-radius: 5px !important;
+}
+@media only screen and (max-width: 1200px) {
+  .content {
+    flex-direction: column-reverse !important;
+    background-color: #f8f8fb !important;
+  }
+  .column {
+    max-width: 450px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .content {
+    max-width: 100%;
+  }
+  .column {
+    max-width: 100%;
+  }
+  div.card-body {
+    width: 100% !important;
+  }
+  div.card.border-0.mx-auto.bg-100.o_database_list {
+    width: 100%;
+  }
+}

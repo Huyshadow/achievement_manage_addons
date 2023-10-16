@@ -2,16 +2,16 @@
     <data>
         <template id="custom_login" name="Custom Login" inherit_id="web.login">
             <xpath expr="//form[@class='oe_login_form']" position="replace">
-                
+
                 <form class="oe_login_form" role="form" t-attf-action="/web/login" method="post"
-                onsubmit="this.action = '/web/login' + location.hash">
-                
-                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
-                
-                <div class="o_login_auth" style="text-align: center;"/>
-                <br/>
-                    <div style="display: flex; justify-content:center;">
-                        - Tài khoản được cấp - 
+                    onsubmit="this.action = '/web/login' + location.hash">
+
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                    <div class="o_login_auth" />
+                    <br />
+                    <div class="o_title_login">
+                        - Tài khoản được cấp -
                     </div>
                     <div class="mb-3 field-login">
                         <label for="login" class="form-label">Tên Đăng Nhập</label>
@@ -28,19 +28,19 @@
                             required="required" autocomplete="current-password"
                             t-att-autofocus="'autofocus' if login else None" maxlength="4096" />
                     </div>
-                    
+
                     <p class="alert alert-danger" t-if="error" role="alert">
                         <t t-esc="error" />
                     </p>
                     <p class="alert alert-success" t-if="message" role="status">
                         <t t-esc="message" />
                     </p>
-                    
+
                     <div
-                    t-attf-class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 {{'pt-2' if form_small else 'pt-3'}}">
-                    <button type="submit" class="btn btn-primary">Đăng nhập</button>
-                    
-                </div>
+                        t-attf-class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+
+                    </div>
                 </form>
             </xpath>
         </template>
@@ -67,7 +67,7 @@
                         } </style>
 
                     <div class="container">
-                        <div class="content" style="border-radius: 5px;">
+                        <div class="content">
                             <div
                                 t-attf-class="card border-0 mx-auto bg-100 {{login_card_classes}} o_database_list">
                                 <div class="card-body">
