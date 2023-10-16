@@ -10,7 +10,7 @@
                     <p>Vui lòng liên lạc với <a href="mailto:dhqg.tuyenduong@gmail.com">dhqg.tuyenduong@gmail.com</a> để nhận giúp đỡ</p>
                 </div>
 
-                <!-- <div group="group_system">
+                <div group="group_system">
                     <div class="float-end ml8 btn-group-vertical" >
                         <button class="btn btn-primary" t-on-click="onClickClipboard">
                             <i class="fa fa-clipboard mr8"/><t>Copy the full error to clipboard</t>
@@ -24,7 +24,7 @@
                     <div t-if="state.showTraceback" class="alert alert-danger o_error_detail" role="alert">
                         <pre t-esc="traceback or props.traceback"/>
                     </div>
-                </div> -->
+                </div>
             </Dialog>
         </xpath>
     </t>
