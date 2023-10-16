@@ -37,6 +37,7 @@ class User(models.Model):
         string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
     is_unit_manager = fields.Boolean(string='Is Unit Manager', compute='_compute_is_unit_manager')
 
+    lock_info = fields.Boolean(string='Is Unit Manager')
 
     def _compute_is_unit_manager(self):
         system_manager_group = self.env.ref('access_right_user.group_system_manager')
@@ -44,7 +45,7 @@ class User(models.Model):
         current_user = self.env.user
         for record in self:
             # Kiểm tra xem user có thuộc nhóm 'group_system_manager' hoặc không thuộc nhóm 'group_unit_manager'
-            record.is_unit_manager = bool(unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id)
+            record.is_unit_manager = record.lock_info or (bool(unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id)) 
     
     @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):
