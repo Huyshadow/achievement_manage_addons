@@ -2097,3 +2097,10 @@ div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   opacity: 0.5;
   display: none;
 }
+.o_notebook .o_notebook_headers{
+  overflow-x: unset !important;
+}
+
+:not(.s_popup) > .modal .modal-body {
+  overflow: unset !important;
+}
