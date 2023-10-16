@@ -42,6 +42,5 @@ class AchievementSubmit(models.Model):
                 'url': url
                 }
 
-    def duyet():
-        print('Huy')
-        return {}
+    def duyet(self):
+        print('Huy_Khang_Tu')
