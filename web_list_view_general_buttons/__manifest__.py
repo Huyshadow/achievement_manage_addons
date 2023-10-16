@@ -28,7 +28,6 @@
     'category': 'HKT addons',
     'version': '0.1',
     'depends': ['base', "web"],
-    "qweb": ["static/src/xml/*.xml"],
     # always loaded
     'data': [
     ],

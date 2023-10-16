@@ -13,7 +13,6 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
       this.headerGeneralButtons = [];
       if (this.context.general_buttons instanceof Array) {
         this.headerGeneralButtons = this.context.general_buttons;
-        console.log("Huy");
       }
       // This.getGeneralButtons();
     },
@@ -57,16 +56,15 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
     _onClickGeneralButton: function (event) {
       var el = event.target;
       var self = this;
-      self
-        ._rpc({
-          model: $(el).attr("model"),
-          method: $(el).attr("action"),
-          args: [self.context.active_id],
-          context: self.context,
-        })
-        .then(function (result) {
-          return self.do_action(result);
-        });
+      this._rpc({
+        model: $(el).attr("model"),
+        method: $(el).attr("action"),
+        args: [self.context.active_id],
+        context: self.context,
+      });
+      //       .then(function (result) {
+      //     return self.do_action(result);
+      //   });
     },
   });
 });
