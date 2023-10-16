@@ -112,7 +112,7 @@ button[aria-pressed="true"] {
 }
 .o_facet_remove.oi.oi-close.btn.btn-link {
   margin-top: -10px;
-  margin-right: -5px !important;
+  margin-right: -50px !important;
 }
 .js_quantity.form-control.quantity.text-center {
   height: 3.4rem !important;
@@ -128,7 +128,7 @@ button[aria-pressed="true"] {
 }
 .o_searchview .o_searchview_icon {
   position: absolute;
-  top: 11px;
+  top: 8px;
   left: auto;
   bottom: auto;
   right: 8px;
@@ -1834,9 +1834,9 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 .o_legacy_list_view tbody > tr.o_group_header {
   background-image: linear-gradient(to bottom, #f8f9fa, #ededed) !important;
 }
-.o_searchview .o_searchview_facet {
-  display: none;
-}
+// .o_searchview .o_searchview_facet {
+//   display: none;
+// }
 .o_dialog .o_debug_manager .dropdown-toggle {
   display: none !important;
 }
@@ -1853,7 +1853,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 }
 
 .o_form_view_container {
-  .o_cp_pager {
+  .o_control_panel {
     display: none !important;
   }
 }
@@ -2103,4 +2103,8 @@ div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
 
 :not(.s_popup) > .modal .modal-body {
   overflow: unset !important;
+}
+
+.o_searchview_facet_label{
+  display: none !important;      
 }

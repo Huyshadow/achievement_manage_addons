@@ -7,7 +7,7 @@
             <Dialog title="'Ứng dụng xảy ra lỗi'">
                 <div class="alert alert-warning clearfix" id="web_dialog" role="alert">
                     <p><b>Một lỗi đã xảy ra</b></p>
-                    <p>Vui lòng liên lạc với <a href="mailto:dhqg.tuyenduong@gmail.com">dhqg.tuyenduong@gmail.com</a> để nhận giúp đỡ</p>
+                    <p>Vui lòng liên lạc với <a href="mailto:hotro.tuyenduongdhqg@gmail.com">hotro.tuyenduongdhqg@gmail.com</a> để nhận giúp đỡ</p>
                 </div>
 
                 <!-- <div group="group_system">
