@@ -25,8 +25,8 @@ class AchievementSubmit(models.Model):
 
         }
 
-    def action_accept_submit(self):
-        for record in self:
-            record.env['achievement.user.list'].write({
-                'result': True
-            })
+    # def action_accept_submit(self):
+    #     for record in self:
+    #         record.env['achievement.user.list'].write({
+    #             'result': True
+    #         })
