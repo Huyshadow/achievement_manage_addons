@@ -5,8 +5,9 @@ import webbrowser
 
 class AchievementSubmit(models.Model):
     _inherit = 'achievement.submit'
-    display_group_name = fields.Char(string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name',store = True)
-    
+    display_group_name = fields.Char(
+        string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name', store=True)
+
     def action_expertise_submit(self):
         self.ensure_one()
         form_id = self.env.ref(
@@ -21,6 +22,7 @@ class AchievementSubmit(models.Model):
             # 'res_id': self.id,
         }
         return action
+
     def create_url(self, target_id):
         protocol = "http"
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
@@ -33,13 +35,13 @@ class AchievementSubmit(models.Model):
         url = self.create_url(target_id)
         print(url)
         # webbrowser.open(url, new=2, autoraise=True)
-        return {  'name'     : 'test',
-                  'res_model': 'ir.actions.act_url',
-                  'type'     : 'ir.actions.act_url',
-                  'target'   : 'new',
-                  'url'      : url
-               }
-    
-    def duyet(self):
+        return {'name': 'test',
+                'res_model': 'ir.actions.act_url',
+                'type': 'ir.actions.act_url',
+                'target': 'new',
+                'url': url
+                }
+
+    def duyet():
+        print('Huy')
         return {}
-    
