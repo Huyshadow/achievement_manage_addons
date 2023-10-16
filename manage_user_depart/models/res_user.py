@@ -37,7 +37,7 @@ class User(models.Model):
         string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
     is_unit_manager = fields.Boolean(string='Is Unit Manager', compute='_compute_is_unit_manager')
 
-    lock_info = fields.Boolean(string='Is Unit Manager')
+    # lock_info = fields.Boolean(string='Is Unit Manager')
 
     def _compute_is_unit_manager(self):
         system_manager_group = self.env.ref('access_right_user.group_system_manager')
