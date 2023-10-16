@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <record model="ir.actions.server" id="server_action_open_user_profile">
-      <field name="name">Open User Profile</field>
+      <field name="name">Thông tin người dùng</field>
       <field name="model_id" ref="base.model_res_users" />
       <field name="binding_model_id" ref="base.model_res_users" />
       <field name="state">code</field>
