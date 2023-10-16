@@ -43,4 +43,34 @@ class AchievementSubmit(models.Model):
                 }
 
     def duyet(self):
-        print('Huy_Khang_Tu')
+        print(self)
+        active_id =  self.env.context.get('active_id')
+        target = self.env['achievement.user.list'].search([
+            ('id', '=', active_id),
+        ])
+        if target.user_approve:
+            text = """Hồ sơ đã được duyệt"""
+            self.popup(text)
+        else:
+            target.write({
+                'user_approve' : True
+            })
+            text = """Duyệt hồ sơ thành công"""
+            self.popup(text)
+            
+
+    def popup(self,text):
+        query = 'delete from display_dialog_box'
+        self.env.cr.execute(query)
+        print("hehehe")
+        value = self.env['display.dialog.box'].sudo().create({'text': text})
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Thông báo',
+            'res_model': 'display.dialog.box',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': value.id
+        }
+        
