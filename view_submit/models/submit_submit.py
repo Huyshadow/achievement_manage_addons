@@ -26,7 +26,6 @@ class AchievementSubmit(models.Model):
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
         path = "/web/content?model=achievement.submit&field=evidence&filename_field=pdf_name&id="
         url = f"{protocol}://{web_domain}{path}{target_id}"
-        print('create_url ne')
         return url
 
     def action_view_evidence(self):
