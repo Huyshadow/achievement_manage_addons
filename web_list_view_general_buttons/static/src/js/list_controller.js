@@ -56,15 +56,25 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
     _onClickGeneralButton: function (event) {
       var el = event.target;
       var self = this;
-      this._rpc({
-        model: $(el).attr("model"),
-        method: $(el).attr("action"),
-        args: [self.context.active_id],
-        context: self.context,
-      });
-      //       .then(function (result) {
-      //     return self.do_action(result);
-      //   });
+      self
+        ._rpc({
+          model: $(el).attr("model"),
+          method: $(el).attr("action"),
+          args: [self.context.active_id],
+          context: self.context,
+        })
+        .then(function (result) {
+          self.do_action({
+            type: result.type,
+            res_model: result.res_model,
+            name: result.name,
+            view_mode: result.view_mode,
+            view_type: result.view_type,
+            views: [[false, "form"]],
+            target: result.target,
+            res_id: result.res_id,
+          });
+        });
     },
   });
 });
