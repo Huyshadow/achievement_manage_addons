@@ -47,28 +47,16 @@ class AchievementSubmit(models.Model):
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = str(record.grade)
-                else:
-                    record.submit = False
-                    record.submit_content = "Chưa điền"
             elif record.criteria_method == "nhiphan":
                 if record.is_passed == True:
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = "Đã đạt"
-                else:
-                    record.submit = False
-                    record.submit_content = "Chưa điền"
             elif record.criteria_method == "nhanxet":
                 if record.comment:
                     record.submit = True
                     record.add_user_list()
                     record.submit_content = record.comment
-                else:
-                    record.submit = False
-                    record.submit_content = "Chưa điền"
-            else:
-                record.submit = False
-                record.submit_content = "Chưa điền"
 
     @api.constrains('evidence')
     def _check_file(self):
@@ -96,10 +84,32 @@ class AchievementSubmit(models.Model):
             ])
 
             if not existing_achievement_user:
-                self.env['achievement.user.list'].create({
+                user = self.env['achievement.user.list'].create({
                     'achievement_id': achievement_id,
-                    'user_name': record.user_id.name,
                     'submit_at': submit_at
                 })
+                criteria_list = self.env['create_achievement.criteria'].search([
+                    ('achievement_id','=',achievement_id),
+                ])
+                for criteria in criteria_list:
+                    self.env['achievement.submit'].create({
+                        'criteria': criteria.id,
+                        'submit_content': "Chưa điền",
+                        'submit': False,
+                    })
             else:
                 existing_achievement_user.write({'submit_at': submit_at})
+                criteria_list = self.env['create_achievement.criteria'].search([
+                    ('achievement_id','=',achievement_id),
+                ])
+                for criteria in criteria_list:
+                    exist = self.env['achievement.submit'].search({
+                        'criteria': criteria.id,
+                        'user_id.id', '=', user_id
+                    })
+                    if not exist:
+                        self.env['achievement.submit'].create({
+                            'criteria': criteria.id,
+                            'submit_content': "Chưa điền",
+                            'submit': False,
+                        })
