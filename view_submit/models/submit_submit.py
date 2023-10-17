@@ -5,8 +5,9 @@ import webbrowser
 
 class AchievementSubmit(models.Model):
     _inherit = 'achievement.submit'
-    display_group_name = fields.Char(string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name',store = True)
-    
+    display_group_name = fields.Char(
+        string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name', store=True)
+
     def action_expertise_submit(self):
         self.ensure_one()
         form_id = self.env.ref(
@@ -21,6 +22,7 @@ class AchievementSubmit(models.Model):
             # 'res_id': self.id,
         }
         return action
+
     def create_url(self, target_id):
         protocol = "http"
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
@@ -33,13 +35,48 @@ class AchievementSubmit(models.Model):
         url = self.create_url(target_id)
         print(url)
         # webbrowser.open(url, new=2, autoraise=True)
-        return {  'name'     : 'test',
-                  'res_model': 'ir.actions.act_url',
-                  'type'     : 'ir.actions.act_url',
-                  'target'   : 'new',
-                  'url'      : url
-               }
-    
+        return {'name': 'test',
+                'res_model': 'ir.actions.act_url',
+                'type': 'ir.actions.act_url',
+                'target': 'new',
+                'url': url
+                }
+
     def duyet(self):
-        return {}
-    
+        active_id = self.env.context.get('active_id')
+        target = self.env['achievement.user.list'].search([
+            ('id', '=', active_id),
+        ])
+        if target.user_approve:
+            text = """Hồ sơ đã được duyệt"""
+            query = 'delete from display_dialog_box'
+            self.env.cr.execute(query)
+            value = self.env['display.dialog.box'].sudo().create({
+                'text': text})
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Thông báo',
+                'res_model': 'display.dialog.box',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'target': 'new',
+                'res_id': value.id
+            }
+        else:
+            target.write({
+                'user_approve': True
+            })
+            text = """Duyệt hồ sơ thành công"""
+            query = 'delete from display_dialog_box'
+            self.env.cr.execute(query)
+            value = self.env['display.dialog.box'].sudo().create({
+                'text': text})
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Thông báo',
+                'res_model': 'display.dialog.box',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'target': 'new',
+                'res_id': value.id
+            }

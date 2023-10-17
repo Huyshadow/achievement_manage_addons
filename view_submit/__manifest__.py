@@ -11,7 +11,7 @@
     'website': "https://www.facebook.com/clone.lol9/",
     'category': 'HKT addons',
     'version': '0.1',
-    'depends': ['base', 'user_view_achievement'],
+    'depends': ['base', 'user_view_achievement', 'web_list_view_general_buttons', 'manage_user_depart'],
 
     # always loaded
     'data': [

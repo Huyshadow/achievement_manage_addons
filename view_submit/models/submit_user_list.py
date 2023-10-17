@@ -16,11 +16,17 @@ class AchievementSubmit(models.Model):
             'target': 'current',
             'flags': {'hasSelectors': False},
             'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id)],
-            'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True},
+            'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True,
+                        'general_buttons': [{
+                            'action': "duyet",
+                            'name': "Duyệt",
+                            'model': 'achievement.submit'
+                        }]},
+
         }
 
-    def action_accept_submit(self):
-        for record in self:
-            record.env['achievement.user.list'].write({
-                'result': True
-            })
+    # def action_accept_submit(self):
+    #     for record in self:
+    #         record.env['achievement.user.list'].write({
+    #             'result': True
+    #         })

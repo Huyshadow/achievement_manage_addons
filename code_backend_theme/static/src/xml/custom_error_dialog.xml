@@ -16,8 +16,10 @@
                             <i class="fa fa-clipboard mr8"/><t>Copy the full error to clipboard</t>
                         </button>
                     </div>
-                    <button class="btn btn-link" t-on-click="() => { state.showTraceback = !state.showTraceback }" group="group_system">See details</button>
-                    <div t-if="state.showTraceback and (props.name or props.message)" class="alert alert-info bg-100 clearfix" role="alert" >
+                    <button class="btn btn-link" t-on-click="() => { state.showTraceback = !state.showTraceback }"
+                group="group_system">See details</button>
+                    <div t-if="state.showTraceback and (props.name or props.message)" class="alert alert-info bg-100
+                clearfix" role="alert" >
                       <code t-if="props.name" t-esc="props.name"></code>
                       <p t-if="props.message" t-esc="props.message"></p>
                     </div>
