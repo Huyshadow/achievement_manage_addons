@@ -80,5 +80,3 @@ class AchievementSubmit(models.Model):
                 'target': 'new',
                 'res_id': value.id
             }
-
-    # def popup(self, text):
