@@ -97,8 +97,13 @@ body:not(.o_touch_device) .o_field_selection {
   --gutter-x:   0px;
 }
 
+.cusform{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
 .o_form_view .cusform .o_form_label{
-  margin-left: 20%;
+  // margin-left: 20%;
 }
 .o_form_view .image_80 .o_form_label{
   margin-left: 80%;
@@ -111,4 +116,9 @@ body:not(.o_touch_device) .o_field_selection {
 
 textarea#comment {
   height: 300px;
+}
+
+.o_field_widget.o_readonly_modifier {
+  color: black;
+  font-weight: 600 !important;
 }

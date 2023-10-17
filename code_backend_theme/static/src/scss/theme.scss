@@ -1853,8 +1853,11 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 }
 
 .o_form_view_container {
-  .o_control_panel {
+  .o_cp_pager {
     display: none !important;
+  }
+  .o_control_panel {
+    // display: none !important;
   }
 }
 .o_kanban_renderer.o_kanban_ungrouped {
