@@ -3,6 +3,7 @@ odoo.define(
   function (require) {
     "use strict";
     var rpc = require("web.rpc");
+    let check;
     // Function to get the field value
     function getFieldFromModel() {
       var model = "achievement.user.list"; // Replace with your actual model name
@@ -18,16 +19,14 @@ odoo.define(
         .then(function (result) {
           var fieldValue = result[0].user_approve;
           if (fieldValue === true) {
-            console.log(
-              $(
-                "button.btn.btn-secondary.btn-custom.o_discard_button"
-              ).addClass("hidden")
-            );
+            check = fieldValue;
+            console.log(check);
           }
           // Do something with the field value
         });
     }
     // Call the function to get the field value
     getFieldFromModel();
+    console.log(check);
   }
 );
