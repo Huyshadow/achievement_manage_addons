@@ -18,9 +18,11 @@ odoo.define(
         .then(function (result) {
           var fieldValue = result[0].user_approve;
           if (fieldValue === true) {
-            $("button.btn.btn-secondary.btn-custom.o_discard_button").css({
-              display: "none",
-            });
+            console.log(
+              $(
+                "button.btn.btn-secondary.btn-custom.o_discard_button"
+              ).addClass("hidden")
+            );
           }
           // Do something with the field value
         });

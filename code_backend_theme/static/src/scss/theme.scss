@@ -2146,3 +2146,10 @@ button.btn.btn-secondary.btn-custom.o_discard_button {
 .visible {
   display: block !important;
 }
+button.btn.btn-primary.btn-custom.o_general_button {
+  margin-right: 8px !important;
+}
+div.o_legacy_list_buttons.d-flex {
+  display: flex !important;
+  flex-direction: row-reverse;
+}
