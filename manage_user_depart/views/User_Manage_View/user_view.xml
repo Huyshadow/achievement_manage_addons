@@ -8,9 +8,8 @@
           <field class="custom_column" name="name" string="Họ và tên" />
           <field class="custom_column" name="mssv_mscb" />
           <field class="custom_column" name="donvi" groups="access_right_user.group_system_manager" />
-          <!-- <field name="is_fill_info" groups="access_right_user.group_system_manager" /> -->
-          <field name="login_date" string="Lần cuối đăng nhập"
-          groups="access_right_user.group_unit_manager"/>
+          <field name="is_fill_info" groups="access_right_user.group_system_manager" />
+          <field name="login_date" string="Lần cuối đăng nhập" />
           <field name="lock_info" widget="boolean_toggle" string="Khóa thông tin người dùng"
             groups="access_right_user.group_unit_manager" />
         </tree>
@@ -30,7 +29,8 @@
             <field name="lock_info" invisible="1" />
             <div attrs="{'invisible': [('lock_info', '=', False)]}"
               style="background-color: rgb(255,0,0,0.1); padding: 1.2em;border-radius: 7px;">
-              <span style="color: red;">"Thông tin tài khoản" của bạn đang được cố định, liên hệ với đơn vị của bạn để được quyền sửa đổi</span>
+              <span style="color: red;">"Thông tin tài khoản" của bạn đang được cố định, liên hệ với
+                đơn vị của bạn để được quyền sửa đổi</span>
             </div>
             <div class="cusform">
               <group string="Thông tin tài khoản" class="group_title">
@@ -52,20 +52,21 @@
                         default_focus="1" attrs="{'readonly': [('lock_info', '=', True)]}" />
                     </div>
                     <div
-                      class="auto_field_three_columns" style="grid-template-columns: 20% auto !important;">
+                      class="auto_field_three_columns"
+                      style="grid-template-columns: 20% auto !important;">
                       <label for="email" string="Email" />
                       <field name="email" readonly="1" invisible="0" string="Email" />
                     </div>
                     <div
                       class="auto_field_three_columns">
                       <label for="sdt" string="Điện thoại" />
-                      <field name="sdt" attrs="{'readonly': [('lock_info', '=', True)]}"/>
+                      <field name="sdt" attrs="{'readonly': [('lock_info', '=', True)]}" />
                     </div>
                   </div>
                   <div class="two_column_for_info">
-                    <div class="auto_field_second_column" >
+                    <div class="auto_field_second_column">
                       <label for="mssv_mscb" string="MSSV/MSCB" />
-                      <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}"/>
+                      <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}" />
                     </div>
                     <div class="auto_field_second_column">
                       <field name="is_unit_manager" invisible="1" />
@@ -82,7 +83,7 @@
                     <div
                       class="auto_field_three_columns">
                       <label for="birthday" string="Ngày sinh" />
-                      <field name="birthday"/>
+                      <field name="birthday" />
                     </div>
                     <div
                       class="auto_field_three_columns">
@@ -179,9 +180,17 @@
       <field name="res_model">res.users</field>
       <field name="view_mode">tree,form,kanban</field>
     </record>
-    <menuitem name="Quản lý người dùng" id="manage_user_depart.user_root"
-      action="manage_user_depart.action_window_user"
+
+    <menuitem id="manage_user_depart.user_root" name="Quản lý người dùng"
       web_icon="code_backend_theme,static/src/img/icons/Contacts.png"
+      sequence="5"
       groups="access_right_user.group_system_manager" />
+
+    <menuitem name="Tất cả" id="manage_user_depart.user_root_all"
+      action="manage_user_depart.action_window_user"
+      parent="manage_user_depart.user_root"
+      sequence="0"
+      groups="access_right_user.group_system_manager" />
+
   </data>
 </odoo>

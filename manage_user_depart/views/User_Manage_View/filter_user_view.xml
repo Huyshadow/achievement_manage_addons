@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_thanhvien">
+            <field name="name">Danh sách người dùng là Thành Viên</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_thanh_vien', '=', True)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_donvi">
+            <field name="name">Danh sách người dùng là Quản lý đơn vị</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_ql_donvi', '=', True)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_hethong">
+            <field name="name">Danh sách người dùng là Quản lý hệ thống</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_ql_hethong', '=', True)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_danhhieu">
+            <field name="name">Danh sách người dùng là Quản lý danh hiệu</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_ql_danhhieu', '=', True)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_thamdinh">
+            <field name="name">Danh sách người dùng là Thẩm định viên</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_thamdinh', '=', True)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="manage_user_depart.action_window_user_error">
+            <field name="name">Danh sách người dùng bị lỗi</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('is_thamdinh', '=', False),('is_ql_danhhieu', '=', False),('is_ql_hethong', '=', False),('is_ql_donvi', '=', False),('is_thanh_vien', '=', False)]</field>
+            <field name="view_mode">tree,form,kanban</field>
+        </record>
+
+        <menuitem id="manage_user_depart.user_root_thanhvien"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_thanhvien"
+            name="Thành Viên"
+            sequence="1"
+            groups="access_right_user.group_system_manager" />
+
+        <menuitem id="manage_user_depart.user_root_donvi"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_donvi"
+            name="QL Đơn vị"
+            sequence="2"
+            groups="access_right_user.group_system_manager" />
+
+        <menuitem id="manage_user_depart.user_root_danhhieu"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_danhhieu"
+            name="QL Danh hiệu"
+            sequence="3"
+            groups="access_right_user.group_system_manager" />
+
+        <menuitem id="manage_user_depart.user_root_thamdinh"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_thamdinh"
+            name="Thẩm định viên"
+            sequence="4"
+            groups="access_right_user.group_system_manager" />
+
+        <menuitem id="manage_user_depart.user_root_hethong"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_hethong"
+            name="QL Hệ thống"
+            sequence="5"
+            groups="access_right_user.group_system_manager" />
+        
+        <menuitem id="manage_user_depart.user_root_error"
+            parent="manage_user_depart.user_root"
+            action="manage_user_depart.action_window_user_error"
+            name="Khác"
+            sequence="6"
+            groups="access_right_user.group_system_manager" />
+
+    </data>
+</odoo>

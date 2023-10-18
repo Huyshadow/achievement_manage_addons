@@ -39,6 +39,12 @@ class User(models.Model):
 
     lock_info = fields.Boolean(string='Is Unit Manager')
 
+    is_thanh_vien = fields.Boolean(string="Thanh Vien?", compute='_role', store=True )
+    is_ql_donvi = fields.Boolean(string="Quản lý đơn vị?", compute='_role', store=True)
+    is_ql_hethong = fields.Boolean(string="Quản lý hệ thống?", compute='_role', store=True)
+    is_ql_danhhieu = fields.Boolean(string="Quản lý danh hiệu?", compute='_role', store=True)
+    is_thamdinh = fields.Boolean(string="Thẩm định viên?", compute='_role', store=True)
+
     def _compute_is_unit_manager(self):
         system_manager_group = self.env.ref('access_right_user.group_system_manager')
         unit_manager_group = self.env.ref('access_right_user.group_unit_manager')
@@ -87,3 +93,12 @@ class User(models.Model):
             'domain': domain,
         }
         return action
+
+    @api.depends('groups_id')
+    def _role(self):
+        for record in self:
+            record.is_thanh_vien = bool(self.env.ref('access_right_user.group_mem_user') in record.groups_id)
+            record.is_ql_donvi = bool(self.env.ref('access_right_user.group_unit_manager') in record.groups_id)
+            record.is_ql_hethong = bool(self.env.ref('access_right_user.group_system_manager') in record.groups_id)
+            record.is_ql_danhhieu = bool(self.env.ref('access_right_user.group_achievement_manager') in record.groups_id)
+            record.is_thamdinh = bool(self.env.ref('access_right_user.group_appraiser') in record.groups_id)

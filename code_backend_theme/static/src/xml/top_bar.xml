@@ -23,7 +23,8 @@
                     </div>
 
                     <!-- Current App Sections -->
-                        <t t-if="currentAppSections.length gt 2">
+                        <!-- <t t-esc="currentAppSections.length"/> -->
+                        <t t-if="currentAppSections.length gt 0">
                             <t t-foreach="currentAppSections" t-as="section" t-key="section.id"  >
                                 <t t-set="hotkey" t-value="(section_index).toString()" />
                                 <t t-if="!section.childrenTree.length">
