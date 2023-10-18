@@ -25,7 +25,10 @@
           </group>
           <group string="Danh sách tiêu chí" style="font-size: 25px">
           </group>
-          <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids" />
+          <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids" />  
+          <group string="Danh sách thẩm định viên" style="font-size: 25px">
+          </group>
+          <field  name="be_appraise_by"/>
           <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
             <button name="save_and_redirect" type="object" string="Lưu" class="oe_highlight" />
             <button string="Hủy" special="cancel" />

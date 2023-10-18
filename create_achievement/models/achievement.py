@@ -8,6 +8,7 @@ class Achievement(models.Model):
     _name = 'create_achievement.achievement'
     _description = 'Achievement Model of Create-Achievement Module'
 
+    be_appraise_by = fields.One2many('create_achievement.appraise','achievement_id', string="Phân nhiệm vụ cho các thẩm định viên")
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tập tiêu chí danh hiệu")
 
