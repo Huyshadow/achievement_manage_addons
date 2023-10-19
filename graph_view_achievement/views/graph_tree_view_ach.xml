@@ -1,0 +1,15 @@
+<odoo>
+    <record id="achievement_statistic_view_tree" model="ir.ui.view">
+        <field name="name">graph.view.achievement.statis.tree</field>
+        <field name="model">create_achievement.achievement</field>
+        <field name="arch" type="xml">
+            <tree create="false" export_xlsx="false" delete='false' edit="false"
+                js_class="disappear_check_box">
+                <field name="donvi_depart_id" />
+                <field name="donvi_depart_name" />
+                <field name="num_of_accept" />
+                <field name="num_of_submit" />
+            </tree>
+        </field>
+    </record>
+</odoo>
