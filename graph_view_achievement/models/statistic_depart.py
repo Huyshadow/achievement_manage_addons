@@ -11,17 +11,15 @@ class Statistic_Depart(models.Model):
     submit_nums = fields.Integer(compute="_compute_submit", store=True)
     num_of_accept = fields.Char(default="0")
     accept_nums = fields.Integer(compute="_compute_accept", store=True)
-    depart_name = fields.Char()
+    depart_name = fields.Char(string="Danh sách đơn vị")
     depart_id = fields.Char()
 
     @api.depends('num_of_submit')
     def _compute_submit(self):
         for record in self:
             record.submit_nums = int(record.num_of_submit)
-            print(type(record.submit_nums))
 
     @api.depends('num_of_accept')
     def _compute_accept(self):
         for record in self:
             record.accept_nums = int(record.num_of_accept)
-            print(type(record.accept_nums))

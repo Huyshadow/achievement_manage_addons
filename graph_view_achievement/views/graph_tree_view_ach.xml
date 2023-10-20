@@ -18,10 +18,9 @@
         <field name="model">achievement.department.statistic</field>
         <field name="arch" type="xml">
             <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
-                <field name="depart_name" string="Danh sách đơn vị" />
+                <field name="depart_name" string="Danh sách đơn vị" type="row" />
                 <field name="submit_nums" type="measure" />
                 <field name="accept_nums" type="measure" />
-                <!-- <field name="num_of_accept" /> -->
             </graph>
         </field>
     </record>
