@@ -52,7 +52,7 @@
                 <field name="perm_unlink" eval="True"/>
                 <field name="domain_force">[(1,'=',1)]</field>
         </record>
-        <record id="hkt_rule_visibility_user_admin" model="ir.rule">
+        <record id="hkt_rule_visibility_submit_admin" model="ir.rule">
                 <field name="name">Admin xem được hết hồ sơ</field>
                 <field name="model_id" ref="user_view_achievement.model_achievement_submit"/>
                 <field name="groups" eval="[(4, ref('access_right_user.group_system_manager'))]"/>
@@ -101,6 +101,6 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
             <field name="domain_force">[('is_thamdinh','=',True)]</field>
-    </record>
+        </record>
     </data>
 </odoo>

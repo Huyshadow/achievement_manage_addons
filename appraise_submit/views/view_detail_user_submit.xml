@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<record id="view_user_submit_search" model="ir.ui.view">
+		<field name="name">submit.detail.view.search</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<search>
+				<group string="Group Criteria, then Type">
+					<filter string="Group Criteria" name="display_group_name"
+						context="{'group_by': 'display_group_name'}" />
+					<filter string="Type" name="type_criteria_name"
+						context="{'group_by': 'type_criteria_name'}" />
+				</group>
+				<filter string="Search by Name" name="name_filter"
+					domain="[('criteria_name', 'ilike', self)]" />
+			</search>
+		</field>
+	</record>
+
+	<record id="comment_on_user_submit" model="ir.ui.view">
+		<field name="name">submit.detail.comment.view</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<group>
+						<field name="expertise" widget="selection" string="Thẩm định" />
+						<field name="depart_manage_comment" string="Ghi chú" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="view_user_submit_detail_appraise" model="ir.ui.view">
+		<field name="name">submit.detail.appraise.view</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<tree create="false" export_xlsx="false" delete='false' edit="false" expand="1"
+				default_order="type_criteria_name asc" js_class="disappear_check_box">
+				<field name="evidence" invisible="1" />
+				<!-- <header>
+					<button name="duyet" type="object" class="btn btn-primary"
+						string="Duyệt" />
+				</header> -->
+				<field class="custom_column" name="criteria_content" />
+				<field class="custom_column" name="submit_content" />
+				<field name="depart_manage_comment"/>
+				<field name="expertise" readonly="1"/>
+				<button name="action_view_evidence" type="object" class="btn btn-primary"
+					string="Xem minh chứng" attrs="{'invisible': [('evidence','=',False)]}" />
+				<button name="action_expertise_submit" type="object" class="btn btn-primary"
+				string="Thẩm định" />
+			</tree>
+		</field>
+	</record>
+</odoo>

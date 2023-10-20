@@ -14,7 +14,7 @@ class AchievementSubmit(models.Model):
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
     criteria_id = fields.Integer('ID tiêu chí', related='criteria.id')
     criteria_name = fields.Char('Tên tiêu chí', related='criteria.name')
-    criteria_content = fields.Char('Mô tả', related='criteria.content')
+    criteria_content = fields.Char('Nội dung', related='criteria.content')
     criteria_method = fields.Selection(
         'Phương thức', related='criteria.method', related_sudo=False)
     required_evidence = fields.Boolean(

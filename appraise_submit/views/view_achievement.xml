@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="view_achievement_list_tree_appraiser" model="ir.ui.view">
+		<field name="name">achievement.list.view</field>
+		<field name="model">create_achievement.achievement</field>
+		<field name="arch" type="xml">
+			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
+				js_class="disappear_check_box">
+				<field class="custom_column" name="name" />
+				<!-- <field class="right_align" name="num_of_user"/> -->
+				<field class="right_align" widget="date" name="end_submit_at" />
+				<field class="right_align" widget="date" name="end_at" />
+				<field name="status"
+					decoration-success="status == 'Đang tiến hành'"
+					decoration-warning="status == 'Trạng thái chờ'"
+					decoration-danger="status == 'Đã kết thúc'"
+					widget="badge" />
+				<button name="action_view_user_list_appraiser" type="object"
+					class="btn-primary custom_identifier"
+					string="Xem danh sách nộp" />
+			</tree>
+		</field>
+	</record>
+	<record id="action_view_achievement_list_appraiser" model="ir.actions.act_window">
+		<field name="name">Danh sách Danh hiệu - Giải thưởng (1)</field>
+		<field name='type'>ir.actions.act_window</field>
+		<field name="res_model">create_achievement.achievement</field>
+		<field name="view_mode">tree</field>
+		<field name="view_id" ref="view_achievement_list_tree_appraiser" />
+	</record>
+</odoo>

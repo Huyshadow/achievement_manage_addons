@@ -11,6 +11,7 @@ class AchievementUser(models.Model):
 
     user_name = fields.Char(string="Tên người nộp", related = 'user_id.name')
     achievement_name = fields.Char(string="Tên danh hiệu", related = 'achievement_id.name')
+    donvi_code = fields.Char(string="Mã đơn vị", related = 'user_id.donvi.code')
     donvi_name=  fields.Char(string="Tên đơn vị", related = 'user_id.donvi.name')
     submit_at = fields.Datetime()
     
