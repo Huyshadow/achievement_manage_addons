@@ -6,8 +6,6 @@
         <field name="arch" type="xml">
             <search>
                 <field name="achievement_id" />
-                <filter name="search_achievement" string="Test"
-                    domain="[('achievement_id','=',2)]" />
             </search>
         </field>
     </record>
