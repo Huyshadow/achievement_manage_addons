@@ -47,6 +47,7 @@ odoo.define(
             context: self.context,
           })
           .then(function (result) {
+            console.log(result);
             self.do_action({
               type: result.type,
               res_model: result.res_model,
@@ -56,6 +57,7 @@ odoo.define(
               views: [[false, "graph"]],
               target: result.target,
               res_id: result.res_id,
+              context: result.context,
             });
           });
       },

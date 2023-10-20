@@ -9,12 +9,13 @@ class Achievement(models.Model):
         return {
             'name': self.name,
             'type': 'ir.actions.act_window',
-            'view_type': 'graph',
             'view_mode': 'graph',
             'view_id': self.env.ref('graph_view_achievement.achievement_statistic_view_graph').id,
             'res_model': 'achievement.department.statistic',
             'target': 'current',
-            'domain': [('achievement_id', '=', self.id)]
+            'context': {
+                'search_default_achievement_id': self.id,
+            }
         }
 
     def action_view_graph_achievement(self):
