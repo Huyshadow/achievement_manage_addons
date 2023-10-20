@@ -1,0 +1,27 @@
+<odoo>
+    <record id="achievement_statistic_view_tree" model="ir.ui.view">
+        <field name="name">graph.view.achievement.statis.tree</field>
+        <field name="model">achievement.department.statistic</field>
+        <field name="arch" type="xml">
+            <tree create="false" export_xlsx="false" delete='false' edit="false"
+                js_class="disappear_check_box">
+                <field name="depart_id" string="Mã đơn vị" />
+                <field name="depart_name" string="Tên đơn vị" />
+                <field name="num_of_submit" string="Số hồ sơ đã nộp" />
+                <field name="num_of_accept" string="Số hồ sơ đã nhận" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="achievement_statistic_view_graph" model="ir.ui.view">
+        <field name="name">graph.view.achievement.statis.graph</field>
+        <field name="model">achievement.department.statistic</field>
+        <field name="arch" type="xml">
+            <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
+                <field name="depart_name" string="Danh sách đơn vị" type="row" />
+                <field name="submit_nums" type="measure" />
+                <field name="accept_nums" type="measure" />
+            </graph>
+        </field>
+    </record>
+</odoo>

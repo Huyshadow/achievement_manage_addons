@@ -1,0 +1,10 @@
+<odoo>
+  <menuitem
+    id="menu_graph_statistics"
+    name="Thống kê danh hiệu"
+    sequence="10"
+    action="action_view_graph_achievement"
+    web_icon="code_backend_theme,static/src/img/icons/Purchase.png"
+    groups="access_right_user.group_achievement_manager"
+  />
+</odoo>
