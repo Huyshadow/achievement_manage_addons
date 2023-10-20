@@ -5,10 +5,9 @@
         <field name="arch" type="xml">
             <tree create="false" export_xlsx="false" delete='false' edit="false"
                 js_class="disappear_check_box">
-                <field name="depart_id" string="Mã đơn vị" />
-                <field name="depart_name" string="Tên đơn vị" />
+                <field name="depart_name" string="Tên đơn vị" class="custom_column"/>
                 <field name="num_of_submit" string="Số hồ sơ đã nộp" />
-                <field name="num_of_accept" string="Số hồ sơ đã nhận" />
+                <field name="num_of_accept" string="Số hồ sơ đã duyệt" />
             </tree>
         </field>
     </record>
@@ -18,9 +17,9 @@
         <field name="model">achievement.department.statistic</field>
         <field name="arch" type="xml">
             <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
-                <field name="depart_name" string="Danh sách đơn vị" type="row" />
-                <field name="submit_nums" type="measure" />
-                <field name="accept_nums" type="measure" />
+                <field name="depart_name" string="Danh sách đơn vị"/>
+                <field name="submit_nums" string="Đã nộp" type="measure" />
+                <field name="accept_nums" string="Đã duyệt" type="measure" />
             </graph>
         </field>
     </record>

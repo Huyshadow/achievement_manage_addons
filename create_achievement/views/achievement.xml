@@ -8,7 +8,7 @@
       <form>
         <sheet classname="container">
           <field name="name_title"
-            style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
+            style="font-size: 24px; font-weight: 700 !important; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
             readonly='1' />
           <field name="status" invisible='1' />
           <group>

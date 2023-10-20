@@ -92,11 +92,16 @@ class AchievementSubmit(models.Model):
                     ('achievement_id','=',achievement_id),
                 ])
                 for criteria in criteria_list:
-                    self.env['achievement.submit'].create({
-                        'criteria': criteria.id,
-                        'submit_content': "Chưa điền",
-                        'submit': False,
-                    })
+                    exist = self.env['achievement.submit'].search([
+                        ('criteria_id','=', criteria.id),
+                        ('user_id.id', '=', user_id)
+                    ])
+                    if not exist:
+                        self.env['achievement.submit'].create({
+                            'criteria': criteria.id,
+                            'submit_content': "Chưa điền",
+                            'submit': False,
+                        })
             else:
                 existing_achievement_user.write({'submit_at': submit_at})
                 criteria_list = self.env['create_achievement.criteria'].search([
