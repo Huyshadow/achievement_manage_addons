@@ -2116,3 +2116,10 @@ a.dropdown-item.o_nav_entry {
   font-weight: 600;
   padding-top: 5px;
 }
+div.o_action.o_view_controller.o_graph_view
+  > div.o_control_panel
+  > div.o_cp_top
+  > div.o_cp_top_right
+  > div.o_cp_searchview.d-flex.flex-grow-1 {
+  display: none !important;
+}

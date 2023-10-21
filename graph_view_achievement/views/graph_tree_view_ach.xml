@@ -30,8 +30,8 @@
             <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
                 <field name="depart_name" type="row" string="Danh sách đơn vị" />
                 <field name="achievement_id" />
-                <field name="submit_nums" string="Đã nộp" type="measure" />
                 <field name="accept_nums" string="Đã duyệt" type="measure" />
+                <field name="submit_nums" string="Đã nộp" type="measure" />
             </graph>
         </field>
     </record>
