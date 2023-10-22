@@ -1968,6 +1968,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char.o_required_modifier {
   text-align: left !important;
   padding-left: 5px !important ;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier {
   border-right: 1px solid #dfdfdf !important;
@@ -1977,21 +1978,25 @@ td.o_data_cell.cursor-pointer.o_field_cell.o_date_cell.o_required_modifier:has(
     div.o_field_widget.o_required_modifier.o_field_date.time_display
   ) {
   text-align: right !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-success
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-warning
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-danger
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 .o_list_renderer
   .o_list_table
@@ -2096,11 +2101,12 @@ td.o_data_cell.o_field_cell.o_list_char.custom_column {
 div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   visibility: hidden !important;
 }
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled ~ .form-check-label {
   opacity: 0.5;
   display: none;
 }
-.o_notebook .o_notebook_headers{
+.o_notebook .o_notebook_headers {
   overflow-x: unset !important;
 }
 
@@ -2108,8 +2114,8 @@ div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   overflow: unset !important;
 }
 
-.o_searchview_facet_label{
-  display: none !important;      
+.o_searchview_facet_label {
+  display: none !important;
 }
 
 a.dropdown-item.o_nav_entry {
@@ -2122,4 +2128,7 @@ div.o_action.o_view_controller.o_graph_view
   > div.o_cp_top_right
   > div.o_cp_searchview.d-flex.flex-grow-1 {
   display: none !important;
+}
+.o_list_renderer .o_list_table > tbody > tr > :first-child {
+  vertical-align: middle !important;
 }
