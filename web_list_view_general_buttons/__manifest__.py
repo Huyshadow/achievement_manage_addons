@@ -23,7 +23,7 @@
             'web_list_view_general_buttons/static/src/js/graph_button.js'
             'web_list_view_general_buttons/static/src/xml/web_list_view_discard_template.xml',
             'web_list_view_general_buttons/static/src/js/list_morebutton.js',
-            'web_list_view_general_buttons/static/src/js/check_button_appear.js',
+            # 'web_list_view_general_buttons/static/src/js/check_button_appear.js',
         ],
     },
 
