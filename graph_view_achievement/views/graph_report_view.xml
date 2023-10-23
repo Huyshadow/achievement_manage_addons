@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="achievement_statistic_view_search" model="ir.ui.view">
         <field name="name">graph.view.achievement.statis.search</field>
         <field name="model">achievement.graph.report</field>
@@ -14,7 +13,8 @@
         <field name="name">graph.view.achievement.statis.graph</field>
         <field name="model">achievement.graph.report</field>
         <field name="arch" type="xml">
-            <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
+            <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar"
+                order="desc">
                 <field name="depart_name" string="Danh sách đơn vị" />
                 <field name="type" />
                 <field name="display_nums" type="measure" />

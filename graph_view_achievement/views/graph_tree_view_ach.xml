@@ -1,14 +1,4 @@
 <odoo>
-    <!-- <record id="achievement_statistic_view_search" model="ir.ui.view">
-        <field name="name">graph.view.achievement.statis.search</field>
-        <field name="model">achievement.department.statistic</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="achievement_id" />
-            </search>
-        </field>
-    </record> -->
-
     <record id="achievement_statistic_view_tree" model="ir.ui.view">
         <field name="name">graph.view.achievement.statis.tree</field>
         <field name="model">achievement.department.statistic</field>
@@ -21,16 +11,4 @@
             </tree>
         </field>
     </record>
-
-    <!-- <record id="achievement_statistic_view_graph" model="ir.ui.view">
-        <field name="name">graph.view.achievement.statis.graph</field>
-        <field name="model">achievement.department.statistic</field>
-        <field name="arch" type="xml">
-            <graph string="Đồ thị mô tả">
-                <field name="depart_name" string="Danh sách đơn vị" />
-                <field name="submit_nums" string="Đã nộp" />
-                <field name="accept_nums" string="Đã duyệt" invisible="1" />
-            </graph>
-        </field>
-    </record> -->
 </odoo>

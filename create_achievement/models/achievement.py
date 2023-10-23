@@ -194,13 +194,13 @@ class Achievement(models.Model):
                 self.env['achievement.graph.report'].create({
                     'achievement_id': self.id,
                     'depart_name': department.name,
-                    'type': "submit",
+                    'type': "a_submit",
                     'num': total,
                 })
                 self.env['achievement.graph.report'].create({
                     'achievement_id': self.id,
                     'depart_name': department.name,
-                    'type': "accepted",
+                    'type': "b_accepted",
                     'num': current,
                 })
         else:
@@ -219,7 +219,7 @@ class Achievement(models.Model):
                 temp_submit = self.env['achievement.graph.report'].search([
                     ('achievement_id', '=', self.id),
                     ('depart_name', '=', department.name),
-                    ('type', '=', 'submit')
+                    ('type', '=', 'a_submit')
                 ])
                 temp_submit.write({
                     'num': total,
@@ -227,7 +227,7 @@ class Achievement(models.Model):
                 temp_accepted = self.env['achievement.graph.report'].search([
                     ('achievement_id', '=', self.id),
                     ('depart_name', '=', department.name),
-                    ('type', '=', 'accepted')
+                    ('type', '=', 'b_accepted')
                 ])
                 temp_accepted.write({
                     'num': current,
