@@ -2151,14 +2151,12 @@ button.btn.btn-secondary.btn-custom.o_discard_button {
 button.btn.btn-primary.btn-custom.o_general_button {
   margin-right: 8px !important;
 }
-div.o_legacy_list_buttons.d-flex {
-  display: flex !important;
-  flex-direction: row-reverse;
-}
+
 .oe_kanban_global_click {
   border-radius: 10px;
 }
-.o_kanban_renderer .oe_kanban_card .o_kanban_image img, .o_kanban_renderer .o_kanban_record .o_kanban_image img {
+.o_kanban_renderer .oe_kanban_card .o_kanban_image img,
+.o_kanban_renderer .o_kanban_record .o_kanban_image img {
   max-width: 100%;
   border-radius: 10px 0px 0px 10px;
   height: 90px;

@@ -30,15 +30,17 @@ odoo.define(
           this.$buttons.on(
             "click",
             ".o_discard_button",
-            this._onClickGeneralButton.bind(this)
+            this._onClickDiscardButton.bind(this)
           );
           this.$buttons.prepend(this.$discardButtons);
         }
       },
 
-      _onClickGeneralButton: function (event) {
+      _onClickDiscardButton: function (event) {
         var el = event.target;
         var self = this;
+        this.$(".o_general_button").show();
+        this.$(".o_discard_button").hide();
         self
           ._rpc({
             model: $(el).attr("model"),
