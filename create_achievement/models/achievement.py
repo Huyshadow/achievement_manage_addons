@@ -174,16 +174,76 @@ class Achievement(models.Model):
         }
 
     def action_view_graph(self):
+        exist = self.env['achievement.graph.report'].search([
+            ('achievement_id', '=', self.id)
+        ])
+        department_list = self.env['manage_user_depart.department'].search([])
+        if not exist:
+            for department in department_list:
+                total_list = self.env['achievement.user.list'].search([
+                    ("donvi_name", '=', department.name),
+                    ("achievement_id", '=', self.id)
+                ])
+                current_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('donvi_name', '=', department.name),
+                ])
+                total = int(len(total_list))
+                current = int(len(current_list))
+                self.env['achievement.graph.report'].create({
+                    'achievement_id': self.id,
+                    'depart_name': department.name,
+                    'type': "submit",
+                    'num': total,
+                })
+                self.env['achievement.graph.report'].create({
+                    'achievement_id': self.id,
+                    'depart_name': department.name,
+                    'type': "accepted",
+                    'num': current,
+                })
+        else:
+            for department in department_list:
+                total_list = self.env['achievement.user.list'].search([
+                    ("donvi_name", '=', department.name),
+                    ("achievement_id", '=', self.id)
+                ])
+                current_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('donvi_name', '=', department.name),
+                ])
+                total = int(len(total_list))
+                current = int(len(current_list))
+                temp_submit = self.env['achievement.graph.report'].search([
+                    ('achievement_id', '=', self.id),
+                    ('depart_name', '=', department.name),
+                    ('type', '=', 'submit')
+                ])
+                temp_submit.write({
+                    'num': total,
+                })
+                temp_accepted = self.env['achievement.graph.report'].search([
+                    ('achievement_id', '=', self.id),
+                    ('depart_name', '=', department.name),
+                    ('type', '=', 'accepted')
+                ])
+                temp_accepted.write({
+                    'num': current,
+                })
+
         return {
             'name': self.name,
             'type': 'ir.actions.act_window',
             'view_mode': 'graph',
             'view_id': self.env.ref('graph_view_achievement.achievement_statistic_view_graph').id,
-            'res_model': 'achievement.department.statistic',
+            'res_model': 'achievement.graph.report',
             'target': 'current',
             'context': {
                 'search_default_achievement_id': self.id,
             }
+
         }
 
     def action_view_graph_achievement(self):
