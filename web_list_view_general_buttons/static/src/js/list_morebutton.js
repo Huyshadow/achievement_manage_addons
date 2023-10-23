@@ -46,8 +46,7 @@ odoo.define(
             args: [self.context.active_id],
             context: self.context,
           })
-          .then(function (result_return) {
-            var result = result_return[0];
+          .then(function (result) {
             self.do_action({
               type: result.type,
               res_model: result.res_model,

@@ -55,7 +55,7 @@ class AchievementSubmit(models.Model):
         self.env.cr.execute(query)
         value = self.env['display.dialog.box'].sudo().create({
             'text': text})
-        return ({
+        return {
             'type': 'ir.actions.act_window',
             'name': 'Thông báo',
             'res_model': 'display.dialog.box',
@@ -63,7 +63,7 @@ class AchievementSubmit(models.Model):
             'view_mode': 'form',
             'target': 'new',
             'res_id': value.id
-        }, 1)
+        }
 
     def huy_duyet(self):
         active_id = self.env.context.get('active_id')
@@ -79,7 +79,7 @@ class AchievementSubmit(models.Model):
         self.env.cr.execute(query)
         value = self.env['display.dialog.box'].sudo().create({
             'text': text})
-        return ({
+        return {
             'type': 'ir.actions.act_window',
             'name': 'Thông báo',
             'res_model': 'display.dialog.box',
@@ -87,4 +87,4 @@ class AchievementSubmit(models.Model):
             'view_mode': 'form',
             'target': 'new',
             'res_id': value.id
-        }, 0)
+        }
