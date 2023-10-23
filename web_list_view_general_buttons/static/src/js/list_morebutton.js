@@ -47,9 +47,7 @@ odoo.define(
             context: self.context,
           })
           .then(function (result_return) {
-            console.log(result_return);
             var result = result_return[0];
-            console.log(result);
             self.do_action({
               type: result.type,
               res_model: result.res_model,
@@ -60,9 +58,6 @@ odoo.define(
               target: result.target,
               res_id: result.res_id,
             });
-          })
-          .then(function (result) {
-            console.log(result);
           });
       },
     });

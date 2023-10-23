@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <t t-name="ListView.GeneralButtons">
+        <!-- <t t-if="achievement.user.list.user_approve === False"> -->
         <t t-foreach="buttons" t-as="button">
             <button
                 type="button"
@@ -11,5 +12,6 @@
                 <t t-esc="button.name" />
             </button>
         </t>
+        <!-- </t> -->
     </t>
 </templates>

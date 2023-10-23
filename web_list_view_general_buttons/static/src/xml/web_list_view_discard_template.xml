@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
     <t t-name="ListView.DiscardButtons">
-        <t t-foreach="buttons" t-as="button">
-            <button
-                type="button"
-                class="btn btn-secondary btn-custom o_discard_button"
-                t-att-action="button.action"
-                t-att-model="button.model"
-            >
-                <t t-esc="button.name" />
-            </button>
-        </t>
+        <!-- <t t-if="record"> -->
+            <t t-foreach="buttons" t-as="button">
+                <button
+                    type="button"
+                    class="btn btn-secondary btn-custom o_discard_button"
+                    t-att-action="button.action"
+                    t-att-model="button.model"
+                >
+                        <t t-esc="button.name" />
+                </button>
+            </t>
+        <!-- </t> -->
     </t>
 </templates>
