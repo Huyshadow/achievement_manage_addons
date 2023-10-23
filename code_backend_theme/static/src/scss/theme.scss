@@ -2101,11 +2101,13 @@ td.o_data_cell.o_field_cell.o_list_char.custom_column {
 div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   visibility: hidden !important;
 }
+
 .form-check-input[disabled] ~ .form-check-label,
 .form-check-input:disabled ~ .form-check-label {
   opacity: 0.5;
   display: none;
 }
+
 .o_notebook .o_notebook_headers {
   overflow-x: unset !important;
 }
@@ -2131,4 +2133,24 @@ div.o_action.o_view_controller.o_graph_view
 }
 .o_list_renderer .o_list_table > tbody > tr > :first-child {
   vertical-align: middle !important;
+}
+
+button.btn.btn-secondary.btn-custom.o_discard_button {
+  color: #fff !important;
+  background-color: #f46a6a !important;
+  border-color: #f46a6a !important;
+}
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+button.btn.btn-primary.btn-custom.o_general_button {
+  margin-right: 8px !important;
+}
+div.o_legacy_list_buttons.d-flex {
+  display: flex !important;
+  flex-direction: row-reverse;
 }

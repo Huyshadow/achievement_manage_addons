@@ -25,6 +25,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/graph_tree_view_ach.xml',
+        'views/graph_report_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

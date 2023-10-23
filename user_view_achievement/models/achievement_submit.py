@@ -20,9 +20,9 @@ class AchievementSubmit(models.Model):
     required_evidence = fields.Boolean(
         'Cần minh chứng', related='criteria.evidence')
     group_criteria_name = fields.Char(
-        'Tên tập tiêu chí', related='criteria.parent_id.parent_id.name',store=True)
+        'Tên tập tiêu chí', related='criteria.parent_id.parent_id.name', store=True)
     type_criteria_name = fields.Char(
-        'Tên loại tiêu chí', related='criteria.parent_id.name',store=True)
+        'Tên loại tiêu chí', related='criteria.parent_id.name', store=True)
     expertise = fields.Selection([
         ('passed', 'Đã đạt'),
         ('not_passed', 'Chưa đạt'),
@@ -38,7 +38,6 @@ class AchievementSubmit(models.Model):
     submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
     submit_content = fields.Char(string='Nội dung nộp')
 
-   
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:
@@ -89,11 +88,11 @@ class AchievementSubmit(models.Model):
                     'submit_at': submit_at
                 })
                 criteria_list = self.env['create_achievement.criteria'].search([
-                    ('achievement_id','=',achievement_id),
+                    ('achievement_id', '=', achievement_id),
                 ])
                 for criteria in criteria_list:
                     exist = self.env['achievement.submit'].search([
-                        ('criteria_id','=', criteria.id),
+                        ('criteria_id', '=', criteria.id),
                         ('user_id.id', '=', user_id)
                     ])
                     if not exist:
@@ -105,11 +104,11 @@ class AchievementSubmit(models.Model):
             else:
                 existing_achievement_user.write({'submit_at': submit_at})
                 criteria_list = self.env['create_achievement.criteria'].search([
-                    ('achievement_id','=',achievement_id),
+                    ('achievement_id', '=', achievement_id),
                 ])
                 for criteria in criteria_list:
                     exist = self.env['achievement.submit'].search([
-                        ('criteria_id','=', criteria.id),
+                        ('criteria_id', '=', criteria.id),
                         ('user_id.id', '=', user_id)
                     ])
                     if not exist:

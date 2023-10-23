@@ -1,15 +1,4 @@
 <odoo>
-
-    <record id="achievement_statistic_view_search" model="ir.ui.view">
-        <field name="name">graph.view.achievement.statis.search</field>
-        <field name="model">achievement.department.statistic</field>
-        <field name="arch" type="xml">
-            <search>
-                <field name="achievement_id" />
-            </search>
-        </field>
-    </record>
-
     <record id="achievement_statistic_view_tree" model="ir.ui.view">
         <field name="name">graph.view.achievement.statis.tree</field>
         <field name="model">achievement.department.statistic</field>
@@ -20,19 +9,6 @@
                 <field name="num_of_submit" string="Số hồ sơ đã nộp" />
                 <field name="num_of_accept" string="Số hồ sơ đã duyệt" />
             </tree>
-        </field>
-    </record>
-
-    <record id="achievement_statistic_view_graph" model="ir.ui.view">
-        <field name="name">graph.view.achievement.statis.graph</field>
-        <field name="model">achievement.department.statistic</field>
-        <field name="arch" type="xml">
-            <graph string="Đồ thị mô tả" disable_linking="1" stacked="False" type="bar">
-                <field name="depart_name" type="row" string="Danh sách đơn vị" />
-                <field name="achievement_id" />
-                <field name="accept_nums" string="Đã duyệt" type="measure" />
-                <field name="submit_nums" string="Đã nộp" type="measure" />
-            </graph>
         </field>
     </record>
 </odoo>
