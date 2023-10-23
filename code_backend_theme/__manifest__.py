@@ -35,6 +35,7 @@
         'views/layout.xml',
         'views/icons.xml',
         'views/replace_login.xml',
+        'views/menu_empty.xml',
     ],
     'assets': {
         'web.assets_backend': [

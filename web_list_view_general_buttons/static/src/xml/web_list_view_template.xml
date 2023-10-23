@@ -4,7 +4,7 @@
         <t t-foreach="buttons" t-as="button">
             <button
                 type="button"
-                class="btn btn-primary o_general_button"
+                class="btn btn-primary btn-custom o_general_button"
                 t-att-action="button.action"
                 t-att-model="button.model"
             >

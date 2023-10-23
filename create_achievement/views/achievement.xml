@@ -8,7 +8,7 @@
       <form>
         <sheet classname="container">
           <field name="name_title"
-            style="font-size: 24px; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
+            style="font-size: 24px; font-weight: 700 !important; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
             readonly='1' />
           <field name="status" invisible='1' />
           <group>
@@ -54,6 +54,8 @@
           decoration-danger="status == 'Đã kết thúc'"
           widget="badge" class="status_display" />
         <field name="criteria_ids" invisible='1' />
+        <button name="action_view_graph_achievement" type="object" class="btn btn-primary"
+          string="Thống kê" />
       </tree>
     </field>
   </record>

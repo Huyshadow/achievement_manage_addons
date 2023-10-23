@@ -114,7 +114,7 @@
                             </t>
                             
                             
-                            <li t-if="app.name != 'Thảo luận' and  app.name != 'Discuss' and app.name != 'Ứng dụng' " data-toggle="tooltip" data-placement="right" t-att-title="app.name"> 
+                            <li t-if="app.name != 'Thảo luận' and app.name != 'Nothing' and  app.name != 'Discuss' and app.name != 'Ứng dụng' " data-toggle="tooltip" data-placement="right" t-att-title="app.name"> 
                                 <a role="menuitem"
                                    t-attf-href="#menu_id={{app.id}}"
                                    class="nav-link">

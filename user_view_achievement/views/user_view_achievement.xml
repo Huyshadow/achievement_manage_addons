@@ -77,6 +77,18 @@
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">kanban</field>
         <field name="domain">[('status', '=', 'Đang tiến hành')]</field>
+        <field name="view_id" ref="user_view_achievement_kanban_inherit" />
+        <field name="help" type="html">
+            <p>
+              <b>Hiện tại chưa có Danh hiệu nào</b> 
+            </p>
+            <p>
+                hoặc
+            </p>
+            <p>
+                <b>Bạn đang dùng MacOs hoặc Ios, vui lòng đăng nhập bằng 1 thiết bị khác</b>
+            </p>
+          </field>
     </record>
 
 </odoo>

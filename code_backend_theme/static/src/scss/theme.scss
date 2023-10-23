@@ -1968,6 +1968,7 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
 td.o_data_cell.cursor-pointer.o_field_cell.custom_column.o_list_char.o_required_modifier {
   text-align: left !important;
   padding-left: 5px !important ;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier {
   border-right: 1px solid #dfdfdf !important;
@@ -1977,21 +1978,25 @@ td.o_data_cell.cursor-pointer.o_field_cell.o_date_cell.o_required_modifier:has(
     div.o_field_widget.o_required_modifier.o_field_date.time_display
   ) {
   text-align: right !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-success
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-warning
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_modifier:has(
     div.o_field_widget.o_readonly_modifier.o_field_badge.status_display.text-danger
   ) {
   text-align: center !important;
+  vertical-align: middle !important;
 }
 .o_list_renderer
   .o_list_table
@@ -2005,6 +2010,7 @@ td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_m
 
 tr.o_data_row > td {
   border-left: 1px solid #dfdfdf !important;
+  vertical-align: middle !important;
 }
 tr.o_data_row > td.o_list_record_remove.text-center {
   border-right: 1px solid #dfdfdf !important;
@@ -2096,11 +2102,14 @@ td.o_data_cell.o_field_cell.o_list_char.custom_column {
 div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   visibility: hidden !important;
 }
-.form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
+
+.form-check-input[disabled] ~ .form-check-label,
+.form-check-input:disabled ~ .form-check-label {
   opacity: 0.5;
   display: none;
 }
-.o_notebook .o_notebook_headers{
+
+.o_notebook .o_notebook_headers {
   overflow-x: unset !important;
 }
 
@@ -2108,10 +2117,53 @@ div.o_cp_bottom_right > div.btn-group.o_search_options.position-static {
   overflow: unset !important;
 }
 
-.o_searchview_facet_label{
-  display: none !important;      
+.o_searchview_facet_label {
+  display: none !important;
 }
 
-button.btn.btn-secondary.fa.o_external_button.fa-external-link {
+a.dropdown-item.o_nav_entry {
+  font-weight: 600;
+  padding-top: 5px;
+}
+div.o_action.o_view_controller.o_graph_view
+  > div.o_control_panel
+  > div.o_cp_top
+  > div.o_cp_top_right
+  > div.o_cp_searchview.d-flex.flex-grow-1 {
+  display: none !important;
+}
+.o_list_renderer .o_list_table > tbody > tr > :first-child {
+  vertical-align: middle !important;
+}
+
+button.btn.btn-secondary.btn-custom.o_discard_button {
+  color: #fff !important;
+  background-color: #f46a6a !important;
+  border-color: #f46a6a !important;
+}
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+button.btn.btn-primary.btn-custom.o_general_button {
+  margin-right: 8px !important;
+}
+div.o_legacy_list_buttons.d-flex {
+  display: flex !important;
+  flex-direction: row-reverse;
+}
+.oe_kanban_global_click {
+  border-radius: 10px;
+}
+.o_kanban_renderer .oe_kanban_card .o_kanban_image img, .o_kanban_renderer .o_kanban_record .o_kanban_image img {
+  max-width: 100%;
+  border-radius: 10px 0px 0px 10px;
+  height: 90px;
+  width: 64px;
+}
+li.text-success.float-end.mb4 {
   display: none;
 }

@@ -33,16 +33,63 @@
                 đơn vị của bạn để được quyền sửa đổi</span>
             </div>
             <div class="cusform">
-              <group string="Thông tin tài khoản" class="group_title">
-              </group>
               <field name="id" invisible="1" />
               <div class="alert alert-info text-center mb-3" attrs="{'invisible': [('id', '>', 0)]}"
                 role="alert">
-                You are inviting a new user.
+                Cấp tài khoản mới
               </div>
+              <div attrs="{'invisible': [('id', '>', 0)]}">
+                <group string="Cấp tài khoản" class="group_title">
+                </group>
+                <group>
+                  <field name="login" string="Tài khoản" required="1" />
+                  <field name="password" string="Mật khẩu" readonly="0" />
+
+                </group>
+              </div>
+              <group string="Thông tin tài khoản" class="group_title"
+                attrs="{'invisible': [('id', '&lt;=', 0)]}">
+              </group>
+              <group string="Thông tin tài khoản" class="group_title"
+                attrs="{'invisible': [('id', '>', 0)]}">
+              </group>
               <field name="avatar_128" invisible="1" />
+              <div attrs="{'invisible': [('id', '>', 0)]}">
+                <div
+                  class="three_column_for_info">
+                  <div
+                    class="auto_field_three_columns">
+                    <label for="name" string="Họ và tên" />
+                    <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
+                      default_focus="1" attrs="{'readonly': [('lock_info', '=', True)]}" />
+                  </div>
+                  <div
+                    class="auto_field_three_columns"
+                    style="grid-template-columns: 20% auto !important;">
+                    <label for="email" string="Email" />
+                    <field name="email" readonly="0" invisible="0" string="Email" />
+                  </div>
+                  <div
+                    class="auto_field_three_columns">
+                    <label for="sdt" string="Điện thoại" />
+                    <field name="sdt" attrs="{'readonly': [('lock_info', '=', True)]}" />
+                  </div>
+                </div>
+                <div class="two_column_for_info">
+                  <div class="auto_field_second_column">
+                    <label for="mssv_mscb" string="MSSV/MSCB" />
+                    <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}" />
+                  </div>
+                  <div class="auto_field_second_column">
+                    <field name="is_unit_manager" invisible="1" />
+                    <label for="donvi" string="Đơn vị" />
+                    <field name="donvi" widget="selection"
+                      attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
+                  </div>
+                </div>
+              </div>
               <div class="containner_user_form">
-                <div class="container_info">
+                <div class="container_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                   <div
                     class="three_column_for_info">
                     <div
@@ -76,10 +123,10 @@
                     </div>
                   </div>
                   <group string="Thông tin cá nhân"
-                    class="group_title">
+                    class="group_title" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                   </group>
                   <div
-                    class="three_column_for_info">
+                    class="three_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <div
                       class="auto_field_three_columns">
                       <label for="birthday" string="Ngày sinh" />
@@ -97,7 +144,7 @@
                     </div>
                   </div>
                   <div
-                    class="two_column_for_info">
+                    class="two_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <div class="auto_field_second_column">
                       <label for="dantoc" string="Dân tộc" />
                       <field name="dantoc" />
@@ -107,12 +154,12 @@
                       <field name="tongiao" />
                     </div>
                   </div>
-                  <div class="field_for_location">
+                  <div class="field_for_location" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <label for="tenduong_sonha" string="Thường trú" />
                     <field name="tenduong_sonha"
                       placeholder="Số nhà, tên đường" />
                   </div>
-                  <div
+                  <div attrs="{'invisible': [('id', '&lt;=', 0)]}"
                     class="three_column_for_des">
                     <field name="province" placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
                       widget="selection" />
@@ -123,15 +170,17 @@
                       domain="[('district_id' ,'=' ,district),('province_id','=',province)]"
                       widget="selection" />
                   </div>
-                  <group string="Liên lạc - tạm trú" class="group_title">
+                  <group string="Liên lạc - tạm trú" class="group_title"
+                    attrs="{'invisible': [('id', '&lt;=', 0)]}">
                   </group>
-                  <div class="field_for_location" style="margin-bottom:8px">
+                  <div class="field_for_location" style="margin-bottom:8px"
+                    attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <label for="tenduong_sonha_contact" string="Địa chỉ liên hệ" />
                     <field name="tenduong_sonha_contact"
                       placeholder="Số nhà, tên đường" />
                   </div>
                   <div
-                    class="three_column_for_des">
+                    class="three_column_for_des" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <field name="province_contact"
                       placeholder="Tỉnh/ Thành phố trực thuộc Trung ương"
                       widget="selection" />
@@ -146,7 +195,7 @@
                   <group>
                   </group>
                 </div>
-                <div class="container_image">
+                <div class="container_image" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                   <label for="image_1920" string="Ảnh chân dung" class="label_string" />
                   <div>
                     <p>(Dùng để tuyên dương khen thưởng)</p>
