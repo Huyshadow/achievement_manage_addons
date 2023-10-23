@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="nothingAc">
+            <field name="name">Không có gì cả</field>
+            <field name="res_model">res.users</field>
+            <field name="domain">[('name', '=', 'o_o')]</field>
+            <field name="view_mode">kanban</field>
+            <field name="help" type="html">
+                <p>
+                  <b>Liên hệ với đơn vị của bạn để được cấp quyền</b>
+                </p>
+              </field>
+        </record>
+
+        <menuitem id="nothing"  
+            action="nothingAc"
+            name="Nothing"
+            sequence="11"
+             />
+
+    </data>
+</odoo>

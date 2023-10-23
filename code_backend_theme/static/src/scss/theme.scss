@@ -2010,6 +2010,7 @@ td.o_data_cell.cursor-pointer.o_field_cell.o_list_char.o_badge_cell.o_readonly_m
 
 tr.o_data_row > td {
   border-left: 1px solid #dfdfdf !important;
+  vertical-align: middle !important;
 }
 tr.o_data_row > td.o_list_record_remove.text-center {
   border-right: 1px solid #dfdfdf !important;
@@ -2153,4 +2154,16 @@ button.btn.btn-primary.btn-custom.o_general_button {
 div.o_legacy_list_buttons.d-flex {
   display: flex !important;
   flex-direction: row-reverse;
+}
+.oe_kanban_global_click {
+  border-radius: 10px;
+}
+.o_kanban_renderer .oe_kanban_card .o_kanban_image img, .o_kanban_renderer .o_kanban_record .o_kanban_image img {
+  max-width: 100%;
+  border-radius: 10px 0px 0px 10px;
+  height: 90px;
+  width: 64px;
+}
+li.text-success.float-end.mb4 {
+  display: none;
 }
