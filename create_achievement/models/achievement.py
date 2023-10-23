@@ -28,6 +28,7 @@ class Achievement(models.Model):
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
     computed_numbers = fields.Integer(
         'Function for sort', compute='_compute_numbers', store=True)
+    open_approve = fields.Boolean(string="Mở thẩm định", default = False)
 
     @api.depends('criteria_ids')
     def _compute_numbers(self):

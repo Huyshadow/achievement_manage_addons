@@ -16,6 +16,7 @@
               <field name="name" placeholder="Tên danh hiệu"
                 attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
               <field name="description" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+              <field name="open_approve" widget="boolean_toggle"/>
             </group>
             <group>
               <field name="start_at" widget="date" />

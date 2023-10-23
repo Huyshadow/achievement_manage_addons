@@ -9,6 +9,7 @@ class AchievementSubmit(models.Model):
     _name = 'achievement.submit'
     _description = 'Achievement Submit'
 
+    parent_id = fields.Many2one('achievement.user.list','Thuộc user')
     user_id = fields.Many2one(
         'res.users', 'Created By', default=lambda self: self.env.user)
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
@@ -24,11 +25,11 @@ class AchievementSubmit(models.Model):
     type_criteria_name = fields.Char(
         'Tên loại tiêu chí', related='criteria.parent_id.name',store=True)
     expertise = fields.Selection([
-        ('passed', 'Đã đạt'),
-        ('not_passed', 'Chưa đạt'),
-        ('need_evidence', 'Thiếu minh chứng')
-    ], default='')
-    depart_manage_comment = fields.Char('Nhận xét của quản lý đơn vị')
+        ('passed', 'Đã đạt(A)'),
+        ('need_evidence', 'Thiếu minh chứng(B)'),
+        ('not_passed', 'Không đạt(C)'),
+    ], string="Kết quả thẩm định", default='')
+    depart_manage_comment = fields.Text('Nhận xét')
 
     grade = fields.Float('Điểm')
     is_passed = fields.Boolean('Đã đạt')
@@ -92,11 +93,16 @@ class AchievementSubmit(models.Model):
                     ('achievement_id','=',achievement_id),
                 ])
                 for criteria in criteria_list:
-                    self.env['achievement.submit'].create({
-                        'criteria': criteria.id,
-                        'submit_content': "Chưa điền",
-                        'submit': False,
-                    })
+                    exist = self.env['achievement.submit'].search([
+                        ('criteria_id','=', criteria.id),
+                        ('user_id.id', '=', user_id)
+                    ])
+                    if not exist:
+                        self.env['achievement.submit'].create({
+                            'criteria': criteria.id,
+                            'submit_content': "Chưa điền",
+                            'submit': False,
+                        })
             else:
                 existing_achievement_user.write({'submit_at': submit_at})
                 criteria_list = self.env['create_achievement.criteria'].search([
