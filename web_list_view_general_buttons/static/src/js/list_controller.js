@@ -45,6 +45,7 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
           context: self.context,
         })
         .then(function (result) {
+          console.log(result);
           self.do_action({
             type: result.type,
             res_model: result.res_model,

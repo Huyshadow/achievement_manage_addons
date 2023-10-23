@@ -241,11 +241,12 @@ class Achievement(models.Model):
             'res_model': 'achievement.department.statistic',
             'target': 'current',
             'flags': {'hasSelectors': False},
-            'context': {'graph_buttons': [{
-                'action': "action_view_graph",
-                'name': "Xem biểu đồ",
-                'model': 'create_achievement.achievement'
-            }]
+            'context': {
+                'graph_buttons': [{
+                    'action': "action_view_graph",
+                    'name': "Xem biểu đồ",
+                    'model': 'create_achievement.achievement'
+                }]
             },
             'domain': [('achievement_id', '=', self.id)],
         }
