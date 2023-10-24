@@ -9,7 +9,7 @@ class AchievementSubmit(models.Model):
     _name = 'achievement.submit'
     _description = 'Achievement Submit'
 
-    parent_id = fields.Many2one('achievement.user.list','Thuộc user')
+    parent_id = fields.Many2one('achievement.user.list', 'Thuộc user')
     user_id = fields.Many2one(
         'res.users', 'Created By', default=lambda self: self.env.user)
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
