@@ -13,7 +13,6 @@ odoo.define("web_list_view_general_buttons.Graph_Buttons", function (require) {
       this.headerGraphButtons = [];
       if (this.context.graph_buttons instanceof Array) {
         this.headerGraphButtons = this.context.graph_buttons;
-        console.log(this.context.graph_buttons);
       }
     },
 
@@ -46,7 +45,6 @@ odoo.define("web_list_view_general_buttons.Graph_Buttons", function (require) {
           context: self.context,
         })
         .then(function (result) {
-          console.log("Huy");
           self.do_action({
             type: result.type,
             res_model: result.res_model,
