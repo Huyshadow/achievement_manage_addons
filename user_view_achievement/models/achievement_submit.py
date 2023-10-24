@@ -69,11 +69,9 @@ class AchievementSubmit(models.Model):
             achievement_id = record.criteria.achievement_id
 
             tz = timezone('Asia/Bangkok')
-            future_date = record.create_date
-            local_datetime = tz.localize(future_date)
-            utc_datetime = local_datetime.astimezone(timezone('UTC'))
-            check_time = utc_datetime.replace(tzinfo=None)
-            submit_at = check_time
+            current_local_time = datetime.now(tz) - timedelta(hours=7)
+            string_time = current_local_time.strftime('%Y-%m-%d %H:%M:%S')
+            submit_at = string_time
 
             # Check if a corresponding record already exists, and if not, create it
             existing_achievement_user = self.env['achievement.user.list'].search([
