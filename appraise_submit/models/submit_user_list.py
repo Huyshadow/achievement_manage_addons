@@ -18,13 +18,9 @@ class AchievementSubmit(models.Model):
     def _compute_last_expertise(self):
         for record in self:
             tz = timezone('Asia/Bangkok')
-            future_date = record.create_date + timedelta(days=0)
-            default_time = time(hour=0, minute=0, second=0)
-            naive_datetime = datetime.combine(future_date, default_time)
-            local_datetime = tz.localize(naive_datetime)
-            utc_datetime = local_datetime.astimezone(timezone('UTC'))
-            check_time = utc_datetime.replace(tzinfo=None)
-            record.last_expertise_at = check_time
+            current_local_time = datetime.now(tz) - timedelta(hours=7)
+            utc = current_local_time.strftime('%Y-%m-%d %H:%M:%S')
+            record.last_expertise_at = utc
             record.last_expertise_committe = self.env.user.name
     
     def action_view_user_submit_appraiser(self):
