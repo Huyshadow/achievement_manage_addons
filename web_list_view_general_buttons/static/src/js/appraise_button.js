@@ -27,6 +27,7 @@ odoo.define(
               buttons: this.headerAppraiseButtons,
             })
           );
+          var rpc = require("web.rpc");
           this.$buttons.on(
             "click",
             ".o_appraise_button",
@@ -39,6 +40,7 @@ odoo.define(
       _onClickAppraiseButton: function (event) {
         var el = event.target;
         var self = this;
+        this.$(".o_appraise_button").text("Loading...");
         self
           ._rpc({
             model: $(el).attr("model"),
@@ -58,6 +60,24 @@ odoo.define(
               res_id: result.res_id,
               context: result.context,
             });
+            // Testing
+            setTimeout(() => {
+              var rpc = require("web.rpc");
+              var model = "achievement.user.list";
+              var field = "status_user";
+              var recordId = result.res_id;
+
+              rpc
+                .query({
+                  model: model,
+                  method: "read",
+                  args: [recordId, [field]],
+                })
+                .then(function (result) {
+                  var fieldValue = result[0].status_user;
+                  self.$(".o_appraise_button").text(fieldValue);
+                });
+            }, 16000);
           });
       },
     });
