@@ -6,6 +6,13 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
     last_expertise_at = fields.Datetime(string="Thời gian thẩm định cuối", compute = '_compute_last_expertise', store = True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
+    final_expertise = fields.Selection([
+        ('passed', 'Đã đạt(A)'),
+        ('need_evidence', 'Thiếu minh chứng(B)'),
+        ('not_passed', 'Không đạt(C)'),
+        ('not_expertise','Chưa thẩm định')
+    ], string="Kết quả thẩm định", default='not_expertise')
+    final_review = fields.Text(string="Nhận xét tổng")
 
     @api.depends('submit_list.expertise','submit_list.depart_manage_comment')
     def _compute_last_expertise(self):
