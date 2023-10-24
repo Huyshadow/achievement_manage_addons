@@ -9,7 +9,7 @@ class AchievementSubmit(models.Model):
     _name = 'achievement.submit'
     _description = 'Achievement Submit'
 
-    parent_id = fields.Many2one('achievement.user.list','Thuộc user')
+    parent_id = fields.Many2one('achievement.user.list', 'Thuộc user')
     user_id = fields.Many2one(
         'res.users', 'Created By', default=lambda self: self.env.user)
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
@@ -69,10 +69,8 @@ class AchievementSubmit(models.Model):
             achievement_id = record.criteria.achievement_id
 
             tz = timezone('Asia/Bangkok')
-            future_date = record.create_date + timedelta(days=0)
-            default_time = time(hour=0, minute=0, second=0)
-            naive_datetime = datetime.combine(future_date, default_time)
-            local_datetime = tz.localize(naive_datetime)
+            future_date = record.create_date
+            local_datetime = tz.localize(future_date)
             utc_datetime = local_datetime.astimezone(timezone('UTC'))
             check_time = utc_datetime.replace(tzinfo=None)
             submit_at = check_time
