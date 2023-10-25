@@ -33,7 +33,6 @@ class AchievementSubmit(models.Model):
     def action_view_evidence(self):
         target_id = str(self.id)
         url = self.create_url(target_id)
-        print(url)
         # webbrowser.open(url, new=2, autoraise=True)
         return {'name': 'test',
                 'res_model': 'ir.actions.act_url',
