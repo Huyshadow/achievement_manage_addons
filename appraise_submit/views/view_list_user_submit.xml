@@ -12,7 +12,6 @@
 				<field name="sum_expertise" />
 				<field name="last_expertise_at" />
 				<field name="last_expertise_committe" />
-				<field name="approve" />
 				<button name="action_view_user_submit_appraiser" type="object"
 					class="btn btn-primary"
 					string="Xem chi tiết" />
