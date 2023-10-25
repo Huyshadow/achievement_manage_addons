@@ -24,10 +24,7 @@
             'web_list_view_general_buttons/static/src/js/graph_button.js',
             'web_list_view_general_buttons/static/src/js/list_morebutton.js',
             'web_list_view_general_buttons/static/src/js/list_controller.js',
-<<<<<<< HEAD
             'web_list_view_general_buttons/static/src/js/appraise_button.js',
-=======
->>>>>>> f9c3ecc (Done)
         ],
     },
 
