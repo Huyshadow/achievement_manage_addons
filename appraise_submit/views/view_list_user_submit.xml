@@ -25,11 +25,24 @@
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
 			<form>
+				<script> $(document).ready(function(){
+					$("footer.modal-footer.justify-content-around.justify-content-sm-start.flex-wrap.gap-1").hide();
+					}); function myCustomFunction() {
+					$(document).ready(function () {
+					var set_value = $('#status_user option:selected').val();
+					$("button.btn.btn-primary.btn-custom.o_appraise_button").text(set_value.slice(1,set_value.length-1));
+					});
+					} </script>
 				<sheet>
 					<group>
 						<field name="status_user" widget="selection" string="Thẩm định" />
 						<field name="note_user" string="Ghi chú" />
 					</group>
+					<div class="custom-position">
+						<button name="custom_button" string="Xác nhận" type="object"
+							class="btn-primary custom-button"
+							onclick="myCustomFunction()" />
+					</div>
 				</sheet>
 			</form>
 		</field>

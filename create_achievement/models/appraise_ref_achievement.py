@@ -3,6 +3,7 @@ from odoo import models, fields, api
 
 class Appraise(models.Model):
     _name = 'create_achievement.appraise'
+    _description = "Thẩm định viên"
 
     user_id = fields.Many2one('res.users')
     achievement_id = fields.Many2one('create_achievement.achievement')
