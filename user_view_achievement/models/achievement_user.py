@@ -13,11 +13,18 @@ class AchievementUser(models.Model):
     submit_list = fields.One2many(
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
+<<<<<<< HEAD
     user_name = fields.Char(string="Tên người nộp", related='user_id.name')
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='user_id.donvi.code')
     donvi_name = fields.Char(string="Tên đơn vị", related='user_id.donvi.name')
+=======
+    user_name = fields.Char(string="Tên người nộp", related = 'user_id.name')
+    achievement_name = fields.Char(string="Tên danh hiệu", related = 'achievement_id.name')
+    donvi_code = fields.Char(string="Mã đơn vị", related = 'user_id.donvi.code')
+    donvi_name=  fields.Char(string="Tên đơn vị", related = 'user_id.donvi.name')
+>>>>>>> b98347a (Rebase 2)
     submit_at = fields.Datetime()
 
     # criteria_submited_list = fields.Char(string="ID tiêu chuẩn đã nộp", compute ='_compute_criteria_submited_list', store = True)

@@ -27,6 +27,9 @@
 		<field name="res_model">create_achievement.achievement</field>
 		<field name="view_mode">tree</field>
 		<field name="view_id" ref="view_achievement_list_tree_appraiser" />
+<<<<<<< HEAD
 		<field name="domain">[('be_appraise_by.user_id', '=', (uid))]</field>
+=======
+>>>>>>> b98347a (Rebase 2)
 	</record>
 </odoo>

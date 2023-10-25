@@ -1,6 +1,10 @@
 from odoo import models, fields, api
+<<<<<<< HEAD
 from pytz import timezone
 from datetime import datetime, time, timedelta
+=======
+from odoo.exceptions import ValidationError
+>>>>>>> b98347a (Rebase 2)
 
 
 class AchievementSubmit(models.Model):
