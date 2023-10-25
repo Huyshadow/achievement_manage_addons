@@ -13,18 +13,11 @@ class AchievementUser(models.Model):
     submit_list = fields.One2many(
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
-<<<<<<< HEAD
     user_name = fields.Char(string="Tên người nộp", related='user_id.name')
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='user_id.donvi.code')
     donvi_name = fields.Char(string="Tên đơn vị", related='user_id.donvi.name')
-=======
-    user_name = fields.Char(string="Tên người nộp", related = 'user_id.name')
-    achievement_name = fields.Char(string="Tên danh hiệu", related = 'achievement_id.name')
-    donvi_code = fields.Char(string="Mã đơn vị", related = 'user_id.donvi.code')
-    donvi_name=  fields.Char(string="Tên đơn vị", related = 'user_id.donvi.name')
->>>>>>> b98347a (Rebase 2)
     submit_at = fields.Datetime()
 
     # criteria_submited_list = fields.Char(string="ID tiêu chuẩn đã nộp", compute ='_compute_criteria_submited_list', store = True)
@@ -78,7 +71,11 @@ class AchievementUser(models.Model):
     #                 ('criteria.parent_id.parent_id.parent_id.id','=',record.achievement_id),
     #             ])
     #             record.criteria_submited_list = str(criteria_submit_id)
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> cea035f (Rebase 3)
     # @api.depends('criteria_submited_list')
     # def _compute_type_submited_list(self):
     #     for record in self:
@@ -90,6 +87,7 @@ class AchievementUser(models.Model):
     #             ])
     #             for type_criteria in temp_type_list:
     #                 submit_criteria_list = [int(id) for id in record.criteria_submited_list.split(',')]
+<<<<<<< HEAD
 
     #                 temp_criteria_list = []
     #                 for criteria in type_criteria.criteria_ids:
@@ -101,3 +99,16 @@ class AchievementUser(models.Model):
 
     #                 else:
     #                     continue
+=======
+                    
+    #                 temp_criteria_list = []
+    #                 for criteria in type_criteria.criteria_ids:
+    #                     temp_criteria_list.append(criteria.id)
+
+    #                 if type_criteria.constraint == 'all':
+                        
+    #                 elif type_criteria.constraint == 'some':
+
+    #                 else:
+    #                     continue
+>>>>>>> cea035f (Rebase 3)

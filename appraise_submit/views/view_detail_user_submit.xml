@@ -67,4 +67,24 @@
 			</tree>
 		</field>
 	</record>
+	<record id="view_user_submit_detail_appraise_close" model="ir.ui.view">
+		<field name="name">submit.detail.appraise.view</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<tree create="false" export_xlsx="false" delete='false' edit="false" expand="1"
+				default_order="type_criteria_name asc" js_class="disappear_check_box">
+				<field name="evidence" invisible="1" />
+				<!-- <header>
+					<button name="duyet" type="object" class="btn btn-primary"
+						string="Duyệt" />
+				</header> -->
+				<field class="custom_column" name="criteria_content" />
+				<field class="custom_column" name="submit_content" />
+				<button name="action_view_evidence" type="object" class="btn btn-primary"
+					string="Xem minh chứng" attrs="{'invisible': [('evidence','=',False)]}" />
+				<field name="depart_manage_comment" />
+				<field name="expertise" readonly="1" />
+			</tree>
+		</field>
+	</record>
 </odoo>

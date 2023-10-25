@@ -37,8 +37,7 @@
             <field name="category_id" ref="module_access_right" />
         </record>
 
-        <record
-            id="hkt_rule_visibility_user" model="ir.rule">
+        <record id="hkt_rule_visibility_user" model="ir.rule">
             <field name="name">Người dùng chỉ xem được thông tin của họ</field>
             <field name="model_id" ref="base.model_res_users" />
             <field name="groups" eval="[(4, ref('access_right_user.group_mem_user'))]" />
