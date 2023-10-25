@@ -46,7 +46,6 @@ odoo.define("web_list_view_general_buttons.Graph_Buttons", function (require) {
           context: self.context,
         })
         .then(function (result) {
-          console.log("Huy");
           self.do_action({
             type: result.type,
             res_model: result.res_model,

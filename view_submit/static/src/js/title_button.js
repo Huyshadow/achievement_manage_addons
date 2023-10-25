@@ -9,6 +9,9 @@ odoo.define("view_submit.EditableListRenderer", function (require) {
       if (node.tag === "button_group" && node.attrs.name === "button_group_0") {
         $th.text("Thao tác");
       }
+      if (node.tag === "button_group" && node.attrs.name === "button_group_1") {
+        $th.text("Thẩm định");
+      }
 
       return $th;
     },

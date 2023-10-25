@@ -23,8 +23,6 @@ class AchievementSubmit(models.Model):
         }
         return action
 
-    
-
     def create_url(self, target_id):
         protocol = "http"
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
@@ -35,7 +33,6 @@ class AchievementSubmit(models.Model):
     def action_view_evidence(self):
         target_id = str(self.id)
         url = self.create_url(target_id)
-        print(url)
         # webbrowser.open(url, new=2, autoraise=True)
         return {'name': 'test',
                 'res_model': 'ir.actions.act_url',
@@ -43,42 +40,3 @@ class AchievementSubmit(models.Model):
                 'target': 'new',
                 'url': url
                 }
-
-    def duyet(self):
-        active_id = self.env.context.get('active_id')
-        target = self.env['achievement.user.list'].search([
-            ('id', '=', active_id),
-        ])
-        if target.user_approve:
-            text = """Hồ sơ đã được duyệt"""
-            query = 'delete from display_dialog_box'
-            self.env.cr.execute(query)
-            value = self.env['display.dialog.box'].sudo().create({
-                'text': text})
-            return {
-                'type': 'ir.actions.act_window',
-                'name': 'Thông báo',
-                'res_model': 'display.dialog.box',
-                'view_type': 'form',
-                'view_mode': 'form',
-                'target': 'new',
-                'res_id': value.id
-            }
-        else:
-            target.write({
-                'user_approve': True
-            })
-            text = """Duyệt hồ sơ thành công"""
-            query = 'delete from display_dialog_box'
-            self.env.cr.execute(query)
-            value = self.env['display.dialog.box'].sudo().create({
-                'text': text})
-            return {
-                'type': 'ir.actions.act_window',
-                'name': 'Thông báo',
-                'res_model': 'display.dialog.box',
-                'view_type': 'form',
-                'view_mode': 'form',
-                'target': 'new',
-                'res_id': value.id
-            }
