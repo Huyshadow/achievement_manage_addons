@@ -27,15 +27,7 @@ class AchievementUser(models.Model):
     full_submit = fields.Boolean(
         string="Đã nộp đủ tất cả tiêu chí", default=False)
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
-    expertise = fields.Boolean(
-        string="Thẩm định", default=False, compute='_compute_expertise', store=True)
-    approve = fields.Boolean(string="Thông qua", default=False)
-    sum_expertise = fields.Selection([
-        ('passed', 'Đã đạt(A)'),
-        ('need_evidence', 'Thiếu minh chứng(B)'),
-        ('not_passed', 'Không đạt(C)'),
-        ('not_expertise', 'Chưa thẩm định')
-    ], string="Kết quả thẩm định", default='not_expertise')
+    
 
     @api.model
     def import_parent_id_for_achievement_submit(self):

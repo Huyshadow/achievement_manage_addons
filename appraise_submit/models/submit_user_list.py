@@ -6,21 +6,15 @@ from datetime import datetime, time, timedelta
 class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
-    status_user = fields.Selection(
-        [('Đã đạt(A)', 'Đã đạt(A)'), ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), ('Không đạt(C)', 'Không đạt(C)')])
-    note_user = fields.Text(string="Ghi chú")
-
+    status_user = fields.Selection([
+        ('Đã đạt(A)', 'Đã đạt(A)'), 
+        ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), 
+        ('Không đạt(C)', 'Không đạt(C)')
+    ], string="Kết quả thẩm định")
+    note_user = fields.Text(string="Nhận xét tổng")
     last_expertise_at = fields.Datetime(
         string="Thời gian thẩm định cuối", compute='_compute_last_expertise', store=True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
-    final_expertise = fields.Selection([
-        ('passed', 'Đã đạt(A)'),
-        ('need_evidence', 'Thiếu minh chứng(B)'),
-        ('not_passed', 'Không đạt(C)'),
-        ('not_expertise', 'Chưa thẩm định')
-    ], string="Kết quả thẩm định", default='not_expertise')
-    final_review = fields.Text(string="Nhận xét tổng")
-
     def appraise(self):
         return {
             'name': 'Thẩm định tiêu chí',
@@ -32,7 +26,7 @@ class AchievementSubmit(models.Model):
             'res_id': self.id
         }
 
-    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment')
+    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment','status_user')
     def _compute_last_expertise(self):
         for record in self:
             tz = timezone('Asia/Bangkok')
