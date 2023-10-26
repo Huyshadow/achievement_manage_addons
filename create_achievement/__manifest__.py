@@ -30,6 +30,7 @@
         'views/criteria.xml',
         'views/group_criteria.xml',
         'views/type_criteria.xml',
+        'views/appraise.xml',
         'views/menu.xml',
     ],
     'assets': {

@@ -1,25 +1,3 @@
-odoo.define("view_submit.EditableListRenderer", function (require) {
-  "use strict";
-
-  var ListRenderer = require("web.ListRenderer");
-
-  ListRenderer.include({
-    _renderBodyCell: function (record, node, colIndex, options) {
-      var $cell = this._super.apply(this, arguments);
-      console.log($cell);
-      console.log(node);
-      if (node.tag === "button_group" && node.attrs.name === "button_group_0") {
-        $cell.text("Xem danh sách nộp - Thao tác");
-        console.log("HUY");
-      }
-
-      return $cell;
-    },
-  });
-});
-// Code for check sell
-
-// Code for take value from database
 odoo.define(
   "web_list_view_general_buttons.Appraise_Buttons",
   function (require) {
@@ -62,7 +40,6 @@ odoo.define(
       _onClickAppraiseButton: function (event) {
         var el = event.target;
         var self = this;
-        // this.$(".o_appraise_button").text("Loading...");
         self
           ._rpc({
             model: $(el).attr("model"),
@@ -82,24 +59,6 @@ odoo.define(
               res_id: result.res_id,
               context: result.context,
             });
-            // Testing Here
-            setTimeout(() => {
-              var rpc = require("web.rpc");
-              var model = "achievement.user.list";
-              var field = "status_user";
-              var recordId = result.res_id;
-
-              rpc
-                .query({
-                  model: model,
-                  method: "read",
-                  args: [recordId, [field]],
-                })
-                .then(function (result) {
-                  var fieldValue = result[0].status_user;
-                  self.$(".o_appraise_button").text(fieldValue);
-                });
-            }, 16000);
           });
       },
     });

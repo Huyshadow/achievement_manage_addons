@@ -7,6 +7,8 @@ import os
 class User(models.Model):
     _inherit = 'res.users'
 
+    # appraise_for = fields.One2many('create_achievement.appraise','user_id')
+
     mssv_mscb = fields.Char(string="MSSV/MSCB", required=True)
     gioi_tinh = fields.Selection([
         ('nam', 'Nam'),

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem 
+        id="menu_user_ach_root" 
+        name="Thẩm định hồ sơ"
+        sequence="1"
+        action="action_view_achievement_list_appraiser"
+        web_icon="code_backend_theme,static/src/img/icons/Attendances.png"
+        groups="access_right_user.group_appraiser"
+    />    
+</odoo>

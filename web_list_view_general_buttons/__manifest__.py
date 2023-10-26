@@ -20,9 +20,11 @@
             'web_list_view_general_buttons/static/src/xml/web_list_button_graph.xml',
             'web_list_view_general_buttons/static/src/xml/web_list_view_template.xml',
             'web_list_view_general_buttons/static/src/xml/web_list_view_discard_template.xml',
+            'web_list_view_general_buttons/static/src/xml/web_list_button_appraise.xml',
             'web_list_view_general_buttons/static/src/js/graph_button.js',
             'web_list_view_general_buttons/static/src/js/list_morebutton.js',
             'web_list_view_general_buttons/static/src/js/list_controller.js',
+            'web_list_view_general_buttons/static/src/js/appraise_button.js',
         ],
     },
 

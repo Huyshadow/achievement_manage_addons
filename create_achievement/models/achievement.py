@@ -8,6 +8,7 @@ class Achievement(models.Model):
     _name = 'create_achievement.achievement'
     _description = 'Achievement Model of Create-Achievement Module'
 
+    be_appraise_by = fields.One2many('create_achievement.appraise','achievement_id', string="Phân nhiệm vụ cho các thẩm định viên")
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tập tiêu chí danh hiệu")
 
@@ -27,6 +28,7 @@ class Achievement(models.Model):
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
     computed_numbers = fields.Integer(
         'Function for sort', compute='_compute_numbers', store=True)
+    open_approve = fields.Boolean(string="Mở thẩm định", default = False)
 
     @api.depends('criteria_ids')
     def _compute_numbers(self):
