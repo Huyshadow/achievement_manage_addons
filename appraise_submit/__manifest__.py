@@ -23,7 +23,7 @@
     ],
     'assets': {
         'web.assets_backend': [
-            'view_submit/static/src/js/title_button.js',
+            'appraise_submit/static/src/scss/form_appraise.scss',
         ],
     },
 

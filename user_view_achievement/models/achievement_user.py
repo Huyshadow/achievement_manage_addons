@@ -50,7 +50,6 @@ class AchievementUser(models.Model):
                 submit.write({
                     'parent_id': parent.id
                 })
-
     # @api.depends()
 
     # @api.depends('submit_at')

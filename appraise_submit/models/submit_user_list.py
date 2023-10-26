@@ -82,3 +82,6 @@ class AchievementSubmit(models.Model):
                                     'model': 'achievement.user.list'
                                 }]},
                 }
+
+    def custom_button(self):
+        return
