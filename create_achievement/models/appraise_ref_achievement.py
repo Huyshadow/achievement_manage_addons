@@ -14,5 +14,5 @@ class Appraise(models.Model):
     @api.depends('donvis')
     def _compute_donvis_names(self):
         for record in self:
-            department_names = ', '.join(record.donvis.mapped('code'))
+            department_names = ','.join(record.donvis.mapped('code'))
             record.donvis_names = department_names
