@@ -82,6 +82,52 @@ class User(models.Model):
             'target': 'new',
             'res_id': value.id
         }
+    
+    @api.model
+    def action_user_by_donvi_error(self):
+        user_dv_id = self.env.user.donvi.id
+        domain = [('donvi', '=', user_dv_id),('is_thamdinh', '=', False),('is_ql_danhhieu', '=', False),('is_ql_hethong', '=', False),('is_ql_donvi', '=', False),('is_thanh_vien', '=', False)]
+        action = {
+            'name': 'Danh sách người dùng lỗi',
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'view_mode': 'tree,form,kanban',
+            'domain': domain,
+        }
+        return action
+
+    @api.model
+    def action_user_by_donvi_thanhvien(self):
+        user_dv_id = self.env.user.donvi.id
+        domain = [('donvi', '=', user_dv_id),('is_thanh_vien', '=', True)]
+        action = {
+            'name': 'Danh sách người dùng là thành viên',
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'view_mode': 'tree,form,kanban',
+            'domain': domain,
+        }
+        return action
+
+    @api.model
+    def action_user_by_donvi_ql(self):
+        user_dv_id = self.env.user.donvi.id
+        domain = [('donvi', '=', user_dv_id),('is_ql_donvi', '=', True)]
+        action = {
+            'name': 'Danh sách người dùng là Quản lý',
+            'type': 'ir.actions.act_window',
+            'res_model': 'res.users',
+            'view_mode': 'tree,form,kanban',
+            'domain': domain,
+        }
+        return action
+
+    @api.depends('donvi')
+    def _compute_donvi_selection(self):
+        for record in self:
+            record.donvi_domain = self.env.user.donvi.name
+
+    donvi_domain = fields.Char(string='Domain', compute='_compute_donvi_selection')
 
     @api.model
     def action_user_by_donvi(self):

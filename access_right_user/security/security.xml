@@ -102,15 +102,5 @@
             <field name="perm_unlink" eval="False" />
             <field name="domain_force">[('donvi.id','=',user.donvi.id)]</field>
         </record>
-        <record id="hkt_rule_visibility_appraise_list" model="ir.rule">
-            <field name="name">Quản lý danh hiệu chỉ được truy cập thông tin của Thẩm định viên</field>
-            <field name="model_id" ref="base.model_res_users" />
-            <field name="groups" eval="[(4, ref('access_right_user.group_achievement_manager'))]" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="False" />
-            <field name="perm_create" eval="False" />
-            <field name="perm_unlink" eval="False" />
-            <field name="domain_force">[('is_thamdinh','=',True)]</field>
-        </record>
     </data>
 </odoo>

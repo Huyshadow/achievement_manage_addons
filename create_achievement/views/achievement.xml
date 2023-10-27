@@ -6,34 +6,39 @@
     <field name="priority">1</field>
     <field name="arch" type="xml">
       <form>
-        <sheet classname="container">
-          <field name="name_title"
+        <sheet class="none_container">
+          <sheet class="container">
+
+            <field name="name_title"
             style="font-size: 24px; font-weight: 700 !important; text-transform: uppercase; border-bottom: 1px solid #ced4da ; margin-bottom: 32px; color: #0E21A0 ;"
             readonly='1' />
-          <field name="status" invisible='1' />
-          <group>
+            <field name="status" invisible='1' />
             <group>
-              <field name="name" placeholder="Tên danh hiệu"
+              <group>
+                <field name="name" placeholder="Tên danh hiệu"
                 attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
-              <field name="description" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
-              <field name="open_approve" widget="boolean_toggle"/>
+                <field name="description" attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" />
+                <field name="open_approve" widget="boolean_toggle"/>
+              </group>
+              <group>
+                <field name="start_at" widget="date" />
+                <field name="end_submit_at" widget="date" />
+                <field name="end_at" widget="date" />
+              </group>
             </group>
-            <group>
-              <field name="start_at" widget="date" />
-              <field name="end_submit_at" widget="date" />
-              <field name="end_at" widget="date" />
+            <group string="Danh sách tiêu chí" style="font-size: 25px">
             </group>
-          </group>
-          <group string="Danh sách tiêu chí" style="font-size: 25px">
-          </group>
-          <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids" />  
-          <group string="Danh sách thẩm định viên" style="font-size: 25px">
-          </group>
-          <field  name="be_appraise_by"/>
-          <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
-            <button name="save_and_redirect" type="object" string="Lưu" class="oe_highlight" />
-            <button string="Hủy" special="cancel" />
-          </div>
+            <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids" />  
+            <div style="display:flex; justify-content: end; gap:16px; margin-top: 8px;">
+              <button name="save_and_redirect" type="object" string="Lưu" class="oe_highlight" />
+              <button string="Hủy" special="cancel" />
+            </div>
+          </sheet>
+          <sheet class="container">
+            <group string="Danh sách thẩm định viên" style="font-size: 25px">
+            </group>
+            <field  name="be_appraise_by"/>
+          </sheet>
         </sheet>
       </form>
     </field>

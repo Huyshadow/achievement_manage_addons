@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="user_id" string="Thẩm dịnh viên"/>
-                <field name="donvis_names" string="Đơn vị phụ trách thẩm định" />
+                <field name="donvis" widget="many2many_tags" string="Đơn vị phụ trách thẩm định" />
             </tree>
         </field>
     </record>

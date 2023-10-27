@@ -122,3 +122,18 @@ textarea#comment {
   color: black;
   font-weight: 600 !important;
 }
+
+.none_container > .o_form_sheet.position-relative.clearfix {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.container {
+  max-width: none !important;
+  padding: 0px 0px 20px 0px !important;
+  width: 100%;
+}
+
+.o_field_widget.o_field_many2many_tags .badge .o_badge_text, .o_field_widget.o_field_many2many_tags .badge .o_tag_badge_text {
+  max-width: none !important;
+}

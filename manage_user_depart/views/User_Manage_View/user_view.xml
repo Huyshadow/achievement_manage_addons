@@ -26,6 +26,7 @@
         <form class="custom-form oe_form_center" string="Users"
           create="false" duplicate="false" delete="false">
           <sheet>
+            <field name="is_ql_donvi" invisible="1" />
             <field name="lock_info" invisible="1" />
             <div attrs="{'invisible': [('lock_info', '=', False)]}"
               style="background-color: rgb(255,0,0,0.1); padding: 1.2em;border-radius: 7px;">
@@ -83,10 +84,12 @@
                   <div class="auto_field_second_column">
                     <field name="is_unit_manager" invisible="1" />
                     <label for="donvi" string="Đơn vị" />
-                    <field name="donvi" widget="selection"
+                      <field name="donvi" widget="selection"
                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
+                    </div>
+                    <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                   </div>
-                </div>
+                <!-- <field name="donvi_domain"/> -->
               </div>
               <div class="containner_user_form">
                 <div class="container_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
@@ -213,6 +216,13 @@
                   domain="[('category_id' ,'=' ,'Tuyên dương khen thưởng' )]"
                   style="font-size: 15px;" />
               </group>
+              <!-- <group string="Quyền truy cập" class="group_title"
+                groups="access_right_user.group_unit_manager">
+                <field nolabel="0" name="groups_id" string="Vai trò" class="nocustom-form"
+                  widget="many2many_checkboxes"
+                  domain="[('category_id' ,'=' ,'Tuyên dương khen thưởng' ),('name' ,'=' ,'Thành viên' )]"
+                  style="font-size: 15px;" />
+              </group> -->
               <div
                 class="container_button_info_user">
                 <button style="width:64px" name="save_success" type="object" string="Lưu"
