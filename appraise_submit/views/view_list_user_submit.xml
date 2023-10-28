@@ -5,7 +5,7 @@
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
-				js_class="add_stt">
+				js_class="redefine_user_view">
 				<field class="custom_column" name="user_name" />
 				<field class="custom_column" name="donvi_name" />
 				<field class="right_align" name="submit_at" widget="date" string="Ngày nộp" />
