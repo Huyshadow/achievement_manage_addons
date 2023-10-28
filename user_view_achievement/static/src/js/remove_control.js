@@ -9,18 +9,15 @@ odoo.define("user_view_achievement.disappear_check_box", function (require) {
   var CustomListRenderer = ListRenderer.extend({
     _renderRow: function (record) {
       var tr = this._super(record);
-      console.log(record.data.small_category_name_field);
       tr.find("input[type='checkbox']").prop("disabled");
       return tr;
     },
     _disableRecordSelectors: function () {
       this.$(".o_list_record_selector input").attr("disabled", "disabled");
-      this.$(".o_control_panel").attr("disabled", "disabled");
     },
 
     _enableRecordSelectors: function () {
       this.$(".o_list_record_selector input").attr("disabled", false);
-      this.$(".o_control_panel").attr("disabled", false);
     },
   });
 
@@ -31,6 +28,4 @@ odoo.define("user_view_achievement.disappear_check_box", function (require) {
   });
 
   viewRegistry.add("disappear_check_box", CustomListView);
-
-  //document.getElementsByClassName(".o_control_panel").css({ display: "none" });
 });

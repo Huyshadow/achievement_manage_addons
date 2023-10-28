@@ -24,6 +24,7 @@
     'assets': {
         'web.assets_backend': [
             'appraise_submit/static/src/scss/form_appraise.scss',
+            'appraise_submit/static/src/js/add_stt.js',
         ],
     },
 

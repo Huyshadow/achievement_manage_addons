@@ -5,12 +5,12 @@
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
-				js_class="disappear_check_box">
+				js_class="add_stt">
 				<field class="custom_column" name="user_name" />
 				<field class="custom_column" name="donvi_name" />
 				<field class="right_align" name="submit_at" widget="date" string="Ngày nộp" />
 				<field name="status_user" />
-				<field name="note_user"/>
+				<field name="note_user" />
 				<field name="last_expertise_at" />
 				<field name="last_expertise_committe" />
 				<button name="action_view_user_submit_appraiser" type="object"
