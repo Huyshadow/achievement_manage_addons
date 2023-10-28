@@ -5,7 +5,7 @@
 		<field name="model">create_achievement.achievement</field>
 		<field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
-				js_class="disappear_check_box">
+				js_class="redefine_achievement">
 				<field class="custom_column" name="name" />
 				<!-- <field class="right_align" name="num_of_user"/> -->
 				<field class="right_align" widget="date" name="end_submit_at" />
