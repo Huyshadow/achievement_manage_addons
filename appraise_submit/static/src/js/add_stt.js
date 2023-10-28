@@ -17,6 +17,7 @@ odoo.define("appraise.add_stt", function (require) {
       var $footer = this._super.apply(this, arguments);
       var $td = $("<td></td>");
       $footer.children("tr").children("td").eq(0).before($td);
+      num = 1;
       return $footer;
     },
     _renderRow: function (record) {
