@@ -1813,9 +1813,6 @@ div.dropdown-menu.bootstrap-datetimepicker-widget {
   .text-900 {
     display: none !important;
   }
-  .text-muted {
-    display: none !important;
-  }
 }
 
 .o_form_view.o_xxl_form_view .o_form_sheet_bg > .o_form_sheet {
@@ -2136,11 +2133,6 @@ div.o_action.o_view_controller.o_graph_view
   vertical-align: middle !important;
 }
 
-button.btn.btn-secondary.btn-custom.o_discard_button {
-  color: #fff !important;
-  background-color: #f46a6a !important;
-  border-color: #f46a6a !important;
-}
 .hidden {
   display: none !important;
 }
@@ -2170,4 +2162,10 @@ button.btn.btn-secondary.fa.o_external_button.fa-external-link {
 }
 .o_burger_menu .o_burger_menu_topbar {
   background-color: #2a3042;
+}
+.huyButton {
+  text-transform: uppercase !important;
+  color: #fff !important;
+  background-color: #f46a6a !important;
+  border-color: #f46a6a !important;
 }

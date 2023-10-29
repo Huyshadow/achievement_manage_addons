@@ -5,6 +5,7 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
   var ListController = require("web.ListController");
 
   var QWeb = core.qweb;
+  var submit = false;
 
   ListController.include({
     init: function (parent, model, renderer) {
@@ -14,6 +15,7 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
       if (this.context.general_buttons instanceof Array) {
         this.headerGeneralButtons = this.context.general_buttons;
       }
+      submit = false;
     },
 
     renderButtons: function () {
@@ -37,8 +39,17 @@ odoo.define("web_list_view_general_buttons.ListController", function (require) {
     _onClickGeneralButton: function (event) {
       var el = event.target;
       var self = this;
-      this.$(".o_general_button").hide();
-      this.$(".o_discard_button").show();
+      if (submit === false) {
+        this.$(".o_general_button").text("Hủy");
+        this.$(".o_general_button").removeClass("btn-primary");
+        this.$(".o_general_button").addClass("huyButton");
+        submit = true;
+      } else {
+        this.$(".o_general_button").text("Duyệt");
+        this.$(".o_general_button").removeClass("huyButton");
+        this.$(".o_general_button").addClass("btn-primary");
+        submit = false;
+      }
       self
         ._rpc({
           model: $(el).attr("model"),
