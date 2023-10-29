@@ -24,7 +24,8 @@
     'assets': {
         'web.assets_backend': [
             'view_submit/static/src/js/title_button.js',
-            'view_submit/static/src/js/redefine_achievement.js'
+            'view_submit/static/src/js/redefine_achievement.js',
+            'view_submit/static/src/js/redefine_user_list.js',
         ],
     },
 
