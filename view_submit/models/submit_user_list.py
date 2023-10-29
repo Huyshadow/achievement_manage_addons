@@ -12,14 +12,14 @@ class AchievementSubmit(models.Model):
         for record in self:
             if record.user_approve == False:
                 context['general_buttons'] = [{
-                    'action': "duyet",
+                    'action': "duyet_huy",
                     'name': "Duyệt",
                     'model': 'achievement.submit'
                 },
                 ]
             else:
                 context['discard_buttons'] = [{
-                    'action': "huy_duyet",
+                    'action': "duyet_huy",
                     'name': "Hủy",
                     'model': 'achievement.submit'
                 }]
@@ -33,23 +33,5 @@ class AchievementSubmit(models.Model):
                 'target': 'current',
                 'flags': {'hasSelectors': False},
                 'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id)],
-                'context': {'search_default_display_group_name': True,
-                            'search_default_type_criteria_name': True,
-                            'discard_buttons': [{
-                                'action': "huy_duyet",
-                                'name': "Hủy",
-                                'model': 'achievement.submit'
-                            }],
-                            'general_buttons':  [{
-                                'action': "duyet",
-                                'name': "Duyệt",
-                                'model': 'achievement.submit'
-                            },
-                            ]}
+                'context': context,
             }
-
-    # def action_accept_submit(self):
-    #     for record in self:
-    #         record.env['achievement.user.list'].write({
-    #             'result': True
-    #         })

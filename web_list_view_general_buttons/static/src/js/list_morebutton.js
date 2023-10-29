@@ -7,6 +7,7 @@ odoo.define(
     var ListController = require("web.ListController");
 
     var QWeb = core.qweb;
+    var submit = true;
 
     ListController.include({
       init: function (parent, model, renderer) {
@@ -16,6 +17,7 @@ odoo.define(
         if (this.context.discard_buttons instanceof Array) {
           this.headerDiscardButtons = this.context.discard_buttons;
         }
+        submit = true;
       },
 
       renderButtons: function () {
@@ -39,8 +41,17 @@ odoo.define(
       _onClickDiscardButton: function (event) {
         var el = event.target;
         var self = this;
-        this.$(".o_general_button").show();
-        this.$(".o_discard_button").hide();
+        if (submit === false) {
+          this.$(".o_discard_button").text("Hủy");
+          this.$(".o_discard_button").removeClass("btn-primary");
+          this.$(".o_discard_button").addClass("huyButton");
+          submit = true;
+        } else {
+          this.$(".o_discard_button").text("Duyệt");
+          this.$(".o_discard_button").removeClass("huyButton");
+          this.$(".o_discard_button").addClass("btn-primary");
+          submit = false;
+        }
         self
           ._rpc({
             model: $(el).attr("model"),
