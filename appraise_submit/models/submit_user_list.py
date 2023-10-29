@@ -25,6 +25,20 @@ class AchievementSubmit(models.Model):
             'target': 'new',
             'res_id': self.id
         }
+    def popup(self):
+        text = """Đã hết thời gian thẩm định"""
+        query = 'delete from display_dialog_box'
+        self.env.cr.execute(query)
+        value = self.env['display.dialog.box'].sudo().create({'text': text})
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Thông báo',
+            'res_model': 'display.dialog.box',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'target': 'new',
+            'res_id': value.id
+        }
 
     @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment','status_user')
     def _compute_last_expertise(self):
@@ -71,7 +85,7 @@ class AchievementSubmit(models.Model):
                     'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id)],
                     'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True,
                                 'appraise_buttons': [{
-                                    'action': "appraise",
+                                    'action': "popup",
                                     'name': name,
                                     'model': 'achievement.user.list'
                                 }]},

@@ -14,6 +14,7 @@ class AchievementUser(models.Model):
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
     user_name = fields.Char(string="Tên người nộp", related='user_id.name')
+    mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ", related='user_id.mssv_mscb',store = True)
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='user_id.donvi.code')
