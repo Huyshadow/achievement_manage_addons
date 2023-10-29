@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+	<record id="view_achievement_user_list_search" model="ir.ui.view">
+		<field name="name">graph.view.achievement.statis.search</field>
+		<field name="model">achievement.user.list</field>
+		<field name="arch" type="xml">
+			<search>
+				<field name="user_name" />
+				<field name="mssv_mscb" />
+			</search>
+		</field>
+	</record>
+
 	<record id="view_achievement_user_list" model="ir.ui.view">
 		<field name="name">achievement.user.list.view</field>
 		<field name="model">achievement.user.list</field>
