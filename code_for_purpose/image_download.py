@@ -7,9 +7,8 @@ db = 'main'
 username = 'admin'
 password = 'huy@khang@tu'
 
-# Create Folder
 list_uni = ['HCMUT', 'HCMUS', 'USSH', 'UIT',
-            'UEL', 'IU', 'MED', 'ANGIANG', 'ĐHQG']
+            'UEL', 'IU', 'MED', 'ANGIANG', 'ĐHQG', 'TEMP']
 for folder_name in list_uni:
     if not os.path.exists(folder_name):
         os.mkdir(folder_name)
@@ -17,11 +16,10 @@ for folder_name in list_uni:
     else:
         print(f"Folder '{folder_name}' already exists.")
 
-# Get Image
 common = xmlrpc.client.ServerProxy('{}/xmlrpc/2/common'.format(url))
 uid = common.authenticate(db, username, password, {})
 models = xmlrpc.client.ServerProxy('{}/xmlrpc/2/object'.format(url))
-for user_id in range(0, 1000):  # Thay range nghen
+for user_id in range(0, 300):
     user_name = models.execute_kw(db, uid, password, 'res.users', 'read',
                                   [[user_id]], {'fields': ['name']})
     user_donvi = models.execute_kw(db, uid, password, 'res.users', 'read',
@@ -68,7 +66,9 @@ for user_id in range(0, 1000):  # Thay range nghen
         elif donvi_name == "Đoàn Cơ quan ĐHQG-HCM":
             with open(f'ĐHQG/{file_name}', 'wb') as file:
                 file.write(image_data)
-
+        else:
+            with open(f'TEMP/{file_name}', 'wb') as file:
+                file.write(image_data)
         print(
             f'Avatar for record {avatar_img[0]["id"]} downloaded and saved as: {file_name} for {donvi_name}')
     else:
