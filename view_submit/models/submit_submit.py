@@ -25,6 +25,11 @@ class AchievementSubmit(models.Model):
                 'target': 'new',
                 'url': url
                 }
+    
+    def readonly_button(self):
+        print(self.evidence)
+        print(self.required_evidence)
+        return True
 
     def duyet_huy(self):
         active_id = self.env.context.get('active_id')
