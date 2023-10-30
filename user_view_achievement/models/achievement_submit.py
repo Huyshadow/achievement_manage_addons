@@ -19,7 +19,7 @@ class AchievementSubmit(models.Model):
     criteria_method = fields.Selection(
         'Phương thức', related='criteria.method', related_sudo=False)
     required_evidence = fields.Boolean(
-        'Cần minh chứng', related='criteria.evidence')
+        'Cần minh chứng', related='criteria.evidence', store=True)
     group_criteria_name = fields.Char(
         'Tên tập tiêu chí', related='criteria.parent_id.parent_id.name', store=True)
     type_criteria_name = fields.Char(
