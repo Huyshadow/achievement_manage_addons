@@ -62,10 +62,13 @@
 			<tree create="false" export_xlsx="false" delete='false' edit="false" expand="1"
 				default_order="type_criteria_name asc" js_class="disappear_check_box">
 				<field name="evidence" invisible="1" />
+				<field name="required_evidence" invisible="1"/>
 				<field class="custom_column" name="criteria_content" />
 				<field class="custom_column" name="submit_content" />
 				<button name="action_view_evidence" type="object" class="btn btn-primary"
 					string="Xem minh chứng" attrs="{'invisible': [('evidence','=',False)]}" />
+				<button name="readonly_button" type="object" class="btn-danger"		
+					string="Chưa nộp minh chứng" attrs="{'invisible': ['|',('evidence', '!=', False),('required_evidence','=', False)]}"/>
 				<field name="depart_manage_comment" />
 				<field name="expertise" readonly="1" />
 			</tree>
