@@ -7,14 +7,15 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
     status_user = fields.Selection([
-        ('Đã đạt(A)', 'Đã đạt(A)'), 
-        ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), 
-        ('Không đạt(C)', 'Không đạt(C)')
+        ('Đã đạt (A)', 'Đã đạt (A)'),
+        ('Cần bổ sung (B)', 'Cần bổ sung (B)'),
+        ('Không đạt (C)', 'Không đạt (C)')
     ], string="Kết quả thẩm định")
     note_user = fields.Text(string="Nhận xét tổng")
     last_expertise_at = fields.Datetime(
         string="Thời gian thẩm định cuối", compute='_compute_last_expertise', store=True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
+
     def appraise(self):
         return {
             'name': 'Thẩm định tiêu chí',
@@ -25,6 +26,7 @@ class AchievementSubmit(models.Model):
             'target': 'new',
             'res_id': self.id
         }
+
     def popup(self):
         text = """Đã hết thời gian thẩm định"""
         query = 'delete from display_dialog_box'
@@ -40,7 +42,7 @@ class AchievementSubmit(models.Model):
             'res_id': value.id
         }
 
-    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment','status_user')
+    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment', 'status_user')
     def _compute_last_expertise(self):
         for record in self:
             tz = timezone('Asia/Bangkok')

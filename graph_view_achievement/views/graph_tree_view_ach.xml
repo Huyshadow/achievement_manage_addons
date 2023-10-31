@@ -8,6 +8,9 @@
                 <field name="depart_name" string="Tên đơn vị" class="custom_column" />
                 <field name="num_of_submit" string="Số hồ sơ đã nộp" />
                 <field name="num_of_accept" string="Số hồ sơ đã duyệt" />
+                <field name="num_of_A" string="Đã đạt (A)" />
+                <field name="num_of_B" string="Cần bổ sung (B)" />
+                <field name="num_of_C" string="Không đạt (C)" />
             </tree>
         </field>
     </record>
