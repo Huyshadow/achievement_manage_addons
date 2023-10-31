@@ -20,10 +20,9 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
-        'views/menu.xml',
         'views/view_achievement_result.xml',
         'views/view_user_list_result.xml',
         'views/view_user_detail_result.xml',
-
+        'views/menu.xml',
     ],
 }
