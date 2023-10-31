@@ -7,14 +7,30 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
     status_user = fields.Selection([
-        ('Đã đạt(A)', 'Đã đạt(A)'), 
-        ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), 
-        ('Không đạt(C)', 'Không đạt(C)')
+        ('Đã đạt (A)', 'Đã đạt (A)'), 
+        ('Cần bổ sung (B)', 'Cần bổ sung (B)'), 
+        ('Không đạt (C)', 'Không đạt (C)')
     ], string="Kết quả thẩm định")
     note_user = fields.Text(string="Nhận xét tổng")
+    temp_note = fields.Text(string="Ghi chú", compute='_compute_temp_note', store=True)
     last_expertise_at = fields.Datetime(
         string="Thời gian thẩm định cuối", compute='_compute_last_expertise', store=True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
+
+    @api.depends('submit_list.expertise','submit_list.depart_manage_comment')
+    def _compute_temp_note(self):
+        for record in self:
+            khongdat="Không đạt:"
+            canbosung="Cần bổ sung:" 
+            for submit in record.submit_list:
+                print(submit.expertise)
+                if submit.expertise == 'need_evidence':
+                    canbosung = canbosung + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+                if submit.expertise == 'not_passed':
+                    khongdat = khongdat + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+            record.temp_note = canbosung + '\n' + khongdat
+            record.note_user = record.temp_note
+
     def appraise(self):
         return {
             'name': 'Thẩm định tiêu chí',
@@ -52,11 +68,11 @@ class AchievementSubmit(models.Model):
     @api.depends('status_user')
     def action_view_user_submit_appraiser(self):
         for record in self:
-            approve_status = self.achievement_id.open_approve
+            # approve_status = self.achievement_id.open_approve
             name = "Thẩm định"
             if record.status_user != False:
                 name = record.status_user
-            if approve_status:
+            if True:
                 return {
                     'name': self.user_name,
                     'type': 'ir.actions.act_window',

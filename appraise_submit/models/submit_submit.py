@@ -22,7 +22,11 @@ class AchievementSubmit(models.Model):
             'res_id': self.id,
         }
         return action
-
+    def readonly_button(self):
+        print(self.evidence)
+        print(self.required_evidence)
+        return True
+        
     def create_url(self, target_id):
         protocol = "http"
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"

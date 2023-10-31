@@ -10,6 +10,7 @@ class AchievementSubmit(models.Model):
     _description = 'Achievement Submit'
 
     parent_id = fields.Many2one('achievement.user.list', 'Thuộc user')
+    parent_name = fields.Char('Tên user', store= True, related='parent_id.user_name')
     user_id = fields.Many2one(
         'res.users', 'Created By', default=lambda self: self.env.user)
     criteria = fields.Many2one('create_achievement.criteria', 'Tieu chi')
@@ -25,9 +26,9 @@ class AchievementSubmit(models.Model):
     type_criteria_name = fields.Char(
         'Tên loại tiêu chí', related='criteria.parent_id.name', store=True)
     expertise = fields.Selection([
-        ('passed', 'Đã đạt(A)'),
-        ('need_evidence', 'Thiếu minh chứng(B)'),
-        ('not_passed', 'Không đạt(C)'),
+        ('passed', 'Đã đạt (A)'),
+        ('need_evidence', 'Cần bổ sung (B)'),
+        ('not_passed', 'Không đạt (C)'),
     ], string="Kết quả thẩm định", default='')
     depart_manage_comment = fields.Text('Nhận xét')
 
