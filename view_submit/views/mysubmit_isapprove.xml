@@ -7,13 +7,13 @@
 		
         <field name="arch" type="xml">
 			<tree create="false" export_xlsx="false" delete='false' edit="false">
-                
+                <field name="hieuchinh" invisible="1"/>
                 <field class="align_left" name="achievement_id" string= "Danh hiệu"/>
                 <field name="submit_at"  string="Lần cuối hiệu chỉnh bởi bạn" />
                 <field name="last_expertise_at"  string="Lần cuối được thẩm định" />
                 <field name="status_user" string="Đánh giá"/>
                 <field class="align_left" name="note_user" string="Nhận xét"/>
-				<button class="btn btn-primary status_context_blue" attrs="{'invisible': [('status_user', '=', 'Đã đạt(A)')]}"
+				<button class="btn btn-primary status_context_blue" attrs="{'invisible': [('hieuchinh', '=', True)]}"
 				type="object" name="action_view_detail_achievement" string="Hiệu chỉnh hồ sơ" />
 			</tree>
 		</field>

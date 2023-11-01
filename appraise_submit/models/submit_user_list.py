@@ -7,9 +7,9 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
     status_user = fields.Selection([
-        ('Đã đạt(A)', 'Đã đạt(A)'), 
-        ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), 
-        ('Không đạt(C)', 'Không đạt(C)')
+        ('Đã đạt (A)', 'Đã đạt (A)'), 
+        ('Thiếu minh chứng (B)', 'Thiếu minh chứng (B)'), 
+        ('Không đạt (C)', 'Không đạt (C)')
     ], string="Kết quả thẩm định")
     note_user = fields.Text(string="Nhận xét tổng")
     last_expertise_at = fields.Datetime(

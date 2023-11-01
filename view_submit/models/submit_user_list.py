@@ -6,6 +6,16 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
     achievement_status = fields.Char( string="Tên danh hiệu", related='achievement_id.status')
+    hieuchinh = fields.Boolean(compute='_dc_hieuchinh')
+
+    @api.depends('status_user')
+    def _dc_hieuchinh(self):
+        for record in self:
+            if record.status_user =="" or record.status_user == "Đã đạt (A)" or  record.status_user == "Không đạt (C)":
+                record.hieuchinh = True
+            else:
+                record.hieuchinh = False
+
 
     def action_view_detail_achievement(self):
         if self.env.user.is_fill_info == False:
