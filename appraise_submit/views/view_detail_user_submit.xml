@@ -43,6 +43,7 @@
 				<field class="custom_column"
 					name="criteria_content" />
 				<field class="custom_column" name="submit_content" />
+				<field name="parent_name"/>
 				<button
 					name="action_view_evidence" type="object" class="btn btn-primary"
 					string="Xem minh chứng" attrs="{'invisible': [('evidence','=',False)]}" />
