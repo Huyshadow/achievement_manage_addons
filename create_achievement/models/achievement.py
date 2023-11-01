@@ -55,8 +55,10 @@ class Achievement(models.Model):
             if record.end_at and record.start_at:
                 if (record.last_updated < record.start_at):
                     record.status = "Trạng thái chờ"
-                if (record.last_updated >= record.start_at and record.last_updated <= record.end_at):
+                if (record.last_updated >= record.start_at and record.last_updated <= record.end_submit_at):
                     record.status = "Đang tiến hành"
+                if (record.last_updated > record.end_submit_at and record.last_updated <= record.end_at):
+                    record.status = "Đang tiến hành duyệt"
                 if (record.last_updated > record.end_at):
                     record.status = "Đã kết thúc"
 
