@@ -7,5 +7,15 @@
         action="action_view_achievement_list"
         web_icon="code_backend_theme,static/src/img/icons/Attendances.png"
         groups="access_right_user.group_unit_manager"
-    />    
+    /> 
+    
+    <menuitem 
+        id="menu_user_result" 
+        name="Trạng thái hồ sơ"
+        action="view_my_status_submited_action"
+        sequence="4"
+        groups="access_right_user.group_mem_user"
+        web_icon="code_backend_theme,static/src/img/icons/Invoicing.png"
+        /> 
+    
 </odoo>
