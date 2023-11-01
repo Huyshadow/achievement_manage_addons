@@ -23,7 +23,7 @@ class AchievementSubmit(models.Model):
             'res_id': self.id,
         }
         return action
-
+        
     def create_url(self, target_id):
         protocol = "http"
         web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
@@ -34,7 +34,6 @@ class AchievementSubmit(models.Model):
     def action_view_evidence(self):
         target_id = str(self.id)
         url = self.create_url(target_id)
-        # webbrowser.open(url, new=2, autoraise=True)
         return {'name': 'test',
                 'res_model': 'ir.actions.act_url',
                 'type': 'ir.actions.act_url',

@@ -7,14 +7,45 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
     status_user = fields.Selection([
-        ('Đã đạt(A)', 'Đã đạt(A)'), 
-        ('Thiếu minh chứng(B)', 'Thiếu minh chứng(B)'), 
-        ('Không đạt(C)', 'Không đạt(C)')
+        ('Đã đạt (A)', 'Đã đạt (A)'),
+        ('Cần bổ sung (B)', 'Cần bổ sung (B)'),
+        ('Không đạt (C)', 'Không đạt (C)')
     ], string="Kết quả thẩm định")
     note_user = fields.Text(string="Nhận xét tổng")
+    temp_note = fields.Text(string="Ghi chú", compute='_compute_temp_note', store=True)
     last_expertise_at = fields.Datetime(
         string="Thời gian thẩm định cuối", compute='_compute_last_expertise', store=True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
+    
+    @api.depends('submit_list.expertise','submit_list.depart_manage_comment')
+    def _compute_temp_note(self):
+        for record in self:
+            # if record.note_user:
+            #     difference = record.note_user.replace(record.temp_note, "")
+            khongdat="Không đạt:"
+            canbosung="Cần bổ sung:" 
+            have_type_bosung = False
+            have_type_khongdat = False
+            record.temp_note = ""
+            for submit in record.submit_list:
+                print(submit.expertise)
+                if submit.expertise == 'need_evidence':
+                    if submit.depart_manage_comment:
+                        have_type_bosung = True
+                        canbosung = canbosung + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+                if submit.expertise == 'not_passed':
+                    if submit.depart_manage_comment:
+                        have_type_khongdat = True
+                        khongdat = khongdat + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+            if have_type_bosung:
+                record.temp_note = canbosung + '\n' 
+            if have_type_khongdat:
+                record.temp_note += khongdat + '\n'
+            record.note_user = record.temp_note
+            # if difference:
+            #     record.note_user += difference
+            record.note_user = record.note_user.rstrip('\n')
+
     def appraise(self):
         return {
             'name': 'Thẩm định tiêu chí',
@@ -25,8 +56,13 @@ class AchievementSubmit(models.Model):
             'target': 'new',
             'res_id': self.id
         }
+
     def popup(self):
-        text = """Đã hết thời gian thẩm định"""
+        appraise_status = self.appraise_status
+        if appraise_status == 'end':
+            text = """Đã hết thời gian thẩm định"""
+        else:
+            text = """Chưa tới thời gian thẩm định"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)
         value = self.env['display.dialog.box'].sudo().create({'text': text})
@@ -40,7 +76,7 @@ class AchievementSubmit(models.Model):
             'res_id': value.id
         }
 
-    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment','status_user')
+    @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment', 'status_user')
     def _compute_last_expertise(self):
         for record in self:
             tz = timezone('Asia/Bangkok')
@@ -52,11 +88,12 @@ class AchievementSubmit(models.Model):
     @api.depends('status_user')
     def action_view_user_submit_appraiser(self):
         for record in self:
-            approve_status = self.achievement_id.open_approve
-            name = "Thẩm định"
+            appraise_status = self.appraise_status
             if record.status_user != False:
                 name = record.status_user
-            if approve_status:
+            else:
+                name = "Thẩm định"
+            if appraise_status == 'active':
                 return {
                     'name': self.user_name,
                     'type': 'ir.actions.act_window',

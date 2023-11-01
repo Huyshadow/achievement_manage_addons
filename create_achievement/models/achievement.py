@@ -8,7 +8,8 @@ class Achievement(models.Model):
     _name = 'create_achievement.achievement'
     _description = 'Achievement Model of Create-Achievement Module'
 
-    be_appraise_by = fields.One2many('create_achievement.appraise','achievement_id', string="Phân nhiệm vụ cho các thẩm định viên")
+    be_appraise_by = fields.One2many(
+        'create_achievement.appraise', 'achievement_id', string="Phân nhiệm vụ cho các thẩm định viên")
     criteria_ids = fields.One2many(
         'create_achievement.group_criterias', 'parent_id', string="Tập tiêu chí danh hiệu")
 
@@ -28,7 +29,11 @@ class Achievement(models.Model):
     name_title = fields.Char(default="Danh hiệu mới", compute="_change_title")
     computed_numbers = fields.Integer(
         'Function for sort', compute='_compute_numbers', store=True)
-    open_approve = fields.Boolean(string="Mở thẩm định", default = False)
+    appraise_status = fields.Selection([
+        ('pending', 'Chưa thẩm định'),
+        ('active', 'Mở thẩm định'),
+        ('end', 'Kết thúc thẩm định'),
+    ], default='pending', string="Trạng thái")
 
     @api.depends('criteria_ids')
     def _compute_numbers(self):
@@ -148,21 +153,6 @@ class Achievement(models.Model):
         return records
 
     def save_and_redirect(self):
-        # return {
-        #     'type': 'ir.actions.client',
-        #     'tag': 'create_achievement.BackClientAction',
-        # }
-        # return {
-        #     'name': 'Danh sách danh hiệu/giải thưởng',
-        #     'res_model': 'create_achievement.achievement',
-        #     'view_mode': 'tree,form',
-        #     'view_type': 'tree',
-        #     'type': 'ir.actions.act_window',
-        #     'target': 'current',
-        #     'context': {
-        #             'create': True,
-        #     }
-        # }
         text = """Lưu danh hiệu thành công"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)
@@ -184,6 +174,7 @@ class Achievement(models.Model):
         department_list = self.env['manage_user_depart.department'].search([])
         if not exist:
             for department in department_list:
+
                 total_list = self.env['achievement.user.list'].search([
                     ("donvi_name", '=', department.name),
                     ("achievement_id", '=', self.id)
@@ -193,14 +184,17 @@ class Achievement(models.Model):
                     ('user_approve', '=', True),
                     ('donvi_name', '=', department.name),
                 ])
+
                 total = int(len(total_list))
                 current = int(len(current_list))
+
                 self.env['achievement.graph.report'].create({
                     'achievement_id': self.id,
                     'depart_name': department.name,
                     'type': "a_submit",
                     'num': total,
                 })
+
                 self.env['achievement.graph.report'].create({
                     'achievement_id': self.id,
                     'depart_name': department.name,
@@ -266,14 +260,38 @@ class Achievement(models.Model):
                     ('user_approve', '=', True),
                     ('donvi_name', '=', department.name),
                 ])
+                num_A_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Đã đạt (A)'),
+                    ('donvi_name', '=', department.name),])
+                num_B_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Cần bổ sung (B)'),
+                    ('donvi_name', '=', department.name),])
+                num_C_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Không đạt (C)'),
+                    ('donvi_name', '=', department.name),])
+                # -------------------------------------------------
                 total = int(len(total_list))
                 current = int(len(current_list))
+                num_A = int(len(num_A_list))
+                num_B = int(len(num_B_list))
+                num_C = int(len(num_C_list))
+                # -------------------------------------------------
                 self.env['achievement.department.statistic'].create({
                     'achievement_id': self.id,
                     'depart_id': department.code,
                     'depart_name': department.name,
                     'num_of_submit': total,
                     'num_of_accept': current,
+                    'num_of_A': num_A,
+                    'num_of_B': num_B,
+                    'num_of_C': num_C,
+
                 })
         else:
             for department in department_list:
@@ -286,8 +304,28 @@ class Achievement(models.Model):
                     ('user_approve', '=', True),
                     ('donvi_name', '=', department.name),
                 ])
+                num_A_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Đã đạt (A)'),
+                    ('donvi_name', '=', department.name),])
+                num_B_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Cần bổ sung (B)'),
+                    ('donvi_name', '=', department.name),])
+                num_C_list = self.env['achievement.user.list'].search([
+                    ('achievement_id.id', '=', self.id),
+                    ('user_approve', '=', True),
+                    ('status_user', '=', 'Không đạt (C)'),
+                    ('donvi_name', '=', department.name),])
+                # -------------------------------------------------
                 total = int(len(total_list))
                 current = int(len(current_list))
+                num_A = int(len(num_A_list))
+                num_B = int(len(num_B_list))
+                num_C = int(len(num_C_list))
+                # -------------------------------------------------
                 temp = self.env['achievement.department.statistic'].search([
                     ('achievement_id', '=', self.id),
                     ('depart_id', '=', department.code),
@@ -296,6 +334,9 @@ class Achievement(models.Model):
                 temp.write({
                     'num_of_submit': total,
                     'num_of_accept': current,
+                    'num_of_A': num_A,
+                    'num_of_B': num_B,
+                    'num_of_C': num_C,
                 })
         return {
             'name': self.name,

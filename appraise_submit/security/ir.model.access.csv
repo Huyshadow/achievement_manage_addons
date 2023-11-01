@@ -1,8 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-1,1,appraise_submit.model_create_achievement_achievement,access_right_user.group_unit_manager,1,1,0,0
-2,2,appraise_submit.model_achievement_submit,access_right_user.group_unit_manager,1,1,0,0
-3,3,appraise_submit.model_achievement_user_list,access_right_user.group_unit_manager,1,1,0,0
-
 6,6,appraise_submit.model_achievement_submit,access_right_user.group_appraiser,1,1,1,0
 7,7,appraise_submit.model_achievement_user_list,access_right_user.group_appraiser,1,1,0,0
 5,5,create_achievement.model_create_achievement_achievement,access_right_user.group_appraiser,1,1,0,0

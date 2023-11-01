@@ -10,6 +10,7 @@ class AchievementUser(models.Model):
         'res.users', 'Created By', default=lambda self: self.env.user)
     achievement_id = fields.Many2one(
         'create_achievement.achievement', string="ID danh hiệu")
+    appraise_status = fields.Selection('Tình trạng danh hiệu', related='achievement_id.appraise_status')
     submit_list = fields.One2many(
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
