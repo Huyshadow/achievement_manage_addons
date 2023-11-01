@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record id="view_my_status_submited" model="ir.ui.view">
+		<field name="name">view_my_status_submited</field>
+		<field name="model">achievement.user.list</field>
+		
+        <field name="arch" type="xml">
+			<tree create="false" export_xlsx="false" delete='false' edit="false">
+                <field name="hieuchinh" invisible="1"/>
+                <field class="align_left" name="achievement_id" string= "Danh hiệu"/>
+                <field name="submit_at"  string="Lần cuối hiệu chỉnh bởi bạn" />
+                <field name="last_expertise_at"  string="Lần cuối được thẩm định" />
+                <field name="status_user" string="Đánh giá"/>
+                <field class="align_left" name="note_user" string="Nhận xét"/>
+				<button class="btn btn-primary status_context_blue" attrs="{'invisible': [('hieuchinh', '=', True)]}"
+				type="object" name="action_view_detail_achievement" string="Hiệu chỉnh hồ sơ" />
+			</tree>
+		</field>
+	</record>
+
+    <record id="view_my_status_submited_action" model="ir.actions.act_window">
+		<field name="name">Hiệu chỉnh</field>
+		<field name="res_model">achievement.user.list</field>
+		<field name="view_mode">tree</field>
+        <field name="domain">[('user_id', '=', uid),('achievement_status','=',"Đã kết thúc")]</field>
+		<field name="view_id" ref="view_my_status_submited" />
+	</record>
+    
+</odoo>

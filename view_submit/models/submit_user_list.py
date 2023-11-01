@@ -5,6 +5,38 @@ from odoo.exceptions import ValidationError
 class AchievementSubmit(models.Model):
     _inherit = 'achievement.user.list'
 
+    achievement_status = fields.Char( string="Tên danh hiệu", related='achievement_id.status')
+    hieuchinh = fields.Boolean(compute='_dc_hieuchinh')
+
+    @api.depends('status_user')
+    def _dc_hieuchinh(self):
+        for record in self:
+            if record.status_user =="" or record.status_user == "Đã đạt (A)" or  record.status_user == "Không đạt (C)":
+                record.hieuchinh = True
+            else:
+                record.hieuchinh = False
+
+
+    def action_view_detail_achievement(self):
+        if self.env.user.is_fill_info == False:
+            raise ValidationError(
+                    "Vui lòng cập nhập thông tin trước khi nộp hồ sơ")
+        else:
+            return {
+            'name': self.achievement_id.name,
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'view_id': self.env.ref('user_view_achievement.view_achievement_detail_user').id,
+            'res_model': 'create_achievement.criteria',
+            # 'res_id': self.id,
+            'target': 'current',
+            'flags': {'hasSelectors': False},
+            'domain': [('achievement_id', '=', self.achievement_id.id)],
+            'context': {'search_default_group_criteria': True, 'search_default_category': True},
+
+        }
+
+
     @api.depends('user_approve')
     def action_view_user_submit(self):
         context = {'search_default_display_group_name': True,
