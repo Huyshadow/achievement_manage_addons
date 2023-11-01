@@ -24,8 +24,6 @@ class AchievementSubmit(models.Model):
         }
         return action
     def readonly_button(self):
-        print(self.evidence)
-        print(self.required_evidence)
         return True
         
     def create_url(self, target_id):
