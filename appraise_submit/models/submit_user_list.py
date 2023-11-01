@@ -130,3 +130,13 @@ class AchievementSubmit(models.Model):
 
     def custom_button(self):
         return
+
+    def delete_trash_data(self):
+        submit_list = self.env['achievement.user.list'].search([])
+        for submit in submit_list:
+            submit.write({
+                'last_expertise_at': None,
+                'last_expertise_committe': None,
+                'temp_note': None,
+                'note_user': None,
+            })
