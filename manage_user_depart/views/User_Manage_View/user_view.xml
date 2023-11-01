@@ -242,7 +242,7 @@
 
     <menuitem id="manage_user_depart.user_root" name="Quản lý người dùng"
       web_icon="code_backend_theme,static/src/img/icons/Contacts.png"
-      sequence="5"
+      sequence="20"
       groups="access_right_user.group_system_manager" />
 
     <menuitem name="Tất cả" id="manage_user_depart.user_root_all"

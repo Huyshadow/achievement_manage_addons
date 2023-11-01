@@ -16,6 +16,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'views/mysubmit_isapprove.xml',
         'views/view_achievement.xml',
         'views/view_list_user_submit.xml',
         'views/view_detail_user_submit.xml',

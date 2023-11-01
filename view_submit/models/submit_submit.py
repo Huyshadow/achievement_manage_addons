@@ -27,8 +27,6 @@ class AchievementSubmit(models.Model):
                 }
     
     def readonly_button(self):
-        print(self.evidence)
-        print(self.required_evidence)
         return True
 
     def duyet_huy(self):

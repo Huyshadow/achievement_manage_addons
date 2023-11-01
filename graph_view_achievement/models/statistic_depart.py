@@ -23,3 +23,10 @@ class Statistic_Depart(models.Model):
     def _compute_accept(self):
         for record in self:
             record.accept_nums = int(record.num_of_accept)
+
+    # ----------------Appraise Statistic------------------
+    num_of_A = fields.Char(default="0")
+
+    num_of_B = fields.Char(default="0")
+
+    num_of_C = fields.Char(default="0")
