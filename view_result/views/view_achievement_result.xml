@@ -25,6 +25,7 @@
         <field name='type'>ir.actions.act_window</field>
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">tree</field>
+        <field name="domain">[('appraise_status', '=', 'end')]</field>
         <field name="view_id" ref="view_achievement_list_tree_result" />
     </record>
 </odoo>

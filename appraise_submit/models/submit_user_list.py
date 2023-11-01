@@ -20,16 +20,31 @@ class AchievementSubmit(models.Model):
     @api.depends('submit_list.expertise','submit_list.depart_manage_comment')
     def _compute_temp_note(self):
         for record in self:
+            # if record.note_user:
+            #     difference = record.note_user.replace(record.temp_note, "")
             khongdat="Không đạt:"
             canbosung="Cần bổ sung:" 
+            have_type_bosung = False
+            have_type_khongdat = False
+            record.temp_note = ""
             for submit in record.submit_list:
                 print(submit.expertise)
                 if submit.expertise == 'need_evidence':
-                    canbosung = canbosung + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+                    if submit.depart_manage_comment:
+                        have_type_bosung = True
+                        canbosung = canbosung + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
                 if submit.expertise == 'not_passed':
-                    khongdat = khongdat + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
-            record.temp_note = canbosung + '\n' + khongdat
+                    if submit.depart_manage_comment:
+                        have_type_khongdat = True
+                        khongdat = khongdat + '\n' + "+ " + submit.criteria_content + " (" + submit.depart_manage_comment + ")"
+            if have_type_bosung:
+                record.temp_note = canbosung + '\n' 
+            if have_type_khongdat:
+                record.temp_note += khongdat + '\n'
             record.note_user = record.temp_note
+            # if difference:
+            #     record.note_user += difference
+            record.note_user = record.note_user.rstrip('\n')
 
     def appraise(self):
         return {
@@ -43,7 +58,11 @@ class AchievementSubmit(models.Model):
         }
 
     def popup(self):
-        text = """Đã hết thời gian thẩm định"""
+        appraise_status = self.appraise_status
+        if appraise_status == 'end':
+            text = """Đã hết thời gian thẩm định"""
+        else:
+            text = """Chưa tới thời gian thẩm định"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)
         value = self.env['display.dialog.box'].sudo().create({'text': text})
@@ -69,11 +88,12 @@ class AchievementSubmit(models.Model):
     @api.depends('status_user')
     def action_view_user_submit_appraiser(self):
         for record in self:
-            approve_status = self.achievement_id.open_approve
-            name = "Thẩm định"
+            appraise_status = self.appraise_status
             if record.status_user != False:
                 name = record.status_user
-            if approve_status:
+            else:
+                name = "Thẩm định"
+            if appraise_status == 'active':
                 return {
                     'name': self.user_name,
                     'type': 'ir.actions.act_window',
