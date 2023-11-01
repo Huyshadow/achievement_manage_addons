@@ -68,11 +68,11 @@ class AchievementSubmit(models.Model):
     @api.depends('status_user')
     def action_view_user_submit_appraiser(self):
         for record in self:
-            # approve_status = self.achievement_id.open_approve
+            approve_status = self.achievement_id.open_approve
             name = "Thẩm định"
             if record.status_user != False:
                 name = record.status_user
-            if True:
+            if approve_status:
                 return {
                     'name': self.user_name,
                     'type': 'ir.actions.act_window',
