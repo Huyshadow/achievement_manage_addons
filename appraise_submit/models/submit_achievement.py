@@ -6,7 +6,6 @@ class Achievement(models.Model):
     _inherit = 'create_achievement.achievement'
 
     def action_view_user_list_appraiser(self):
-        # sua o day
         appraiser = self.env['create_achievement.appraise'].search([
             ('user_id', '=', self.env.uid),
             ('achievement_id', '=', self.id),
