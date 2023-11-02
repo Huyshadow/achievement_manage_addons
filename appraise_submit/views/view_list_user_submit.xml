@@ -8,7 +8,7 @@
 				js_class="redefine_user_view" default_order="mssv_mscb asc">
 				<field class="custom_column" name="user_name" />
 				<field class="right_align" name="mssv_mscb" />
-				<field class="custom_column" name="donvi_name" />
+				<field class="custom_column" name="donvi_name"/>
 				<field class="right_align" name="submit_at" widget="date" string="Ngày nộp" />
 				<field name="status_user" />
 				<field name="note_user" />

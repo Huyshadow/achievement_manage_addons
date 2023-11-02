@@ -19,7 +19,7 @@ class AchievementUser(models.Model):
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='user_id.donvi.code')
-    donvi_name = fields.Char(string="Tên đơn vị", related='user_id.donvi.name')
+    donvi_name = fields.Char(string="Tên đơn vị", related='user_id.donvi.name', store = True)
     submit_at = fields.Datetime()
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
     
