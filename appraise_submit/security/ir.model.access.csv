@@ -5,3 +5,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 8,8,create_achievement.model_create_achievement_criteria,access_right_user.group_appraiser,1,1,0,0
 9,9,create_achievement.model_create_achievement_type_criterias,access_right_user.group_appraiser,1,1,0,0
 10,10,create_achievement.model_create_achievement_group_criterias,access_right_user.group_appraiser,1,1,0,0
+11,11,appraise_submit.model_achievement_submit,access_right_user.group_system_manager,1,1,1,0
+12,12,appraise_submit.model_achievement_user_list,access_right_user.group_system_manager,1,1,0,0
