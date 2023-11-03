@@ -10,6 +10,7 @@ class AchievementUser(models.Model):
         'res.users', 'Created By', default=lambda self: self.env.user)
     achievement_id = fields.Many2one(
         'create_achievement.achievement', string="ID danh hiệu")
+    donvi_id = fields.Many2one('manage_user_depart.department', string="ID đơn vị")
     appraise_status = fields.Selection('Tình trạng danh hiệu', related='achievement_id.appraise_status')
     submit_list = fields.One2many(
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
@@ -18,12 +19,20 @@ class AchievementUser(models.Model):
     mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ", related='user_id.mssv_mscb',store = True)
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
-    donvi_code = fields.Char(string="Mã đơn vị", related='user_id.donvi.code')
-    donvi_name = fields.Char(string="Tên đơn vị", related='user_id.donvi.name', store = True)
+    donvi_code = fields.Char(string="Mã đơn vị", related='donvi_id.code')
+    donvi_name = fields.Char(string="Tên đơn vị", related='donvi_id.name', store = True)    
     submit_at = fields.Datetime()
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
-    
 
+    def import_donvi_id(self):
+        submit_list = self.env['achievement.user.list'].search([])
+        for submit in submit_list:
+            if not submit.donvi_id:
+                id = submit.user_id.donvi.id
+                submit.write({
+                    'donvi_id': id  
+                })
+    
     @api.model
     def import_parent_id_for_achievement_submit(self):
         submit_list = self.env['achievement.submit'].search([])
