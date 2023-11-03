@@ -5,7 +5,7 @@
         <field name="model">create_achievement.appraise</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="user_id" string="Thẩm dịnh viên"/>
+                <field class="align_left" name="user_id" string="Thẩm dịnh viên"/>
                 <field name="donvis" widget="many2many_tags" string="Đơn vị phụ trách thẩm định" />
             </tree>
         </field>
@@ -17,7 +17,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="user_id" string="Thẩm dịnh viên"/>
+                        <field  name="user_id" string="Thẩm dịnh viên"/>
                     </group>
                     <group>
                         <field name="donvis" widget="many2many_checkboxes" string="Đơn vị phụ trách thẩm định"/>

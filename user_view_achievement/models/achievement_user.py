@@ -20,17 +20,19 @@ class AchievementUser(models.Model):
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='donvi_id.code')
-    donvi_name = fields.Char(string="Tên đơn vị", related='donvi_id.name', store = True)
+    donvi_name = fields.Char(string="Tên đơn vị", related='donvi_id.name', store = True)    
     submit_at = fields.Datetime()
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
-    
+
     def import_donvi_id(self):
         submit_list = self.env['achievement.user.list'].search([])
         for submit in submit_list:
-            id = submit.user_id.donvi.id
-            submit.write({
-                'donvi_id': id  
-            })
+            if not submit.donvi_id:
+                id = submit.user_id.donvi.id
+                submit.write({
+                    'donvi_id': id  
+                })
+    
     @api.model
     def import_parent_id_for_achievement_submit(self):
         submit_list = self.env['achievement.submit'].search([])
