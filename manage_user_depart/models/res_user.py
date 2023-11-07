@@ -12,14 +12,11 @@ class User(models.Model):
         ('nu', 'Nữ'),
         ('khac', 'Khác')
     ], default="nam", string="Giới tính")
-    # -------Requirement-------
     sdt = fields.Char(string="Điện thoại", required=True)
     birthday = fields.Date(string="Ngày sinh")
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
     tongiao = fields.Char(string="Tôn Giáo")
-    # education_degree = fields.Char(string="Học hàm/Học vị")
-    # level = fields.Char(string="Trình độ học vấn")
     # ------Information-------
     province = fields.Many2one('user.province.info',  string='Tỉnh')
     district = fields.Many2one('user.district.info', string='Huyện')
