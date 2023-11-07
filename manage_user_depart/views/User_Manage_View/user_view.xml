@@ -83,7 +83,7 @@
                   </div>
                   <div class="auto_field_second_column">
                     <field name="is_unit_manager" invisible="1" />
-                    <label for="donvi" string="Đơn KKK" />
+                    <label for="donvi" string="Đơn vị" />
                       <field name="donvi" widget="selection"
                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                     </div>
@@ -115,6 +115,21 @@
                   </div>
                   <div class="two_column_for_info">
                     <div class="auto_field_second_column">
+                      <label for="mssv_mscb" string="MSSV/MSCB" />
+                      <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}" />
+                    </div>
+                    <div class="auto_field_second_column">
+                      <field name="is_unit_manager" invisible="1" />
+                      <label for="donvi" string="Đơn vị" />
+                      <field name="donvi" widget="selection"
+                        attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
+                    </div>
+                  </div>
+                  <group string="Thông tin cá nhân"
+                    class="group_title" attrs="{'invisible': [('id', '&lt;=', 0)]}">
+                  </group>
+                  <div class="two_column_for_info">
+                    <div class="auto_field_second_column">
                       <label for="hocvi" string="Học hàm/Học vị" />
                       <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}" required="1" />
                     </div>
@@ -126,21 +141,6 @@
                       </div>
                       <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                     </div>
-                  <div class="two_column_for_info">
-                    <div class="auto_field_second_column">
-                      <label for="mssv_mscb" string="MSSV/MSCB" />
-                      <field name="mssv_mscb" attrs="{'readonly': [('lock_info', '=', True)]}" />
-                    </div>
-                    <div class="auto_field_second_column">
-                      <field name="is_unit_manager" invisible="1" />
-                      <label for="donvi" string="Đơn KKK" />
-                      <field name="donvi" widget="selection"
-                        attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
-                    </div>
-                  </div>
-                  <group string="Thông tin cá nhân"
-                    class="group_title" attrs="{'invisible': [('id', '&lt;=', 0)]}">
-                  </group>
                   <div
                     class="three_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <div
