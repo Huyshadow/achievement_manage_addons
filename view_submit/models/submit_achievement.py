@@ -43,3 +43,5 @@ class Achievement(models.Model):
             'flags': {'hasSelectors': False},
             'domain': [('achievement_id', '=', self.id), ('donvi_name', '=', self.env.user.donvi.name)],
         }
+
+    
