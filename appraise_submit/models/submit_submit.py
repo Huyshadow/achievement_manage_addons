@@ -8,7 +8,19 @@ class AchievementSubmit(models.Model):
     display_group_name = fields.Char(
         string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name', store=True)
 
-
+    def action_bosung_hoso(self):
+        form_id = self.env.ref(
+            'user_view_achievement.achievement_submit_view_form').id
+        action = {
+            'name': 'Bổ sung chỉ tiêu',
+            'type': 'ir.actions.act_window',
+            'view_mode': 'form',
+            'view_id': form_id,
+            'res_model': 'achievement.submit',
+            'target': 'new',
+            'res_id': self.id,
+        }
+        return action
 
     def readonly_button(self):
         return True

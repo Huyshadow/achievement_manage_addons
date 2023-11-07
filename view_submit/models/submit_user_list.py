@@ -10,7 +10,7 @@ class AchievementSubmit(models.Model):
     @api.depends('status_user')
     def _compute_edit_right(self):
         for record in self:
-            if record.status_user =="Cần bổ sung (B)":
+            if record.status_user =="Đã đạt (A)" or record.status_user =="Cần bổ sung (B)" :
                 record.edit_right = True
             else:
                 record.edit_right = False
@@ -33,7 +33,23 @@ class AchievementSubmit(models.Model):
             'context': {'search_default_group_criteria': True, 'search_default_category': True},
         }
 
-
+    def action_view_detail_bosung(self):
+        if self.env.user.is_fill_info == False:
+            raise ValidationError(
+                    "Vui lòng cập nhập thông tin trước khi nộp hồ sơ")
+        else:
+            return {
+            'name': self.user_name,
+            'type': 'ir.actions.act_window',
+            'view_mode': 'tree',
+            'view_id': self.env.ref('appraise_submit.view_achievement_detail_nop_bo_sung').id,
+            'res_model': 'achievement.submit',
+            'target': 'current',
+            'flags': {'hasSelectors': False},
+            'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('expertise','=', 'need_evidence')],
+            'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True},
+        }
+        
     @api.depends('user_approve')
     def action_view_user_submit(self):
         context = {'search_default_display_group_name': True,
