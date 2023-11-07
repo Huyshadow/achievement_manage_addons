@@ -84,11 +84,11 @@
                   <div class="auto_field_second_column">
                     <field name="is_unit_manager" invisible="1" />
                     <label for="donvi" string="Đơn vị" />
-                      <field name="donvi" widget="selection"
+                    <field name="donvi" widget="selection"
                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
-                    </div>
-                    <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                   </div>
+                  <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
+                </div>
                 <!-- <field name="donvi_domain"/> -->
               </div>
               <div class="containner_user_form">
@@ -128,6 +128,17 @@
                   <group string="Thông tin cá nhân"
                     class="group_title" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                   </group>
+                  <!-- <div
+                    class="two_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
+                    <div class="auto_field_second_column">
+                      <label for="education_degree" string="Học hàm/Học vị" />
+                      <field name="education_degree" required="1"/>
+                    </div>
+                    <div class="auto_field_second_column">
+                      <label for="level" string="Trình độ học vấn" />
+                      <field name="level" required="1"/>
+                    </div>
+                  </div> -->
                   <div
                     class="three_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <div
