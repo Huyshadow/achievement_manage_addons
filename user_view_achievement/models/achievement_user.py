@@ -22,7 +22,6 @@ class AchievementUser(models.Model):
                             related='user_id.mssv_mscb', store=True)
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
-    end_time = fields.Datetime(related='achievement_id.end_at')
     donvi_code = fields.Char(string="Mã đơn vị", related='donvi_id.code')
     donvi_name = fields.Char(
         string="Tên đơn vị", related='donvi_id.name', store=True)

@@ -79,12 +79,4 @@
 			</tree>
 		</field>
 	</record>
-	<!-- 
-	<record id="view_achievement_detail_nop_bo_sung" model="ir.ui.view">
-		<field name="name">submit.detail.appraise.view.more</field>
-		<field name="model">achievement.submit</field>
-		<field name="mode">primary</field>
-		<field name="inherit_id" ref="user_view_achievement.view_achievement_detail_user" />
-	</record> -->
-
 </odoo>
