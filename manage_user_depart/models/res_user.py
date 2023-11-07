@@ -34,6 +34,10 @@ class User(models.Model):
     donvi = fields.Many2one('manage_user_depart.department',
                             string="Đơn vị", required=True)
     nghenghiep = fields.Char(string="Nghề nghiệp")
+    # -------------------------
+    hocvi = fields.Char(string="Học vị")
+    trinhdo = fields.Char(string="Trình độ")
+    # -------------------------
 
     is_fill_info = fields.Boolean(
         string="Đã cập nhập thông tin?", compute='_check_fill_info', store=True)
