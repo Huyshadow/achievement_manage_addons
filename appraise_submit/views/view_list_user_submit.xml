@@ -8,7 +8,7 @@
 				js_class="redefine_user_view" default_order="mssv_mscb asc , donvi_name asc">
 				<field class="custom_column" name="user_name" />
 				<field class="right_align" name="mssv_mscb" />
-				<field class="custom_column" name="donvi_name"/>
+				<field class="custom_column" name="donvi_name" />
 				<field class="right_align" name="submit_at" widget="date" string="Ngày nộp" />
 				<field name="status_user" />
 				<field name="note_user" />
@@ -18,6 +18,22 @@
 					class="btn btn-primary"
 					string="Xem chi tiết" />
 			</tree>
+		</field>
+	</record>
+
+
+	<record id="inherit_view_achievement_appraiser_more" model="ir.ui.view">
+		<field name="name">achievement.user.list.view</field>
+		<field name="model">achievement.user.list</field>
+		<field name="inherit_id" ref="appraise_submit.view_achievement_user_list_appraise" />
+		<field name="mode">primary</field>
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='action_view_user_submit_appraiser']"
+				position="replace">
+				<button name="action_view_user_submit_appraiser_B_type" type="object"
+					class="btn btn-primary"
+					string="Xem bổ sung" />
+			</xpath>
 		</field>
 	</record>
 
