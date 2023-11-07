@@ -4,7 +4,7 @@
 		<field name="name">achievement.user.list.view</field>
 		<field name="model">achievement.user.list</field>
 		<field name="arch" type="xml">
-			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
+			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="50"
 				js_class="redefine_user_view" default_order="mssv_mscb asc , donvi_name asc">
 				<field class="custom_column" name="user_name" />
 				<field class="right_align" name="mssv_mscb" />

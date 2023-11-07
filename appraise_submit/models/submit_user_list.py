@@ -20,8 +20,6 @@ class AchievementSubmit(models.Model):
     @api.depends('submit_list.expertise','submit_list.depart_manage_comment')
     def _compute_temp_note(self):
         for record in self:
-            # if record.note_user:
-            #     difference = record.note_user.replace(record.temp_note, "")
             khongdat="Không đạt:"
             canbosung="Cần bổ sung:" 
             have_type_bosung = False

@@ -7,6 +7,9 @@ class AchievementSubmit(models.Model):
     _inherit = 'achievement.submit'
     display_group_name = fields.Char(
         string="Tên tập tiêu chí hiển thị", related='criteria.group_criteria_name', store=True)
+
+
+
     def readonly_button(self):
         return True
     def action_expertise_submit(self):

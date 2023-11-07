@@ -23,7 +23,7 @@ class AchievementUser(models.Model):
     donvi_name = fields.Char(string="Tên đơn vị", related='donvi_id.name', store = True)    
     submit_at = fields.Datetime()
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
-
+    
     def import_donvi_id(self):
         submit_list = self.env['achievement.user.list'].search([])
         for submit in submit_list:
@@ -40,13 +40,8 @@ class AchievementUser(models.Model):
             if not submit.parent_id:
                 parent = self.env['achievement.user.list'].search([
                     ('user_id', '=', submit.user_id.id),
-                    ('achievement_id', '=',
-                     submit.criteria.parent_id.parent_id.parent_id.id)
+                    ('achievement_id', '=', submit.criteria.parent_id.parent_id.parent_id.id)
                 ])
                 submit.write({
                     'parent_id': parent.id
                 })
-
-
-    #                 else:
-    #                     continue

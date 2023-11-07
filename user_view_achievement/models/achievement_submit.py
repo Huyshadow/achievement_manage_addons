@@ -40,6 +40,16 @@ class AchievementSubmit(models.Model):
     submit = fields.Boolean('Đã nộp', compute="_check_submit", store=True)
     submit_content = fields.Char(string='Nội dung nộp')
 
+    have_evidence = fields.Boolean("Minh chứng", default = False, compute = "_compute_evidence")
+
+    @api.depends('evidence')
+    def _compute_evidence(self):
+        for record in self:
+            if record.evidence:
+                record.have_evidence = True
+            else:
+                record.have_evidence = False
+
     @api.depends('grade', 'is_passed', 'comment')
     def _check_submit(self):
         for record in self:
