@@ -364,11 +364,6 @@ class Achievement(models.Model):
         }
 
     def import_chuadien(self):
-        # test = self.env['achievement.user.list'].browse(502)
-        # for submit in test.submit_list:
-        #     print(submit.id)
-        #     print(submit.criteria_name)
-        #     print(submit.submit_content)
         temp = self.env['achievement.submit'].search([
             ('submit_content', '=', False),
         ])
@@ -376,7 +371,6 @@ class Achievement(models.Model):
             if (record.parent_id.user_name):
                 record.submit_content = "Chưa điền"
             else:
-                print(record.user_id.name)
                 record.unlink()
 
     def get_info(self, record):
@@ -384,11 +378,12 @@ class Achievement(models.Model):
         mssv = "MSSV: " + str(record.mssv_mscb) if record.mssv_mscb else ""
         ngaysinh = "Ngày sinh: " + \
             fields.Date.to_string(record.birthday) if record.birthday else ""
-        email = "Email: " + record.user_id.email if record.user_id and record.user_id.email else ""
+        email = "Email: " + record.user_id.email + \
+            '\n' if record.user_id and record.user_id.email else ""
         donvi = "Đơn vị: " + \
             str(record.donvi_name) if record.donvi_name else ""
         sdt = "SĐT: " + str(record.sdt) if record.sdt else ""
-        return ten + '\n' + mssv + '\n' + donvi + '\n' + email + '\n' + sdt + '\n'
+        return ten + '\n' + mssv + '\n' + donvi + '\n' + sdt
 
     def get_content(self, record):
         submit_list = record.submit_list.filtered(
