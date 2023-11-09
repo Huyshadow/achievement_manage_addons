@@ -383,7 +383,7 @@ class Achievement(models.Model):
         donvi = "Đơn vị: " + \
             str(record.donvi_name) if record.donvi_name else ""
         sdt = "SĐT: " + str(record.sdt) if record.sdt else ""
-        return ten + '\n' + mssv + '\n' + donvi + '\n' + email '\n' + sdt
+        return ten + '\n' + mssv + '\n' + donvi + '\n' + email + '\n' + sdt
 
     def get_content(self, record):
         submit_list = record.submit_list.filtered(
