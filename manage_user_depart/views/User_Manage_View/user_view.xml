@@ -76,6 +76,27 @@
                     <field name="sdt" attrs="{'readonly': [('lock_info', '=', True)]}" />
                   </div>
                 </div>
+                <div
+                  class="three_column_for_info">
+                  <div
+                    class="auto_field_three_columns">
+                    <label for="hocvi" string="Học hàm/ Học vị" />
+                    <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}" required="1" />
+                  </div>
+                  <div
+                    class="auto_field_three_columns"
+                    style="grid-template-columns: 20% auto !important;">
+                    <field name="is_unit_manager" invisible="1" />
+                      <label for="trinhdo" string="Trình độ" />
+                        <field name="trinhdo"  required="1"
+                        attrs="{'readonly': [('is_unit_manager', '=', True)]}" />   
+                  </div>
+                  <div
+                    class="auto_field_three_columns">
+                    <label for="birthday" string="Ngày sinh" />
+                    <field name="birthday" required="1"/>
+                  </div>
+                </div>
                 <div class="two_column_for_info">
                   <div class="auto_field_second_column">
                     <label for="mssv_mscb" string="MSSV/MSCB" />
@@ -130,9 +151,8 @@
                   </group>
                   <div class="two_column_for_info">
                     <div class="auto_field_second_column">
-                      <label for="hocvi" string="Học hàm/Học vị" />
-                      <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}"
-                        required="1" />
+                      <label for="hocvi" string="Học hàm/ Học vị" />
+                      <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}" required="1" />
                     </div>
                     <div class="auto_field_second_column">
                       <field name="is_unit_manager" invisible="1" />
@@ -140,14 +160,13 @@
                       <field name="trinhdo" required="1"
                         attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                     </div>
-                    <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                   </div>
                   <div
                     class="three_column_for_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
                     <div
                       class="auto_field_three_columns">
                       <label for="birthday" string="Ngày sinh" />
-                      <field name="birthday" />
+                      <field name="birthday" required="1"/>
                     </div>
                     <div
                       class="auto_field_three_columns">
