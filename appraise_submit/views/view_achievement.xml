@@ -19,6 +19,9 @@
 				<button name="action_view_user_list_appraiser" type="object"
 					class="btn-primary custom_identifier"
 					string="Xem danh sách nộp" />
+				<button name="action_view_appraiser_add_more" type="object"
+					class="btn-primary custom_identifier"
+					string="Xem danh sách bổ sung" />
 			</tree>
 		</field>
 	</record>

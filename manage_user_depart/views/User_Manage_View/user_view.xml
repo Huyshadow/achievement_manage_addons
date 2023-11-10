@@ -105,11 +105,11 @@
                   <div class="auto_field_second_column">
                     <field name="is_unit_manager" invisible="1" />
                     <label for="donvi" string="Đơn vị" />
-                      <field name="donvi" widget="selection"
+                    <field name="donvi" widget="selection"
                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
-                    </div>
-                    <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                   </div>
+                  <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
+                </div>
                 <!-- <field name="donvi_domain"/> -->
               </div>
               <div class="containner_user_form">
@@ -157,7 +157,7 @@
                     <div class="auto_field_second_column">
                       <field name="is_unit_manager" invisible="1" />
                       <label for="trinhdo" string="Trình độ" />
-                        <field name="trinhdo"  required="1"
+                      <field name="trinhdo" required="1"
                         attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                     </div>
                   </div>
