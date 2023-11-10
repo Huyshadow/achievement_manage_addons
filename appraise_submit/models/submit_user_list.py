@@ -162,7 +162,7 @@ class AchievementSubmit(models.Model):
                     'res_model': 'achievement.submit',
                     'target': 'current',
                     'flags': {'hasSelectors': False},
-                    'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('expertisae', '=', 'need_evidence')],
+                    'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('expertise', '=', 'need_evidence')],
                     'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True,
                                 'appraise_buttons': [{
                                     'action': "appraise",
