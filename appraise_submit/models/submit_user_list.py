@@ -17,6 +17,7 @@ class AchievementSubmit(models.Model):
     last_expertise_at = fields.Datetime(
         string="Thời gian thẩm định cuối", compute='_compute_last_expertise', store=True)
     last_expertise_committe = fields.Char(string="Tên người thẩm định cuối")
+    end_submit_at = fields.Datetime(string="Ngày kết thúc nộp", related = 'achievement_id.end_submit_at', store=True)
 
     @api.depends('submit_list.expertise', 'submit_list.depart_manage_comment')
     def _compute_temp_note(self):
@@ -62,6 +63,8 @@ class AchievementSubmit(models.Model):
         appraise_status = self.appraise_status
         if appraise_status == 'end':
             text = """Đã hết thời gian thẩm định"""
+        elif appraise_status == 'extra':
+            text = """Đang trong thời gian bổ sung"""
         else:
             text = """Chưa tới thời gian thẩm định"""
         query = 'delete from display_dialog_box'
@@ -159,7 +162,7 @@ class AchievementSubmit(models.Model):
                     'res_model': 'achievement.submit',
                     'target': 'current',
                     'flags': {'hasSelectors': False},
-                    'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('expertise', '=', 'need_evidence')],
+                    'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('submit_at', '>', self.end_submit_at)],
                     'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True,
                                 'appraise_buttons': [{
                                     'action': "appraise",
@@ -168,21 +171,19 @@ class AchievementSubmit(models.Model):
                                 }]},
                 }
             else:
-                appraise_status = self.appraise_status
-                if appraise_status == 'end':
-                    text = """Đã hết thời chấm bổ sung"""
-                else:
-                    text = """Chưa tới thời gian chấm bổ sung"""
-                query = 'delete from display_dialog_box'
-                self.env.cr.execute(query)
-                value = self.env['display.dialog.box'].sudo().create({
-                    'text': text})
                 return {
+                    'name': self.user_name,
                     'type': 'ir.actions.act_window',
-                    'name': 'Thông báo',
-                    'res_model': 'display.dialog.box',
-                    'view_type': 'form',
-                    'view_mode': 'form',
-                    'target': 'new',
-                    'res_id': value.id
+                    'view_mode': 'tree',
+                    'view_id': self.env.ref('appraise_submit.view_user_submit_detail_appraise_close').id,
+                    'res_model': 'achievement.submit',
+                    'target': 'current',
+                    'flags': {'hasSelectors': False},
+                    'domain': [('criteria.parent_id.parent_id.parent_id.id', '=', self.achievement_id.id), ('user_id', '=', self.user_id.id), ('submit_at', '>', self.end_submit_at)],
+                    'context': {'search_default_display_group_name': True, 'search_default_type_criteria_name': True,
+                                'appraise_buttons': [{
+                                    'action': "popup",
+                                    'name': name,
+                                    'model': 'achievement.user.list'
+                                }]},
                 }

@@ -11,9 +11,9 @@
 				<field name="appraise_status" invisible="1"/>
                 <field class="align_left" name="achievement_id" string= "Danh hiệu"/>
                 <field name="submit_at"  string="Lần cuối hiệu chỉnh bởi bạn" />
-                <field name="status_user" string="Đánh giá" attrs="{'invisible': [('appraise_status','!=','end')]}"/>
-                <field class="align_left" name="note_user" string="Nhận xét" attrs="{'invisible': [('appraise_status','!=','end')]}"/>
-				<button class="btn btn-primary status_context_blue" attrs="{'invisible': ['|',('edit_right', '=', False), ('appraise_status','!=','end')]}"
+                <field name="status_user" string="Đánh giá" attrs="{'invisible': ['&amp;', ('appraise_status','!=','end'), ('appraise_status','!=','extra')]}"/>
+                <field class="align_left" name="note_user" string="Nhận xét" attrs="{'invisible': ['&amp;', ('appraise_status','!=','end'), ('appraise_status','!=','extra')]}"/>
+				<button class="btn btn-primary status_context_blue" attrs="{'invisible': ['|',('edit_right', '=', False), ('appraise_status','!=','extra')]}"
 				type="object" name="action_view_detail_bosung" string="Hiệu chỉnh hồ sơ" />
 			</tree>
 		</field>
