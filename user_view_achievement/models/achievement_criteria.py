@@ -49,6 +49,7 @@ class AchivementCriteria(models.Model):
             self.add_user_list()
             new_submission = self.env['achievement.submit'].search([
                 ('criteria','=', self.id),
+                ('user_id.id','=', self.env.uid)
             ])
             action.update({
                 'res_id': new_submission.id,
