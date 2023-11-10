@@ -79,4 +79,25 @@
 			</tree>
 		</field>
 	</record>
+	<record id="view_achievement_detail_nop_bo_sung" model="ir.ui.view">
+		<field name="name">submit.detail.extra.view</field>
+		<field name="model">achievement.submit</field>
+		<field name="arch" type="xml">
+			<tree create="false" export_xlsx="false" delete='false' edit="false" expand="1"
+				default_order="type_criteria_name asc" js_class="disappear_check_box">
+				<field name="have_evidence" invisible="1"/>
+				<field name="required_evidence" invisible="1"/>
+				<field class="custom_column" name="criteria_name"/>
+				<field class="custom_column" name="criteria_content"/>
+				<button name="action_view_evidence" type="object" class="btn btn-primary"
+					string="Xem minh chứng" attrs="{'invisible': [('have_evidence','=',False)]}" />
+				<button name="readonly_button" type="object" class="btn-danger"		
+					string="Chưa nộp minh chứng" attrs="{'invisible': ['|',('have_evidence', '!=', False),('required_evidence','=', False)]}"/>
+				<field name="expertise" readonly="1" />
+				<field name="depart_manage_comment" />
+				<button name="action_bosung_hoso" type="object" class="btn btn-primary"
+					string="Nộp bổ sung" />
+			</tree>
+		</field>
+	</record>
 </odoo>
