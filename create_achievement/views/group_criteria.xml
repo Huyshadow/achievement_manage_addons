@@ -8,6 +8,7 @@
                 <sheet>
                     <group>
                         <field name="name" />
+                        <field name="id"/>
                         <field name="description" />
                         <field name="type_criteria_ids" />
                     </group>
@@ -20,6 +21,7 @@
         <field name="model">create_achievement.group_criterias</field>
         <field name="arch" type="xml">
             <tree>
+                <field class="custom_column" name="id"/>
                 <field class="custom_column" name="name" />
                 <field class="custom_column" name="description" />
             </tree>

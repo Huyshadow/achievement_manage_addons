@@ -35,7 +35,8 @@ class Achievement(models.Model):
     appraise_status = fields.Selection([
         ('pending', 'Chưa thẩm định'),
         ('active', 'Mở thẩm định'),
-        ('end', 'Kết thúc thẩm định'),
+        ('extra', 'Kết thúc thẩm định, mở bổ sung'),
+        ('end', 'Kết thúc'),
     ], default='pending', string="Trạng thái")
 
     exported_data  = fields.Binary(string='Danh sách hồ sơ')
@@ -361,12 +362,34 @@ class Achievement(models.Model):
             },
             'domain': [('achievement_id', '=', self.id)],
         }
+    def check_thieu(self):
+        submit_list_total = self.env['achievement.user.list'].search([
+            ('achievement_id','=',2),
+        ])
+        print(11111111111111111111)
+        for submit in submit_list_total:
+            if len(submit.submit_list) != 31:
+                user_id = submit.user_id.id
+                criteria_list = self.env['create_achievement.criteria'].search([
+                    ('achievement_id', '=', 2)
+                ])
+                for criteria in criteria_list:
+                    exist = self.env['achievement.submit'].search([
+                        ('criteria_id', '=', criteria.id),
+                        ('user_id.id', '=', user_id)
+                    ])
+                    if not exist:
+                        self.env['achievement.submit'].create({
+                            'criteria': criteria.id,
+                            'user_id': submit.user_id.id,
+                            'submit_content': "Chưa điền",
+                            'submit': False,
+                            'parent_id': submit.id
+                        })
+
+
+
     def import_chuadien(self):
-        # test = self.env['achievement.user.list'].browse(502)
-        # for submit in test.submit_list:
-        #     print(submit.id)
-        #     print(submit.criteria_name)
-        #     print(submit.submit_content)
         temp = self.env['achievement.submit'].search([
             ('submit_content','=', False),
         ])
@@ -376,6 +399,17 @@ class Achievement(models.Model):
             else: 
                 print (record.user_id.name)
                 record.unlink()
+    def assign_expertise(self):
+        criteria_list = self.env['create_achievement.criteria'].search([
+            ('parent_id.parent_id','=',19),
+        ])
+        for criteria in criteria_list:
+            submit_list = self.env['achievement.submit'].search([
+                ('criteria_id','=',criteria.id)
+            ])
+            for submit in submit_list:
+                if submit.submit_content == "Chưa điền":
+                    submit.expertise = 'need_evidence'
 
 
     def get_info(self, record):
@@ -436,7 +470,6 @@ class Achievement(models.Model):
         writer = csv.writer(buffer)
 
         header = ["STT", "Thông tin cá nhân", "Nội dung khai thành tích", "Đề cử tiêu biểu"]
-        header = ["STT", "Thông tin cá nhân"]
         writer.writerow(header)
         stt = 1
         for record in sorted_record_list:
@@ -444,7 +477,6 @@ class Achievement(models.Model):
             thongtincanhan=self.get_info(record)
             noidungkhai=content[0]
             decutieubieu=content[1]
-            data_row = [stt, thongtincanhan]
             data_row = [stt, thongtincanhan, noidungkhai, decutieubieu]
             writer.writerow(data_row)
         

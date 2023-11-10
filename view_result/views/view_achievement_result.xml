@@ -9,11 +9,11 @@
                 <field class="custom_column" name="name" />
                 <field class="right_align" widget="date" name="end_submit_at" />
                 <field class="right_align" widget="date" name="end_at" />
-                <field name="status"
+                <!-- <field name="status"
                     decoration-success="status == 'Đang tiến hành'"
                     decoration-warning="status == 'Trạng thái chờ'"
                     decoration-danger="status == 'Đã kết thúc'"
-                    widget="badge" />
+                    widget="badge" /> -->
                 <button name="action_view_user_list_result_depart" type="object"
                     class="btn-primary custom_identifier"
                     string="Xem kết quả" />
@@ -25,7 +25,7 @@
         <field name='type'>ir.actions.act_window</field>
         <field name="res_model">create_achievement.achievement</field>
         <field name="view_mode">tree</field>
-        <field name="domain">[('appraise_status', '=', 'end')]</field>
+        <field name="domain">['|', ('appraise_status', '=', 'end'), ('appraise_status','=','extra')]</field>
         <field name="view_id" ref="view_achievement_list_tree_result" />
     </record>
 </odoo>

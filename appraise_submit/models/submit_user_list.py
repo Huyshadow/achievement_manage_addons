@@ -59,6 +59,8 @@ class AchievementSubmit(models.Model):
         appraise_status = self.appraise_status
         if appraise_status == 'end':
             text = """Đã hết thời gian thẩm định"""
+        elif appraise_status == 'extra':
+            text = """Đang trong thời gian bổ sung"""
         else:
             text = """Chưa tới thời gian thẩm định"""
         query = 'delete from display_dialog_box'

@@ -25,6 +25,11 @@ class AchievementSubmit(models.Model):
         'Tên tập tiêu chí', related='criteria.parent_id.parent_id.name', store=True)
     type_criteria_name = fields.Char(
         'Tên loại tiêu chí', related='criteria.parent_id.name', store=True)
+
+    achievement_id = fields.Integer('ID danh hiệu', related='criteria.parent_id.parent_id.parent_id.id')
+
+
+
     expertise = fields.Selection([
         ('passed', 'Đã đạt (A)'),
         ('need_evidence', 'Cần bổ sung (B)'),
