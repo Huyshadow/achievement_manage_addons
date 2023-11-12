@@ -1,8 +1,5 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-from pytz import timezone
-from datetime import datetime, time, timedelta
-import os
 
 
 class AchievementSubmit(models.Model):
@@ -56,35 +53,17 @@ class AchievementSubmit(models.Model):
             if record.criteria_method == "thangdiem":
                 if record.grade:
                     record.submit = True
-                    record.change_time_submit()
                     record.submit_content = str(record.grade)
             elif record.criteria_method == "nhiphan":
                 if record.is_passed == True:
                     record.submit = True
-                    record.change_time_submit()
                     record.submit_content = "Đã đạt"
             elif record.criteria_method == "nhanxet":
                 if record.comment:
                     record.submit = True
-                    record.change_time_submit()
                     record.submit_content = record.comment
 
     @api.constrains('evidence')
     def _check_file(self):
         if os.path.splitext(str(self.pdf_name))[1] != '.pdf':
             raise ValidationError("Chỉ nhận file PDF")
-
-    def change_time_submit(self):
-        for record in self:
-            user_id = record.user_id.id
-            achievement_id = record.criteria.achievement_id
-            tz = timezone('Asia/Bangkok')
-            current_local_time = datetime.now(tz) - timedelta(hours=7)
-            string_time = current_local_time.strftime('%Y-%m-%d %H:%M:%S')
-            submit_at = string_time
-            # Check if a corresponding record already exists, and if not, create it
-            existing_achievement_user = self.env['achievement.user.list'].search([
-                ('user_id.id', '=', user_id),
-                ('achievement_id.id', '=', achievement_id),
-            ])
-            existing_achievement_user.write({'submit_at': submit_at})
