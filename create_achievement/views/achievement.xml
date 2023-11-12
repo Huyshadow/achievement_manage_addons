@@ -60,7 +60,6 @@
           decoration-danger="status == 'Đã kết thúc'"
           widget="badge" class="status_display" />
         <field name="criteria_ids" invisible='1' />
-        <field name="exported_data"/>
         <button name="action_view_graph_achievement" type="object" class="btn btn-primary"
           string="Thống kê" />
         <button name="action_export_list" type="object" class="btn btn-primary"

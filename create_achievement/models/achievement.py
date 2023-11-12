@@ -379,8 +379,7 @@ class Achievement(models.Model):
         mssv = "MSSV: " + str(record.mssv_mscb) if record.mssv_mscb else ""
         ngaysinh = "Ngày sinh: " + \
             fields.Date.to_string(record.birthday) if record.birthday else ""
-        email = "Email: " + record.user_id.email + \
-            '\n' if record.user_id and record.user_id.email else ""
+        email = "Email: " + record.user_id.email if record.user_id and record.user_id.email else ""
         donvi = "Đơn vị: " + \
             str(record.donvi_name) if record.donvi_name else ""
         sdt = "SĐT: " + str(record.sdt) if record.sdt else ""
