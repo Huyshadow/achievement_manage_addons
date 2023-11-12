@@ -20,8 +20,9 @@ class AchievementUser(models.Model):
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
     user_name = fields.Char(string="Tên người nộp", related='user_id.name')
-    mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ",
-                            related='user_id.mssv_mscb', store=True)
+    mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ", related='user_id.mssv_mscb',store = True)
+    birthday = fields.Date(string="Ngày sinh", related='user_id.birthday')
+    sdt = fields.Char(string="Điện thoại", related = 'user_id.sdt')
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='donvi_id.code')

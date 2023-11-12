@@ -2,6 +2,10 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from datetime import datetime, time, timedelta
 from pytz import timezone
+from io import StringIO
+import csv
+import xlsxwriter
+import base64
 
 
 class Achievement(models.Model):
@@ -35,6 +39,9 @@ class Achievement(models.Model):
         ('extra',' Kết thúc thẩm định, mở nộp bổ sung'),
         ('end', 'Kết thúc thẩm định'),
     ], default='pending', string="Trạng thái")
+
+    exported_data = fields.Binary(string='Danh sách hồ sơ')
+    csv_name = fields.Char(string="Tên file csv")
 
     @api.depends('criteria_ids')
     def _compute_numbers(self):
@@ -355,4 +362,90 @@ class Achievement(models.Model):
                 }]
             },
             'domain': [('achievement_id', '=', self.id)],
+        }
+
+    def import_chuadien(self):
+        temp = self.env['achievement.submit'].search([
+            ('submit_content', '=', False),
+        ])
+        for record in temp:
+            if (record.parent_id.user_name):
+                record.submit_content = "Chưa điền"
+            else:
+                record.unlink()
+
+    def get_info(self, record):
+        ten = "Họ và tên: " + str(record.user_name) if record.user_name else ""
+        mssv = "MSSV: " + str(record.mssv_mscb) if record.mssv_mscb else ""
+        ngaysinh = "Ngày sinh: " + \
+            fields.Date.to_string(record.birthday) if record.birthday else ""
+        email = "Email: " + record.user_id.email + \
+            '\n' if record.user_id and record.user_id.email else ""
+        donvi = "Đơn vị: " + \
+            str(record.donvi_name) if record.donvi_name else ""
+        sdt = "SĐT: " + str(record.sdt) if record.sdt else ""
+        return ten + '\n' + mssv + '\n' + donvi + '\n' + email + '\n' + sdt
+
+    def get_content(self, record):
+        submit_list = record.submit_list.filtered(
+            lambda r: r.submit_content != 'Chưa điền')
+        content = ""
+        content_extra = ""
+        current_group_name = ""
+        current_group_name_extra = ""
+        for submit in submit_list:
+            group_name = submit.criteria.parent_id.parent_id.name
+            if 'tiêu biểu' in group_name.lower():
+                if current_group_name_extra == "":
+                    current_group_name_extra = group_name
+                    content_extra = "* " + current_group_name_extra
+                elif current_group_name_extra != group_name:
+                    current_group_name_extra = group_name
+                    content_extra += '\n' + "* " + current_group_name_extra
+                content_extra += '\n' + "- " + submit.criteria_name + ": " + submit.submit_content
+            else:
+                if current_group_name == "":
+                    current_group_name = group_name
+                    content = "* " + current_group_name
+                elif current_group_name != group_name:
+                    current_group_name = group_name
+                    content += '\n' + "* " + current_group_name
+                content += '\n' + "- " + submit.criteria_name + ": " + submit.submit_content
+        return content, content_extra
+
+    def action_export_list(self):
+        record_list = self.env['achievement.user.list'].search([
+            ('achievement_id', '=', self.id),
+        ])
+        sorted_record_list = record_list.sorted(key=lambda r: r.donvi_name)
+        buffer = StringIO()
+
+        header = ["STT", "Thông tin cá nhân",
+                  "Nội dung khai thành tích", "Đề cử tiêu biểu"]
+        writer = csv.DictWriter(
+            buffer, fieldnames=header, extrasaction='ignore')
+        writer.writeheader()
+        stt = 1
+        for record in sorted_record_list:
+            content = self.get_content(record)
+            thongtincanhan = self.get_info(record)
+            noidungkhai = content[0].replace("+", " +").replace("-", " -")
+            decutieubieu = content[1].replace("+", " +").replace("-", " -")
+            data_row = {"STT": stt, "Thông tin cá nhân": thongtincanhan,
+                        "Nội dung khai thành tích": noidungkhai, "Đề cử tiêu biểu": decutieubieu}
+            writer.writerow(data_row)
+            stt += 1
+
+        self.exported_data = base64.b64encode(
+            buffer.getvalue().encode('utf-16')
+        )
+
+        buffer.close()
+        self.csv_name = f"DANH SÁCH {self.name}.csv"
+
+        return {
+            'name': 'exported_data.csv',
+            'type': 'ir.actions.act_url',
+            'url': "web/content/?model=create_achievement.achievement&id=" + str(self.id) + "&filename_field=csv_name&field=exported_data&download=true",
+            'target': 'self',
         }
