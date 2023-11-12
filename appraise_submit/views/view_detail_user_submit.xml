@@ -66,7 +66,6 @@
 				default_order="type_criteria_name asc" js_class="disappear_check_box">
 				<field name="have_evidence" invisible="1"/>
 				<field name="required_evidence" invisible="1"/>
-				<field name="id"/>
 				<field class="custom_column" name="criteria_content" />
 				<field class="custom_column" name="submit_content" />
 				<button name="action_view_evidence" type="object" class="btn btn-primary"
