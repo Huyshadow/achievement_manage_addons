@@ -36,6 +36,7 @@ class Achievement(models.Model):
     appraise_status = fields.Selection([
         ('pending', 'Chưa thẩm định'),
         ('active', 'Mở thẩm định'),
+        ('extra',' Kết thúc thẩm định, mở nộp bổ sung'),
         ('end', 'Kết thúc thẩm định'),
     ], default='pending', string="Trạng thái")
 
