@@ -19,7 +19,6 @@
 			<tree create="false" export_xlsx="false" delete='false' edit="false" limit="20"
 				js_class="redefine_user_list" default_order="mssv_mscb asc">
 				<field name="appraise_status" invisible="1"/>
-				<field name="id"/>
 				<field class="custom_column" name="user_name" />
 				<field class="right_align" name="mssv_mscb"/>
 				<field class="custom_column" name="donvi_name" />
