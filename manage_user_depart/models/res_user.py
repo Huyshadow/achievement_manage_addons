@@ -72,7 +72,7 @@ class User(models.Model):
     @api.onchange('email_type')
     def _write_email(self):
         for record in self:
-            if record.email_type and record.name:
+            if record.email_type:
                 temp = self.env['res.partner'].search([
                     ('id', '=', record.partner_id.id)
                 ])
