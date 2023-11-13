@@ -1,5 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from pytz import timezone
+from datetime import datetime, time, timedelta
 
 
 class AchievementUser(models.Model):
@@ -18,15 +20,25 @@ class AchievementUser(models.Model):
         'achievement.submit', 'parent_id', string='Danh sách hồ sơ nộp')
 
     user_name = fields.Char(string="Tên người nộp", related='user_id.name')
-    mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ",
-                            related='user_id.mssv_mscb', store=True)
+    mssv_mscb = fields.Char(string="Mã số sinh viên/ cán bộ", related='user_id.mssv_mscb',store = True)
+    birthday = fields.Date(string="Ngày sinh", related='user_id.birthday')
+    sdt = fields.Char(string="Điện thoại", related = 'user_id.sdt')
     achievement_name = fields.Char(
         string="Tên danh hiệu", related='achievement_id.name')
     donvi_code = fields.Char(string="Mã đơn vị", related='donvi_id.code')
     donvi_name = fields.Char(
         string="Tên đơn vị", related='donvi_id.name', store=True)
-    submit_at = fields.Datetime()
+    submit_at = fields.Datetime(string="Lần cuối nộp", store = True, compute = '_compute_submit_at')
     user_approve = fields.Boolean(string="Duyệt thành viên", default=False)
+
+    @api.depends('submit_list.grade','submit_list.is_passed','submit_list.comment','submit_list.evidence',)
+    def _compute_submit_at(self):
+        for record in self:
+            tz = timezone('Asia/Bangkok')
+            current_local_time = datetime.now(tz) - timedelta(hours=7)
+            string_time = current_local_time.strftime('%Y-%m-%d %H:%M:%S')
+            submit_at = string_time
+            record.submit_at = submit_at
 
     def import_donvi_id(self):
         submit_list = self.env['achievement.user.list'].search([])
