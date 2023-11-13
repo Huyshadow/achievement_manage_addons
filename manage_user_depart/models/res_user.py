@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+import time
 
 
 class User(models.Model):
@@ -13,6 +14,8 @@ class User(models.Model):
         ('khac', 'Khác')
     ], default="nam", string="Giới tính")
     sdt = fields.Char(string="Điện thoại", required=True)
+    # email_type = fields.Char(string="Điện thoại", require=True)
+    email_type = fields.Char(string="Email")
     birthday = fields.Date(string="Ngày sinh")
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
@@ -64,6 +67,7 @@ class User(models.Model):
             # Kiểm tra xem user có thuộc nhóm 'group_system_manager' hoặc không thuộc nhóm 'group_unit_manager'
             record.is_unit_manager = record.lock_info or (bool(
                 unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id))
+    # -----------------------------------------------------------------------------------------------------------------------
 
     @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):
@@ -79,6 +83,15 @@ class User(models.Model):
         return super(User, self).create(vals)
 
     def save_success(self):
+        for record in self:
+            if record.email_type and record.name:
+                temp = self.env['res.partner'].search([
+                    ('id', '=', record.partner_id.id)
+
+                ])
+                temp.write({
+                    'email': record.email_type,
+                })
         text = """Thông tin đã được lưu thành công"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)

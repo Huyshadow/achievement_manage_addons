@@ -45,7 +45,6 @@
                 <group>
                   <field name="login" string="Tài khoản" required="1" />
                   <field name="password" string="Mật khẩu" readonly="0" />
-
                 </group>
               </div>
               <group string="Thông tin tài khoản" class="group_title"
@@ -67,8 +66,8 @@
                   <div
                     class="auto_field_three_columns"
                     style="grid-template-columns: 20% auto !important;">
-                    <label for="email" string="Email" />
-                    <field name="email" readonly="0" invisible="0" string="Email" />
+                    <label for="email_type" string="Email" />
+                    <field name="email_type" readonly="0" invisible="0" string="Email" />
                   </div>
                   <div
                     class="auto_field_three_columns">
@@ -81,20 +80,21 @@
                   <div
                     class="auto_field_three_columns">
                     <label for="hocvi" string="Học hàm/ Học vị" />
-                    <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}" required="1" />
+                    <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}"
+                      required="1" />
                   </div>
                   <div
                     class="auto_field_three_columns"
                     style="grid-template-columns: 20% auto !important;">
                     <field name="is_unit_manager" invisible="1" />
-                      <label for="trinhdo" string="Trình độ" />
-                        <field name="trinhdo"  required="1"
-                        attrs="{'readonly': [('is_unit_manager', '=', True)]}" />   
+                    <label for="trinhdo" string="Trình độ" />
+                    <field name="trinhdo" required="1"
+                      attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                   </div>
                   <div
                     class="auto_field_three_columns">
                     <label for="birthday" string="Ngày sinh" />
-                    <field name="birthday" required="1"/>
+                    <field name="birthday" required="1" />
                   </div>
                 </div>
                 <div class="two_column_for_info">
@@ -108,9 +108,7 @@
                     <field name="donvi" widget="selection"
                       attrs="{'readonly': [('is_unit_manager', '=', True)]}" />
                   </div>
-                  <!-- domain="[('donvi', '=', 'donvi_domain')]" -->
                 </div>
-                <!-- <field name="donvi_domain"/> -->
               </div>
               <div class="containner_user_form">
                 <div class="container_info" attrs="{'invisible': [('id', '&lt;=', 0)]}">
@@ -152,7 +150,8 @@
                   <div class="two_column_for_info">
                     <div class="auto_field_second_column">
                       <label for="hocvi" string="Học hàm/ Học vị" />
-                      <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}" required="1" />
+                      <field name="hocvi" attrs="{'readonly': [('lock_info', '=', True)]}"
+                        required="1" />
                     </div>
                     <div class="auto_field_second_column">
                       <field name="is_unit_manager" invisible="1" />
@@ -166,7 +165,7 @@
                     <div
                       class="auto_field_three_columns">
                       <label for="birthday" string="Ngày sinh" />
-                      <field name="birthday" required="1"/>
+                      <field name="birthday" required="1" />
                     </div>
                     <div
                       class="auto_field_three_columns">
