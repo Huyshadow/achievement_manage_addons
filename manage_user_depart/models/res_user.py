@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+-from odoo import models, fields, api
 import time
 
 
@@ -56,6 +56,8 @@ class User(models.Model):
     is_thamdinh = fields.Boolean(
         string="Thẩm định viên?", compute='_role', store=True)
 
+    # -----------------------------------------------------------------------------------------------------------------------
+
     def _compute_is_unit_manager(self):
         system_manager_group = self.env.ref(
             'access_right_user.group_system_manager')
@@ -66,8 +68,18 @@ class User(models.Model):
             # Kiểm tra xem user có thuộc nhóm 'group_system_manager' hoặc không thuộc nhóm 'group_unit_manager'
             record.is_unit_manager = record.lock_info or (bool(
                 unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id))
-    # -----------------------------------------------------------------------------------------------------------------------
-
+    
+    @api.onchange('email_type')
+    def _write_email(self):
+        for record in self:
+            if record.email_type and record.name:
+                temp = self.env['res.partner'].search([
+                    ('id', '=', record.partner_id.id)
+                ])
+                temp.write({
+                    'email': record.email_type,
+                })
+                
     @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):
         for record in self:
@@ -82,15 +94,6 @@ class User(models.Model):
         return super(User, self).create(vals)
 
     def save_success(self):
-        for record in self:
-            if record.email_type and record.name:
-                temp = self.env['res.partner'].search([
-                    ('id', '=', record.partner_id.id)
-
-                ])
-                temp.write({
-                    'email': record.email_type,
-                })
         text = """Thông tin đã được lưu thành công"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)
