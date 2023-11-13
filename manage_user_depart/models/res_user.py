@@ -68,18 +68,18 @@ class User(models.Model):
             # Kiểm tra xem user có thuộc nhóm 'group_system_manager' hoặc không thuộc nhóm 'group_unit_manager'
             record.is_unit_manager = record.lock_info or (bool(
                 unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id))
-    
-    @api.onchange('email_type')
-    def _write_email(self):
-        for record in self:
-            if record.email_type:
-                temp = self.env['res.partner'].search([
-                    ('id', '=', record.partner_id.id)
-                ])
-                temp.write({
-                    'email': record.email_type,
-                })
-                
+
+    # @api.onchange('email_type')
+    # def _write_email(self):
+    #     for record in self:
+    #         if record.email_type:
+    #             temp = self.env['res.partner'].search([
+    #                 ('id', '=', record.partner_id.id)
+    #             ])
+    #             temp.write({
+    #                 'email': record.email_type,
+    #             })
+
     @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):
         for record in self:
@@ -94,6 +94,14 @@ class User(models.Model):
         return super(User, self).create(vals)
 
     def save_success(self):
+        for record in self:
+            if record.email_type:
+                temp = self.env['res.partner'].search([
+                    ('id', '=', record.partner_id.id)
+                ])
+                temp.write({
+                    'email': record.email_type,
+                })
         text = """Thông tin đã được lưu thành công"""
         query = 'delete from display_dialog_box'
         self.env.cr.execute(query)
