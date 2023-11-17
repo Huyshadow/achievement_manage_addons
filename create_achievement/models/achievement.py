@@ -4,7 +4,6 @@ from datetime import datetime, time, timedelta
 from pytz import timezone
 from io import StringIO
 import csv
-import xlsxwriter
 import base64
 
 
@@ -36,7 +35,7 @@ class Achievement(models.Model):
     appraise_status = fields.Selection([
         ('pending', 'Chưa thẩm định'),
         ('active', 'Mở thẩm định'),
-        ('extra',' Kết thúc thẩm định, mở nộp bổ sung'),
+        ('extra', ' Kết thúc thẩm định, mở nộp bổ sung'),
         ('end', 'Kết thúc thẩm định'),
     ], default='pending', string="Trạng thái")
 
@@ -375,15 +374,21 @@ class Achievement(models.Model):
                 record.unlink()
 
     def get_info(self, record):
-        ten = "Họ và tên: " + str(record.user_name) if record.user_name else ""
-        mssv = "MSSV: " + str(record.mssv_mscb) if record.mssv_mscb else ""
+        ten = "Họ và tên: " + str(record.user_name) + \
+            '\n' if record.user_name else ""
+        mssv = "MSSV: " + str(record.mssv_mscb) + \
+            '\n' if record.mssv_mscb else ""
         ngaysinh = "Ngày sinh: " + \
-            fields.Date.to_string(record.birthday) if record.birthday else ""
-        email = "Email: " + record.user_id.email if record.user_id and record.user_id.email else ""
+            fields.Date.to_string(record.birthday) + \
+            '\n' if record.birthday else ""
+        email = "Email: " + record.user_id.email + \
+            '\n' if record.user_id and record.user_id.email else "Email: " + \
+                record.user_id.login + \
+            '\n' if record.user_id.login else ""
         donvi = "Đơn vị: " + \
-            str(record.donvi_name) if record.donvi_name else ""
+            str(record.donvi_name) + '\n' if record.donvi_name else ""
         sdt = "SĐT: " + str(record.sdt) if record.sdt else ""
-        return ten + '\n' + mssv + '\n' + donvi + '\n' + email + '\n' + sdt
+        return ten + mssv + donvi + email + sdt
 
     def get_content(self, record):
         submit_list = record.submit_list.filtered(
@@ -415,12 +420,12 @@ class Achievement(models.Model):
     def action_export_list(self):
         record_list = self.env['achievement.user.list'].search([
             ('achievement_id', '=', self.id),
+            ('user_approve', '=', True  ),
         ])
         sorted_record_list = record_list.sorted(key=lambda r: r.donvi_name)
         buffer = StringIO()
 
-        header = ["STT", "Thông tin cá nhân",
-                  "Nội dung khai thành tích", "Đề cử tiêu biểu"]
+        header = ["STT", "Thông tin cá nhân", "Loại hồ sơ", "Nội dung khai thành tích", "Đề cử tiêu biểu"]
         writer = csv.DictWriter(
             buffer, fieldnames=header, extrasaction='ignore')
         writer.writeheader()
@@ -428,9 +433,10 @@ class Achievement(models.Model):
         for record in sorted_record_list:
             content = self.get_content(record)
             thongtincanhan = self.get_info(record)
+            loaihoso = record.status_user
             noidungkhai = content[0].replace("+", " +").replace("-", " -")
             decutieubieu = content[1].replace("+", " +").replace("-", " -")
-            data_row = {"STT": stt, "Thông tin cá nhân": thongtincanhan,
+            data_row = {"STT": stt, "Thông tin cá nhân": thongtincanhan, "Loại hồ sơ": loaihoso,
                         "Nội dung khai thành tích": noidungkhai, "Đề cử tiêu biểu": decutieubieu}
             writer.writerow(data_row)
             stt += 1
