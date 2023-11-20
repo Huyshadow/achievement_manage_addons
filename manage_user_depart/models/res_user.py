@@ -14,7 +14,7 @@ class User(models.Model):
         ('khac', 'Khác')
     ], default="nam", string="Giới tính")
     sdt = fields.Char(string="Điện thoại", required=True)
-    # email_type = fields.Char(string="Email")
+    email_type = fields.Char(string="Email")
     birthday = fields.Date(string="Ngày sinh")
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
