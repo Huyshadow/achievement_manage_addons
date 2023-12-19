@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
-
+import os
 
 class AchievementSubmit(models.Model):
     _name = 'achievement.submit'
