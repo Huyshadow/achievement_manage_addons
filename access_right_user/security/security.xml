@@ -22,11 +22,6 @@
             <field name="category_id" ref="module_access_right" />
         </record>
         <record
-            id="group_committee" model="res.groups">
-            <field name="name">Chủ tịch hội đồng</field>
-            <field name="category_id" ref="module_access_right" />
-        </record>
-        <record
             id="group_appraiser" model="res.groups">
             <field name="name">Thẩm định viên</field>
             <field name="category_id" ref="module_access_right" />

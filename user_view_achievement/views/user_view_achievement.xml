@@ -82,13 +82,6 @@
             <p>
               <b>Hiện tại chưa có Danh hiệu nào</b> 
             </p>
-            <p>
-                hoặc
-            </p>
-            <p>
-                <b>Bạn đang dùng MacOs hoặc Ios, vui lòng đăng nhập bằng 1 thiết bị khác</b>
-            </p>
           </field>
     </record>
-
 </odoo>

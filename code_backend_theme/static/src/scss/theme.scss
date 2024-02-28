@@ -2187,3 +2187,25 @@ span.o_text_overflow {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
 }
+
+.o_legacy_list_view .o_list_table thead > tr > th:not(.o_list_record_selector){
+  white-space: unset !important;
+}
+
+.o_list_renderer .o_list_table > thead > tr > :first-child, .o_list_renderer .o_list_table > tbody > tr > :first-child, .o_list_renderer .o_list_table > tfoot > tr > :first-child {
+    width: 46px !important ;
+}
+th.row_no{
+  padding-left: 8px !important;
+}
+
+th.align-middle.o_column_sortable.position-relative.cursor-pointer.opacity-trigger-hover{
+  i.fa.fa-lg.px-2.fa-angle-down.opacity-0.opacity-75-hover{
+    display: none !important;
+  }
+}
+td.o_list_record_remove.text-center {
+  button.fa.fa-trash-o{
+    padding-right: 0px !important;
+  }
+}

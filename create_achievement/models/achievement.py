@@ -454,3 +454,16 @@ class Achievement(models.Model):
             'url': "web/content/?model=create_achievement.achievement&id=" + str(self.id) + "&filename_field=csv_name&field=exported_data&download=true",
             'target': 'self',
         }
+
+    def check_type19(self):
+        type_criteria = self.env['create_achievement.type_criterias'].browse(19)
+        print(type_criteria.criteria_ids)
+        criteria_list = type_criteria.criteria_ids
+        
+        submit_list = type_criteria.criteria_ids.submit_ids
+        for submit in submit_list:
+            submit.unlink()
+       
+        for criteria in criteria_list:
+            print(criteria.content)
+        type_criteria.unlink()

@@ -26,7 +26,7 @@
                 <field name="end_at" widget="date" />
               </group>
             </group>
-            <group string="Danh sách tiêu chí" style="font-size: 25px">
+            <group string="Danh sách tập tiêu chí" style="font-size: 25px">
             </group>
             <field attrs="{'readonly': [('status', '=', 'Đang tiến hành')]}" name="criteria_ids" />  
           </sheet>
