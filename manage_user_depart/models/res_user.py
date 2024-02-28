@@ -14,7 +14,7 @@ class User(models.Model):
         ('khac', 'Khác')
     ], default="nam", string="Giới tính")
     sdt = fields.Char(string="Điện thoại", required=True)
-    email_type = fields.Char(string="Email")
+    # email_type = fields.Char(string="Email")
     birthday = fields.Date(string="Ngày sinh")
     cmnd_cccd = fields.Char(string="CMND/CCCD")
     dantoc = fields.Char(string="Dân tộc")
@@ -69,16 +69,16 @@ class User(models.Model):
             record.is_unit_manager = record.lock_info or (bool(
                 unit_manager_group in current_user.groups_id) and not bool(system_manager_group in current_user.groups_id))
     
-    @api.onchange('email_type')
-    def _write_email(self):
-        for record in self:
-            if record.email_type:
-                temp = self.env['res.partner'].search([
-                    ('id', '=', record.partner_id.id)
-                ])
-                temp.write({
-                    'email': record.email_type,
-                })
+    # @api.onchange('email_type')
+    # def _write_email(self):
+    #     for record in self:
+    #         if record.email_type:
+    #             temp = self.env['res.partner'].search([
+    #                 ('id', '=', record.partner_id.id)
+    #             ])
+    #             temp.write({
+    #                 'email': record.email_type,
+    #             })
                 
     @api.depends('mssv_mscb', 'sdt', 'donvi')
     def _check_fill_info(self):

@@ -63,12 +63,12 @@
                     <field name="name" string="Họ và tên" placeholder="Nguyễn Văn A" required="1"
                       default_focus="1" attrs="{'readonly': [('lock_info', '=', True)]}" />
                   </div>
-                  <div
+                  <!-- <div
                     class="auto_field_three_columns"
                     style="grid-template-columns: 20% auto !important;">
                     <label for="email_type" string="Email" />
                     <field name="email_type" readonly="0" invisible="0" string="Email" />
-                  </div>
+                  </div> -->
                   <div
                     class="auto_field_three_columns">
                     <label for="sdt" string="Điện thoại" />
