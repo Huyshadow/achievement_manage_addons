@@ -58,10 +58,10 @@
                     <style> /* Create a two-column layout */ .container { display: flex;
                         justify-content: center; align-items: center; height: 100vh; /* Use the full
                         viewport height */ } .card { max-width: 300px; } .content {
-                        background-color: #263988; display: flex; /* Use flexbox for the card and
+                        background-color: #042B90; display: flex; /* Use flexbox for the card and
                         image */ align-items: center; /* Vertically center the content */ } .column
                         { flex: 1; padding: 20px; /* Adjust the padding as needed */
-                        background-color: #263988; } .column img { max-height: 300px; max-width:
+                        background-color: #042B90; } .column img { max-height: 300px; max-width:
                         100%; width: auto; align-items: center; /* Vertically center the content */ <!--
                         margin-right: 20px; -->
                         } </style>
@@ -75,7 +75,7 @@
                                 </div>
                             </div>
                             <div class="column">
-                                <img t-attf-src="/code_backend_theme/static/src/img/BK1_banner.png"
+                                <img t-attf-src="/code_backend_theme/static/src/img/BK2_banner.jpg"
                                     alt="Logo" />
                             </div>
                         </div>

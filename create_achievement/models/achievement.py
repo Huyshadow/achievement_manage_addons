@@ -420,12 +420,12 @@ class Achievement(models.Model):
     def action_export_list(self):
         record_list = self.env['achievement.user.list'].search([
             ('achievement_id', '=', self.id),
+            ('user_approve', '=', True  ),
         ])
         sorted_record_list = record_list.sorted(key=lambda r: r.donvi_name)
         buffer = StringIO()
 
-        header = ["STT", "Thông tin cá nhân",
-                  "Nội dung khai thành tích", "Đề cử tiêu biểu"]
+        header = ["STT", "Thông tin cá nhân", "Loại hồ sơ", "Nội dung khai thành tích", "Đề cử tiêu biểu"]
         writer = csv.DictWriter(
             buffer, fieldnames=header, extrasaction='ignore')
         writer.writeheader()
@@ -433,9 +433,10 @@ class Achievement(models.Model):
         for record in sorted_record_list:
             content = self.get_content(record)
             thongtincanhan = self.get_info(record)
+            loaihoso = record.status_user
             noidungkhai = content[0].replace("+", " +").replace("-", " -")
             decutieubieu = content[1].replace("+", " +").replace("-", " -")
-            data_row = {"STT": stt, "Thông tin cá nhân": thongtincanhan,
+            data_row = {"STT": stt, "Thông tin cá nhân": thongtincanhan, "Loại hồ sơ": loaihoso,
                         "Nội dung khai thành tích": noidungkhai, "Đề cử tiêu biểu": decutieubieu}
             writer.writerow(data_row)
             stt += 1

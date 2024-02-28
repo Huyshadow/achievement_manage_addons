@@ -2,7 +2,7 @@ import base64
 import xmlrpc.client
 import os
 
-url = 'http://tuyenduong.tuoitredhqghcm.edu.vn'
+url = 'http://tuyenduong.tuoitrebachkhoa.edu.vn'
 db = 'main'
 username = 'admin'
 password = 'huy@khang@tu'

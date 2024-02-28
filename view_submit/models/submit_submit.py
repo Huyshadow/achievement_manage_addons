@@ -10,7 +10,7 @@ class AchievementSubmit(models.Model):
 
     def create_url(self, target_id):
         protocol = "http"
-        web_domain = "tuyenduong.tuoitredhqghcm.edu.vn"
+        web_domain = "tuyenduong.tuoitrebachkhoa.edu.vn"
         path = "/web/content?model=achievement.submit&field=evidence&filename_field=pdf_name&id="
         url = f"{protocol}://{web_domain}{path}{target_id}"
         return url

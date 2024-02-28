@@ -2177,3 +2177,13 @@ button.btn.btn-secondary.fa.o_external_button.fa-external-link {
 .o_field_widget.o_field_badge {
   background-color: white;
 }
+
+main.modal-body.p-8{
+  overflow-y: scroll !important;
+}
+
+span.o_text_overflow {
+  white-space: normal !important;
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+}
